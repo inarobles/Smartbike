@@ -1829,11 +1829,18 @@ void ui_speed_inc(void) {
         // Check if a ramp is active (i.e., target speed is different from current real speed)
         // Use a small epsilon for float comparison
         if (fabsf(g_treadmill_state.target_speed - g_treadmill_state.speed_kmh) > 0.05f) { // Ramp is active
-            new_target_speed = g_treadmill_state.speed_kmh; // Stop at current real speed
+            new_target_speed = g_treadmill_state.target_speed; // Mantener el objetivo actual si hay rampa
             g_treadmill_state.ramp_mode = RAMP_MODE_NORMAL; // Ensure ramp is stopped
         } else { // No ramp active, or ramp has finished
-            new_target_speed = g_treadmill_state.target_speed + 0.1f;
-            g_treadmill_state.ramp_mode = RAMP_MODE_NORMAL; // Ensure ramp is normal
+            // --- LÓGICA MODIFICADA ---
+            if (g_treadmill_state.target_speed < 0.5f) {
+                // Si la velocidad es 0.0, 0.1, etc., la primera pulsación salta a 0.5
+                new_target_speed = 0.5f;
+            } else {
+                // Si ya estamos en 0.5 o más, incrementar normalmente
+                new_target_speed = g_treadmill_state.target_speed + 0.1f;
+            }
+            g_treadmill_state.ramp_mode = RAMP_MODE_NORMAL;
         }
 
         if (new_target_speed > MAX_SPEED_KMH) new_target_speed = MAX_SPEED_KMH;

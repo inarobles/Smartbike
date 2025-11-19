@@ -18,6 +18,7 @@
 #include "esp_modbus_master.h"
 #include "esp_modbus_common.h"
 #include "driver/gpio.h"
+#include <math.h>
 
 // Códigos de función Modbus estándar
 #define MB_FUNC_WRITE_SINGLE_REGISTER  0x06
@@ -40,11 +41,11 @@
 
 // REGISTROS DE LECTURA (Monitorización)
 #define VFD_REG_REAL_FREQ  0x2103 // (Frecuencia real aplicada por el VFD, Hz × 100)
-#define VFD_REG_FAULT_CODE 0x2104 // (Lectura de código de fallo, 0 = Sin fallo)
+#define VFD_REG_FAULT_CODE 0x2100 // (Lectura de código de fallo, 0 = Sin fallo) - CORREGIDO SEGÚN MANUAL
 
 // Comandos para 0x2000
-#define VFD_CMD_RUN_FWD    0x0001
-#define VFD_CMD_STOP       0x0005 // (F-STOP)
+#define VFD_CMD_RUN_FWD    0x0012 // Corregido según test Arduino
+#define VFD_CMD_STOP       0x0001 // Corregido según test Arduino
 
 // Registros de parámetros (para configuración inicial)
 #define VFD_REG_F0_01      0x0001 // (Fuente de Comando)
@@ -56,9 +57,10 @@
 // Por tanto: 20 km/h = 156.25 Hz (NO 60 Hz como se asumía antes)
 // Ratio: Hz/km/h = 50.0/6.4 = 7.8125
 #define KPH_TO_HZ_RATIO    (50.0f / 6.4f) // Calibrado 2025-11-06: 7.8125 Hz/km/h
+#define VFD_MAX_FREQ_HZ    160.0f // Frecuencia máxima configurada en el VFD (parámetro F0-10)
 #define VFD_TASK_STACK     4096
-#define VFD_TASK_PRIO      8
-#define VFD_POLL_MS        200 // (Frecuencia de actualización de velocidad)
+#define VFD_TASK_PRIO      8 // Prioridad alta para control de motor
+#define VFD_POLL_MS        500 // Frecuencia de sondeo. Más bajo = más errores por ruido. 500ms es robusto.
 
 // ===========================================================================
 // VARIABLES GLOBALES (ESTÁTICAS)
@@ -73,9 +75,8 @@ static void *master_handle = NULL;
 static SemaphoreHandle_t vfd_mutex = NULL;
 static vfd_status_t g_vfd_status = VFD_STATUS_DISCONNECTED;
 static float g_target_kph = 0.0;
-static float g_current_freq_hz = 0.0;
-static float g_vfd_real_freq_hz = 0.0;  // Frecuencia real leída del VFD (0x2103)
 static bool g_emergency_stop = false;
+static float g_vfd_real_freq_hz = 0.0;  // Frecuencia real leída del VFD (0x2103)
 
 // Tarea de control
 static TaskHandle_t vfd_task_handle = NULL;
@@ -114,8 +115,12 @@ void vfd_driver_init(void) {
 
 void vfd_driver_set_speed(float kph) {
     if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
+        // Solo notificar a la tarea si la velocidad ha cambiado realmente
+        if (fabsf(kph - g_target_kph) > 0.05f) {
         g_target_kph = kph;
-        g_emergency_stop = false; // Asumimos que fijar velocidad cancela el E-Stop
+            xTaskNotifyGive(vfd_task_handle); // Despertar la tarea para que actúe
+            g_emergency_stop = false; // Asumimos que fijar velocidad cancela el E-Stop
+        }
         xSemaphoreGive(vfd_mutex);
     } else {
         ESP_LOGW(TAG_VFD, "No se pudo tomar mutex para set_speed");
@@ -144,28 +149,6 @@ vfd_status_t vfd_driver_get_status(void) {
         status = VFD_STATUS_FAULT; // Si no podemos leer, algo va mal
     }
     return status;
-}
-
-float vfd_driver_get_target_freq_hz(void) {
-    float freq;
-    if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
-        freq = g_current_freq_hz;
-        xSemaphoreGive(vfd_mutex);
-    } else {
-        freq = 0.0f;
-    }
-    return freq;
-}
-
-float vfd_driver_get_real_freq_hz(void) {
-    float freq;
-    if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
-        freq = g_vfd_real_freq_hz;
-        xSemaphoreGive(vfd_mutex);
-    } else {
-        freq = 0.0f;
-    }
-    return freq;
 }
 
 // ===========================================================================
@@ -218,16 +201,15 @@ static esp_err_t vfd_read_register(uint16_t reg_addr, uint16_t *out_value) {
     esp_err_t err = mbc_master_send_request(master_handle, &req, &read_data_be);
 
     if (err != ESP_OK) {
-        ESP_LOGE(TAG_VFD, "Error al LEER registro 0x%04X: %s", reg_addr, esp_err_to_name(err));
-
-        // Si la comunicación falla, actualizamos el estado global
-        if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
-            g_vfd_status = VFD_STATUS_DISCONNECTED;
-            xSemaphoreGive(vfd_mutex);
-        }
+        // En un entorno con ruido, los fallos de lectura son esperables.
+        // Lo tratamos como un Warning y no cambiamos el estado a DISCONNECTED.
+        // El sistema seguirá funcionando con el último valor bueno leído.
+        ESP_LOGW(TAG_VFD, "Fallo de lectura en registro 0x%04X: %s. (Ruido esperado)", reg_addr, esp_err_to_name(err));
+        // No actualizamos g_vfd_status aquí para mantener la estabilidad.
     } else {
-        // Convertir de Big Endian (Modbus) a Little Endian (ESP32)
-        *out_value = __builtin_bswap16(read_data_be);
+        // La librería esp-modbus ya realiza la conversión de endianness.
+        // No es necesario hacer bswap16 manual.
+        *out_value = read_data_be;
         ESP_LOGD(TAG_VFD, "Lectura exitosa de registro 0x%04X: valor=0x%04X", reg_addr, *out_value);
     }
 
@@ -270,15 +252,20 @@ static void vfd_control_task(void *pvParameters) {
 
     // 2. Bucle de control principal (MODIFICADO)
     while (1) {
-        // Espera VFD_POLL_MS o una notificación de E-Stop
+        // Esperar por una notificación (cambio de velocidad) o por el timeout de polling
         ulTaskNotifyTake(pdTRUE, pdMS_TO_TICKS(VFD_POLL_MS));
 
-        float kph;
+        float kph_to_set = -1.0f; // Usar -1 para indicar que no hay cambio
         bool estop;
 
         // Copia segura de variables globales
         if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
-            kph = g_target_kph;
+            // Comprobar si el objetivo ha cambiado desde la última vez que actuamos
+            static float last_acted_kph = -1.0f;
+            if (fabsf(g_target_kph - last_acted_kph) > 0.05f) {
+                kph_to_set = g_target_kph;
+                last_acted_kph = g_target_kph;
+            }
             estop = g_emergency_stop;
             xSemaphoreGive(vfd_mutex);
         } else {
@@ -286,90 +273,78 @@ static void vfd_control_task(void *pvParameters) {
             continue;
         }
 
-        // --- SECCIÓN DE ESCRITURA (Sin cambios) ---
-        if (estop || kph < 0.5) {
-            // --- PARADA ---
-            vfd_write_register(VFD_REG_CONTROL, VFD_CMD_STOP);
-            vTaskDelay(pdMS_TO_TICKS(10));
-            vfd_write_register(VFD_REG_FREQ, 0);
-
-            if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
-                g_current_freq_hz = 0.0f;
-                xSemaphoreGive(vfd_mutex);
-            }
-        } else {
-            // --- MARCHA ---
-            // Usar constante calibrada KPH_TO_HZ_RATIO = 7.8125 (NO la fórmula antigua 3.0)
-            float freq_hz = kph * KPH_TO_HZ_RATIO;
-            uint16_t freq_centi_hz = (uint16_t)(freq_hz * 100.0f);
-
-            vfd_write_register(VFD_REG_FREQ, freq_centi_hz);
-            vTaskDelay(pdMS_TO_TICKS(10));
-            vfd_write_register(VFD_REG_CONTROL, VFD_CMD_RUN_FWD);
-
-            if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
-                g_current_freq_hz = freq_hz;
-                xSemaphoreGive(vfd_mutex);
-            }
-        }
-
-        // --- SECCIÓN DE LECTURA ---
-        vTaskDelay(pdMS_TO_TICKS(20)); // Pequeña pausa entre escritura y lectura
-
-        // Leer frecuencia real del VFD (registro 0x2103)
-        uint16_t real_freq_centihz = 0;
-        esp_err_t read_freq_err = vfd_read_register(VFD_REG_REAL_FREQ, &real_freq_centihz);
-
-        if (read_freq_err == ESP_OK) {
-            float real_freq_hz = real_freq_centihz / 100.0f;
-
-            // Almacenar frecuencia real leída
-            if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
-                g_vfd_real_freq_hz = real_freq_hz;
-                xSemaphoreGive(vfd_mutex);
-            }
-
-            // Log periódico para debugging (cada 10 ciclos = 2 segundos)
-            static uint8_t log_counter = 0;
-            if (++log_counter >= 10) {
-                log_counter = 0;
-                ESP_LOGI(TAG_VFD, "VFD Real: %.2f Hz | Target: %.2f Hz | Speed: %.1f km/h",
-                         real_freq_hz, g_current_freq_hz, kph);
-            }
-        }
-
-        // Leer código de fallo (registro 0x2104)
-        uint16_t fault_code = 0;
-        esp_err_t read_fault_err = vfd_read_register(VFD_REG_FAULT_CODE, &fault_code);
-
-        // Actualizar el estado global basado en la lectura
-        if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
-            if (read_fault_err != ESP_OK) {
-                // El estado (DISCONNECTED) ya fue fijado por vfd_read_register()
-                ESP_LOGW(TAG_VFD, "No se pudo leer el estado de fallo (¿desconectado?)");
+        // --- SECCIÓN DE ESCRITURA (Solo si hay un cambio de velocidad o E-Stop) ---
+        if (kph_to_set >= 0.0f || estop) {
+            ESP_LOGI(TAG_VFD, "Acción requerida: kph=%.2f, estop=%d", kph_to_set, estop);
+            if (estop || kph_to_set < 0.5f) {
+                // --- PARADA ---
+                ESP_LOGI(TAG_VFD, "Enviando comando de PARADA al VFD.");
+                vfd_write_register(VFD_REG_CONTROL, VFD_CMD_STOP);
+                vTaskDelay(pdMS_TO_TICKS(10));
+                vfd_write_register(VFD_REG_FREQ, 0);
             } else {
-                // La comunicación fue exitosa, analizamos el resultado
+                // --- MARCHA ---
+                float freq_hz = kph_to_set * KPH_TO_HZ_RATIO;
+
+                // El VFD espera un valor porcentual de la frecuencia máxima, no un valor absoluto en Hz.
+                // La escala es 10000 para 100.00%.
+                // Fórmula: (frecuencia_deseada / frecuencia_maxima) * 10000
+                uint16_t vfd_value = (uint16_t)((freq_hz / VFD_MAX_FREQ_HZ) * 10000.0f);
+
+                ESP_LOGI(TAG_VFD, "Enviando comando de MARCHA al VFD: %.2f Hz (Valor VFD: %u)", freq_hz, vfd_value);
+                vfd_write_register(VFD_REG_FREQ, vfd_value);
+                vTaskDelay(pdMS_TO_TICKS(200));
+                vfd_write_register(VFD_REG_CONTROL, VFD_CMD_RUN_FWD);
+            }
+        }
+
+        // --- SECCIÓN DE LECTURA (Se ejecuta periódicamente) ---
+        vTaskDelay(pdMS_TO_TICKS(50)); // Pequeña pausa para no saturar
+
+        // Leer frecuencia real del VFD
+        uint16_t real_freq_centihz = 0;
+        if (vfd_read_register(VFD_REG_REAL_FREQ, &real_freq_centihz) == ESP_OK) {
+            if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
+                g_vfd_real_freq_hz = real_freq_centihz / 100.0f;
+                xSemaphoreGive(vfd_mutex);
+            }
+        }
+
+        // Leer estado de fallo del VFD
+        uint16_t fault_code = 0;
+        if (vfd_read_register(VFD_REG_FAULT_CODE, &fault_code) == ESP_OK) {
+            if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
                 if (fault_code != 0) {
+                    // Manejo de fallos (simplificado para claridad)
                     ESP_LOGE(TAG_VFD, "¡FALLO VFD DETECTADO! Código: 0x%04X", fault_code);
                     g_vfd_status = VFD_STATUS_FAULT;
                 } else {
-                    // Comunicación OK, Sin Fallo
+                    if (g_vfd_status == VFD_STATUS_FAULT) {
+                        ESP_LOGI(TAG_VFD, "Fallo VFD resuelto.");
+                    }
                     g_vfd_status = VFD_STATUS_OK;
                 }
+                xSemaphoreGive(vfd_mutex);
             }
-            xSemaphoreGive(vfd_mutex);
-        } else {
-             ESP_LOGW(TAG_VFD, "Task no pudo tomar mutex (escritura estado)");
         }
     }
+}
+
+float vfd_driver_get_real_freq_hz(void) {
+    float freq = 0.0f;
+    if (xSemaphoreTake(vfd_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
+        freq = g_vfd_real_freq_hz;
+        xSemaphoreGive(vfd_mutex);
+    }
+    return freq;
 }
 
 static esp_err_t vfd_modbus_init(void) {
     ESP_LOGI(TAG_VFD, "Inicializando driver Modbus Master...");
 
-    // Configuración de los parámetros seriales
+    // Configuración de los parámetros seriales para Modbus
     mb_serial_opts_t serial_config = {
-        .mode = MB_RTU,  // Modo RTU de esp-modbus
+        .mode = MB_RTU,
         .port = VFD_UART_PORT,
         .uid = VFD_SLAVE_ID,
         .response_tout_ms = 1000,
@@ -380,12 +355,16 @@ static esp_err_t vfd_modbus_init(void) {
         .parity = VFD_PARITY
     };
 
-    // Inicializar el maestro serial
+    // Inicializar el maestro serial usando la API correcta para esta versión
     esp_err_t err = mbc_master_create_serial((mb_communication_info_t*)&serial_config, &master_handle);
     if (err != ESP_OK) {
         ESP_LOGE(TAG_VFD, "mbc_master_create_serial failed: %s", esp_err_to_name(err));
         return err;
     }
+
+    // Configurar los pines UART para el puerto Modbus DESPUÉS de crear el maestro.
+    // Es crucial establecer RTS en UART_PIN_NO_CHANGE para hardware con control automático de dirección.
+    ESP_ERROR_CHECK(uart_set_pin(VFD_UART_PORT, VFD_TX_PIN, VFD_RX_PIN, VFD_RTS_PIN, UART_PIN_NO_CHANGE));
 
     // Iniciar el stack Modbus
     err = mbc_master_start(master_handle);

@@ -1,4 +1,4 @@
-LOG 4
+LOG25
 
 
 
@@ -10,8 +10,9 @@ Executing "C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espre
 --- Using \\.\COM3 instead...
 --- esp-idf-monitor 1.8.0 on \\.\COM3 115200
 --- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+Jul 29 2019 12:21:46
 
-rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT) ets Jul 29 2019 12:21:46
+rst:0x1 (POWERON_RESET),boot:0x13  ets Jul 29 2019 12:21:46
 
 rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
 configsip: 0, SPIWP:0xee
@@ -38,215 +39,85 @@ I (58) boot:  0 nvs              WiFi data        01 02 00009000 00006000
 I (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000
 I (71) boot:  2 factory          factory app      00 00 00010000 00100000
 I (77) boot: End of partition table
-I (81) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=10558h ( 66904) map
-I (111) esp_image: segment 1: paddr=00020580 vaddr=3ffb0000 size=023e8h (  9192) load
-I (115) esp_image: segment 2: paddr=00022970 vaddr=40080000 size=0d6a4h ( 54948) load
-I (136) esp_image: segment 3: paddr=0003001c vaddr=50000000 size=00020h (    32) load
-I (136) esp_image: segment 4: paddr=00030044 vaddr=00000000 size=0ffd4h ( 65492)
-I (162) esp_image: segment 5: paddr=00040020 vaddr=400d0020 size=28968h (166248) map
-I (226) boot: Loaded app from partition at offset 0x10000
-I (226) boot: Disabling RNG early entropy source...
-I (236) cpu_start: Multicore app
-I (245) cpu_start: Pro cpu start user code
-I (245) cpu_start: cpu freq: 160000000 Hz
-I (245) app_init: Application information:
-I (248) app_init: Project name:     sala_maquinas
-I (253) app_init: App version:      6b89ba1-dirty
-I (258) app_init: Compile time:     Nov 13 2025 13:37:20
-I (264) app_init: ELF file SHA256:  7bfe8ac40...
-I (270) app_init: ESP-IDF:          v5.5.1
-I (274) efuse_init: Min chip rev:     v0.0
-I (279) efuse_init: Max chip rev:     v3.99
-I (284) efuse_init: Chip rev:         v3.1
-I (289) heap_init: Initializing. RAM available for dynamic allocation:
-I (296) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM
-I (302) heap_init: At 3FFB2D60 len 0002D2A0 (180 KiB): DRAM
-I (308) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
-I (315) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
-I (321) heap_init: At 4008D6A4 len 0001295C (74 KiB): IRAM
-W (329) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
-I (341) spi_flash: detected chip: generic
-I (346) spi_flash: flash io: dio
-I (351) main_task: Started on CPU0
-I (355) main_task: Calling app_main()
+I (81) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=10568h ( 66920) map
+I (111) esp_image: segment 1: paddr=00020590 vaddr=3ffb0000 size=023e8h (  9192) load
+I (115) esp_image: segment 2: paddr=00022980 vaddr=40080000 size=0d698h ( 54936) load
+I (136) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=28978h (166264) map
+I (193) esp_image: segment 4: paddr=000589a0 vaddr=4008d698 size=0000ch (    12) load
+I (193) esp_image: segment 5: paddr=000589b4 vaddr=50000000 size=00020h (    32) load
+I (204) boot: Loaded app from partition at offset 0x10000
+I (204) boot: Disabling RNG early entropy source...
+I (219) cpu_start: Multicore app
+I (227) cpu_start: Pro cpu start user code
+I (227) cpu_start: cpu freq: 160000000 Hz
+I (227) app_init: Application information:
+I (230) app_init: Project name:     sala_maquinas
+I (235) app_init: App version:      ac6b496-dirty
+I (241) app_init: Compile time:     Nov 13 2025 16:41:54
+I (247) app_init: ELF file SHA256:  03d1715df...
+I (252) app_init: ESP-IDF:          v5.5.1
+I (257) efuse_init: Min chip rev:     v0.0
+I (262) efuse_init: Max chip rev:     v3.99
+I (267) efuse_init: Chip rev:         v3.1
+I (272) heap_init: Initializing. RAM available for dynamic allocation:
+I (279) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM
+I (285) heap_init: At 3FFB2D58 len 0002D2A8 (180 KiB): DRAM
+I (291) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (297) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (304) heap_init: At 4008D6A4 len 0001295C (74 KiB): IRAM
+W (311) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (324) spi_flash: detected chip: generic
+I (328) spi_flash: flash io: dio
+I (333) main_task: Started on CPU0
+I (337) main_task: Calling app_main()
+I (340) SLAVE: ==============================================
+I (347) SLAVE:   Sala de Maquinas - Sistema Esclavo
+I (352) SLAVE:   PROTOCOLO: ASCII Simple (UART Direct)
 I (358) SLAVE: ==============================================
-I (365) SLAVE:   Sala de Maquinas - Sistema Esclavo
-I (370) SLAVE:   PROTOCOLO: ASCII Simple (UART Direct)
-I (376) SLAVE: ==============================================
-I (393) SLAVE: GPIO 21 configurado para fin de carrera de inclinación (pull-up interno)
-I (394) SLAVE: GPIOs configurados. Asignación v6 (Fin de carrera en GPIO 21 con pull-up interno).
-I (403) SLAVE: Temporizador de bomba de cera creado.
-I (409) SLAVE: Configurando UART para RS485...
-I (415) SLAVE: UART1 configurado: 115200 baud, TX=17, RX=16
-I (420) SLAVE: Tarea UART RX iniciada (modo ASCII). Escuchando en UART1...
-I (428) SLAVE: Tarea UART RX creada
-I (432) VFD_DRIVER_MODBUS: Inicializando driver Modbus Master...
-I (440) uart: queue free spaces: 20
-I (443) mb_port.serial: mbm_rtu@0x3ffb7fe8, suspend port from task.
-E (512) SLAVE: No se puede actualizar velocidad: VFD no disponible
-W (512) SLAVE: Inclinación no calibrada, ignorando objetivo
-I (550) VFD_DRIVER_MODBUS: Modbus Master inicializado en UART2 (TX:19, RX:18, 9600 bps)
-I (550) VFD_DRIVER_MODBUS: Configurando VFD (Fuente de Comando y Frecuencia)...
-I (556) VFD_DRIVER_MODBUS: VFD Driver (Modbus Real) inicializado. Tarea creada.
-I (563) SLAVE: Controlador VFD (real) inicializado
-I (569) SLAVE: Tarea de actualización de velocidad iniciada (calculada desde VFD)
-I (577) SLAVE: Tarea de actualización de velocidad creada
-I (583) SLAVE: Tarea de control de inclinación iniciada
-I (590) SLAVE: Posición de inclinación cargada desde NVS: 0.0%
-I (596) SLAVE: Timeout dinámico de homing calculado: 5000 ms (basado en posición guardada: 0.0%)
-I (606) SLAVE: Tarea de control de inclinación creada
-E (612) SLAVE: No se puede actualizar velocidad: VFD no disponible
-W (618) SLAVE: Inclinación no calibrada, ignorando objetivo
-I (625) SLAVE: Tarea de watchdog iniciada (Timeout: 0 ms)
-I (631) SLAVE: Tarea de watchdog creada (timeout: 1000ms)
-I (637) SLAVE: Sistema iniciado correctamente
-I (642) SLAVE: Esperando comandos del Maestro...
-I (655) SLAVE: ✓ Homing de inclinación completado - Fin de carrera detectado
-E (712) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (1011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (1111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (1211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (1311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (1411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (1511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (1565) MB_CONTROLLER_MASTER: mbc_master_send_request(169): Master send request failure error=(0x107) (ESP_ERR_TIMEOUT).
-E (1566) VFD_DRIVER_MODBUS: Error al escribir en registro 0x0001: ESP_ERR_TIMEOUT
-E (1574) VFD_DRIVER_MODBUS: Error configurando F0-01 (Fuente de Comando)
-E (1581) VFD_DRIVER_MODBUS: Reintentando configuración del VFD en 5s...
-E (1611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (1711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (1811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (2011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (2211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (2311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (2411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (2511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (2611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (2711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (2811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (2911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (3011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (3211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (3311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (3411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (3511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (3611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (3711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (3811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (3911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (4011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (4111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (4211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (4311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (4411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (4611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (4711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (4911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (5011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (5111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (5311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (5411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (5511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (5611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (5711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (5811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (5911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (6011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (6111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (6211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (6311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (6411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (6511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-I (6589) VFD_DRIVER_MODBUS: Configurando VFD (Fuente de Comando y Frecuencia)...
-E (6611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (6711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (6811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (6911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (7011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (7111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (7211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (7311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (7411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (7511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (7598) MB_CONTROLLER_MASTER: mbc_master_send_request(169): Master send request failure error=(0x107) (ESP_ERR_TIMEOUT).
-E (7598) VFD_DRIVER_MODBUS: Error al escribir en registro 0x0001: ESP_ERR_TIMEOUT
-E (7606) VFD_DRIVER_MODBUS: Error configurando F0-01 (Fuente de Comando)
-E (7611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (7614) VFD_DRIVER_MODBUS: Reintentando configuración del VFD en 5s...
-E (7711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (7811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (7911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (8011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (8111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (8211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (8311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (8511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (8611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (8711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (8811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (8911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (9011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (9111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (9211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (9311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (9411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (9511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (9611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (9711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (9911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (10111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (10211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (10311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (10411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (10511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (10611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-I (10647) SLAVE: Heartbeat #0 - Speed: 0.00/0.00 km/h, Incline: 0.0/0.0 %
-E (10811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (11011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (11111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (11211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (11311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (11411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (11611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (11711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (11911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (12011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (12111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (12211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (12311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (12411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (12611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-I (12628) VFD_DRIVER_MODBUS: Configurando VFD (Fuente de Comando y Frecuencia)...
-E (12711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (12811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (12911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (13011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (13111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (13311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (13411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (13511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (13611) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (13637) MB_CONTROLLER_MASTER: mbc_master_send_request(169): Master send request failure error=(0x107) (ESP_ERR_TIMEOUT).
-E (13637) VFD_DRIVER_MODBUS: Error al escribir en registro 0x0001: ESP_ERR_TIMEOUT
-E (13646) VFD_DRIVER_MODBUS: Error configurando F0-01 (Fuente de Comando)
-E (13653) VFD_DRIVER_MODBUS: Reintentando configuración del VFD en 5s...
-E (13811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (13911) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (14011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (14111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (14311) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (14411) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (14511) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (14711) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (14811) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (15011) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (15111) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (15211) SLAVE: No se puede actualizar velocidad: VFD no disponible
-E (15311) SLAVE: No se puede actualizar velocidad: VFD no disponible
+I (374) SLAVE: GPIO 21 configurado para fin de carrera de inclinación (pull-up interno)
+I (375) SLAVE: GPIOs configurados. Asignación v6 (Fin de carrera en GPIO 21 con pull-up interno).
+I (383) SLAVE: Temporizador de bomba de cera creado.
+I (388) SLAVE: Configurando UART para comunicación con Consola...
+I (396) VFD_DRIVER_MODBUS: Inicializando driver Modbus Master...
+I (403) uart: queue free spaces: 20
+I (407) mb_port.serial: mbm_rtu@0x3ffb6e78, suspend port from task.
+I (514) VFD_DRIVER_MODBUS: Modbus Master inicializado en UART2 (TX:19, RX:18, 9600 bps)
+I (514) VFD_DRIVER_MODBUS: Configurando VFD (Fuente de Comando y Frecuencia)...
+I (520) VFD_DRIVER_MODBUS: VFD Driver (Modbus Real) inicializado. Tarea creada.
+I (527) SLAVE: Controlador VFD (real) inicializado
+I (533) SLAVE: Tarea UART RX iniciada (modo ASCII). Escuchando en UART1...
+W (541) SLAVE: Inclinación no calibrada, ignorando objetivo
+I (547) SLAVE: Tarea UART RX creada
+I (551) SLAVE: Tarea de actualización de velocidad iniciada (calculada desde VFD)
+I (559) SLAVE: Tarea de actualización de velocidad creada
+I (565) SLAVE: Tarea de control de inclinación iniciada
+W (570) SLAVE: Inclinación no calibrada, ignorando objetivo
+I (572) SLAVE: Posición de inclinación cargada desde NVS: 0.0%
+I (570) SLAVE: Tarea de control de inclinación creada
+I (584) SLAVE: Timeout dinámico de homing calculado: 5000 ms (basado en posición guardada: 0.0%)
+I (590) SLAVE: Tarea de watchdog iniciada (Timeout: 0 ms)
+I (590) SLAVE: Tarea de watchdog creada (timeout: 1000ms)
+I (612) SLAVE: Sistema iniciado correctamente
+I (617) SLAVE: Esperando comandos del Maestro...
+I (650) SLAVE: ✓ Homing de inclinación completado - Fin de carrera detectado
+I (669) VFD_DRIVER_MODBUS: VFD configurado para control por Modbus.
+I (669) VFD_DRIVER_MODBUS: Configuración VFD exitosa. Iniciando bucle de control.
+I (1173) VFD_DRIVER_MODBUS: Acción requerida: kph=0.00, estop=0
+I (1173) VFD_DRIVER_MODBUS: Enviando comando de PARADA al VFD.
+I (6670) SLAVE: Velocidad objetivo actualizada: 10.00 km/h
+I (6671) VFD_DRIVER_MODBUS: Acción requerida: kph=10.00, estop=0
+I (6672) VFD_DRIVER_MODBUS: Enviando comando de MARCHA al VFD: 78.12 Hz
+I (10622) SLAVE: Heartbeat #0 - Speed: 9.42/10.00 km/h, Incline: 0.0/0.0 %
+E (12514) MB_CONTROLLER_MASTER: mbc_master_send_request(169): Master send request failure error=(0x108) (ESP_ERR_INVALID_RESPONSE).
+E (12515) VFD_DRIVER_MODBUS: Error al LEER registro 0x2100: ESP_ERR_INVALID_RESPONSE
+E (19261) MB_CONTROLLER_MASTER: mbc_master_send_request(169): Master send request failure error=(0x108) (ESP_ERR_INVALID_RESPONSE).
+E (19263) VFD_DRIVER_MODBUS: Error al LEER registro 0x2100: ESP_ERR_INVALID_RESPONSE
+I (19470) SLAVE: Velocidad objetivo actualizada: 0.00 km/h
+I (19470) VFD_DRIVER_MODBUS: Acción requerida: kph=0.00, estop=0
+I (19472) VFD_DRIVER_MODBUS: Enviando comando de PARADA al VFD.
+E (19592) MB_CONTROLLER_MASTER: mbc_master_send_request(169): Master send request failure error=(0x108) (ESP_ERR_INVALID_RESPONSE).
+E (19593) VFD_DRIVER_MODBUS: Error al escribir en registro 0x2001: ESP_ERR_INVALID_RESPONSE
+I (20622) SLAVE: Heartbeat #1 - Speed: 14.20/0.00 km/h, Incline: 0.0/0.0 %
 
 
 C:\Esp\Treadmill\Base>
-
-

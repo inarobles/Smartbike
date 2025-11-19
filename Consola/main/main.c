@@ -7,6 +7,7 @@
 #include "freertos/task.h"
 #include "freertos/semphr.h"
 #include "esp_log.h"
+#include "driver/uart.h" // <-- FIX: Added missing include for UART functions
 #include "nvs_flash.h"
 
 #include "bsp/esp32_p4_function_ev_board.h"
@@ -93,17 +94,29 @@ void app_main(void) {
     // Initialize WiFi Client for scanning
     wifi_client_init();
 
+    // Configurar UART para comunicación con la Base (ASCII)
+    ESP_LOGI(TAG, "Configurando UART para comunicación con Base...");
+    uart_config_t uart_config = {
+        .baud_rate = CM_MASTER_BAUD_RATE,
+        .data_bits = UART_DATA_8_BITS,
+        .parity    = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+        .source_clk = UART_SCLK_DEFAULT,
+    };
+    ESP_ERROR_CHECK(uart_driver_install(CM_MASTER_UART_PORT, 512 * 2, 0, 0, NULL, 0));
+    ESP_ERROR_CHECK(uart_param_config(CM_MASTER_UART_PORT, &uart_config));
+    ESP_ERROR_CHECK(uart_set_pin(CM_MASTER_UART_PORT,
+                                  CM_MASTER_TX_PIN,
+                                  CM_MASTER_RX_PIN,
+                                  UART_PIN_NO_CHANGE,
+                                  UART_PIN_NO_CHANGE));
+
     // Initialize CM Protocol Master for RS485 communication
-    ret = cm_master_init();
+    // La función cm_master_init() fue eliminada. Ahora solo iniciamos las tareas.
+    ret = cm_master_start();
     if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "cm_master_init() failed with error: %d", ret);
-        // Continue anyway - not critical for UI functionality
-    } else {
-        // Start master task
-        ret = cm_master_start();
-        if (ret != ESP_OK) {
-            ESP_LOGE(TAG, "cm_master_start() failed with error: %d", ret);
-        }
+        ESP_LOGE(TAG, "cm_master_start() failed with error: %d", ret);
     }
 
     ESP_LOGI(TAG, "Inicialización completa.");

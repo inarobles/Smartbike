@@ -258,55 +258,6 @@ static void master_task(void *pvParameters) {
 // FUNCIONES PÚBLICAS (API)
 // ============================================================================
 
-esp_err_t cm_master_init(void) {
-    ESP_LOGI(TAG, "Inicializando CM Master (Protocolo ASCII)...");
-
-    // Crear mutex
-    g_master_mutex = xSemaphoreCreateMutex();
-    if (g_master_mutex == NULL) {
-        ESP_LOGE(TAG, "Error creando mutex");
-        return ESP_FAIL;
-    }
-
-    // Configurar UART
-    uart_config_t uart_config = {
-        .baud_rate = CM_MASTER_BAUD_RATE,
-        .data_bits = UART_DATA_8_BITS,
-        .parity = UART_PARITY_DISABLE,
-        .stop_bits = UART_STOP_BITS_1,
-        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
-        .source_clk = UART_SCLK_DEFAULT,
-    };
-
-    esp_err_t err = uart_driver_install(CM_MASTER_UART_PORT, UART_BUF_SIZE * 2, 0, 0, NULL, 0);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Error instalando driver UART: %s", esp_err_to_name(err));
-        return err;
-    }
-
-    err = uart_param_config(CM_MASTER_UART_PORT, &uart_config);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Error configurando parámetros UART: %s", esp_err_to_name(err));
-        return err;
-    }
-
-    err = uart_set_pin(CM_MASTER_UART_PORT,
-                       CM_MASTER_TX_PIN,
-                       CM_MASTER_RX_PIN,
-                       UART_PIN_NO_CHANGE,
-                       UART_PIN_NO_CHANGE);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Error configurando pines UART: %s", esp_err_to_name(err));
-        return err;
-    }
-
-    ESP_LOGI(TAG, "UART%d configurado: %d baud, TX=%d, RX=%d",
-             CM_MASTER_UART_PORT, CM_MASTER_BAUD_RATE,
-             CM_MASTER_TX_PIN, CM_MASTER_RX_PIN);
-
-    return ESP_OK;
-}
-
 esp_err_t cm_master_start(void) {
     ESP_LOGI(TAG, "Iniciando tareas del maestro...");
 
@@ -315,6 +266,15 @@ esp_err_t cm_master_start(void) {
     if (ret != pdPASS) {
         ESP_LOGE(TAG, "Error creando tarea UART RX");
         return ESP_FAIL;
+    }
+
+    // Crear mutex si no existe
+    if (g_master_mutex == NULL) {
+        g_master_mutex = xSemaphoreCreateMutex();
+        if (g_master_mutex == NULL) {
+            ESP_LOGE(TAG, "Error creando mutex");
+            return ESP_FAIL;
+        }
     }
 
     // Crear tarea principal del maestro

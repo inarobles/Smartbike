@@ -265,7 +265,7 @@ static void configure_gpios(void) {
     gpio_config_t io_conf_input = {
         .pin_bit_mask = (1ULL << INCLINE_LIMIT_SWITCH_PIN),
         .mode = GPIO_MODE_INPUT,
-        .pull_up_en = GPIO_PULLUP_ENABLE,  // Pull-up: lee 1 cuando no presionado, 0 cuando activado
+        .pull_up_en = GPIO_PULLUP_DISABLE, // Deshabilitado: la placa ya tiene un pull-up externo de 10kΩ
         .pull_down_en = GPIO_PULLDOWN_DISABLE,
         .intr_type = GPIO_INTR_DISABLE
     };
@@ -273,6 +273,32 @@ static void configure_gpios(void) {
     ESP_LOGI(TAG, "GPIO %d configurado para fin de carrera de inclinación (pull-up interno)", INCLINE_LIMIT_SWITCH_PIN);
 
     ESP_LOGI(TAG, "GPIOs configurados. Asignación v6 (Fin de carrera en GPIO 21 con pull-up interno).");
+}
+
+/**
+ * @brief Comprueba si el fin de carrera está presionado, con antirrebote por software.
+ *
+ * En lugar de reaccionar a la primera lectura de '0', esta función confirma que
+ * el estado '0' es estable durante al menos 50ms para filtrar el ruido eléctrico.
+ *
+ * @return true si el interruptor está presionado de forma estable, false en caso contrario.
+ */
+static bool is_limit_switch_pressed(void) {
+    // Si la primera lectura no es 0, no está presionado. Salida rápida.
+    if (gpio_get_level(INCLINE_LIMIT_SWITCH_PIN) != 0) {
+        return false;
+    }
+
+    // Primera lectura fue 0. Esperar 50ms y volver a comprobar.
+    vTaskDelay(pdMS_TO_TICKS(50));
+
+    // Si después de 50ms sigue siendo 0, es una pulsación válida.
+    if (gpio_get_level(INCLINE_LIMIT_SWITCH_PIN) == 0) {
+        return true;
+    }
+
+    // Si no, fue solo un pico de ruido.
+    return false;
 }
 
 // ===========================================================================
@@ -324,34 +350,9 @@ static void send_data_response(void) {
 // ===========================================================================
 
 /**
- * @brief Extrae el valor flotante de un comando "CMD=valor"
- */
-static float extract_float_value(const char *cmd_line) {
-    const char *equals = strchr(cmd_line, '=');
-    if (equals == NULL) return 0.0f;
-    return atof(equals + 1);
-}
-
-/**
- * @brief Extrae el valor entero de un comando "CMD=valor"
- */
-static int extract_int_value(const char *cmd_line) {
-    const char *equals = strchr(cmd_line, '=');
-    if (equals == NULL) return 0;
-    return atoi(equals + 1);
-}
-
-/**
  * @brief Actualiza objetivo de velocidad y actúa si es necesario
  */
 static void update_speed_target(float target_speed) {
-    // Verificar estado del VFD
-    vfd_status_t vfd_status = vfd_driver_get_status();
-    if (vfd_status == VFD_STATUS_FAULT || vfd_status == VFD_STATUS_DISCONNECTED) {
-        ESP_LOGE(TAG, "No se puede actualizar velocidad: VFD no disponible");
-        return;
-    }
-
     // Validar rango
     if (target_speed < 0 || target_speed > 20.0f) {
         ESP_LOGW(TAG, "Velocidad fuera de rango: %.2f km/h (ignorando)", target_speed);
@@ -606,17 +607,12 @@ static void uart_rx_task(void *pvParameters) {
 
 static void speed_update_task(void *pvParameters) {
     ESP_LOGI(TAG, "Tarea de actualización de velocidad iniciada (calculada desde VFD)");
-
     for (;;) {
         vTaskDelay(pdMS_TO_TICKS(SPEED_UPDATE_INTERVAL_MS)); // 500ms
 
-        // Obtener frecuencia real del VFD (registro 0x2103)
+        // Obtener frecuencia real del VFD (leída por vfd_control_task)
         float vfd_freq_hz = vfd_driver_get_real_freq_hz();
-
-        // Convertir Hz a km/h usando la fórmula del VFD SU300
-        // velocidad_kmh = frecuencia_Hz × (6.4 / 50.0)
         float new_real_speed = vfd_freq_hz * (6.4f / 50.0f);
-
         xSemaphoreTake(g_speed_mutex, portMAX_DELAY);
         g_real_speed_kmh = new_real_speed;
         xSemaphoreGive(g_speed_mutex);
@@ -708,7 +704,7 @@ static void incline_control_task(void *pvParameters) {
                 }
 
                 // Bajar hasta detectar fin de carrera
-                if (gpio_get_level(INCLINE_LIMIT_SWITCH_PIN) == 0) {
+                if (is_limit_switch_pressed()) {
                     // Fin de carrera activado - calibración completada
                     ESP_LOGI(TAG, "✓ Homing de inclinación completado - Fin de carrera detectado");
                     stop_incline_motor();
@@ -730,7 +726,7 @@ static void incline_control_task(void *pvParameters) {
                 break;
             case INCLINE_MOTOR_DOWN:
                 // Verificar fin de carrera primero (seguridad y recalibración)
-                if (gpio_get_level(INCLINE_LIMIT_SWITCH_PIN) == 0) {
+                if (is_limit_switch_pressed()) {
                     // Fin de carrera detectado - recalibrar a 0%
                     ESP_LOGI(TAG, "✓ Fin de carrera detectado durante descenso - Recalibrando a 0%%");
                     stop_incline_motor();
@@ -845,9 +841,8 @@ void app_main(void) {
     ESP_ERROR_CHECK(esp_timer_create(&wax_pump_timer_args, &wax_pump_timer_handle));
     ESP_LOGI(TAG, "Temporizador de bomba de cera creado.");
 
-    // speed_sensor_init();  // DESHABILITADO: Sensor Hall desconectado, velocidad se calcula desde VFD
-
-    ESP_LOGI(TAG, "Configurando UART para RS485...");
+    // Configurar UART para comunicación con la Consola (ASCII)
+    ESP_LOGI(TAG, "Configurando UART para comunicación con Consola...");
     uart_config_t uart_config = {
         .baud_rate = UART_BAUD_RATE,
         .data_bits = UART_DATA_8_BITS,
@@ -863,18 +858,18 @@ void app_main(void) {
                                   UART_RX_PIN,
                                   UART_PIN_NO_CHANGE,
                                   UART_PIN_NO_CHANGE));
-    ESP_LOGI(TAG, "UART%d configurado: %d baud, TX=%d, RX=%d",
-             UART_PORT_NUM, UART_BAUD_RATE, UART_TX_PIN, UART_RX_PIN);
 
     // ========================================================================
     // CREAR TAREAS
     // ========================================================================
-
-    xTaskCreate(uart_rx_task, "uart_rx_task", 4096, NULL, 10, NULL);
-    ESP_LOGI(TAG, "Tarea UART RX creada");
-
+    
+    // Primero inicializar todos los drivers para que los mutex y handles estén listos
     vfd_driver_init();
     ESP_LOGI(TAG, "Controlador VFD (real) inicializado");
+
+    // Ahora que los drivers están listos, crear las tareas que los usan
+    xTaskCreate(uart_rx_task, "uart_rx_task", 4096, NULL, 10, NULL);
+    ESP_LOGI(TAG, "Tarea UART RX creada");
 
     xTaskCreate(speed_update_task, "speed_update_task", 4096, NULL, 5, NULL);
     ESP_LOGI(TAG, "Tarea de actualización de velocidad creada");
@@ -886,6 +881,9 @@ void app_main(void) {
     ESP_LOGI(TAG, "Tarea de watchdog creada (timeout: 1000ms)");
 
     ESP_LOGI(TAG, "Sistema iniciado correctamente");
+
+    // Inicializar el temporizador del watchdog DESPUÉS de que todo esté listo
+    g_last_command_time_us = esp_timer_get_time();
     ESP_LOGI(TAG, "Esperando comandos del Maestro...");
 
     // Heartbeat loop (para depuración)
