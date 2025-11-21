@@ -4,7 +4,7 @@
 #include "esp_log.h"
 #include "esp_heap_caps.h"
 #include "driver/gpio.h"
-#include "driver/i2c_master.h"
+#include "driver/i2c.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_lcd_panel_ops.h"
