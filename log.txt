@@ -1,0 +1,1288 @@
+LOG1
+
+
+C:\Esp\Smartbike>idf.py -p COM5 flash monitor
+Executing action: flash
+Running cmake in directory C:\Esp\Smartbike\build
+Executing "cmake -G Ninja -DPYTHON_DEPS_CHECKED=1 -DPYTHON=C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe -DESP_PLATFORM=1 -DCCACHE_ENABLE=1 C:\Esp\Smartbike"...
+-- IDF_TARGET is not set, guessed 'esp32s3' from sdkconfig 'C:/Esp/Smartbike/sdkconfig.defaults'
+-- Found Git: C:/Espressif/tools/idf-git/2.44.0/cmd/git.exe (found version "2.44.0.windows.1")
+-- Minimal build - OFF
+-- ccache will be used for faster recompilation
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: C:/Espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc.exe
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Building ESP-IDF components for target esp32s3
+NOTICE: Dependencies lock doesn't exist, solving dependencies.
+NOTICE: Using component placed at C:\Esp\Smartbike\components\espressif__esp_lcd_touch for dependency "espressif/esp_lcd_touch"(introduced by component "espressif/esp_lcd_touch_gt911")
+NOTICE: Using component placed at C:\Esp\Smartbike\components\espressif__esp_lcd_touch for dependency "espressif/esp_lcd_touch"(introduced by component "espressif/esp_lcd_touch_gt911")
+NOTICE: Using component placed at C:\Esp\Smartbike\components\espressif__esp_lcd_touch_gt911 for dependency "espressif/esp_lcd_touch_gt911", specified in C:\Esp\Smartbike\main\idf_component.yml
+NOTICE: Using component placed at C:\Esp\Smartbike\components\lvgl__lvgl for dependency "lvgl/lvgl", specified in C:\Esp\Smartbike\main\idf_component.yml
+NOTICE: Using component placed at C:\Esp\Smartbike\components\espressif__esp_lcd_touch for dependency "espressif/esp_lcd_touch"(introduced by component "espressif/esp_lcd_touch_gt911"), specified in C:\Esp\Smartbike\main\idf_component.yml
+......NOTICE: Using component placed at C:\Esp\Smartbike\components\espressif__esp_lcd_touch for dependency "espressif/esp_lcd_touch", specified in C:\Esp\Smartbike\components\espressif__esp_lcd_touch_gt911\idf_component.yml
+.NOTICE: Updating lock file at C:\Esp\Smartbike\dependencies.lock
+NOTICE: Processing 4 dependencies:
+NOTICE: [1/4] espressif/esp_lcd_touch (1.1.2) (C:\Esp\Smartbike\components\espressif__esp_lcd_touch)
+NOTICE: [2/4] espressif/esp_lcd_touch_gt911 (1.1.1~1) (C:\Esp\Smartbike\components\espressif__esp_lcd_touch_gt911)
+NOTICE: [3/4] lvgl/lvgl (8.4.0) (C:\Esp\Smartbike\components\lvgl__lvgl)
+NOTICE: [4/4] idf (5.5.1)
+-- Project sdkconfig file C:/Esp/Smartbike/sdkconfig
+Loading defaults file C:/Esp/Smartbike/sdkconfig.defaults...
+-- Compiler supported targets: xtensa-esp-elf
+-- Found Python3: C:/Espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe (found version "3.11.2") found components: Interpreter
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
+-- USING O3
+-- App "lvgl_porting" version: 249d524
+-- Adding linker script C:/Esp/Smartbike/build/esp-idf/esp_system/ld/memory.ld
+-- Adding linker script C:/Esp/Smartbike/build/esp-idf/esp_system/ld/sections.ld.in
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.api.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.bt_funcs.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.libgcc.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.wdt.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.version.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.ble_master.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.ble_50.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.ble_smp.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.ble_dtm.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.ble_test.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.ble_scan.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.libc.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.newlib.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/soc/esp32s3/ld/esp32s3.peripherals.ld
+-- Components: app_trace app_update bootloader bootloader_support bt cmock console cxx driver efuse esp-tls esp_adc esp_app_format esp_bootloader_format esp_coex esp_common esp_driver_ana_cmpr esp_driver_bitscrambler esp_driver_cam esp_driver_dac esp_driver_gpio esp_driver_gptimer esp_driver_i2c esp_driver_i2s esp_driver_isp esp_driver_jpeg esp_driver_ledc esp_driver_mcpwm esp_driver_parlio esp_driver_pcnt esp_driver_ppa esp_driver_rmt esp_driver_sdio esp_driver_sdm esp_driver_sdmmc esp_driver_sdspi esp_driver_spi esp_driver_touch_sens esp_driver_tsens esp_driver_twai esp_driver_uart esp_driver_usb_serial_jtag esp_eth esp_event esp_gdbstub esp_hid esp_http_client esp_http_server esp_https_ota esp_https_server esp_hw_support esp_lcd esp_local_ctrl esp_mm esp_netif esp_netif_stack esp_partition esp_phy esp_pm esp_psram esp_ringbuf esp_rom esp_security esp_system esp_timer esp_vfs_console esp_wifi espcoredump espressif__esp_lcd_touch espressif__esp_lcd_touch_gt911 esptool_py fatfs freertos hal heap http_parser idf_test ieee802154 json log lvgl__lvgl lwip main mbedtls mqtt newlib nvs_flash nvs_sec_provider openthread partition_table perfmon protobuf-c protocomm pthread rt sdmmc soc spi_flash spiffs tcp_transport touch_element ulp unity usb vfs wear_levelling wifi_provisioning wpa_supplicant xtensa
+-- Component paths: C:/Espressif/frameworks/esp-idf-v5.5.1/components/app_trace C:/Espressif/frameworks/esp-idf-v5.5.1/components/app_update C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support C:/Espressif/frameworks/esp-idf-v5.5.1/components/bt C:/Espressif/frameworks/esp-idf-v5.5.1/components/cmock C:/Espressif/frameworks/esp-idf-v5.5.1/components/console C:/Espressif/frameworks/esp-idf-v5.5.1/components/cxx C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver C:/Espressif/frameworks/esp-idf-v5.5.1/components/efuse C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp-tls C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_adc C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_app_format C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_bootloader_format C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_coex C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_common C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_ana_cmpr C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_bitscrambler C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_cam C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_dac C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_gpio C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_gptimer C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_i2c C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_i2s C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_isp C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_jpeg C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_ledc C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_mcpwm C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_parlio C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_pcnt C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_ppa C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_rmt C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_sdio C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_sdm C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_sdmmc C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_sdspi C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_spi C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_touch_sens C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_tsens C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_twai C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_uart C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_driver_usb_serial_jtag C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_eth C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_event C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_gdbstub C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_hid C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_http_client C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_http_server C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_https_ota C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_https_server C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_hw_support C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_lcd C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_local_ctrl C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_mm C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_netif C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_netif_stack C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_partition C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_phy C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_pm C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_psram C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_ringbuf C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_security C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_timer C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_vfs_console C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_wifi C:/Espressif/frameworks/esp-idf-v5.5.1/components/espcoredump C:/Esp/Smartbike/components/espressif__esp_lcd_touch C:/Esp/Smartbike/components/espressif__esp_lcd_touch_gt911 C:/Espressif/frameworks/esp-idf-v5.5.1/components/esptool_py C:/Espressif/frameworks/esp-idf-v5.5.1/components/fatfs C:/Espressif/frameworks/esp-idf-v5.5.1/components/freertos C:/Espressif/frameworks/esp-idf-v5.5.1/components/hal C:/Espressif/frameworks/esp-idf-v5.5.1/components/heap C:/Espressif/frameworks/esp-idf-v5.5.1/components/http_parser C:/Espressif/frameworks/esp-idf-v5.5.1/components/idf_test C:/Espressif/frameworks/esp-idf-v5.5.1/components/ieee802154 C:/Espressif/frameworks/esp-idf-v5.5.1/components/json C:/Espressif/frameworks/esp-idf-v5.5.1/components/log C:/Esp/Smartbike/components/lvgl__lvgl C:/Espressif/frameworks/esp-idf-v5.5.1/components/lwip C:/Esp/Smartbike/main C:/Espressif/frameworks/esp-idf-v5.5.1/components/mbedtls C:/Espressif/frameworks/esp-idf-v5.5.1/components/mqtt C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib C:/Espressif/frameworks/esp-idf-v5.5.1/components/nvs_flash C:/Espressif/frameworks/esp-idf-v5.5.1/components/nvs_sec_provider C:/Espressif/frameworks/esp-idf-v5.5.1/components/openthread C:/Espressif/frameworks/esp-idf-v5.5.1/components/partition_table C:/Espressif/frameworks/esp-idf-v5.5.1/components/perfmon C:/Espressif/frameworks/esp-idf-v5.5.1/components/protobuf-c C:/Espressif/frameworks/esp-idf-v5.5.1/components/protocomm C:/Espressif/frameworks/esp-idf-v5.5.1/components/pthread C:/Espressif/frameworks/esp-idf-v5.5.1/components/rt C:/Espressif/frameworks/esp-idf-v5.5.1/components/sdmmc C:/Espressif/frameworks/esp-idf-v5.5.1/components/soc C:/Espressif/frameworks/esp-idf-v5.5.1/components/spi_flash C:/Espressif/frameworks/esp-idf-v5.5.1/components/spiffs C:/Espressif/frameworks/esp-idf-v5.5.1/components/tcp_transport C:/Espressif/frameworks/esp-idf-v5.5.1/components/touch_element C:/Espressif/frameworks/esp-idf-v5.5.1/components/ulp C:/Espressif/frameworks/esp-idf-v5.5.1/components/unity C:/Espressif/frameworks/esp-idf-v5.5.1/components/usb C:/Espressif/frameworks/esp-idf-v5.5.1/components/vfs C:/Espressif/frameworks/esp-idf-v5.5.1/components/wear_levelling C:/Espressif/frameworks/esp-idf-v5.5.1/components/wifi_provisioning C:/Espressif/frameworks/esp-idf-v5.5.1/components/wpa_supplicant C:/Espressif/frameworks/esp-idf-v5.5.1/components/xtensa
+-- Configuring done (13.7s)
+-- Generating done (1.9s)
+-- Build files have been written to: C:/Esp/Smartbike/build
+Running ninja in directory C:\Esp\Smartbike\build
+Executing "ninja flash"...
+[4/1507] Generating ../../partition_table/partition-table.bin
+Partition table binary generated. Contents:
+*******************************************************************************
+# ESP-IDF Partition Table
+# Name, Type, SubType, Offset, Size, Flags
+nvs,data,nvs,0x9000,24K,
+phy_init,data,phy,0xf000,4K,
+factory,app,factory,0x10000,1M,
+*******************************************************************************
+[1104/1507] Performing configure step for 'bootloader'
+-- Found Git: C:/Espressif/tools/idf-git/2.44.0/cmd/git.exe (found version "2.44.0.windows.1")
+-- Minimal build - OFF
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: C:/Espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc.exe
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Building ESP-IDF components for target esp32s3
+-- Project sdkconfig file C:/Esp/Smartbike/sdkconfig
+-- Compiler supported targets: xtensa-esp-elf
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/soc/esp32s3/ld/esp32s3.peripherals.ld
+-- Bootloader project name: "bootloader" version: 1
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.api.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.bt_funcs.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.libgcc.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.wdt.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.version.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.libc.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/esp32s3/ld/esp32s3.rom.newlib.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/ld/esp32s3/bootloader.ld
+-- Adding linker script C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/ld/esp32s3/bootloader.rom.ld
+-- Components: bootloader bootloader_support efuse esp_app_format esp_bootloader_format esp_common esp_hw_support esp_rom esp_security esp_system esptool_py freertos hal log main micro-ecc newlib partition_table soc spi_flash xtensa
+-- Component paths: C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support C:/Espressif/frameworks/esp-idf-v5.5.1/components/efuse C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_app_format C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_bootloader_format C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_common C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_hw_support C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_security C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system C:/Espressif/frameworks/esp-idf-v5.5.1/components/esptool_py C:/Espressif/frameworks/esp-idf-v5.5.1/components/freertos C:/Espressif/frameworks/esp-idf-v5.5.1/components/hal C:/Espressif/frameworks/esp-idf-v5.5.1/components/log C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/components/micro-ecc C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib C:/Espressif/frameworks/esp-idf-v5.5.1/components/partition_table C:/Espressif/frameworks/esp-idf-v5.5.1/components/soc C:/Espressif/frameworks/esp-idf-v5.5.1/components/spi_flash C:/Espressif/frameworks/esp-idf-v5.5.1/components/xtensa
+-- Configuring done (17.0s)
+-- Generating done (0.5s)
+-- Build files have been written to: C:/Esp/Smartbike/build/bootloader
+[122/123] Generating binary image from built executable
+esptool.py v4.10.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+Generated C:/Esp/Smartbike/build/bootloader/bootloader.bin
+[123/123] C:\WINDOWS\system32\cmd.exe /C "cd ...sp/Smartbike/build/bootloader/bootloader.bin"
+Bootloader binary size 0x57e0 bytes. 0x2820 bytes (31%) free.
+[1505/1507] Generating binary image from built executable
+esptool.py v4.10.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+Generated C:/Esp/Smartbike/build/lvgl_porting.bin
+[1506/1507] C:\WINDOWS\system32\cmd.exe /C "c....bin C:/Esp/Smartbike/build/lvgl_porting.bin"
+lvgl_porting.bin binary size 0xa5fb0 bytes. Smallest app partition is 0x100000 bytes. 0x5a050 bytes (35%) free.
+[1506/1507] C:\WINDOWS\system32\cmd.exe /C "c.../components/esptool_py/run_serial_tool.cmake"
+esptool.py --chip esp32s3 -p COM5 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 8MB 0x0 bootloader/bootloader.bin 0x10000 lvgl_porting.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.10.0
+Serial port COM5
+Connecting....
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)
+Crystal is 40MHz
+MAC: cc:ba:97:15:29:18
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x000b5fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 22496 bytes to 14268...
+Writing at 0x00000000... (100 %)
+Wrote 22496 bytes (14268 compressed) at 0x00000000 in 0.6 seconds (effective 301.9 kbit/s)...
+Hash of data verified.
+Compressed 679856 bytes to 370009...
+Writing at 0x00010000... (4 %)
+Writing at 0x0001c6a5... (8 %)
+Writing at 0x00024354... (13 %)
+Writing at 0x0002bf78... (17 %)
+Writing at 0x00035ebf... (21 %)
+Writing at 0x00040d11... (26 %)
+Writing at 0x0004bdc2... (30 %)
+Writing at 0x000543db... (34 %)
+Writing at 0x0005ac55... (39 %)
+Writing at 0x00060cf2... (43 %)
+Writing at 0x000667ed... (47 %)
+Writing at 0x0006c1b8... (52 %)
+Writing at 0x0007263f... (56 %)
+Writing at 0x00078985... (60 %)
+Writing at 0x0007e441... (65 %)
+Writing at 0x00083eea... (69 %)
+Writing at 0x0008a7f7... (73 %)
+Writing at 0x000910b7... (78 %)
+Writing at 0x00098f4f... (82 %)
+Writing at 0x0009f651... (86 %)
+Writing at 0x000a5698... (91 %)
+Writing at 0x000abab1... (95 %)
+Writing at 0x000b236e... (100 %)
+Wrote 679856 bytes (370009 compressed) at 0x00010000 in 8.4 seconds (effective 645.0 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 462.9 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+Executing action: monitor
+Running idf_monitor in directory C:\Esp\Smartbike
+Executing "C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM5 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 C:\Esp\Smartbike\build\lvgl_porting.elf C:\Esp\Smartbike\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM5'"...
+--- Warning: GDB cannot open serial ports accessed as COMx
+--- Using \\.\COM5 instead...
+--- esp-idf-monitor 1.8.0 on \\.\COM5 115200
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+ESP-ROM:esp3 ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+--- 0x403c8700: _stext at ??:?
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (25) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (25) boot: compile time Nov 21 2025 18:53:48
+I (25) boot: Multicore bootloader
+I (25) boot: chip revision: v0.2
+I (28) boot: efuse block revision: v1.3
+I (31) qio_mode: Enabling default flash chip QIO
+I (36) boot.esp32s3: Boot SPI Speed : 80MHz
+I (40) boot.esp32s3: SPI Mode       : QIO
+I (43) boot.esp32s3: SPI Flash Size : 8MB
+I (47) boot: Enabling RNG early entropy source...
+I (52) boot: Partition Table:
+I (54) boot: ## Label            Usage          Type ST Offset   Length
+I (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (67) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (74) boot:  2 factory          factory app      00 00 00010000 00100000
+I (80) boot: End of partition table
+I (83) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (128) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (130) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (180) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (181) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (201) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (210) boot: Loaded app from partition at offset 0x10000
+I (210) boot: Disabling RNG early entropy source...
+I (220) octal_psram: vendor id    : 0x0d (AP)
+I (220) octal_psram: dev id       : 0x02 (generation 3)
+I (220) octal_psram: density      : 0x03 (64 Mbit)
+I (222) octal_psram: good-die     : 0x01 (Pass)
+I (227) octal_psram: Latency      : 0x01 (Fixed)
+I (231) octal_psram: VCC          : 0x01 (3V)
+I (235) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (240) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (245) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (249) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (255) octal_psram: DriveStrength: 0x00 (1/1)
+I (260) MSPI Timing: PSRAM timing tuning index: 4
+I (263) esp_psram: Found 8MB PSRAM device
+I (267) esp_psram: Speed: 80MHz
+I (285) mmu_psram: Read only data copied and mapped to SPIRAM
+I (285) cpu_start: Multicore app
+I (574) esp_psram: SPI SRAM memory test OK
+I (583) cpu_start: Pro cpu start user code
+I (583) cpu_start: cpu freq: 240000000 Hz
+I (583) app_init: Application information:
+I (583) app_init: Project name:     lvgl_porting
+I (587) app_init: App version:      249d524
+I (591) app_init: Compile time:     Nov 21 2025 18:52:55
+I (596) app_init: ELF file SHA256:  0328f4731...
+I (600) app_init: ESP-IDF:          v5.5.1
+I (604) efuse_init: Min chip rev:     v0.0
+I (608) efuse_init: Max chip rev:     v0.99
+I (612) efuse_init: Chip rev:         v0.2
+I (616) heap_init: Initializing. RAM available for dynamic allocation:
+I (622) heap_init: At 3FC9E9B8 len 0004AD58 (299 KiB): RAM
+I (627) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (632) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (638) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (643) esp_psram: Adding pool of 7936K of PSRAM memory to heap allocator
+I (649) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (661) spi_flash: detected chip: gd
+I (664) spi_flash: flash io: qio
+W (667) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+E (679) i2c: CONFLICT! driver_ng is not allowed to be used with this old driver
+
+abort() was called at PC 0x4203c26f on core 0
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+Backtrace: 0x40380c35:0x3fceb200 0x40380bfd:0x3fceb220 0x40387c61:0x3fceb240 0x4203c26f:0x3fceb2b0 0x420033b7:0x3fceb2d0 0x4200349e:0x3fceb2f0 0x4037579d:0x3fceb310 0x403ccbd8:0x3fceb340 0x403cd01d:0x3fceb380 0x403c89b5:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+--- 0x40380c35: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/panic.c:469
+--- 0x40380bfd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/esp_system_chip.c:87
+--- 0x40387c61: abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/src/abort.c:38
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+--- 0x420033b7: do_global_ctors at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:104
+--- 0x4200349e: start_cpu0_default at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:207
+
+
+
+
+ELF file SHA256: 0328f4731
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380dd5
+--- 0x4037579d: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/cpu_start.c:935
+--- 0x403ccbd8: set_cache_and_start_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:1156
+--- (inlined by) unpack_load_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:891
+--- (inlined by) load_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:801
+--- 0x403cd01d: bootloader_utility_load_boot_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:603
+--- 0x403c89b5: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:62
+--- 0x40045c01: ets_run_flash_bootloader in ROM
+--- 0x40043ab6: main in ROM
+--- 0x40034c45: .stack_ok in ROM
+--- 0x40380dd5: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32s3/system_internal.c:162
+--- 0x403c8700: _stext at ??:?
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (29) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Nov 21 2025 18:53:48
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 8MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 factory          factory app      00 00 00010000 00100000
+I (84) boot: End of partition table
+I (88) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (133) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (135) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (184) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (185) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (205) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (214) boot: Loaded app from partition at offset 0x10000
+I (214) boot: Disabling RNG early entropy source...
+I (224) octal_psram: vendor id    : 0x0d (AP)
+I (224) octal_psram: dev id       : 0x02 (generation 3)
+I (225) octal_psram: density      : 0x03 (64 Mbit)
+I (227) octal_psram: good-die     : 0x01 (Pass)
+I (231) octal_psram: Latency      : 0x01 (Fixed)
+I (235) octal_psram: VCC          : 0x01 (3V)
+I (239) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (244) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (249) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (254) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (259) octal_psram: DriveStrength: 0x00 (1/1)
+I (264) MSPI Timing: PSRAM timing tuning index: 4
+I (267) esp_psram: Found 8MB PSRAM device
+I (271) esp_psram: Speed: 80MHz
+I (289) mmu_psram: Read only data copied and mapped to SPIRAM
+I (289) cpu_start: Multicore app
+I (578) esp_psram: SPI SRAM memory test OK
+I (587) cpu_start: Pro cpu start user code
+I (587) cpu_start: cpu freq: 240000000 Hz
+I (587) app_init: Application information:
+I (587) app_init: Project name:     lvgl_porting
+I (591) app_init: App version:      249d524
+I (595) app_init: Compile time:     Nov 21 2025 18:52:55
+I (600) app_init: ELF file SHA256:  0328f4731...
+I (604) app_init: ESP-IDF:          v5.5.1
+I (608) efuse_init: Min chip rev:     v0.0
+I (612) efuse_init: Max chip rev:     v0.99
+I (616) efuse_init: Chip rev:         v0.2
+I (620) heap_init: Initializing. RAM available for dynamic allocation:
+I (626) heap_init: At 3FC9E9B8 len 0004AD58 (299 KiB): RAM
+I (631) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (636) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (642) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (647) esp_psram: Adding pool of 7936K of PSRAM memory to heap allocator
+I (653) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (665) spi_flash: detected chip: gd
+I (668) spi_flash: flash io: qio
+W (671) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+E (683) i2c: CONFLICT! driver_ng is not allowed to be used with this old driver
+
+abort() was called at PC 0x4203c26f on core 0
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+Backtrace: 0x40380c35:0x3fceb200 0x40380bfd:0x3fceb220 0x40387c61:0x3fceb240 0x4203c26f:0x3fceb2b0 0x420033b7:0x3fceb2d0 0x4200349e:0x3fceb2f0 0x4037579d:0x3fceb310 0x403ccbd8:0x3fceb340 0x403cd01d:0x3fceb380 0x403c89b5:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+--- 0x40380c35: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/panic.c:469
+--- 0x40380bfd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/esp_system_chip.c:87
+--- 0x40387c61: abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/src/abort.c:38
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+--- 0x420033b7: do_global_ctors at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:104
+--- 0x4200349e: start_cpu0_default at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:207
+--- 0x4037579d: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/cpu_start.c:935
+--- 0x403ccbd8: set_cache_and_start_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:1156
+--- (inlined by) unpack_load_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:
+
+
+
+ELF file SHA256: 0328f4731
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380dd5
+891
+--- (inlined by) load_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:801
+--- 0x403cd01d: bootloader_utility_load_boot_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:603
+--- 0x403c89b5: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:62
+--- 0x40045c01: ets_run_flash_bootloader in ROM
+--- 0x40043ab6: main in ROM
+--- 0x40034c45: .stack_ok in ROM
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+--- 0x40380dd5: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32s3/system_internal.c:162
+--- 0x403c8700: _stext at ??:?
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (29) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Nov 21 2025 18:53:48
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 8MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 factory          factory app      00 00 00010000 00100000
+I (84) boot: End of partition table
+I (88) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (133) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (135) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (184) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (185) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (205) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (214) boot: Loaded app from partition at offset 0x10000
+I (214) boot: Disabling RNG early entropy source...
+I (224) octal_psram: vendor id    : 0x0d (AP)
+I (224) octal_psram: dev id       : 0x02 (generation 3)
+I (225) octal_psram: density      : 0x03 (64 Mbit)
+I (227) octal_psram: good-die     : 0x01 (Pass)
+I (231) octal_psram: Latency      : 0x01 (Fixed)
+I (235) octal_psram: VCC          : 0x01 (3V)
+I (239) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (244) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (249) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (254) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (259) octal_psram: DriveStrength: 0x00 (1/1)
+I (264) MSPI Timing: PSRAM timing tuning index: 4
+I (267) esp_psram: Found 8MB PSRAM device
+I (271) esp_psram: Speed: 80MHz
+I (289) mmu_psram: Read only data copied and mapped to SPIRAM
+I (289) cpu_start: Multicore app
+I (578) esp_psram: SPI SRAM memory test OK
+I (587) cpu_start: Pro cpu start user code
+I (587) cpu_start: cpu freq: 240000000 Hz
+I (587) app_init: Application information:
+I (587) app_init: Project name:     lvgl_porting
+I (591) app_init: App version:      249d524
+I (595) app_init: Compile time:     Nov 21 2025 18:52:55
+I (600) app_init: ELF file SHA256:  0328f4731...
+I (604) app_init: ESP-IDF:          v5.5.1
+I (608) efuse_init: Min chip rev:     v0.0
+I (612) efuse_init: Max chip rev:     v0.99
+I (616) efuse_init: Chip rev:         v0.2
+I (620) heap_init: Initializing. RAM available for dynamic allocation:
+I (626) heap_init: At 3FC9E9B8 len 0004AD58 (299 KiB): RAM
+I (631) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (636) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (642) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (647) esp_psram: Adding pool of 7936K of PSRAM memory to heap allocator
+I (653) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (665) spi_flash: detected chip: gd
+I (668) spi_flash: flash io: qio
+W (671) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+E (683) i2c: CONFLICT! driver_ng is not allowed to be used with this old driver
+
+abort() was called at PC 0x4203c26f on core 0
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+Backtrace: 0x40380c35:0x3fceb200 0x40380bfd:0x3fceb220 0x40387c61:0x3fceb240 0x4203c26f:0x3fceb2b0 0x420033b7:0x3fceb2d0 0x4200349e:0x3fceb2f0 0x4037579d:0x3fceb310 0x403ccbd8:0x3fceb340 0x403cd01d:0x3fceb380 0x403c89b5:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+--- 0x40380c35: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/panic.c:469
+--- 0x40380bfd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/esp_system_chip.c:87
+--- 0x40387c61: abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/src/abort.c:38
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+
+
+ELF file SHA256: 0328f4731
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380dd5
+--- 0x420033b7: do_global_ctors at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:104
+--- 0x4200349e: start_cpu0_default at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:207
+--- 0x4037579d: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/cpu_start.c:935
+--- 0x403ccbd8: set_cache_and_start_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:1156
+--- (inlined by) unpack_load_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:891
+--- (inlined by) load_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:801
+--- 0x403cd01d: bootloader_utility_load_boot_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:603
+--- 0x403c89b5: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:62
+--- 0x40045c01: ets_run_flash_bootloader in ROM
+--- 0x40043ab6: main in ROM
+--- 0x40034c45: .stack_ok in ROM
+--- 0x40380dd5: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32s3/system_internal.c:162
+--- 0x403c8700: _stext at ??:?
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (29) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Nov 21 2025 18:53:48
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 8MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 factory          factory app      00 00 00010000 00100000
+I (84) boot: End of partition table
+I (88) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (133) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (135) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (184) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (185) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (205) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (214) boot: Loaded app from partition at offset 0x10000
+I (214) boot: Disabling RNG early entropy source...
+I (224) octal_psram: vendor id    : 0x0d (AP)
+I (224) octal_psram: dev id       : 0x02 (generation 3)
+I (225) octal_psram: density      : 0x03 (64 Mbit)
+I (227) octal_psram: good-die     : 0x01 (Pass)
+I (231) octal_psram: Latency      : 0x01 (Fixed)
+I (235) octal_psram: VCC          : 0x01 (3V)
+I (239) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (244) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (249) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (254) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (259) octal_psram: DriveStrength: 0x00 (1/1)
+I (264) MSPI Timing: PSRAM timing tuning index: 4
+I (267) esp_psram: Found 8MB PSRAM device
+I (271) esp_psram: Speed: 80MHz
+I (289) mmu_psram: Read only data copied and mapped to SPIRAM
+I (289) cpu_start: Multicore app
+I (578) esp_psram: SPI SRAM memory test OK
+I (587) cpu_start: Pro cpu start user code
+I (587) cpu_start: cpu freq: 240000000 Hz
+I (587) app_init: Application information:
+I (587) app_init: Project name:     lvgl_porting
+I (591) app_init: App version:      249d524
+I (595) app_init: Compile time:     Nov 21 2025 18:52:55
+I (600) app_init: ELF file SHA256:  0328f4731...
+I (604) app_init: ESP-IDF:          v5.5.1
+I (608) efuse_init: Min chip rev:     v0.0
+I (612) efuse_init: Max chip rev:     v0.99
+I (616) efuse_init: Chip rev:         v0.2
+I (620) heap_init: Initializing. RAM available for dynamic allocation:
+I (626) heap_init: At 3FC9E9B8 len 0004AD58 (299 KiB): RAM
+I (631) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (636) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (642) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (647) esp_psram: Adding pool of 7936K of PSRAM memory to heap allocator
+I (653) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (665) spi_flash: detected chip: gd
+I (668) spi_flash: flash io: qio
+W (671) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+E (683) i2c: CONFLICT! driver_ng is not allowed to be used with this old driver
+
+abort() was called at PC 0x4203c26f on core 0
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+Backtrace: 0x40380c35:0x3fceb200 0x40380bfd:0x3fceb220 0x40387c61:0x3fceb240 0x4203c26f:0x3fceb2b0 0x420033b7:0x3fceb2d0 0x4200349e:0x3fceb2f0 0x4037579d:0x3fceb310 0x403ccbd8:0x3fceb340 0x403cd01d:0x3fceb380 0x403c89b5:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+--- 0x40380c35: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/panic.c:469
+--- 0x40380bfd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/esp_system_chip.c:87
+--- 0x40387c61: abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/src/abort.c:38
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+--- 0x420033b7: do_global_ctors at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:104
+--- 0x4200349e: start_cpu0_default at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:207
+--- 0x4037579d: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/cpu_start.c:935
+--- 0x403ccbd8: set_cache_and_start_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:1156
+--- (inlined by) unpack_load_app
+
+
+
+ELF file SHA256: 0328f4731
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380dd5
+ at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:891
+--- (inlined by) load_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:801
+--- 0x403cd01d: bootloader_utility_load_boot_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:603
+--- 0x403c89b5: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:62
+--- 0x40045c01: ets_run_flash_bootloader in ROM
+--- 0x40043ab6: main in ROM
+--- 0x40034c45: .stack_ok in ROM
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+--- 0x40380dd5: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32s3/system_internal.c:162
+--- 0x403c8700: _stext at ??:?
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (29) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Nov 21 2025 18:53:48
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 8MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 factory          factory app      00 00 00010000 00100000
+I (84) boot: End of partition table
+I (88) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (133) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (135) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (184) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (185) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (205) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (214) boot: Loaded app from partition at offset 0x10000
+I (214) boot: Disabling RNG early entropy source...
+I (224) octal_psram: vendor id    : 0x0d (AP)
+I (224) octal_psram: dev id       : 0x02 (generation 3)
+I (225) octal_psram: density      : 0x03 (64 Mbit)
+I (227) octal_psram: good-die     : 0x01 (Pass)
+I (231) octal_psram: Latency      : 0x01 (Fixed)
+I (235) octal_psram: VCC          : 0x01 (3V)
+I (239) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (244) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (249) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (254) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (259) octal_psram: DriveStrength: 0x00 (1/1)
+I (264) MSPI Timing: PSRAM timing tuning index: 4
+I (267) esp_psram: Found 8MB PSRAM device
+I (271) esp_psram: Speed: 80MHz
+I (289) mmu_psram: Read only data copied and mapped to SPIRAM
+I (289) cpu_start: Multicore app
+I (578) esp_psram: SPI SRAM memory test OK
+I (587) cpu_start: Pro cpu start user code
+I (587) cpu_start: cpu freq: 240000000 Hz
+I (587) app_init: Application information:
+I (587) app_init: Project name:     lvgl_porting
+I (591) app_init: App version:      249d524
+I (595) app_init: Compile time:     Nov 21 2025 18:52:55
+I (600) app_init: ELF file SHA256:  0328f4731...
+I (604) app_init: ESP-IDF:          v5.5.1
+I (608) efuse_init: Min chip rev:     v0.0
+I (612) efuse_init: Max chip rev:     v0.99
+I (616) efuse_init: Chip rev:         v0.2
+I (620) heap_init: Initializing. RAM available for dynamic allocation:
+I (626) heap_init: At 3FC9E9B8 len 0004AD58 (299 KiB): RAM
+I (631) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (636) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (642) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (647) esp_psram: Adding pool of 7936K of PSRAM memory to heap allocator
+I (653) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (665) spi_flash: detected chip: gd
+I (668) spi_flash: flash io: qio
+W (671) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+E (683) i2c: CONFLICT! driver_ng is not allowed to be used with this old driver
+
+abort() was called at PC 0x4203c26f on core 0
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+Backtrace: 0x40380c35:0x3fceb200 0x40380bfd:0x3fceb220 0x40387c61:0x3fceb240 0x4203c26f:0x3fceb2b0 0x420033b7:0x3fceb2d0 0x4200349e:0x3fceb2f0 0x4037579d:0x3fceb310 0x403ccbd8:0x3fceb340 0x403cd01d:0x3fceb380 0x403c89b5:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+--- 0x40380c35: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/panic.c:469
+--- 0x40380bfd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/esp_system_chip.c:87
+--- 0x40387c61: abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/src/abort.c:38
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+--- 0x420033b7: do_global_ctors at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:104
+--- 0x4200349e: start_cpu0_default at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:207
+--- 0x4037579d: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/cpu_start.c:935
+--- 0x403ccbd8: set_cache_and_start_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:1156
+--- (inlined by) unpack_load_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:891
+--- (inlined by) load_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:801
+--- 0x403cd01d: bootloader_utility_load_boot_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:603
+--- 0x403c89b5: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:62
+--- 0x40045c01: ets_run_flash_bootloader in ROM
+--- 0x40043ab6:
+
+
+
+ELF file SHA256: 0328f4731
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380dd5
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+main in ROM
+--- 0x40034c45: .stack_ok in ROM
+--- 0x40380dd5: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32s3/system_internal.c:162
+load:0x403cb700,len:0x31c0
+--- 0x403c8700: _stext at ??:?
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (29) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Nov 21 2025 18:53:48
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 8MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 factory          factory app      00 00 00010000 00100000
+I (84) boot: End of partition table
+I (88) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (133) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (135) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (184) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (185) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (205) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (214) boot: Loaded app from partition at offset 0x10000
+I (214) boot: Disabling RNG early entropy source...
+I (224) octal_psram: vendor id    : 0x0d (AP)
+I (224) octal_psram: dev id       : 0x02 (generation 3)
+I (225) octal_psram: density      : 0x03 (64 Mbit)
+I (227) octal_psram: good-die     : 0x01 (Pass)
+I (231) octal_psram: Latency      : 0x01 (Fixed)
+I (235) octal_psram: VCC          : 0x01 (3V)
+I (239) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (244) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (249) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (254) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (259) octal_psram: DriveStrength: 0x00 (1/1)
+I (264) MSPI Timing: PSRAM timing tuning index: 4
+I (267) esp_psram: Found 8MB PSRAM device
+I (271) esp_psram: Speed: 80MHz
+I (289) mmu_psram: Read only data copied and mapped to SPIRAM
+I (289) cpu_start: Multicore app
+I (578) esp_psram: SPI SRAM memory test OK
+I (587) cpu_start: Pro cpu start user code
+I (587) cpu_start: cpu freq: 240000000 Hz
+I (587) app_init: Application information:
+I (587) app_init: Project name:     lvgl_porting
+I (591) app_init: App version:      249d524
+I (595) app_init: Compile time:     Nov 21 2025 18:52:55
+I (600) app_init: ELF file SHA256:  0328f4731...
+I (604) app_init: ESP-IDF:          v5.5.1
+I (608) efuse_init: Min chip rev:     v0.0
+I (612) efuse_init: Max chip rev:     v0.99
+I (616) efuse_init: Chip rev:         v0.2
+I (620) heap_init: Initializing. RAM available for dynamic allocation:
+I (626) heap_init: At 3FC9E9B8 len 0004AD58 (299 KiB): RAM
+I (631) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (636) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (642) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (647) esp_psram: Adding pool of 7936K of PSRAM memory to heap allocator
+I (653) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (665) spi_flash: detected chip: gd
+I (668) spi_flash: flash io: qio
+W (671) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+E (683) i2c: CONFLICT! driver_ng is not allowed to be used with this old driver
+
+abort() was called at PC 0x4203c26f on core 0
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+Backtrace: 0x40380c35:0x3fceb200 0x40380bfd:0x3fceb220 0x40387c61:0x3fceb240 0x4203c26f:0x3fceb2b0 0x420033b7:0x3fceb2d0 0x4200349e:0x3fceb2f0 0x4037579d:0x3fceb310 0x403ccbd8:0x3fceb340 0x403cd01d:0x3fceb380 0x403c89b5:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+--- 0x40380c35: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/panic.c:469
+--- 0x40380bfd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/esp_system_chip.c:87
+--- 0x40387c61: abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/src/abort.c:38
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+--- 0x420033b7: do_global_ctors at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:104
+--- 0x4200349e: start_cpu0_default at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:207
+--- 0x4037579d: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/cpu_start.c:935
+--- 0x403ccbd8: set_cache_and_start_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:1156
+--- (inlined by) unpack_load_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:891
+--- (inlined by) load_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:801
+--- 0x403cd01d: bootloader_utility_load_boot_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:603
+--- 0x403c89b5: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:62
+--- 0x40045c01: ets_run_flash_bootloader in ROM
+--- 0x40043ab6: main in ROM
+--- 0x40034c45: .stack_ok
+
+
+
+ELF file SHA256: 0328f4731
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380dd5
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+ in ROM
+--- 0x40380dd5: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32s3/system_internal.c:162
+load:0x403cb700,len:0x31c0
+--- 0x403c8700: _stext at ??:?
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (29) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Nov 21 2025 18:53:48
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 8MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 factory          factory app      00 00 00010000 00100000
+I (84) boot: End of partition table
+I (88) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (133) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (135) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (184) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (185) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (205) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (214) boot: Loaded app from partition at offset 0x10000
+I (214) boot: Disabling RNG early entropy source...
+I (224) octal_psram: vendor id    : 0x0d (AP)
+I (224) octal_psram: dev id       : 0x02 (generation 3)
+I (225) octal_psram: density      : 0x03 (64 Mbit)
+I (227) octal_psram: good-die     : 0x01 (Pass)
+I (231) octal_psram: Latency      : 0x01 (Fixed)
+I (235) octal_psram: VCC          : 0x01 (3V)
+I (239) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (244) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (249) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (254) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (259) octal_psram: DriveStrength: 0x00 (1/1)
+I (264) MSPI Timing: PSRAM timing tuning index: 4
+I (267) esp_psram: Found 8MB PSRAM device
+I (271) esp_psram: Speed: 80MHz
+I (289) mmu_psram: Read only data copied and mapped to SPIRAM
+I (289) cpu_start: Multicore app
+I (578) esp_psram: SPI SRAM memory test OK
+I (587) cpu_start: Pro cpu start user code
+I (587) cpu_start: cpu freq: 240000000 Hz
+I (587) app_init: Application information:
+I (587) app_init: Project name:     lvgl_porting
+I (591) app_init: App version:      249d524
+I (595) app_init: Compile time:     Nov 21 2025 18:52:55
+I (600) app_init: ELF file SHA256:  0328f4731...
+I (604) app_init: ESP-IDF:          v5.5.1
+I (608) efuse_init: Min chip rev:     v0.0
+I (612) efuse_init: Max chip rev:     v0.99
+I (616) efuse_init: Chip rev:         v0.2
+I (620) heap_init: Initializing. RAM available for dynamic allocation:
+I (626) heap_init: At 3FC9E9B8 len 0004AD58 (299 KiB): RAM
+I (631) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (636) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (642) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (647) esp_psram: Adding pool of 7936K of PSRAM memory to heap allocator
+I (653) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (665) spi_flash: detected chip: gd
+I (668) spi_flash: flash io: qio
+W (671) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+E (683) i2c: CONFLICT! driver_ng is not allowed to be used with this old driver
+
+abort() was called at PC 0x4203c26f on core 0
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+Backtrace: 0x40380c35:0x3fceb200 0x40380bfd:0x3fceb220 0x40387c61:0x3fceb240 0x4203c26f:0x3fceb2b0 0x420033b7:0x3fceb2d0 0x4200349e:0x3fceb2f0 0x4037579d:0x3fceb310 0x403ccbd8:0x3fceb340 0x403cd01d:0x3fceb380 0x403c89b5:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+--- 0x40380c35: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/panic.c:469
+--- 0x40380bfd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/esp_system_chip.c:87
+--- 0x40387c61: abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/src/abort.c:38
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+--- 0x420033b7: do_global_ctors at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:104
+--- 0x4200349e: start_cpu0_default at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:207
+--- 0x4037579d: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/cpu_start.c:935
+--- 0x403ccbd8: set_cache_and_start_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:1156
+
+
+
+
+ELF file SHA256: 0328f4731
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380dd5
+--- (inlined by) unpack_load_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:891
+--- (inlined by) load_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:801
+--- 0x403cd01d: bootloader_utility_load_boot_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:603
+--- 0x403c89b5: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:62
+--- 0x40045c01: ets_run_flash_bootloader in ROM
+--- 0x40043ab6: main in ROM
+--- 0x40034c45: .stack_ok in ROM
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+--- 0x40380dd5: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32s3/system_internal.c:162
+--- 0x403c8700: _stext at ??:?
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (29) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Nov 21 2025 18:53:48
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 8MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 factory          factory app      00 00 00010000 00100000
+I (84) boot: End of partition table
+I (88) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (133) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (135) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (184) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (185) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (205) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (214) boot: Loaded app from partition at offset 0x10000
+I (214) boot: Disabling RNG early entropy source...
+I (224) octal_psram: vendor id    : 0x0d (AP)
+I (224) octal_psram: dev id       : 0x02 (generation 3)
+I (225) octal_psram: density      : 0x03 (64 Mbit)
+I (227) octal_psram: good-die     : 0x01 (Pass)
+I (231) octal_psram: Latency      : 0x01 (Fixed)
+I (235) octal_psram: VCC          : 0x01 (3V)
+I (239) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (244) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (249) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (254) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (259) octal_psram: DriveStrength: 0x00 (1/1)
+I (264) MSPI Timing: PSRAM timing tuning index: 4
+I (267) esp_psram: Found 8MB PSRAM device
+I (271) esp_psram: Speed: 80MHz
+I (289) mmu_psram: Read only data copied and mapped to SPIRAM
+I (289) cpu_start: Multicore app
+I (578) esp_psram: SPI SRAM memory test OK
+I (587) cpu_start: Pro cpu start user code
+I (587) cpu_start: cpu freq: 240000000 Hz
+I (587) app_init: Application information:
+I (587) app_init: Project name:     lvgl_porting
+I (591) app_init: App version:      249d524
+I (595) app_init: Compile time:     Nov 21 2025 18:52:55
+I (600) app_init: ELF file SHA256:  0328f4731...
+I (604) app_init: ESP-IDF:          v5.5.1
+I (608) efuse_init: Min chip rev:     v0.0
+I (612) efuse_init: Max chip rev:     v0.99
+I (616) efuse_init: Chip rev:         v0.2
+I (620) heap_init: Initializing. RAM available for dynamic allocation:
+I (626) heap_init: At 3FC9E9B8 len 0004AD58 (299 KiB): RAM
+I (631) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (636) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (642) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (647) esp_psram: Adding pool of 7936K of PSRAM memory to heap allocator
+I (653) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (665) spi_flash: detected chip: gd
+I (668) spi_flash: flash io: qio
+W (671) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+E (683) i2c: CONFLICT! driver_ng is not allowed to be used with this old driver
+
+abort() was called at PC 0x4203c26f on core 0
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+Backtrace: 0x40380c35:0x3fceb200 0x40380bfd:0x3fceb220 0x40387c61:0x3fceb240 0x4203c26f:0x3fceb2b0 0x420033b7:0x3fceb2d0 0x4200349e:0x3fceb2f0 0x4037579d:0x3fceb310 0x403ccbd8:0x3fceb340 0x403cd01d:0x3fceb380 0x403c89b5:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+--- 0x40380c35: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/panic.c:469
+--- 0x40380bfd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/esp_system_chip.c:87
+--- 0x40387c61: abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/src/abort.c:38
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+--- 0x420033b7: do_global_ctors at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:104
+--- 0x4200349e: start_cpu0_default at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:207
+--- 0x4037579d: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/cpu_start.c:935
+--- 0x403ccbd8: set_cache_and_start_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:1156
+--- (inlined by) unpack_load_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:
+
+
+
+ELF file SHA256: 0328f4731
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380dd5
+891
+--- (inlined by) load_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:801
+--- 0x403cd01d: bootloader_utility_load_boot_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:603
+--- 0x403c89b5: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:62
+--- 0x40045c01: ets_run_flash_bootloader in ROM
+--- 0x40043ab6: main in ROM
+--- 0x40034c45: .stack_ok in ROM
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+--- 0x40380dd5: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32s3/system_internal.c:162
+--- 0x403c8700: _stext at ??:?
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (29) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Nov 21 2025 18:53:48
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 8MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 factory          factory app      00 00 00010000 00100000
+I (84) boot: End of partition table
+I (88) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (133) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (135) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (184) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (185) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (205) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (214) boot: Loaded app from partition at offset 0x10000
+I (214) boot: Disabling RNG early entropy source...
+I (224) octal_psram: vendor id    : 0x0d (AP)
+I (224) octal_psram: dev id       : 0x02 (generation 3)
+I (225) octal_psram: density      : 0x03 (64 Mbit)
+I (227) octal_psram: good-die     : 0x01 (Pass)
+I (231) octal_psram: Latency      : 0x01 (Fixed)
+I (235) octal_psram: VCC          : 0x01 (3V)
+I (239) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (244) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (249) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (254) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (259) octal_psram: DriveStrength: 0x00 (1/1)
+I (264) MSPI Timing: PSRAM timing tuning index: 4
+I (267) esp_psram: Found 8MB PSRAM device
+I (271) esp_psram: Speed: 80MHz
+I (289) mmu_psram: Read only data copied and mapped to SPIRAM
+I (289) cpu_start: Multicore app
+I (578) esp_psram: SPI SRAM memory test OK
+I (587) cpu_start: Pro cpu start user code
+I (587) cpu_start: cpu freq: 240000000 Hz
+I (587) app_init: Application information:
+I (587) app_init: Project name:     lvgl_porting
+I (591) app_init: App version:      249d524
+I (595) app_init: Compile time:     Nov 21 2025 18:52:55
+I (600) app_init: ELF file SHA256:  0328f4731...
+I (604) app_init: ESP-IDF:          v5.5.1
+I (608) efuse_init: Min chip rev:     v0.0
+I (612) efuse_init: Max chip rev:     v0.99
+I (616) efuse_init: Chip rev:         v0.2
+I (620) heap_init: Initializing. RAM available for dynamic allocation:
+I (626) heap_init: At 3FC9E9B8 len 0004AD58 (299 KiB): RAM
+I (631) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (636) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (642) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (647) esp_psram: Adding pool of 7936K of PSRAM memory to heap allocator
+I (653) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (665) spi_flash: detected chip: gd
+I (668) spi_flash: flash io: qio
+W (671) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+E (683) i2c: CONFLICT! driver_ng is not allowed to be used with this old driver
+
+abort() was called at PC 0x4203c26f on core 0
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+Backtrace: 0x40380c35:0x3fceb200 0x40380bfd:0x3fceb220 0x40387c61:0x3fceb240 0x4203c26f:0x3fceb2b0 0x420033b7:0x3fceb2d0 0x4200349e:0x3fceb2f0 0x4037579d:0x3fceb310 0x403ccbd8:0x3fceb340 0x403cd01d:0x3fceb380 0x403c89b5:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+--- 0x40380c35: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/panic.c:469
+--- 0x40380bfd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/esp_system_chip.c:87
+--- 0x40387c61: abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/src/abort.c:38
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+--- 0x420033b7: do_global_ctors at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:104
+--- 0x4200349e: start_cpu0_default at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:207
+--- 0x4037579d: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/cpu_start.c:935
+--- 0x403ccbd8: set_cache_and_start_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:1156
+--- (inlined by) unpack_load_app
+
+
+
+ELF file SHA256: 0328f4731
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380dd5
+ at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:891
+--- (inlined by) load_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:801
+--- 0x403cd01d: bootloader_utility_load_boot_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:603
+--- 0x403c89b5: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:62
+--- 0x40045c01: ets_run_flash_bootloader in ROM
+--- 0x40043ab6: main in ROM
+--- 0x40034c45: .stack_ok in ROM
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+--- 0x40380dd5: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32s3/system_internal.c:162
+--- 0x403c8700: _stext at ??:?
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (29) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Nov 21 2025 18:53:48
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 8MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 factory          factory app      00 00 00010000 00100000
+I (84) boot: End of partition table
+I (88) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (133) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (135) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (184) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (185) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (205) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (214) boot: Loaded app from partition at offset 0x10000
+I (214) boot: Disabling RNG early entropy source...
+I (224) octal_psram: vendor id    : 0x0d (AP)
+I (224) octal_psram: dev id       : 0x02 (generation 3)
+I (225) octal_psram: density      : 0x03 (64 Mbit)
+I (227) octal_psram: good-die     : 0x01 (Pass)
+I (231) octal_psram: Latency      : 0x01 (Fixed)
+I (235) octal_psram: VCC          : 0x01 (3V)
+I (239) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (244) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (249) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (254) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (259) octal_psram: DriveStrength: 0x00 (1/1)
+I (264) MSPI Timing: PSRAM timing tuning index: 4
+I (267) esp_psram: Found 8MB PSRAM device
+I (271) esp_psram: Speed: 80MHz
+I (289) mmu_psram: Read only data copied and mapped to SPIRAM
+I (289) cpu_start: Multicore app
+I (578) esp_psram: SPI SRAM memory test OK
+I (587) cpu_start: Pro cpu start user code
+I (587) cpu_start: cpu freq: 240000000 Hz
+I (587) app_init: Application information:
+I (587) app_init: Project name:     lvgl_porting
+I (591) app_init: App version:      249d524
+I (595) app_init: Compile time:     Nov 21 2025 18:52:55
+I (600) app_init: ELF file SHA256:  0328f4731...
+I (604) app_init: ESP-IDF:          v5.5.1
+I (608) efuse_init: Min chip rev:     v0.0
+I (612) efuse_init: Max chip rev:     v0.99
+I (616) efuse_init: Chip rev:         v0.2
+I (620) heap_init: Initializing. RAM available for dynamic allocation:
+I (626) heap_init: At 3FC9E9B8 len 0004AD58 (299 KiB): RAM
+I (631) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (636) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (642) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (647) esp_psram: Adding pool of 7936K of PSRAM memory to heap allocator
+I (653) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (665) spi_flash: detected chip: gd
+I (668) spi_flash: flash io: qio
+W (671) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+E (683) i2c: CONFLICT! driver_ng is not allowed to be used with this old driver
+
+abort() was called at PC 0x4203c26f on core 0
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+
+
+Backtrace: 0x40380c35:0x3fceb200 0x40380bfd:0x3fceb220 0x40387c61:0x3fceb240 0x4203c26f:0x3fceb2b0 0x420033b7:0x3fceb2d0 0x4200349e:0x3fceb2f0 0x4037579d:0x3fceb310 0x403ccbd8:0x3fceb340 0x403cd01d:0x3fceb380 0x403c89b5:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+--- 0x40380c35: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/panic.c:469
+--- 0x40380bfd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/esp_system_chip.c:87
+--- 0x40387c61: abort at C:/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/src/abort.c:38
+--- 0x4203c26f: check_i2c_driver_conflict at C:/Espressif/frameworks/esp-idf-v5.5.1/components/driver/i2c/i2c.c:1738
+--- 0x420033b7: do_global_ctors at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:104
+--- 0x4200349e: start_cpu0_default at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/startup.c:207
+--- 0x4037579d: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/cpu_start.c:935
+--- 0x403ccbd8: set_cache_and_start_app at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:1156
+--- (inlined by) unpack_load_app
+
+
+
+ELF file SHA256: 0328f4731
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380dd5
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+ at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:891
+--- (inlined by) load_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:801
+--- 0x403cd01d: bootloader_utility_load_boot_image at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/bootloader_utility.c:603
+--- 0x403c89b5: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:62
+--- 0x40045c01: ets_run_flash_bootloader in ROM
+--- 0x40043ab6: main in ROM
+--- 0x40034c45: .stack_ok in ROM
+--- 0x40380dd5: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32s3/system_internal.c:162
+--- 0x403c8700: _stext at ??:?
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+--- 0x403c894c: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (29) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Nov 21 2025 18:53:48
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 8MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 factory          factory app      00 00 00010000 00100000
+I (84) boot: End of partition table
+I (88) esp_image: segment 0: paddr=00010020 vaddr=3c050020 size=3dabch (252604) map
+I (133) esp_image: segment 1: paddr=0004dae4 vaddr=3fc9a500 size=02534h (  9524) load
+I (135) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=4ea9ch (322204) map
+I (184) esp_image: segment 3: paddr=0009eac4 vaddr=3fc9ca34 size=00fe4h (  4068) load
+I (185) esp_image: segment 4: paddr=0009fab0 vaddr=40374000 size=164ach ( 91308) load
+I (205) esp_image: segment 5: paddr=000b5f64 vaddr=50000000 size=00020h (    32) load
+I (214) boot: Loaded app from partition at offset 0x10000
+I (214) boot: Disabling RNG early entropy source...
+I (224) octal_psram: vendor id    : 0x0d (AP)
+I (224) octal_psram: dev id       : 0x02 (generation 3)
+I (225) octal_psram: density      : 0x03 (64 Mbit)
+I (227) octal_psram: good-die     : 0x01 (Pass)
+I (231) octal_psram: Latency      : 0x01 (Fixed)
+I (235) octal_psram: VCC          : 0x01 (3V)
+I (239) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (244) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (249) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (254) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (259) octal_psram: DriveStrength: 0x00 (1/1)
+I (264) MSPI Timing: PSRAM timing tuning index: 4
+I (267) esp_psram: Found 8MB PSRAM device
+I (271) esp_psram: Speed: 80MHz
