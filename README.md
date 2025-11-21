@@ -17,6 +17,28 @@ This example demonstrates how to avoid tearing when using LVGL with RGB interfac
 
 This example uses the [esp_timer](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/esp_timer.html) to generate the ticks needed by LVGL and uses a dedicated task to run the `lv_timer_handler()`. Since the LVGL APIs are not thread-safe, this example uses a mutex which be invoked before the call of `lv_timer_handler()` and released after it. The same mutex needs to be used in other tasks and threads around every LVGL (lv_...) related function call and code. For more porting guides, please refer to [LVGL porting doc](https://docs.lvgl.io/master/porting/index.html).
 
+## Migration to ESP-IDF 5.5
+
+This project has been migrated from ESP-IDF 5.2.0 to ESP-IDF 5.5.x to take advantage of the latest features and improvements.
+
+### Key Changes
+
+**I2C Driver Migration:**
+- Migrated from legacy I2C driver (`driver/i2c.h`) to new I2C master driver (`driver/i2c_master.h`)
+- The new driver provides better performance, thread-safety, and resource management
+- Uses bus-device model: one I2C bus with multiple device handles
+
+**Changes in `waveshare_rgb_lcd_port.c`:**
+- Updated `i2c_master_init()` to use `i2c_new_master_bus()` and `i2c_master_bus_add_device()`
+- Replaced `i2c_master_write_to_device()` with `i2c_master_transmit()`
+- GT911 touch driver now uses the I2C bus handle instead of port number
+
+### Requirements
+
+- **ESP-IDF 5.5.x or later** (tested with 5.5.1)
+- **Python 3.9 or newer** (Python 3.8 support deprecated)
+- All component dependencies automatically resolved via IDF Component Manager
+
 ## How to use the example
 
 ## ESP-IDF Required
