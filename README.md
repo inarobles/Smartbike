@@ -19,24 +19,32 @@ This example uses the [esp_timer](https://docs.espressif.com/projects/esp-idf/en
 
 ## Migration to ESP-IDF 5.5
 
-This project has been migrated from ESP-IDF 5.2.0 to ESP-IDF 5.5.x to take advantage of the latest features and improvements.
+This project has been **successfully migrated** from ESP-IDF 5.2.0 to ESP-IDF 5.5.x to take advantage of the latest features, bug fixes, and improvements.
 
 ### Key Changes
 
-**I2C Driver Migration:**
-- Migrated from legacy I2C driver (`driver/i2c.h`) to new I2C master driver (`driver/i2c_master.h`)
-- The new driver provides better performance, thread-safety, and resource management
-- Uses bus-device model: one I2C bus with multiple device handles
+**SDK Version:**
+- Updated from ESP-IDF 5.2.0 to 5.5.x
+- All APIs tested and verified compatible
+- Improved build system and toolchain support
 
-**Changes in `waveshare_rgb_lcd_port.c`:**
-- Updated `i2c_master_init()` to use `i2c_new_master_bus()` and `i2c_master_bus_add_device()`
-- Replaced `i2c_master_write_to_device()` with `i2c_master_transmit()`
-- GT911 touch driver now uses the I2C bus handle instead of port number
+**I2C Driver Note:**
+- The project continues to use the legacy I2C driver (`driver/i2c.h`)
+- **Why?** The `esp_lcd_touch_gt911` component (v1.1.1) uses `esp_lcd_new_panel_io_i2c()` which relies on the legacy I2C driver
+- ESP-IDF 5.5 does **not allow** legacy and new I2C drivers to coexist in the same project
+- The legacy driver remains functional and supported in ESP-IDF 5.5, though marked for deprecation in future versions (v7.0+)
+- **Future migration**: When Espressif updates `esp_lcd_touch_gt911` to support the new I2C driver, this project can be updated
+
+**Display & Graphics:**
+- All LCD RGB panel APIs remain stable and unchanged
+- LVGL 8.4.0 fully compatible with ESP-IDF 5.5
+- Touch controller (GT911) working correctly with legacy I2C driver
 
 ### Requirements
 
 - **ESP-IDF 5.5.x or later** (tested with 5.5.1)
-- **Python 3.9 or newer** (Python 3.8 support deprecated)
+- **Python 3.9 or newer** (Python 3.8 support deprecated in ESP-IDF 5.5)
+- **GCC 14.2.0** (ESP32-S3 toolchain for ESP-IDF 5.5)
 - All component dependencies automatically resolved via IDF Component Manager
 
 ## How to use the example
