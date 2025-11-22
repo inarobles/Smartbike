@@ -164,12 +164,12 @@ void ui_training_init(void)
     lv_obj_set_scrollbar_mode(cont_mid, LV_SCROLLBAR_MODE_OFF);
     lv_obj_clear_flag(cont_mid, LV_OBJ_FLAG_SCROLLABLE);
 
-    // Row Heights (Logical Widths) - Total 154
+    // Row Heights (Logical Widths) - Total 164
     int h_mid_header = 30; // Same as data panel header
     int h_mid_row = 62;    // Same as data panel rows
 
     // Row Positions (Logical X)
-    int x_m0 = 0;
+    int x_m0 = 3;  // Offset 3px down (visual)
     int x_m1 = x_m0 + h_mid_header;
     int x_m2 = x_m1 + h_mid_row;
 
