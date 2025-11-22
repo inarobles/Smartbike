@@ -216,7 +216,7 @@ void ui_training_init(void)
     lv_obj_set_style_transform_pivot_y(img_delantero, LV_PCT(50), 0);
     lv_obj_set_style_img_recolor(img_delantero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_img_recolor_opa(img_delantero, 255, LV_PART_MAIN);
-    lv_obj_align(img_delantero, LV_ALIGN_CENTER, 15, -25); // Offset: +15 right (visual up), -25 up (visual left)
+    lv_obj_align(img_delantero, LV_ALIGN_CENTER, -15, -5); // -15 X = 15px up (visual), -5 Y = 10px left (visual)
 
     // -------------------------------------------------------------------------
     // CONT_WHITE (White Strip): X=447, 130x300. White.
@@ -253,7 +253,7 @@ void ui_training_init(void)
     lv_obj_set_style_transform_pivot_y(img_trasero, LV_PCT(50), 0);
     lv_obj_set_style_img_recolor(img_trasero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_img_recolor_opa(img_trasero, 255, LV_PART_MAIN);
-    lv_obj_align(img_trasero, LV_ALIGN_CENTER, 15, -25); // Offset: +15 right (visual up), -25 up (visual left)
+    lv_obj_align(img_trasero, LV_ALIGN_CENTER, -15, -5); // -15 X = 15px up (visual), -5 Y = 10px left (visual)
 
     // -------------------------------------------------------------------------
     // CONT_BOT (Chart): X=577, 223x480. Black.
