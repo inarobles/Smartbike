@@ -265,5 +265,173 @@ void example_lvgl_demo_ui() // LVGL demo UI initialization function
         lv_chart_set_next_value2(chart, ser, lv_rand(0, 200), lv_rand(0, 1000)); // Set X and Y values 
     }
 
-    lv_timer_create(add_data, 100, chart); // Create a timer to add new data every 100ms 
+    lv_timer_create(add_data, 100, chart); // Create a timer to add new data every 100ms
+}
+
+/******************************* Smartbike Custom UI **************************************/
+
+// Forward declarations for screen functions
+static void create_training_screen(void);
+static void create_load_training_screen(void);
+static void create_wifi_screen(void);
+static void create_ble_screen(void);
+static void create_calibrate_screen(void);
+
+// Button event handlers
+static void btn_training_clicked(lv_event_t *e)
+{
+    create_training_screen();
+}
+
+static void btn_load_training_clicked(lv_event_t *e)
+{
+    create_load_training_screen();
+}
+
+static void btn_wifi_clicked(lv_event_t *e)
+{
+    create_wifi_screen();
+}
+
+static void btn_ble_clicked(lv_event_t *e)
+{
+    create_ble_screen();
+}
+
+static void btn_calibrate_clicked(lv_event_t *e)
+{
+    create_calibrate_screen();
+}
+
+// Main menu screen with 5 buttons
+void smartbike_main_menu(void)
+{
+    lv_obj_t *scr = lv_scr_act(); // Get the current active screen
+    lv_obj_clean(scr); // Clean the screen
+
+    // Set background color
+    lv_obj_set_style_bg_color(scr, lv_color_hex(0x000000), LV_PART_MAIN);
+
+    // Screen dimensions
+    lv_coord_t screen_width = lv_obj_get_width(scr);
+    lv_coord_t screen_height = lv_obj_get_height(scr);
+    lv_coord_t btn_height = screen_height / 5; // Divide screen in 5 equal parts
+
+    // Create 5 buttons
+    const char *btn_labels[] = {
+        "Entrenamiento libre",
+        "Cargar entrenamiento",
+        "WIFI",
+        "BLE",
+        "Calibrar"
+    };
+
+    lv_event_cb_t btn_callbacks[] = {
+        btn_training_clicked,
+        btn_load_training_clicked,
+        btn_wifi_clicked,
+        btn_ble_clicked,
+        btn_calibrate_clicked
+    };
+
+    for (int i = 0; i < 5; i++) {
+        lv_obj_t *btn = lv_btn_create(scr);
+        lv_obj_set_size(btn, screen_width, btn_height);
+        lv_obj_set_pos(btn, 0, i * btn_height);
+        lv_obj_set_style_radius(btn, 0, LV_PART_MAIN); // No rounded corners
+
+        // Set different colors for each button
+        lv_color_t colors[] = {
+            lv_color_hex(0x1E88E5), // Blue
+            lv_color_hex(0x43A047), // Green
+            lv_color_hex(0xFB8C00), // Orange
+            lv_color_hex(0x8E24AA), // Purple
+            lv_color_hex(0xE53935)  // Red
+        };
+        lv_obj_set_style_bg_color(btn, colors[i], LV_PART_MAIN);
+
+        // Create label for button
+        lv_obj_t *label = lv_label_create(btn);
+        lv_label_set_text(label, btn_labels[i]);
+        lv_obj_set_style_text_font(label, &lv_font_montserrat_24, LV_PART_MAIN);
+        lv_obj_center(label);
+
+        // Add click event
+        lv_obj_add_event_cb(btn, btn_callbacks[i], LV_EVENT_CLICKED, NULL);
+    }
+}
+
+// Screen: Entrenamiento libre
+static void create_training_screen(void)
+{
+    lv_obj_t *scr = lv_scr_act();
+    lv_obj_clean(scr);
+
+    lv_obj_set_style_bg_color(scr, lv_color_hex(0x1E88E5), LV_PART_MAIN);
+
+    lv_obj_t *label = lv_label_create(scr);
+    lv_label_set_text(label, "Entrenamiento libre\n(En desarrollo)");
+    lv_obj_set_style_text_font(label, &lv_font_montserrat_24, LV_PART_MAIN);
+    lv_obj_set_style_text_color(label, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
+    lv_obj_center(label);
+}
+
+// Screen: Cargar entrenamiento
+static void create_load_training_screen(void)
+{
+    lv_obj_t *scr = lv_scr_act();
+    lv_obj_clean(scr);
+
+    lv_obj_set_style_bg_color(scr, lv_color_hex(0x43A047), LV_PART_MAIN);
+
+    lv_obj_t *label = lv_label_create(scr);
+    lv_label_set_text(label, "Cargar entrenamiento\n(En desarrollo)");
+    lv_obj_set_style_text_font(label, &lv_font_montserrat_24, LV_PART_MAIN);
+    lv_obj_set_style_text_color(label, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
+    lv_obj_center(label);
+}
+
+// Screen: WIFI
+static void create_wifi_screen(void)
+{
+    lv_obj_t *scr = lv_scr_act();
+    lv_obj_clean(scr);
+
+    lv_obj_set_style_bg_color(scr, lv_color_hex(0xFB8C00), LV_PART_MAIN);
+
+    lv_obj_t *label = lv_label_create(scr);
+    lv_label_set_text(label, "WIFI\n(En desarrollo)");
+    lv_obj_set_style_text_font(label, &lv_font_montserrat_24, LV_PART_MAIN);
+    lv_obj_set_style_text_color(label, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
+    lv_obj_center(label);
+}
+
+// Screen: BLE
+static void create_ble_screen(void)
+{
+    lv_obj_t *scr = lv_scr_act();
+    lv_obj_clean(scr);
+
+    lv_obj_set_style_bg_color(scr, lv_color_hex(0x8E24AA), LV_PART_MAIN);
+
+    lv_obj_t *label = lv_label_create(scr);
+    lv_label_set_text(label, "BLE\n(En desarrollo)");
+    lv_obj_set_style_text_font(label, &lv_font_montserrat_24, LV_PART_MAIN);
+    lv_obj_set_style_text_color(label, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
+    lv_obj_center(label);
+}
+
+// Screen: Calibrar
+static void create_calibrate_screen(void)
+{
+    lv_obj_t *scr = lv_scr_act();
+    lv_obj_clean(scr);
+
+    lv_obj_set_style_bg_color(scr, lv_color_hex(0xE53935), LV_PART_MAIN);
+
+    lv_obj_t *label = lv_label_create(scr);
+    lv_label_set_text(label, "Calibrar\n(En desarrollo)");
+    lv_obj_set_style_text_font(label, &lv_font_montserrat_24, LV_PART_MAIN);
+    lv_obj_set_style_text_color(label, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
+    lv_obj_center(label);
 }
