@@ -317,11 +317,15 @@ void smartbike_main_menu(void)
     lv_coord_t screen_height = lv_obj_get_height(scr);
 
     // Button dimensions with margins
-    lv_coord_t margin_x = 30; // Horizontal margin
-    lv_coord_t margin_y = 20; // Vertical margin between buttons
-    lv_coord_t top_margin = 100; // Top margin from screen edge
+    lv_coord_t margin_x = 40; // Horizontal margin
+    lv_coord_t margin_y = 15; // Vertical margin between buttons
+    lv_coord_t top_margin = 50; // Top margin from screen edge
+    lv_coord_t bottom_margin = 50; // Bottom margin
+
+    // Calculate available space and button height
+    lv_coord_t available_height = screen_height - top_margin - bottom_margin - (4 * margin_y);
+    lv_coord_t btn_height = available_height / 5; // Divide available space equally
     lv_coord_t btn_width = screen_width - (2 * margin_x);
-    lv_coord_t btn_height = 100; // Fixed button height
 
     // Create 5 buttons
     const char *btn_labels[] = {
