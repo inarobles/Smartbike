@@ -1,109 +1,63 @@
-| Supported Targets | ESP32-S3 |
-| ----------------- | -------- |
+# Smartbike - Firmware para Ciclocomputador ESP32-S3
 
-| Supported LCD Controller    | ST7701 |
-| ----------------------------| -------|
+Este proyecto implementa el firmware para un ciclocomputador inteligente basado en el microcontrolador **ESP32-S3** y la biblioteca gráfica **LVGL**.
 
-| Supported Touch Controller  |  GT911 |
-| ----------------------------| -------|
+## Funcionalidades Actuales
 
-# RGB Avoid Tearing Example
+*   **Interfaz Gráfica (GUI)**: Basada en LVGL 8.x.
+*   **Menú Principal**: Navegación con 5 opciones:
+    *   Entrenamiento libre
+    *   Cargar entrenamiento
+    *   WIFI
+    *   BLE
+    *   Calibrar
+*   **Drivers de Pantalla**: Soporte para pantalla LCD RGB ST7701 (480x800) con prevención de "tearing".
+*   **Pantalla Táctil**: Soporte para controlador GT911.
+*   **Orientación**: Configurado para modo horizontal (0º) para máximo rendimiento.
 
-[esp_lcd](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/lcd.html) provides several panel drivers out-of box, e.g. ST7789, SSD1306, NT35510. However, there're a lot of other panels on the market, it's beyond `esp_lcd` component's responsibility to include them all.
+## Hardware Requerido
 
-`esp_lcd` allows user to add their own panel drivers in the project scope (i.e. panel driver can live outside of esp-idf), so that the upper layer code like LVGL porting code can be reused without any modifications, as long as user-implemented panel driver follows the interface defined in the `esp_lcd` component.
+*   **Placa de Desarrollo**: ESP32-S3R8 (con PSRAM Octal).
+*   **Pantalla**: Panel LCD RGB de 4 pulgadas (ST7701) con interfaz RGB de 16 bits.
+*   **Touch**: Panel táctil capacitivo GT911.
 
-This example demonstrates how to avoid tearing when using LVGL with RGB interface screens in an esp-idf project. The example will use the LVGL library to draw a stylish music player.
+## Configuración de Pines (Pinout)
 
-This example uses the [esp_timer](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/esp_timer.html) to generate the ticks needed by LVGL and uses a dedicated task to run the `lv_timer_handler()`. Since the LVGL APIs are not thread-safe, this example uses a mutex which be invoked before the call of `lv_timer_handler()` and released after it. The same mutex needs to be used in other tasks and threads around every LVGL (lv_...) related function call and code. For more porting guides, please refer to [LVGL porting doc](https://docs.lvgl.io/master/porting/index.html).
+### Interfaz RGB (LCD)
 
-## Migration to ESP-IDF 5.5
+| Señal | GPIO | Señal | GPIO |
+| :--- | :--- | :--- | :--- |
+| **PCLK** | 7 | **DE** | 5 |
+| **VSYNC** | 3 | **HSYNC** | 46 |
+| **D0** | 14 | **D1** | 38 |
+| **D2** | 18 | **D3** | 17 |
+| **D4** | 10 | **D5** | 39 |
+| **D6** | 0 | **D7** | 45 |
+| **D8** | 48 | **D9** | 47 |
+| **D10** | 21 | **D11** | 1 |
+| **D12** | 2 | **D13** | 42 |
+| **D14** | 41 | **D15** | 40 |
 
-This project has been **successfully migrated** from ESP-IDF 5.2.0 to ESP-IDF 5.5.x to take advantage of the latest features, bug fixes, and improvements.
+### Periféricos (I2C / Control)
 
-### Key Changes
+| Señal | GPIO | Descripción |
+| :--- | :--- | :--- |
+| **SDA** | 8 | I2C Data (Touch & Backlight) |
+| **SCL** | 9 | I2C Clock (Touch & Backlight) |
+| **RST** | -1 | Reset (No conectado/Software) |
+| **INT** | -1 | Interrupción (No conectado) |
 
-**SDK Version:**
-- Updated from ESP-IDF 5.2.0 to 5.5.x
-- All APIs tested and verified compatible
-- Improved build system and toolchain support
+## Compilación y Flasheo
 
-**I2C Driver Note:**
-- The project continues to use the legacy I2C driver (`driver/i2c.h`)
-- **Why?** The `esp_lcd_touch_gt911` component (v1.1.1) uses `esp_lcd_new_panel_io_i2c()` which relies on the legacy I2C driver
-- ESP-IDF 5.5 does **not allow** legacy and new I2C drivers to coexist in the same project
-- The legacy driver remains functional and supported in ESP-IDF 5.5, though marked for deprecation in future versions (v7.0+)
-- **Future migration**: When Espressif updates `esp_lcd_touch_gt911` to support the new I2C driver, this project can be updated
+Requisitos: ESP-IDF v5.5 o superior.
 
-**Display & Graphics:**
-- All LCD RGB panel APIs remain stable and unchanged
-- LVGL 8.4.0 fully compatible with ESP-IDF 5.5
-- Touch controller (GT911) working correctly with legacy I2C driver
+1.  **Configurar el proyecto**:
+    ```bash
+    idf.py reconfigure
+    ```
+    *Asegúrate de que la rotación esté configurada correctamente en `sdkconfig`.*
 
-### Requirements
-
-- **ESP-IDF 5.5.x or later** (tested with 5.5.1)
-- **Python 3.9 or newer** (Python 3.8 support deprecated in ESP-IDF 5.5)
-- **GCC 14.2.0** (ESP32-S3 toolchain for ESP-IDF 5.5)
-- All component dependencies automatically resolved via IDF Component Manager
-
-## How to use the example
-
-## ESP-IDF Required
-
-### Hardware Required
-
-* An ESP32-S3R8 development board
-* A ST7701 LCD panel, with RGB interface
-* An USB cable for power supply and programming
-
-### Hardware Connection
-
-The connection between ESP Board and the LCD is as follows:
-
-```
-       ESP Board                           RGB  Panel
-+-----------------------+              +-------------------+
-|                   GND +--------------+GND                |
-|                       |              |                   |
-|                   3V3 +--------------+VCC                |
-|                       |              |                   |
-|                   PCLK+--------------+PCLK               |
-|                       |              |                   |
-|             DATA[15:0]+--------------+DATA[15:0]         |
-|                       |              |                   |
-|                  HSYNC+--------------+HSYNC              |
-|                       |              |                   |
-|                  VSYNC+--------------+VSYNC              |
-|                       |              |                   |
-|                     DE+--------------+DE                 |
-|                       |              |                   |
-|               BK_LIGHT+--------------+BLK                |
-+-----------------------+              |                   |
-                               3V3-----+DISP_EN            |
-                                       |                   |
-                                       +-------------------+
-```
-
-* The LCD parameters and GPIO number used by this example can be changed in [example_rgb_avoid_tearing.c](main/example_rgb_avoid_tearing.c). Especially, please pay attention to the **vendor specific initialization**, it can be different between manufacturers and should consult the LCD supplier for initialization sequence code.
-* The LVGL parameters can be changed not only through `menuconfig` but also directly in `lvgl_conf.h`
-
-### Configure the Project
-
-Run `idf.py menuconfig` and navigate to `Example Configuration` menu.
-
-### Build and Flash
-
-Run `idf.py set-target esp32s3` to select the target chip.
-
-Run `idf.py -p PORT build flash monitor` to build, flash and monitor the project. A fancy animation will show up on the LCD as expected.
-
-The first time you run `idf.py` for the example will cost extra time as the build system needs to address the component dependencies and downloads the missing components from registry into `managed_components` folder.
-
-(To exit the serial monitor, type ``Ctrl-]``.)
-
-See the [Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html) for full steps to configure and use ESP-IDF to build projects.
-
-## Troubleshooting
-
-For any technical queries, please open an [issue](https://github.com/espressif/esp-iot-solution/issues) on GitHub. We will get back to you soon.
+2.  **Compilar y Grabar**:
+    ```bash
+    idf.py build flash monitor
+    ```

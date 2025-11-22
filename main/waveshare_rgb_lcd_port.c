@@ -5,6 +5,7 @@
  */
 
 #include "waveshare_rgb_lcd_port.h"
+#include "ui_training.h"
 
 // VSYNC event callback function
 IRAM_ATTR static bool rgb_lcd_on_vsync_event(esp_lcd_panel_handle_t panel, const esp_lcd_rgb_panel_event_data_t *edata, void *user_ctx)
@@ -271,7 +272,7 @@ void example_lvgl_demo_ui() // LVGL demo UI initialization function
 /******************************* Smartbike Custom UI **************************************/
 
 // Forward declarations for screen functions
-static void create_training_screen(void);
+
 static void create_load_training_screen(void);
 static void create_wifi_screen(void);
 static void create_ble_screen(void);
@@ -280,7 +281,7 @@ static void create_calibrate_screen(void);
 // Button event handlers
 static void btn_training_clicked(lv_event_t *e)
 {
-    create_training_screen();
+    ui_training_init();
 }
 
 static void btn_load_training_clicked(lv_event_t *e)
@@ -312,20 +313,30 @@ void smartbike_main_menu(void)
     // Set background color to white
     lv_obj_set_style_bg_color(scr, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
 
-    // Screen dimensions (480x800 vertical after 90° rotation)
-    lv_coord_t screen_width = lv_obj_get_width(scr);
-    lv_coord_t screen_height = lv_obj_get_height(scr);
+    // Create a style for rotated text (270 degrees)
+    static lv_style_t style_text_rot;
+    lv_style_init(&style_text_rot);
+    lv_style_set_transform_angle(&style_text_rot, 2700); // 270 degrees
+    lv_style_set_transform_pivot_x(&style_text_rot, LV_PCT(50));
+    lv_style_set_transform_pivot_y(&style_text_rot, LV_PCT(50));
 
-    // Button dimensions for vertical layout
-    lv_coord_t margin_x = 30; // Left/right margin
-    lv_coord_t margin_y = 20; // Vertical margin between buttons
-    lv_coord_t top_margin = 80; // Top margin
-    lv_coord_t bottom_margin = 80; // Bottom margin
+    // Create a container with FLEX ROW layout
+    // This aligns items along the X-axis (0-800), which visually corresponds to Top-Bottom in vertical orientation
+    lv_obj_t *cont = lv_obj_create(scr);
+    lv_obj_set_size(cont, 800, 480); // Full screen (Horizontal)
+    lv_obj_center(cont);
+    lv_obj_set_flex_flow(cont, LV_FLEX_FLOW_ROW); // Arrange items in a row (Left to Right -> Top to Bottom)
+    lv_obj_set_flex_align(cont, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+    lv_obj_set_style_pad_all(cont, 0, LV_PART_MAIN);
+    lv_obj_set_style_border_width(cont, 0, LV_PART_MAIN);
+    lv_obj_set_style_bg_opa(cont, LV_OPA_TRANSP, LV_PART_MAIN);
+    lv_obj_set_style_pad_gap(cont, 20, LV_PART_MAIN); // Gap between buttons
 
-    // Calculate button dimensions
-    lv_coord_t available_height = screen_height - top_margin - bottom_margin - (4 * margin_y);
-    lv_coord_t btn_height = available_height / 5; // 5 buttons stacked vertically
-    lv_coord_t btn_width = screen_width - (2 * margin_x);
+    // Button dimensions (Inverted for "The Trick")
+    // Logical Width = Visual Height
+    // Logical Height = Visual Width
+    lv_coord_t btn_logical_width = 120; // Visual Height
+    lv_coord_t btn_logical_height = 400; // Visual Width
 
     // Create 5 buttons
     const char *btn_labels[] = {
@@ -345,10 +356,8 @@ void smartbike_main_menu(void)
     };
 
     for (int i = 0; i < 5; i++) {
-        lv_obj_t *btn = lv_btn_create(scr);
-        lv_obj_set_size(btn, btn_width, btn_height);
-        lv_coord_t y_pos = top_margin + (i * (btn_height + margin_y));
-        lv_obj_set_pos(btn, margin_x, y_pos);
+        lv_obj_t *btn = lv_btn_create(cont);
+        lv_obj_set_size(btn, btn_logical_width, btn_logical_height);
 
         // Set rounded corners
         lv_obj_set_style_radius(btn, 15, LV_PART_MAIN);
@@ -360,6 +369,10 @@ void smartbike_main_menu(void)
         lv_obj_t *label = lv_label_create(btn);
         lv_label_set_text(label, btn_labels[i]);
         lv_obj_set_style_text_font(label, &lv_font_montserrat_24, LV_PART_MAIN);
+        
+        // Apply rotation style to label
+        lv_obj_add_style(label, &style_text_rot, LV_PART_MAIN);
+        
         lv_obj_center(label);
 
         // Add click event
@@ -367,20 +380,7 @@ void smartbike_main_menu(void)
     }
 }
 
-// Screen: Entrenamiento libre
-static void create_training_screen(void)
-{
-    lv_obj_t *scr = lv_scr_act();
-    lv_obj_clean(scr);
 
-    lv_obj_set_style_bg_color(scr, lv_color_hex(0x1E88E5), LV_PART_MAIN);
-
-    lv_obj_t *label = lv_label_create(scr);
-    lv_label_set_text(label, "Entrenamiento libre\n(En desarrollo)");
-    lv_obj_set_style_text_font(label, &lv_font_montserrat_24, LV_PART_MAIN);
-    lv_obj_set_style_text_color(label, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
-    lv_obj_center(label);
-}
 
 // Screen: Cargar entrenamiento
 static void create_load_training_screen(void)

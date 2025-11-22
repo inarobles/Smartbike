@@ -1,0 +1,25 @@
+BAJAR:
+
+Descargar los últimos cambios hechos en Github:
+   git pull origin main
+
+
+Lo que está en .gitignore no se actualiza en ningún sentido.
+
+
+
+
+SUBIR:
+
+Subir log.txt:
+   git add log.txt
+   git commit -m "Subir archivo log.txt para su análisis"
+   git push origin main
+
+
+
+Subir todo:
+   git add .
+   git commit -m "Subir todos los cambios del proyecto"
+   git push origin main
+
