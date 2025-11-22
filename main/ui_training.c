@@ -6,6 +6,8 @@
 
 #include "ui_training.h"
 #include "icon_heart.h"
+#include "delantero.h"
+#include "trasero.h"
 
 LV_FONT_DECLARE(lv_font_montserrat_48);
 LV_FONT_DECLARE(lv_font_montserrat_36);
@@ -205,6 +207,16 @@ void ui_training_init(void)
     lv_obj_set_scrollbar_mode(cont_grey_right, LV_SCROLLBAR_MODE_OFF);
     lv_obj_clear_flag(cont_grey_right, LV_OBJ_FLAG_SCROLLABLE);
 
+    // Delantero icon (90x90)
+    lv_obj_t *img_delantero = lv_img_create(cont_grey_right);
+    lv_img_set_src(img_delantero, &delantero);
+    lv_obj_set_style_transform_angle(img_delantero, 2700, 0); // 270 degrees
+    lv_obj_set_style_transform_pivot_x(img_delantero, LV_PCT(50), 0);
+    lv_obj_set_style_transform_pivot_y(img_delantero, LV_PCT(50), 0);
+    lv_obj_set_style_img_recolor(img_delantero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
+    lv_obj_set_style_img_recolor_opa(img_delantero, LV_OPA_COVER, LV_PART_MAIN);
+    lv_obj_center(img_delantero);
+
     // -------------------------------------------------------------------------
     // CONT_WHITE (White Strip): X=447, 130x340. White.
     // -------------------------------------------------------------------------
@@ -230,6 +242,16 @@ void ui_training_init(void)
     lv_obj_set_style_pad_all(cont_grey_left, 0, LV_PART_MAIN);
     lv_obj_set_scrollbar_mode(cont_grey_left, LV_SCROLLBAR_MODE_OFF);
     lv_obj_clear_flag(cont_grey_left, LV_OBJ_FLAG_SCROLLABLE);
+
+    // Trasero icon (96x96)
+    lv_obj_t *img_trasero = lv_img_create(cont_grey_left);
+    lv_img_set_src(img_trasero, &trasero);
+    lv_obj_set_style_transform_angle(img_trasero, 2700, 0); // 270 degrees
+    lv_obj_set_style_transform_pivot_x(img_trasero, LV_PCT(50), 0);
+    lv_obj_set_style_transform_pivot_y(img_trasero, LV_PCT(50), 0);
+    lv_obj_set_style_img_recolor(img_trasero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
+    lv_obj_set_style_img_recolor_opa(img_trasero, LV_OPA_COVER, LV_PART_MAIN);
+    lv_obj_center(img_trasero);
 
     // -------------------------------------------------------------------------
     // CONT_BOT (Chart): X=577, 223x480. Black.
