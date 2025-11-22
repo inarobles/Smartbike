@@ -152,10 +152,10 @@ void ui_training_init(void)
 
 
     // -------------------------------------------------------------------------
-    // CONT_MID (Summary): X=285, 154x480. Dark Grey.
+    // CONT_MID (Summary): X=285, 164x480. Dark Grey.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_mid = lv_obj_create(scr);
-    lv_obj_set_size(cont_mid, 154, 480);
+    lv_obj_set_size(cont_mid, 164, 480);
     lv_obj_set_pos(cont_mid, 285, 0);
     lv_obj_set_style_bg_color(cont_mid, lv_palette_darken(LV_PALETTE_GREY, 3), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_mid, 0, LV_PART_MAIN);
@@ -193,11 +193,11 @@ void ui_training_init(void)
     create_grid_cell(cont_mid, "0:05:30", &lv_font_montserrat_48, x_m2, h_mid_row, y_m_lap, w_mid_col);
 
     // -------------------------------------------------------------------------
-    // CONT_WHITE (White Strip): X=439, 130x480. White.
+    // CONT_WHITE (White Strip): X=449, 130x480. White.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_white = lv_obj_create(scr);
     lv_obj_set_size(cont_white, 130, 480);
-    lv_obj_set_pos(cont_white, 439, 0);
+    lv_obj_set_pos(cont_white, 449, 0);
     lv_obj_set_style_bg_color(cont_white, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_white, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_white, 0, LV_PART_MAIN);
@@ -206,11 +206,11 @@ void ui_training_init(void)
     lv_obj_clear_flag(cont_white, LV_OBJ_FLAG_SCROLLABLE);
 
     // -------------------------------------------------------------------------
-    // CONT_BOT (Chart): X=569, 231x480. Black.
+    // CONT_BOT (Chart): X=579, 221x480. Black.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_bot = lv_obj_create(scr);
-    lv_obj_set_size(cont_bot, 231, 480);
-    lv_obj_set_pos(cont_bot, 569, 0);
+    lv_obj_set_size(cont_bot, 221, 480);
+    lv_obj_set_pos(cont_bot, 579, 0);
     lv_obj_set_style_bg_color(cont_bot, lv_color_hex(0x000000), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_bot, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_bot, 0, LV_PART_MAIN);
