@@ -112,7 +112,7 @@ void ui_training_init(void)
     create_grid_cell(cont_top, "345", &lv_font_montserrat_48, x_r3, h_row, y_c3, w_col_data);
 
     // Row 4: Heart (BPM)
-    create_grid_cell(cont_top, "\xEF\x80\x84", &lv_font_montserrat_24, x_r4, h_row, y_c0, w_col_label); // FontAwesome heart symbol
+    create_grid_cell(cont_top, "\xE2\x99\xA5", &lv_font_montserrat_24, x_r4, h_row, y_c0, w_col_label); // Unicode heart symbol ♥
     create_grid_cell(cont_top, "105", &lv_font_montserrat_48, x_r4, h_row, y_c1, w_col_data);
     create_grid_cell(cont_top, "123", &lv_font_montserrat_48, x_r4, h_row, y_c2, w_col_data);
     create_grid_cell(cont_top, "167", &lv_font_montserrat_48, x_r4, h_row, y_c3, w_col_data);
