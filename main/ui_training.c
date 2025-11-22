@@ -93,26 +93,26 @@ void ui_training_init(void)
     create_grid_cell(cont_top, "ACT", &lv_font_montserrat_16, x_r0, h_header, y_c2, w_col_data);
     create_grid_cell(cont_top, "MAX", &lv_font_montserrat_16, x_r0, h_header, y_c3, w_col_data);
 
-    // Row 1: VEL
-    create_grid_cell(cont_top, "VEL", &lv_font_montserrat_24, x_r1, h_row, y_c0, w_col_label);
+    // Row 1: KPH
+    create_grid_cell(cont_top, "KPH", &lv_font_montserrat_24, x_r1, h_row, y_c0, w_col_label);
     create_grid_cell(cont_top, "27", &lv_font_montserrat_48, x_r1, h_row, y_c1, w_col_data);
     create_grid_cell(cont_top, "33", &lv_font_montserrat_48, x_r1, h_row, y_c2, w_col_data);
     create_grid_cell(cont_top, "57", &lv_font_montserrat_48, x_r1, h_row, y_c3, w_col_data);
 
-    // Row 2: CAD
-    create_grid_cell(cont_top, "CAD", &lv_font_montserrat_24, x_r2, h_row, y_c0, w_col_label);
+    // Row 2: RPM
+    create_grid_cell(cont_top, "RPM", &lv_font_montserrat_24, x_r2, h_row, y_c0, w_col_label);
     create_grid_cell(cont_top, "69", &lv_font_montserrat_48, x_r2, h_row, y_c1, w_col_data);
     create_grid_cell(cont_top, "75", &lv_font_montserrat_48, x_r2, h_row, y_c2, w_col_data);
     create_grid_cell(cont_top, "98", &lv_font_montserrat_48, x_r2, h_row, y_c3, w_col_data);
 
-    // Row 3: POT
-    create_grid_cell(cont_top, "POT", &lv_font_montserrat_24, x_r3, h_row, y_c0, w_col_label);
+    // Row 3: WAT
+    create_grid_cell(cont_top, "WAT", &lv_font_montserrat_24, x_r3, h_row, y_c0, w_col_label);
     create_grid_cell(cont_top, "198", &lv_font_montserrat_48, x_r3, h_row, y_c1, w_col_data);
     create_grid_cell(cont_top, "205", &lv_font_montserrat_48, x_r3, h_row, y_c2, w_col_data);
     create_grid_cell(cont_top, "345", &lv_font_montserrat_48, x_r3, h_row, y_c3, w_col_data);
 
-    // Row 4: PUL
-    create_grid_cell(cont_top, "PUL", &lv_font_montserrat_24, x_r4, h_row, y_c0, w_col_label);
+    // Row 4: Heart (BPM)
+    create_grid_cell(cont_top, "♥", &lv_font_montserrat_24, x_r4, h_row, y_c0, w_col_label);
     create_grid_cell(cont_top, "105", &lv_font_montserrat_48, x_r4, h_row, y_c1, w_col_data);
     create_grid_cell(cont_top, "123", &lv_font_montserrat_48, x_r4, h_row, y_c2, w_col_data);
     create_grid_cell(cont_top, "167", &lv_font_montserrat_48, x_r4, h_row, y_c3, w_col_data);
