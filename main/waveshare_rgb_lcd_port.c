@@ -309,13 +309,19 @@ void smartbike_main_menu(void)
     lv_obj_t *scr = lv_scr_act(); // Get the current active screen
     lv_obj_clean(scr); // Clean the screen
 
-    // Set background color
-    lv_obj_set_style_bg_color(scr, lv_color_hex(0x000000), LV_PART_MAIN);
+    // Set background color to white
+    lv_obj_set_style_bg_color(scr, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
 
     // Screen dimensions
     lv_coord_t screen_width = lv_obj_get_width(scr);
     lv_coord_t screen_height = lv_obj_get_height(scr);
-    lv_coord_t btn_height = screen_height / 5; // Divide screen in 5 equal parts
+
+    // Button dimensions with margins
+    lv_coord_t margin_x = 30; // Horizontal margin
+    lv_coord_t margin_y = 20; // Vertical margin between buttons
+    lv_coord_t top_margin = 100; // Top margin from screen edge
+    lv_coord_t btn_width = screen_width - (2 * margin_x);
+    lv_coord_t btn_height = 100; // Fixed button height
 
     // Create 5 buttons
     const char *btn_labels[] = {
@@ -336,19 +342,15 @@ void smartbike_main_menu(void)
 
     for (int i = 0; i < 5; i++) {
         lv_obj_t *btn = lv_btn_create(scr);
-        lv_obj_set_size(btn, screen_width, btn_height);
-        lv_obj_set_pos(btn, 0, i * btn_height);
-        lv_obj_set_style_radius(btn, 0, LV_PART_MAIN); // No rounded corners
+        lv_obj_set_size(btn, btn_width, btn_height);
+        lv_coord_t y_pos = top_margin + (i * (btn_height + margin_y));
+        lv_obj_set_pos(btn, margin_x, y_pos);
 
-        // Set different colors for each button
-        lv_color_t colors[] = {
-            lv_color_hex(0x1E88E5), // Blue
-            lv_color_hex(0x43A047), // Green
-            lv_color_hex(0xFB8C00), // Orange
-            lv_color_hex(0x8E24AA), // Purple
-            lv_color_hex(0xE53935)  // Red
-        };
-        lv_obj_set_style_bg_color(btn, colors[i], LV_PART_MAIN);
+        // Set rounded corners
+        lv_obj_set_style_radius(btn, 15, LV_PART_MAIN);
+
+        // All buttons in blue
+        lv_obj_set_style_bg_color(btn, lv_color_hex(0x1E88E5), LV_PART_MAIN);
 
         // Create label for button
         lv_obj_t *label = lv_label_create(btn);
