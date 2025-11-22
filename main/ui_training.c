@@ -119,10 +119,10 @@ void ui_training_init(void)
 
 
     // -------------------------------------------------------------------------
-    // CONT_MID (Summary): X=300, 200x480. Dark Grey.
+    // CONT_MID (Summary): X=300, 150x480. Dark Grey.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_mid = lv_obj_create(scr);
-    lv_obj_set_size(cont_mid, 200, 480);
+    lv_obj_set_size(cont_mid, 150, 480);
     lv_obj_set_pos(cont_mid, 300, 0);
     lv_obj_set_style_bg_color(cont_mid, lv_palette_darken(LV_PALETTE_GREY, 3), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_mid, 0, LV_PART_MAIN);
@@ -131,9 +131,9 @@ void ui_training_init(void)
     lv_obj_set_scrollbar_mode(cont_mid, LV_SCROLLBAR_MODE_OFF);
     lv_obj_clear_flag(cont_mid, LV_OBJ_FLAG_SCROLLABLE);
 
-    // Row Heights (Logical Widths) - Total 200
-    int h_mid_header = 40; // Reduced header height
-    int h_mid_row = 80;    // Increased row height for font 48
+    // Row Heights (Logical Widths) - Total 150
+    int h_mid_header = 30; // Reduced header height
+    int h_mid_row = 60;    // Increased row height for font 48
 
     // Row Positions (Logical X)
     int x_m0 = 0;
@@ -160,11 +160,11 @@ void ui_training_init(void)
     create_grid_cell(cont_mid, "0:05:30", &lv_font_montserrat_48, x_m2, h_mid_row, y_m_lap, w_mid_col);
 
     // -------------------------------------------------------------------------
-    // CONT_BOT (Chart): X=500, 300x480. Black.
+    // CONT_BOT (Chart): X=450, 350x480. Black.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_bot = lv_obj_create(scr);
-    lv_obj_set_size(cont_bot, 300, 480);
-    lv_obj_set_pos(cont_bot, 500, 0);
+    lv_obj_set_size(cont_bot, 350, 480);
+    lv_obj_set_pos(cont_bot, 450, 0);
     lv_obj_set_style_bg_color(cont_bot, lv_color_hex(0x000000), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_bot, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_bot, 0, LV_PART_MAIN);
