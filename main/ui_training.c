@@ -216,7 +216,7 @@ void ui_training_init(void)
     lv_obj_set_style_transform_pivot_y(img_delantero, LV_PCT(50), 0);
     lv_obj_set_style_img_recolor(img_delantero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_img_recolor_opa(img_delantero, 255, LV_PART_MAIN);
-    lv_obj_align(img_delantero, LV_ALIGN_CENTER, -35, -2); // -35 X = 35px up (visual), -2 Y = 13px left (visual)
+    lv_obj_align(img_delantero, LV_ALIGN_CENTER, -35, 0); // -35 X = 35px up (visual), 0 Y = 15px left (visual)
 
     // -------------------------------------------------------------------------
     // CONT_WHITE (White Strip): X=447, 130x300. White.
