@@ -77,4 +77,7 @@ esp_err_t wavesahre_rgb_lcd_bl_off();
 
 void example_lvgl_demo_ui();
 
+// Smartbike custom UI
+void smartbike_main_menu(void);
+
 #endif
