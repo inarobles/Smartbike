@@ -50,11 +50,11 @@ void ui_training_init(void)
     lv_obj_set_style_bg_color(scr, lv_color_hex(0x000000), LV_PART_MAIN); // Black background
 
     // -------------------------------------------------------------------------
-    // CONT_TOP (Data): X=0, 300x480. Black.
+    // CONT_TOP (Data): X=0, 280x480. Black.
     // 5 Rows (Visual) x 4 Cols (Visual)
     // -------------------------------------------------------------------------
     lv_obj_t *cont_top = lv_obj_create(scr);
-    lv_obj_set_size(cont_top, 300, 480);
+    lv_obj_set_size(cont_top, 280, 480);
     lv_obj_set_pos(cont_top, 0, 0);
     lv_obj_set_style_bg_color(cont_top, lv_color_hex(0x000000), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_top, 0, LV_PART_MAIN);
@@ -65,7 +65,7 @@ void ui_training_init(void)
 
     // Row Heights (Logical Widths)
     int h_header = 30;
-    int h_row = 67;
+    int h_row = 62;
     
     // Row Positions (Logical X)
     int x_r0 = 0;
@@ -119,11 +119,11 @@ void ui_training_init(void)
 
 
     // -------------------------------------------------------------------------
-    // CONT_MID (Summary): X=300, 170x480. Dark Grey.
+    // CONT_MID (Summary): X=280, 170x480. Dark Grey.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_mid = lv_obj_create(scr);
     lv_obj_set_size(cont_mid, 170, 480);
-    lv_obj_set_pos(cont_mid, 300, 0);
+    lv_obj_set_pos(cont_mid, 280, 0);
     lv_obj_set_style_bg_color(cont_mid, lv_palette_darken(LV_PALETTE_GREY, 3), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_mid, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_mid, 0, LV_PART_MAIN);
@@ -160,11 +160,11 @@ void ui_training_init(void)
     create_grid_cell(cont_mid, "0:05:30", &lv_font_montserrat_48, x_m2, h_mid_row, y_m_lap, w_mid_col);
 
     // -------------------------------------------------------------------------
-    // CONT_WHITE (White Strip): X=470, 130x480. White.
+    // CONT_WHITE (White Strip): X=450, 130x480. White.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_white = lv_obj_create(scr);
     lv_obj_set_size(cont_white, 130, 480);
-    lv_obj_set_pos(cont_white, 470, 0);
+    lv_obj_set_pos(cont_white, 450, 0);
     lv_obj_set_style_bg_color(cont_white, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_white, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_white, 0, LV_PART_MAIN);
@@ -173,11 +173,11 @@ void ui_training_init(void)
     lv_obj_clear_flag(cont_white, LV_OBJ_FLAG_SCROLLABLE);
 
     // -------------------------------------------------------------------------
-    // CONT_BOT (Chart): X=600, 200x480. Black.
+    // CONT_BOT (Chart): X=580, 220x480. Black.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_bot = lv_obj_create(scr);
-    lv_obj_set_size(cont_bot, 200, 480);
-    lv_obj_set_pos(cont_bot, 600, 0);
+    lv_obj_set_size(cont_bot, 220, 480);
+    lv_obj_set_pos(cont_bot, 580, 0);
     lv_obj_set_style_bg_color(cont_bot, lv_color_hex(0x000000), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_bot, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_bot, 0, LV_PART_MAIN);
