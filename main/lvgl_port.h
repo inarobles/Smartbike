@@ -21,8 +21,8 @@ extern "C" {
  * LVGL related parameters, can be adjusted by users
  *
  */
-#define LVGL_PORT_H_RES             (800)
-#define LVGL_PORT_V_RES             (480)
+#define LVGL_PORT_H_RES             (480)
+#define LVGL_PORT_V_RES             (800)
 #define LVGL_PORT_TICK_PERIOD_MS    (CONFIG_EXAMPLE_LVGL_PORT_TICK)
 
 /**
