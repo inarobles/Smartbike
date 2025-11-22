@@ -195,10 +195,10 @@ void ui_training_init(void)
     create_grid_cell(cont_mid, "0:05:30", &lv_font_montserrat_48, x_m2, h_mid_row, y_m_lap, w_mid_col);
 
     // -------------------------------------------------------------------------
-    // CONT_GREY_RIGHT (Right Grey Block - Visual Right): X=447, 130x70. Dark Grey.
+    // CONT_GREY_RIGHT (Right Grey Block - Visual Right): X=447, 130x90. Dark Grey.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_grey_right = lv_obj_create(scr);
-    lv_obj_set_size(cont_grey_right, 130, 70);
+    lv_obj_set_size(cont_grey_right, 130, 90);
     lv_obj_set_pos(cont_grey_right, 447, 0);
     lv_obj_set_style_bg_color(cont_grey_right, lv_palette_darken(LV_PALETTE_GREY, 3), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_grey_right, 0, LV_PART_MAIN);
@@ -207,7 +207,7 @@ void ui_training_init(void)
     lv_obj_set_scrollbar_mode(cont_grey_right, LV_SCROLLBAR_MODE_OFF);
     lv_obj_clear_flag(cont_grey_right, LV_OBJ_FLAG_SCROLLABLE);
 
-    // Delantero icon (85x83)
+    // Delantero icon (88x88)
     lv_obj_t *img_delantero = lv_img_create(cont_grey_right);
     lv_img_set_src(img_delantero, &delantero);
     lv_obj_set_style_transform_angle(img_delantero, 2700, 0); // 270 degrees
@@ -218,11 +218,11 @@ void ui_training_init(void)
     lv_obj_center(img_delantero);
 
     // -------------------------------------------------------------------------
-    // CONT_WHITE (White Strip): X=447, 130x340. White.
+    // CONT_WHITE (White Strip): X=447, 130x300. White.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_white = lv_obj_create(scr);
-    lv_obj_set_size(cont_white, 130, 340);
-    lv_obj_set_pos(cont_white, 447, 70);
+    lv_obj_set_size(cont_white, 130, 300);
+    lv_obj_set_pos(cont_white, 447, 90);
     lv_obj_set_style_bg_color(cont_white, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_white, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_white, 0, LV_PART_MAIN);
@@ -231,11 +231,11 @@ void ui_training_init(void)
     lv_obj_clear_flag(cont_white, LV_OBJ_FLAG_SCROLLABLE);
 
     // -------------------------------------------------------------------------
-    // CONT_GREY_LEFT (Left Grey Block - Visual Left): X=447, 130x70. Dark Grey.
+    // CONT_GREY_LEFT (Left Grey Block - Visual Left): X=447, 130x90. Dark Grey.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_grey_left = lv_obj_create(scr);
-    lv_obj_set_size(cont_grey_left, 130, 70);
-    lv_obj_set_pos(cont_grey_left, 447, 410);
+    lv_obj_set_size(cont_grey_left, 130, 90);
+    lv_obj_set_pos(cont_grey_left, 447, 390);
     lv_obj_set_style_bg_color(cont_grey_left, lv_palette_darken(LV_PALETTE_GREY, 3), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_grey_left, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_grey_left, 0, LV_PART_MAIN);
@@ -243,7 +243,7 @@ void ui_training_init(void)
     lv_obj_set_scrollbar_mode(cont_grey_left, LV_SCROLLBAR_MODE_OFF);
     lv_obj_clear_flag(cont_grey_left, LV_OBJ_FLAG_SCROLLABLE);
 
-    // Trasero icon (87x85)
+    // Trasero icon (88x88)
     lv_obj_t *img_trasero = lv_img_create(cont_grey_left);
     lv_img_set_src(img_trasero, &trasero);
     lv_obj_set_style_transform_angle(img_trasero, 2700, 0); // 270 degrees
