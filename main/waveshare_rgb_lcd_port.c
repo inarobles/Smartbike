@@ -306,6 +306,10 @@ static void btn_calibrate_clicked(lv_event_t *e)
 // Main menu screen with 5 buttons
 void smartbike_main_menu(void)
 {
+    // Force display rotation to 90 degrees (portrait mode)
+    lv_disp_t *disp = lv_disp_get_default();
+    lv_disp_set_rotation(disp, LV_DISP_ROT_90);
+
     lv_obj_t *scr = lv_scr_act(); // Get the current active screen
     lv_obj_clean(scr); // Clean the screen
 
