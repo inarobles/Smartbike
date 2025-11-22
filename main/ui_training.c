@@ -226,7 +226,7 @@ void ui_training_init(void)
     lv_obj_set_style_transform_pivot_x(lbl_delantero, LV_PCT(50), 0);
     lv_obj_set_style_transform_pivot_y(lbl_delantero, LV_PCT(50), 0);
     lv_obj_set_style_text_color(lbl_delantero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
-    lv_obj_align(lbl_delantero, LV_ALIGN_CENTER, -35, 30); // Below icon (visual)
+    lv_obj_align(lbl_delantero, LV_ALIGN_CENTER, 10, 0); // Below icon: +X = visual down
 
     // -------------------------------------------------------------------------
     // CONT_WHITE (White Strip): X=447, 130x300. White.
@@ -273,7 +273,7 @@ void ui_training_init(void)
     lv_obj_set_style_transform_pivot_x(lbl_trasero, LV_PCT(50), 0);
     lv_obj_set_style_transform_pivot_y(lbl_trasero, LV_PCT(50), 0);
     lv_obj_set_style_text_color(lbl_trasero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
-    lv_obj_align(lbl_trasero, LV_ALIGN_CENTER, -35, 28); // Below icon (visual)
+    lv_obj_align(lbl_trasero, LV_ALIGN_CENTER, 10, -2); // Below icon: +X = visual down
 
     // -------------------------------------------------------------------------
     // CONT_BOT (Chart): X=577, 223x480. Black.
