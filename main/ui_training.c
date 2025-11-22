@@ -5,6 +5,7 @@
  */
 
 #include "ui_training.h"
+#include "icon_heart.h"
 
 LV_FONT_DECLARE(lv_font_montserrat_48);
 LV_FONT_DECLARE(lv_font_montserrat_36);
@@ -41,6 +42,38 @@ static void create_grid_cell(lv_obj_t *parent, const char *text, const lv_font_t
     lv_obj_set_style_text_font(lbl, font, LV_PART_MAIN);
     lv_obj_add_style(lbl, &style_text_rot, LV_PART_MAIN);
     lv_obj_center(lbl);
+}
+
+// Helper to create a grid cell with an image icon
+static void create_grid_cell_icon(lv_obj_t *parent, const lv_img_dsc_t *img_src, int x, int w, int y, int h)
+{
+    // Container for the cell
+    lv_obj_t *cont = lv_obj_create(parent);
+    lv_obj_set_size(cont, w, h);
+    lv_obj_set_pos(cont, x, y);
+    lv_obj_set_style_bg_opa(cont, LV_OPA_TRANSP, LV_PART_MAIN);
+    lv_obj_set_style_border_width(cont, 0, LV_PART_MAIN);
+    lv_obj_set_style_radius(cont, 0, LV_PART_MAIN);
+    lv_obj_set_style_pad_all(cont, 0, LV_PART_MAIN);
+    lv_obj_set_scrollbar_mode(cont, LV_SCROLLBAR_MODE_OFF);
+    lv_obj_clear_flag(cont, LV_OBJ_FLAG_SCROLLABLE);
+
+    // Style for rotated image (270 degrees)
+    static lv_style_t style_img_rot;
+    if (style_img_rot.prop_cnt == 0) {
+        lv_style_init(&style_img_rot);
+        lv_style_set_transform_angle(&style_img_rot, 2700); // 270 degrees
+        lv_style_set_transform_pivot_x(&style_img_rot, LV_PCT(50));
+        lv_style_set_transform_pivot_y(&style_img_rot, LV_PCT(50));
+    }
+
+    // Image
+    lv_obj_t *img = lv_img_create(cont);
+    lv_img_set_src(img, img_src);
+    lv_obj_add_style(img, &style_img_rot, LV_PART_MAIN);
+    lv_obj_set_style_img_recolor(img, lv_color_hex(0xFFFFFF), LV_PART_MAIN);  // White color
+    lv_obj_set_style_img_recolor_opa(img, LV_OPA_COVER, LV_PART_MAIN);        // Full recolor
+    lv_obj_center(img);
 }
 
 void ui_training_init(void)
@@ -112,7 +145,7 @@ void ui_training_init(void)
     create_grid_cell(cont_top, "345", &lv_font_montserrat_48, x_r3, h_row, y_c3, w_col_data);
 
     // Row 4: Heart (BPM)
-    create_grid_cell(cont_top, "\xE2\x99\xA5", &lv_font_montserrat_24, x_r4, h_row, y_c0, w_col_label); // Unicode heart symbol ♥
+    create_grid_cell_icon(cont_top, &icon_heart, x_r4, h_row, y_c0, w_col_label); // Heart icon
     create_grid_cell(cont_top, "105", &lv_font_montserrat_48, x_r4, h_row, y_c1, w_col_data);
     create_grid_cell(cont_top, "123", &lv_font_montserrat_48, x_r4, h_row, y_c2, w_col_data);
     create_grid_cell(cont_top, "167", &lv_font_montserrat_48, x_r4, h_row, y_c3, w_col_data);
