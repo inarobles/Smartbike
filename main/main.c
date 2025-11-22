@@ -14,13 +14,6 @@ void app_main()
 
     ESP_LOGI(TAG, "Display Smartbike Main Menu");
 
-    // Set display rotation to 90 degrees (portrait mode)
-    if (lvgl_port_lock(-1)) {
-        lv_disp_t *disp = lv_disp_get_default();
-        lv_disp_set_rotation(disp, LV_DISP_ROT_90);
-        lvgl_port_unlock();
-    }
-
     // Lock the mutex due to the LVGL APIs are not thread-safe
     if (lvgl_port_lock(-1)) {
         // lv_demo_stress();

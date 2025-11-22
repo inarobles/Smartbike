@@ -312,19 +312,19 @@ void smartbike_main_menu(void)
     // Set background color to white
     lv_obj_set_style_bg_color(scr, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
 
-    // Screen dimensions
+    // Screen dimensions (will be 480x800 after 90° rotation)
     lv_coord_t screen_width = lv_obj_get_width(scr);
     lv_coord_t screen_height = lv_obj_get_height(scr);
 
-    // Button dimensions with margins
-    lv_coord_t margin_x = 40; // Horizontal margin
-    lv_coord_t margin_y = 15; // Vertical margin between buttons
-    lv_coord_t top_margin = 50; // Top margin from screen edge
-    lv_coord_t bottom_margin = 50; // Bottom margin
+    // Button dimensions for vertical layout
+    lv_coord_t margin_x = 30; // Left/right margin
+    lv_coord_t margin_y = 20; // Vertical margin between buttons
+    lv_coord_t top_margin = 80; // Top margin
+    lv_coord_t bottom_margin = 80; // Bottom margin
 
-    // Calculate available space and button height
+    // Calculate button dimensions
     lv_coord_t available_height = screen_height - top_margin - bottom_margin - (4 * margin_y);
-    lv_coord_t btn_height = available_height / 5; // Divide available space equally
+    lv_coord_t btn_height = available_height / 5; // 5 buttons stacked vertically
     lv_coord_t btn_width = screen_width - (2 * margin_x);
 
     // Create 5 buttons
