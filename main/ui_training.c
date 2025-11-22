@@ -210,8 +210,8 @@ void ui_training_init(void)
     // Delantero icon (88x88 scaled to 44x44)
     lv_obj_t *img_delantero = lv_img_create(cont_grey_right);
     lv_img_set_src(img_delantero, &delantero);
-    lv_img_set_zoom(img_delantero, 128); // 50% zoom (256 = 100%)
     lv_obj_set_style_transform_angle(img_delantero, 2700, 0); // 270 degrees
+    lv_obj_set_style_transform_zoom(img_delantero, 128, 0); // 50% scale (256 = 100%)
     lv_obj_set_style_transform_pivot_x(img_delantero, LV_PCT(50), 0);
     lv_obj_set_style_transform_pivot_y(img_delantero, LV_PCT(50), 0);
     lv_obj_set_style_img_recolor(img_delantero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
@@ -247,8 +247,8 @@ void ui_training_init(void)
     // Trasero icon (88x88 scaled to 44x44)
     lv_obj_t *img_trasero = lv_img_create(cont_grey_left);
     lv_img_set_src(img_trasero, &trasero);
-    lv_img_set_zoom(img_trasero, 128); // 50% zoom (256 = 100%)
     lv_obj_set_style_transform_angle(img_trasero, 2700, 0); // 270 degrees
+    lv_obj_set_style_transform_zoom(img_trasero, 128, 0); // 50% scale (256 = 100%)
     lv_obj_set_style_transform_pivot_x(img_trasero, LV_PCT(50), 0);
     lv_obj_set_style_transform_pivot_y(img_trasero, LV_PCT(50), 0);
     lv_obj_set_style_img_recolor(img_trasero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
