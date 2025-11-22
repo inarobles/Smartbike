@@ -207,15 +207,16 @@ void ui_training_init(void)
     lv_obj_set_scrollbar_mode(cont_grey_right, LV_SCROLLBAR_MODE_OFF);
     lv_obj_clear_flag(cont_grey_right, LV_OBJ_FLAG_SCROLLABLE);
 
-    // Delantero icon (88x88)
+    // Delantero icon (88x88 scaled to 44x44)
     lv_obj_t *img_delantero = lv_img_create(cont_grey_right);
     lv_img_set_src(img_delantero, &delantero);
+    lv_img_set_zoom(img_delantero, 128); // 50% zoom (256 = 100%)
     lv_obj_set_style_transform_angle(img_delantero, 2700, 0); // 270 degrees
     lv_obj_set_style_transform_pivot_x(img_delantero, LV_PCT(50), 0);
     lv_obj_set_style_transform_pivot_y(img_delantero, LV_PCT(50), 0);
     lv_obj_set_style_img_recolor(img_delantero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_img_recolor_opa(img_delantero, 255, LV_PART_MAIN);
-    lv_obj_center(img_delantero);
+    lv_obj_align(img_delantero, LV_ALIGN_CENTER, 0, -15); // Centered, 15px up
 
     // -------------------------------------------------------------------------
     // CONT_WHITE (White Strip): X=447, 130x300. White.
@@ -243,15 +244,16 @@ void ui_training_init(void)
     lv_obj_set_scrollbar_mode(cont_grey_left, LV_SCROLLBAR_MODE_OFF);
     lv_obj_clear_flag(cont_grey_left, LV_OBJ_FLAG_SCROLLABLE);
 
-    // Trasero icon (88x88)
+    // Trasero icon (88x88 scaled to 44x44)
     lv_obj_t *img_trasero = lv_img_create(cont_grey_left);
     lv_img_set_src(img_trasero, &trasero);
+    lv_img_set_zoom(img_trasero, 128); // 50% zoom (256 = 100%)
     lv_obj_set_style_transform_angle(img_trasero, 2700, 0); // 270 degrees
     lv_obj_set_style_transform_pivot_x(img_trasero, LV_PCT(50), 0);
     lv_obj_set_style_transform_pivot_y(img_trasero, LV_PCT(50), 0);
     lv_obj_set_style_img_recolor(img_trasero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_img_recolor_opa(img_trasero, 255, LV_PART_MAIN);
-    lv_obj_center(img_trasero);
+    lv_obj_align(img_trasero, LV_ALIGN_CENTER, 0, -15); // Centered, 15px up
 
     // -------------------------------------------------------------------------
     // CONT_BOT (Chart): X=577, 223x480. Black.
