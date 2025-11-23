@@ -221,12 +221,12 @@ void ui_training_init(void)
     // Label "1/2" below delantero icon
     lv_obj_t *lbl_delantero = lv_label_create(cont_grey_right);
     lv_label_set_text(lbl_delantero, "1/2");
-    lv_obj_set_style_text_font(lbl_delantero, &lv_font_montserrat_24, LV_PART_MAIN);
+    lv_obj_set_style_text_font(lbl_delantero, &lv_font_montserrat_28, LV_PART_MAIN);
     lv_obj_set_style_transform_angle(lbl_delantero, 2700, 0); // 270 degrees
     lv_obj_set_style_transform_pivot_x(lbl_delantero, LV_PCT(50), 0);
     lv_obj_set_style_transform_pivot_y(lbl_delantero, LV_PCT(50), 0);
     lv_obj_set_style_text_color(lbl_delantero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
-    lv_obj_align(lbl_delantero, LV_ALIGN_CENTER, 22, 0); // Below icon: +X = visual down
+    lv_obj_align(lbl_delantero, LV_ALIGN_CENTER, 24, 0); // Below icon: +X = visual down
 
     // -------------------------------------------------------------------------
     // CONT_WHITE (White Strip): X=447, 130x300. White.
@@ -268,12 +268,12 @@ void ui_training_init(void)
     // Label "3/11" below trasero icon
     lv_obj_t *lbl_trasero = lv_label_create(cont_grey_left);
     lv_label_set_text(lbl_trasero, "3/11");
-    lv_obj_set_style_text_font(lbl_trasero, &lv_font_montserrat_24, LV_PART_MAIN);
+    lv_obj_set_style_text_font(lbl_trasero, &lv_font_montserrat_28, LV_PART_MAIN);
     lv_obj_set_style_transform_angle(lbl_trasero, 2700, 0); // 270 degrees
     lv_obj_set_style_transform_pivot_x(lbl_trasero, LV_PCT(50), 0);
     lv_obj_set_style_transform_pivot_y(lbl_trasero, LV_PCT(50), 0);
     lv_obj_set_style_text_color(lbl_trasero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
-    lv_obj_align(lbl_trasero, LV_ALIGN_CENTER, 22, -2); // Below icon: +X = visual down
+    lv_obj_align(lbl_trasero, LV_ALIGN_CENTER, 24, -2); // Below icon: +X = visual down
 
     // -------------------------------------------------------------------------
     // CONT_BOT (Chart): X=577, 223x480. Black.
