@@ -195,11 +195,22 @@ void ui_training_init(void)
     create_grid_cell(cont_mid, "0:05:30", &lv_font_montserrat_48, x_m2, h_mid_row, y_m_lap, w_mid_col);
 
     // -------------------------------------------------------------------------
-    // CONT_GREY_RIGHT (Right Grey Block - Visual Right): X=447, 130x90. Dark Grey.
+    // Black line (1px) below CONT_MID - Visual bottom line
+    // -------------------------------------------------------------------------
+    lv_obj_t *line_bottom_mid = lv_obj_create(scr);
+    lv_obj_set_size(line_bottom_mid, 1, 480);
+    lv_obj_set_pos(line_bottom_mid, 447, 0);
+    lv_obj_set_style_bg_color(line_bottom_mid, lv_color_hex(0x000000), LV_PART_MAIN);
+    lv_obj_set_style_border_width(line_bottom_mid, 0, LV_PART_MAIN);
+    lv_obj_set_style_radius(line_bottom_mid, 0, LV_PART_MAIN);
+    lv_obj_set_style_pad_all(line_bottom_mid, 0, LV_PART_MAIN);
+
+    // -------------------------------------------------------------------------
+    // CONT_GREY_RIGHT (Right Grey Block - Visual Right): X=448, 129x90. Dark Grey.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_grey_right = lv_obj_create(scr);
-    lv_obj_set_size(cont_grey_right, 130, 90);
-    lv_obj_set_pos(cont_grey_right, 447, 0);
+    lv_obj_set_size(cont_grey_right, 129, 90);
+    lv_obj_set_pos(cont_grey_right, 448, 0);
     lv_obj_set_style_bg_color(cont_grey_right, lv_palette_darken(LV_PALETTE_GREY, 3), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_grey_right, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_grey_right, 0, LV_PART_MAIN);
@@ -229,11 +240,11 @@ void ui_training_init(void)
     lv_obj_align(lbl_delantero, LV_ALIGN_CENTER, 24, 0); // Below icon: +X = visual down
 
     // -------------------------------------------------------------------------
-    // CONT_WHITE (White Strip): X=447, 130x300. White.
+    // CONT_WHITE (White Strip): X=448, 129x300. White.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_white = lv_obj_create(scr);
-    lv_obj_set_size(cont_white, 130, 300);
-    lv_obj_set_pos(cont_white, 447, 90);
+    lv_obj_set_size(cont_white, 129, 300);
+    lv_obj_set_pos(cont_white, 448, 90);
     lv_obj_set_style_bg_color(cont_white, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_white, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_white, 0, LV_PART_MAIN);
@@ -242,11 +253,11 @@ void ui_training_init(void)
     lv_obj_clear_flag(cont_white, LV_OBJ_FLAG_SCROLLABLE);
 
     // -------------------------------------------------------------------------
-    // CONT_GREY_LEFT (Left Grey Block - Visual Left): X=447, 130x90. Dark Grey.
+    // CONT_GREY_LEFT (Left Grey Block - Visual Left): X=448, 129x90. Dark Grey.
     // -------------------------------------------------------------------------
     lv_obj_t *cont_grey_left = lv_obj_create(scr);
-    lv_obj_set_size(cont_grey_left, 130, 90);
-    lv_obj_set_pos(cont_grey_left, 447, 390);
+    lv_obj_set_size(cont_grey_left, 129, 90);
+    lv_obj_set_pos(cont_grey_left, 448, 390);
     lv_obj_set_style_bg_color(cont_grey_left, lv_palette_darken(LV_PALETTE_GREY, 3), LV_PART_MAIN);
     lv_obj_set_style_border_width(cont_grey_left, 0, LV_PART_MAIN);
     lv_obj_set_style_radius(cont_grey_left, 0, LV_PART_MAIN);
