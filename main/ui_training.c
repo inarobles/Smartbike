@@ -227,7 +227,7 @@ void ui_training_init(void)
     lv_obj_set_style_transform_pivot_y(img_delantero, LV_PCT(50), 0);
     lv_obj_set_style_img_recolor(img_delantero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_img_recolor_opa(img_delantero, 255, LV_PART_MAIN);
-    lv_obj_align(img_delantero, LV_ALIGN_CENTER, -35, 0); // -35 X = 35px up (visual), 0 Y = 15px left (visual)
+    lv_obj_align(img_delantero, LV_ALIGN_CENTER, -33, 0); // -33 X = 33px up (visual), 0 Y = 15px left (visual)
 
     // Label "1/2" below delantero icon
     lv_obj_t *lbl_delantero = lv_label_create(cont_grey_right);
@@ -274,7 +274,7 @@ void ui_training_init(void)
     lv_obj_set_style_transform_pivot_y(img_trasero, LV_PCT(50), 0);
     lv_obj_set_style_img_recolor(img_trasero, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
     lv_obj_set_style_img_recolor_opa(img_trasero, 255, LV_PART_MAIN);
-    lv_obj_align(img_trasero, LV_ALIGN_CENTER, -32, -2); // -32 X = 32px up (visual), -2 Y = 13px left (visual)
+    lv_obj_align(img_trasero, LV_ALIGN_CENTER, -31, -2); // -31 X = 31px up (visual), -2 Y = 13px left (visual)
 
     // Label "3/11" below trasero icon
     lv_obj_t *lbl_trasero = lv_label_create(cont_grey_left);
