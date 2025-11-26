@@ -20,7 +20,7 @@ idf_component_register(SRCS "main.c"
                               bsp_extra
                               esp32_p4_function_ev_board
                               esp_lcd_touch_gsl3680
-                              esp_lcd_jd9365
+                              esp_lcd_jd9165
                               cm_protocol
 )
 
