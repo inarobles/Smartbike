@@ -2,12 +2,13 @@
 # CMakeLists in this exact order for cmake to work correctly
 cmake_minimum_required(VERSION 3.5)
 
+# The configuration is to prevent compilation errors on the Windows system.
+set(CMAKE_OBJECT_PATH_MAX 512)
+
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
-# set(EXTRA_COMPONENT_DIRS
-#     ../common_components
-#     )
-
-add_compile_options(-Wno-format)
-add_compile_options(-Wno-ignored-qualifiers)
-project(lvgl_demo_v8)
+add_compile_options(-Wno-format
+                    -Wno-unused-variable
+                    -Wno-missing-field-initializers
+                    -Wno-ignored-qualifiers)
+project(smartbike_p4)

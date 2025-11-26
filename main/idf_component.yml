@@ -14,3 +14,11 @@ dependencies:
 
   # Display driver
   espressif/esp_lcd_jd9165: "^1.0.0"
+
+  # ESP-Brookesia UI framework (used in EJEMPLO)
+  espressif/esp-brookesia:
+    version: 0.4.*
+
+  esp_video:
+    version: 0.8.*
+    public: true
