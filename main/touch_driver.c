@@ -3,9 +3,9 @@
 #include "esp_log.h"
 #include "esp_check.h"
 #include "esp_lcd_touch_gsl3680.h"
-#include "bsp/esp32_p4_function_ev_board.h"
 
 #include "touch_driver.h"
+#include "i2c_driver.h"
 
 static const char *TAG = "touch_driver";
 
@@ -23,10 +23,10 @@ static esp_lcd_touch_handle_t touch_handle_p = NULL;
 
 esp_err_t bsp_touch_init(esp_lcd_touch_handle_t *touch_handle)
 {
-    // Usar el bus I2C compartido del BSP en lugar de crear uno nuevo
-    i2c_handle = bsp_i2c_get_handle();
+    // Obtener el handle del bus I2C compartido
+    i2c_handle = i2c_driver_get_handle();
     if (!i2c_handle) {
-        ESP_LOGE(TAG, "Failed to get BSP I2C handle");
+        ESP_LOGE(TAG, "Failed to get I2C handle. I2C must be initialized first.");
         return ESP_FAIL;
     }
 

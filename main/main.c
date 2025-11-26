@@ -10,8 +10,9 @@
 #include "driver/uart.h" // <-- FIX: Added missing include for UART functions
 #include "nvs_flash.h"
 
-#include "bsp/esp32_p4_function_ev_board.h"
 #include "lvgl.h"
+#include "display_driver.h"
+#include "i2c_driver.h"
 #include "treadmill_state.h"
 #include "audio.h"
 #include "ui.h"
@@ -57,6 +58,13 @@ void app_main(void) {
     if (g_state_mutex == NULL) {
         ESP_LOGE(TAG, "Fallo al crear el mutex de estado. Abortando.");
         abort();
+    }
+
+    // Initialize I2C bus (shared by touch and buttons)
+    ret = i2c_driver_init();
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "i2c_driver_init() failed with error: %d", ret);
+        return;
     }
 
     // Initialize display with custom configuration

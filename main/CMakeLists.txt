@@ -8,6 +8,9 @@ idf_component_register(SRCS "main.c"
                       "wifi_client.c"
                       "wifi_manager.c"
                       "cm_master.c"
+                      "i2c_driver.c"
+                      "display_driver.c"
+                      "touch_driver.c"
                       "fonts/chivo_mono_100.c"
                       "fonts/chivo_mono_70.c"
                 INCLUDE_DIRS "."
@@ -17,7 +20,7 @@ idf_component_register(SRCS "main.c"
                               esp_wifi_remote
                               esp_http_client
                               esp-tls
-                              esp32_p4_function_ev_board
+                              esp_lvgl_port
                               esp_lcd_touch_gsl3680
                               esp_lcd_jd9165
                               cm_protocol

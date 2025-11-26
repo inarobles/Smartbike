@@ -6,11 +6,11 @@
 #include "ble_client.h"
 #include "cm_master.h"
 #include "esp_log.h"
+#include "esp_lvgl_port.h"
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
 #include "freertos/task.h"
-#include "bsp/esp32_p4_function_ev_board.h"
 #include "nvs_flash.h"
 #include "nvs.h"
 
@@ -321,7 +321,7 @@ void ui_update_task(void *pvParameter) {
             cm_master_set_speed(0.0f);
 
             // Mostrar mensaje de error crítico
-            bsp_display_lock(0);
+            lvgl_port_lock(0);
             set_info_text_persistent("ERROR CRITICO: Sensor de inclinacion averiado. Contacte servicio tecnico.");
 
             // Desactivar todos los botones de control
@@ -334,7 +334,7 @@ void ui_update_task(void *pvParameter) {
             lv_obj_add_state(btn_stop, LV_STATE_DISABLED);
             lv_obj_add_state(btn_cooldown, LV_STATE_DISABLED);
 
-            bsp_display_unlock();
+            lvgl_port_unlock();
 
             ESP_LOGE("UI", "═══════════════════════════════════════════════════");
             ESP_LOGE("UI", "  SISTEMA BLOQUEADO POR ERROR CRÍTICO");
@@ -1038,12 +1038,12 @@ static void ble_device_select_event_cb(lv_event_t *e) {
 static void ui_add_ble_device_to_list(const char* name, ble_addr_t addr) {
     // The spinner is hidden when the first device is found.
     if (!lv_obj_has_flag(spinner_ble_scan, LV_OBJ_FLAG_HIDDEN)) {
-        bsp_display_lock(0);
+        lvgl_port_lock(0);
         lv_obj_add_flag(spinner_ble_scan, LV_OBJ_FLAG_HIDDEN);
-        bsp_display_unlock();
+        lvgl_port_unlock();
     }
 
-    bsp_display_lock(0);
+    lvgl_port_lock(0);
 
     // Allocate memory for the address on the heap, so it persists after the scan.
     ble_addr_t *addr_copy = malloc(sizeof(ble_addr_t));
@@ -1056,7 +1056,7 @@ static void ui_add_ble_device_to_list(const char* name, ble_addr_t addr) {
         lv_obj_add_event_cb(btn, ble_device_btn_delete_cb, LV_EVENT_DELETE, NULL);  // Free memory on delete
     }
 
-    bsp_display_unlock();
+    lvgl_port_unlock();
 }
 
 /**
@@ -1077,12 +1077,12 @@ static void ble_device_btn_delete_cb(lv_event_t *e) {
 static void ble_scan_button_event_cb(lv_event_t *e) {
     audio_play_beep();
     
-    bsp_display_lock(0);
+    lvgl_port_lock(0);
     // Clear any old items from the list
     lv_obj_clean(list_ble_devices);
     // Show the spinner
     lv_obj_clear_flag(spinner_ble_scan, LV_OBJ_FLAG_HIDDEN);
-    bsp_display_unlock();
+    lvgl_port_unlock();
 
     // Start the scan, passing the UI update function as a callback
     ble_client_start_scan(ui_add_ble_device_to_list);
@@ -2346,10 +2346,10 @@ void ui_confirm_set_value(void) {
         showing_weight_in_kcal_field = true;
 
         // Mostrar el peso en el label de Kcal (pantalla principal) y establecer la unidad "kg" ANTES de _switch_to_main_screen_internal
-        bsp_display_lock(0);
+        lvgl_port_lock(0);
         lv_label_set_text_fmt(label_kcal, "%d", (int)weight);
         lv_label_set_text(unit_kcal_main, "kg");  // Unidad en pantalla MAIN
-        bsp_display_unlock();
+        lvgl_port_unlock();
 
         _switch_to_main_screen_internal();
     } else {
@@ -2384,7 +2384,7 @@ void ui_confirm_set_value(void) {
         }
 
         // Actualizar inmediatamente los labels en la pantalla principal
-        bsp_display_lock(0);
+        lvgl_port_lock(0);
         if (is_speed_mode) {
             // Actualizar velocidad
             int speed_int = (int)final_value;
@@ -2405,7 +2405,7 @@ void ui_confirm_set_value(void) {
             int climb_int = (int)roundf(final_value);
             lv_label_set_text_fmt(label_climb_percent, "%d", climb_int);
         }
-        bsp_display_unlock();
+        lvgl_port_unlock();
 
         _switch_to_main_screen_internal();
         xSemaphoreTake(g_state_mutex, portMAX_DELAY);
@@ -2523,7 +2523,7 @@ void ui_head_toggle(void) {
 
 static void wax_event_cb(lv_event_t *e) {
     audio_play_beep();
-    bsp_display_lock(0);
+    lvgl_port_lock(0);
 
     // Actualizar el contador de horas en la pantalla
     uint32_t total_seconds = g_treadmill_state.total_running_seconds;
@@ -2532,7 +2532,7 @@ static void wax_event_cb(lv_event_t *e) {
     lv_label_set_text_fmt(label_wax_hours, "%lu:%02lu", hours, minutes);
 
     lv_scr_load(scr_wax);
-    bsp_display_unlock();
+    lvgl_port_unlock();
 }
 
 static void apply_wax_event_cb(lv_event_t *e) {
@@ -2563,9 +2563,9 @@ static void apply_wax_event_cb(lv_event_t *e) {
 
 static void wax_back_event_cb(lv_event_t *e) {
     audio_play_beep();
-    bsp_display_lock(0);
+    lvgl_port_lock(0);
     lv_scr_load(scr_training_select);
-    bsp_display_unlock();
+    lvgl_port_unlock();
 }
 
 void ui_weight_entry(void) {
@@ -2578,10 +2578,10 @@ void ui_weight_entry(void) {
     } else {
         // Actuar como WEIGHT: abrir entrada de peso
         audio_play_beep();
-        bsp_display_lock(0);
+        lvgl_port_lock(0);
         _switch_to_set_screen_internal(SET_MODE_WEIGHT);
         lv_scr_load(scr_set);
-        bsp_display_unlock();
+        lvgl_port_unlock();
     }
 }
 
@@ -2597,7 +2597,7 @@ void ui_back_to_training(void) {
     } else {
         // Actuar como BACK: volver a selección de entrenamientos
         audio_play_beep();
-        bsp_display_lock(0);
+        lvgl_port_lock(0);
         if (wifi_check_timer) {
             lv_timer_del(wifi_check_timer);
             wifi_check_timer = NULL;
@@ -2605,7 +2605,7 @@ void ui_back_to_training(void) {
         wifi_connected_timestamp = 0;
         lv_scr_load(scr_training_select);
         wifi_check_timer = lv_timer_create(wifi_check_timer_cb, 100, NULL);
-        bsp_display_unlock();
+        lvgl_port_unlock();
     }
 }
 
@@ -2625,54 +2625,54 @@ void ui_select_training(int training_number) {
     cm_master_set_incline(0.0f);
 
     // Limpiar timer de WiFi
-    bsp_display_lock(0);
+    lvgl_port_lock(0);
     if (wifi_check_timer) {
         lv_timer_del(wifi_check_timer);
         wifi_check_timer = NULL;
     }
-    bsp_display_unlock();
+    lvgl_port_unlock();
 
     switch(training_number) {
         case 1:
             ESP_LOGI(TAG, "Entrenamiento libre seleccionado (botón físico)");
-            bsp_display_lock(0);
+            lvgl_port_lock(0);
             lv_scr_load(scr_main);
             cm_master_set_training_mode(true);  // ACTIVAR TRAINING MODE
             ESP_LOGI(TAG, "Training mode activado (botón físico)");
             set_info_text_persistent("Selecciona una velocidad para comenzar");
-            bsp_display_unlock();
+            lvgl_port_unlock();
             break;
         case 2:
             ESP_LOGI(TAG, "Entrenamiento Itsaso seleccionado (botón físico) - iniciando descarga");
-            bsp_display_lock(0);
+            lvgl_port_lock(0);
             lv_scr_load(scr_loading);  // Pantalla negra durante descarga
-            bsp_display_unlock();
+            lvgl_port_unlock();
             wifi_download_plan("itsaso");
             break;
         case 3:
             ESP_LOGI(TAG, "Entrenamiento Ina seleccionado (botón físico) - iniciando descarga");
-            bsp_display_lock(0);
+            lvgl_port_lock(0);
             lv_scr_load(scr_loading);  // Pantalla negra durante descarga
-            bsp_display_unlock();
+            lvgl_port_unlock();
             wifi_download_plan("ina");
             break;
         case 4:
             ESP_LOGI(TAG, "Entrenamiento Alain seleccionado (botón físico)");
-            bsp_display_lock(0);
+            lvgl_port_lock(0);
             lv_scr_load(scr_main);
             cm_master_set_training_mode(true);  // ACTIVAR TRAINING MODE
             ESP_LOGI(TAG, "Training mode activado (botón físico)");
             set_info_text_persistent("Los enanos tienen que usar esta cinta con supervision de aita o ama.");
-            bsp_display_unlock();
+            lvgl_port_unlock();
             break;
         case 5:
             ESP_LOGI(TAG, "Entrenamiento Urko seleccionado (botón físico)");
-            bsp_display_lock(0);
+            lvgl_port_lock(0);
             lv_scr_load(scr_main);
             cm_master_set_training_mode(true);  // ACTIVAR TRAINING MODE
             ESP_LOGI(TAG, "Training mode activado (botón físico)");
             set_info_text_persistent("Los enanos tienen que usar esta cinta con supervision de aita o ama.");
-            bsp_display_unlock();
+            lvgl_port_unlock();
             break;
         default:
             ESP_LOGW(TAG, "Número de entrenamiento inválido: %d", training_number);

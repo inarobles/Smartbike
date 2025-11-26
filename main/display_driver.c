@@ -120,3 +120,67 @@ esp_lcd_panel_handle_t bsp_display_get_panel_handle(void)
 {
     return disp_panel;
 }
+
+// Static variables for LVGL display
+static lv_display_t *lvgl_disp = NULL;
+static SemaphoreHandle_t refresh_sem = NULL;
+
+lv_display_t *bsp_display_start_with_config(const bsp_display_cfg_t *cfg)
+{
+    ESP_LOGI(TAG, "Initializing LVGL port");
+
+    // Initialize LVGL port
+    ESP_ERROR_CHECK(lvgl_port_init(&cfg->lvgl_port_cfg));
+
+    // Initialize display hardware
+    esp_lcd_panel_handle_t panel_handle = NULL;
+    ESP_ERROR_CHECK(bsp_display_init(&panel_handle, &refresh_sem));
+
+    // Configure LVGL display
+    lvgl_port_display_cfg_t disp_cfg = {
+        .panel_handle = panel_handle,
+        .buffer_size = cfg->buffer_size,
+        .double_buffer = cfg->double_buffer,
+        .hres = LCD_H_RES,
+        .vres = LCD_V_RES,
+        .monochrome = false,
+        .color_format = LV_COLOR_FORMAT_RGB565,
+        .rotation = {
+            .swap_xy = false,
+            .mirror_x = false,
+            .mirror_y = false,
+        },
+        .flags = {
+            .buff_dma = cfg->flags.buff_dma,
+            .buff_spiram = cfg->flags.buff_spiram,
+            .swap_bytes = false,
+            .full_refresh = false,
+            .direct_mode = false,
+        }
+    };
+
+    lvgl_disp = lvgl_port_add_disp_dsi(&disp_cfg, refresh_sem);
+
+    ESP_LOGI(TAG, "LVGL display initialized successfully");
+    return lvgl_disp;
+}
+
+void bsp_display_backlight_on(void)
+{
+    // Backlight is already turned on in bsp_display_init
+    ESP_LOGI(TAG, "Backlight already on");
+}
+
+void bsp_display_rotate(lv_display_t *disp, lv_display_rotation_t rotation)
+{
+    if (disp == NULL) {
+        disp = lvgl_disp;
+    }
+
+    if (disp != NULL) {
+        lv_display_set_rotation(disp, rotation);
+        ESP_LOGI(TAG, "Display rotation set to %d", rotation);
+    } else {
+        ESP_LOGE(TAG, "Display not initialized");
+    }
+}

@@ -3,7 +3,7 @@
 #include "freertos/task.h"
 #include "esp_log.h"
 #include "driver/i2c_master.h"
-#include "bsp/esp32_p4_function_ev_board.h"
+#include "i2c_driver.h"
 #include "ui.h"
 #include "wifi_client.h" // For upload_to_ina/itsaso
 #include "audio.h"       // For audio_play_beep()
@@ -45,7 +45,7 @@ static esp_err_t mcp23017_read_reg(i2c_master_dev_handle_t dev_handle, uint8_t r
 }
 
 static void button_handler_task(void *pvParameter) {
-    i2c_master_bus_handle_t bus_handle = bsp_i2c_get_handle();
+    i2c_master_bus_handle_t bus_handle = i2c_driver_get_handle();
     if (!bus_handle) {
         ESP_LOGE(TAG, "Fallo al obtener el handle I2C para la tarea de botones. Abortando.");
         vTaskDelete(NULL);
