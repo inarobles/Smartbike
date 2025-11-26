@@ -7,7 +7,7 @@
 #include "esp_lcd_panel_ops.h"
 #include "esp_lcd_mipi_dsi.h"
 #include "esp_ldo_regulator.h"
-#include "esp_lcd_jd9365.h"
+#include "esp_lcd_jd9165.h"
 
 #include "display_driver.h"
 
@@ -16,8 +16,8 @@ static const char *TAG = "display_driver";
 #define LCD_BACKLIGHT     (GPIO_NUM_23)
 #define LCD_RST           (GPIO_NUM_27)
 
-#define LCD_H_RES         (800)
-#define LCD_V_RES         (1280)
+#define LCD_H_RES         (1024)
+#define LCD_V_RES         (600)
 
 #define BSP_LCD_MIPI_DSI_LANE_NUM          (2)    // 2 data lanes
 #define BSP_LCD_MIPI_DSI_LANE_BITRATE_MBPS (1500) // 1Gbps
@@ -86,10 +86,10 @@ esp_err_t bsp_display_init(esp_lcd_panel_handle_t *panel_handle, SemaphoreHandle
     };
     ESP_RETURN_ON_ERROR(esp_lcd_new_panel_io_dbi(mipi_dsi_bus, &dbi_config, &io), TAG, "New panel IO failed");
 
-    ESP_LOGI(TAG, "Install JD9365 LCD control panel");
-    esp_lcd_dpi_panel_config_t dpi_config = JD9365_800_1280_PANEL_60HZ_DPI_CONFIG(LCD_COLOR_PIXEL_FORMAT_RGB565);
+    ESP_LOGI(TAG, "Install JD9165 LCD control panel");
+    esp_lcd_dpi_panel_config_t dpi_config = JD9165_1024_600_PANEL_60HZ_DPI_CONFIG(LCD_COLOR_PIXEL_FORMAT_RGB565);
 
-    jd9365_vendor_config_t vendor_config = {
+    jd9165_vendor_config_t vendor_config = {
         .mipi_config = {
             .dsi_bus = mipi_dsi_bus,
             .dpi_config = &dpi_config,
@@ -101,7 +101,7 @@ esp_err_t bsp_display_init(esp_lcd_panel_handle_t *panel_handle, SemaphoreHandle
         .reset_gpio_num = LCD_RST,
         .vendor_config = &vendor_config,
     };
-    ESP_RETURN_ON_ERROR(esp_lcd_new_panel_jd9365(io, &lcd_dev_config, &disp_panel), TAG, "New panel failed");
+    ESP_RETURN_ON_ERROR(esp_lcd_new_panel_jd9165(io, &lcd_dev_config, &disp_panel), TAG, "New panel failed");
     *panel_handle = disp_panel;
 
     esp_lcd_dpi_panel_event_callbacks_t cbs = {
