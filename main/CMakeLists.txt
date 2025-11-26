@@ -17,7 +17,6 @@ idf_component_register(SRCS "main.c"
                               esp_wifi_remote
                               esp_http_client
                               esp-tls
-                              bsp_extra
                               esp32_p4_function_ev_board
                               esp_lcd_touch_gsl3680
                               esp_lcd_jd9165
