@@ -11,7 +11,6 @@ sdkconfig.old
 *.hex
 
 # ⚙️ Archivos de configuración generados
-sdkconfig.defaults
 sdkconfig.defaults.old
 CMakeCache.txt
 cmake_install.cmake
@@ -54,12 +53,6 @@ Desktop.ini
 *.bak
 *.swp
 *.swo
-
-# 🧰 Repositorios de dependencias externas
-submodules/
-components/esp-idf/
-managed_components/
-managed_components_temp/
 
 # ⚙️ Archivos generados por IDF monitor o flasher
 flash_project_args
