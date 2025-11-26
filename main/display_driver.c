@@ -13,7 +13,7 @@
 
 static const char *TAG = "display_driver";
 
-#define LCD_BACKLIGHT     (GPIO_NUM_23)
+#define LCD_BACKLIGHT     (GPIO_NUM_46)
 #define LCD_RST           (GPIO_NUM_27)
 
 #define LCD_H_RES         (1024)

@@ -15,8 +15,8 @@ static const char *TAG = "touch_driver";
 #define LCD_TOUCH_RST     (GPIO_NUM_22)
 #define LCD_TOUCH_INT     (GPIO_NUM_21)
 
-#define LCD_H_RES         (800)
-#define LCD_V_RES         (1280)
+#define LCD_H_RES         (1024)
+#define LCD_V_RES         (600)
 
 static i2c_master_bus_handle_t i2c_handle = NULL;
 static esp_lcd_touch_handle_t touch_handle_p = NULL;
