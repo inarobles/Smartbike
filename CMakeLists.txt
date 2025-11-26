@@ -7,9 +7,11 @@ set(CMAKE_OBJECT_PATH_MAX 512)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
-set(EXTRA_COMPONENT_DIRS
-    ../common_components
-    )
+# Commented out because this project is standalone and doesn't have ../common_components
+# The required components are managed through idf_component.yml
+# set(EXTRA_COMPONENT_DIRS
+#     ../common_components
+#     )
 
 add_compile_options(-Wno-format
                     -Wno-unused-variable
