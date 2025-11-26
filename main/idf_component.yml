@@ -15,6 +15,9 @@ dependencies:
   # Display driver
   espressif/esp_lcd_jd9165: "^1.0.0"
 
+  # Touch driver
+  espressif/esp_lcd_touch_gsl3680: "^1.0.0"
+
   # ESP-Brookesia UI framework (used in EJEMPLO)
   espressif/esp-brookesia:
     version: 0.4.*

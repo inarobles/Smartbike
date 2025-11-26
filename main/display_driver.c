@@ -144,7 +144,6 @@ lv_display_t *bsp_display_start_with_config(const bsp_display_cfg_t *cfg)
         .hres = LCD_H_RES,
         .vres = LCD_V_RES,
         .monochrome = false,
-        .color_format = LV_COLOR_FORMAT_RGB565,
         .rotation = {
             .swap_xy = false,
             .mirror_x = false,
@@ -153,13 +152,19 @@ lv_display_t *bsp_display_start_with_config(const bsp_display_cfg_t *cfg)
         .flags = {
             .buff_dma = cfg->flags.buff_dma,
             .buff_spiram = cfg->flags.buff_spiram,
-            .swap_bytes = false,
             .full_refresh = false,
             .direct_mode = false,
         }
     };
 
-    lvgl_disp = lvgl_port_add_disp_dsi(&disp_cfg, refresh_sem);
+    // Configure DSI-specific settings
+    lvgl_port_display_dsi_cfg_t dsi_cfg = {
+        .flags = {
+            .avoid_tearing = 1,
+        }
+    };
+
+    lvgl_disp = lvgl_port_add_disp_dsi(&disp_cfg, &dsi_cfg);
 
     ESP_LOGI(TAG, "LVGL display initialized successfully");
     return lvgl_disp;
@@ -178,7 +183,7 @@ void bsp_display_rotate(lv_display_t *disp, lv_display_rotation_t rotation)
     }
 
     if (disp != NULL) {
-        lv_display_set_rotation(disp, rotation);
+        lv_disp_set_rotation(disp, rotation);
         ESP_LOGI(TAG, "Display rotation set to %d", rotation);
     } else {
         ESP_LOGE(TAG, "Display not initialized");
