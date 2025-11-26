@@ -11,3 +11,7 @@ dependencies:
 
   espressif/esp_hosted:
     version: "2.6.1"
+
+  # Display and touch drivers
+  espressif/esp_lcd_touch_gsl3680: "*"
+  espressif/esp_lcd_jd9165: "*"
