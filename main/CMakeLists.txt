@@ -23,7 +23,7 @@ idf_component_register(SRCS "main.c"
                               esp_lvgl_port
                               # esp_lcd_touch_gsl3680  # TODO: Crear componente local
                               esp_lcd_jd9165
-                              cm_protocol
+                              # cm_protocol  # No existe, cm_master usa UART directamente
 )
 
 idf_component_get_property(LVGL_LIB lvgl__lvgl COMPONENT_LIB)
