@@ -1,0 +1,2 @@
+source C:/Esp/SmartbikeP4/build/bootloader/gdbinit/symbols
+source C:/Esp/SmartbikeP4/build/bootloader/gdbinit/connect
