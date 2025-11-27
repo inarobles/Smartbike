@@ -1,0 +1,1256 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 1 --decode-panic backtrace C:\Esp\Treadmill\Consola\build\lvgl_demo_v8.elf C:\Esp\Treadmill\Consola\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x30f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (26) boot: compile time Nov 11 2025 14:54:14[0m
+[0;32mI (26) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v1.0[0m
+[0;32mI (29) boot: efuse block revision: v0.3[0m
+[0;32mI (32) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (37) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (40) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (55) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (81) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (89) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=48110020 size=9f9bch (653756) map[0m
+[0;32mI (199) esp_image: segment 1: paddr=000af9e4 vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (201) esp_image: segment 2: paddr=000afa54 vaddr=4ff00000 size=005c4h (  1476) load[0m
+[0;32mI (205) esp_image: segment 3: paddr=000b0020 vaddr=48000020 size=109de0h (1088992) map[0m
+[0;32mI (378) esp_image: segment 4: paddr=001b9e08 vaddr=4ff005c4 size=1c534h (116020) load[0m
+[0;32mI (401) esp_image: segment 5: paddr=001d6344 vaddr=4ff1cb00 size=047b4h ( 18356) load[0m
+[0;32mI (406) esp_image: segment 6: paddr=001dab00 vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (413) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (414) boot: Disabling RNG early entropy source...[0m
+[0;32mI (428) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (429) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (429) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (429) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (434) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (439) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (443) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (447) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (452) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (456) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (461) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (466) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (470) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (642) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (674) mmu_psram: .rodata xip on psram[0m
+[0;32mI (726) mmu_psram: .text xip on psram[0m
+[0;32mI (726) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (727) cpu_start: Multicore app[0m
+[0;32mI (1167) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1176) cpu_start: Pro cpu start user code[0m
+[0;32mI (1176) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1176) app_init: Application information:[0m
+[0;32mI (1176) app_init: Project name:     lvgl_demo_v8[0m
+[0;32mI (1181) app_init: App version:      6b89ba1-dirty[0m
+[0;32mI (1185) app_init: Compile time:     Nov 13 2025 13:37:38[0m
+[0;32mI (1190) app_init: ELF file SHA256:  1d0c21a5e...[0m
+[0;32mI (1195) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1199) efuse_init: Min chip rev:     v0.1[0m
+[0;32mI (1203) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1207) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1211) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1217) heap_init: At 4FF28120 len 00012EA0 (75 KiB): RAM[0m
+[0;32mI (1222) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1227) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1233) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1238) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1243) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1250) esp_psram: Adding pool of 24K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1261) esp_psram: Adding pool of 1K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1272) spi_flash: detected chip: boya[0m
+[0;32mI (1276) spi_flash: flash io: qio[0m
+[0;32mI (1279) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1293) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1293) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1296) transport: Add ESP-Hosted channel IF[1]: S[0] Tx[0x4800ea10] Rx[0x48022f6c][0m
+[0;32mI (1304) transport: Add ESP-Hosted channel IF[2]: S[0] Tx[0x4800e952] Rx[0x48022f6c][0m
+sdio_mempool_create free:31915176 min-free:31915176 lfb-def:31457280 lfb-8bit:31457280
+
+[0;32mI (1319) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1323) main_task: Started on CPU0[0m
+[0;32mI (1327) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1334) main_task: Calling app_main()[0m
+[0;32mI (1340) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (1342) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (1348) LVGL: Starting LVGL task[0m
+[0;32mI (1351) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1356) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1360) ESP32_P4_EV: Install ILI9881C LCD control panel[0m
+[0;32mI (1511) jd9365: LCD ID: 93 65 04[0m
+[0;32mI (1638) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1699) gsl3680: start init[0m
+[0;32mI (1699) gsl3680: clear reg[0m
+[0;32mI (1829) gsl3680: start load fw[0m
+[0;32mI (2689) gsl3680: load fw success[0m
+[0;32mI (2689) gsl3680: enter[0m
+[0;32mI (2699) gsl_point_id: gsl_DataInit[0m
+[0;32mI (2759) gsl3680: enter[0m
+[0;32mI (2769) gsl_point_id: gsl_DataInit[0m
+[0;32mI (2769) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (2769) UI: Loaded wax counter from NVS: 720 seconds[0m
+[0;32mI (2893) Audio: Inicializando altavoz...[0m
+[0;32mI (2898) ES8311: Work in Slave mode[0m
+[0;32mI (2901) I2S_IF: channel mode 0 bits:16/16 channel:2 mask:1[0m
+[0;32mI (2901) I2S_IF: STD Mode 1 bits:16/16 channel:2 sample_rate:44100 mask:1[0m
+[1;31mE (3013) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (3013) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (3014) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (3032) I2C_If: Fail to read from dev 30[0m
+[0;32mI (3045) Adev_Codec: Open codec device OK[0m
+[0;32mI (3067) Audio: Buffer de pitido generado (4410 bytes)[0m
+[0;32mI (3068) Audio: Altavoz y buffer de pitido listos (modo asíncrono).[0m
+[0;32mI (3068) NIMBLE_BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (3069) ButtonHandler: MCP23017 configurado para los botones.[0m
+[0;32mI (3079) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (3084) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (3089) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (4295) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[20000 KHz][0m
+[0;32mI (4295) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (4299) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+Name: 
+Type: SDIO
+Speed: 20.00 MHz (limit: 20.00 MHz)
+Size: 0MB
+CSD: ver=1, sector_size=0, capacity=0 read_bl_len=0
+SCR: sd_spec=0, bus_width=0
+TUPLE: DEVICE, size: 3: D9 01 FF 
+TUPLE: MANFID, size: 4
+  MANF: 0092, CARD: 6666
+TUPLE: FUNCID, size: 2: 0C 00 
+TUPLE: FUNCE, size: 4: 00 00 02 32 
+TUPLE: CONFIG, size: 5: 01 01 00 02 07 
+TUPLE: CFTABLE_ENTRY, size: 8
+  INDX: C1, Intface: 1, Default: 1, Conf-Entry-Num: 1
+  IF: 41
+  FS: 30, misc: 0, mem_space: 1, irq: 1, io_space: 0, timing: 0, power: 0
+  IR: 30, mask: 1,   IRQ: FF FF
+  LEN: FFFF
+TUPLE: END
+[0;32mI (4379) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (4384) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (4388) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (4393) transport: set_transport_state: 1[0m
+[0;32mI (4397) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (4419) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (4419) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (4419) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (4422) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (4426) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (4432) transport: EVENT: 12[0m
+[0;32mI (4434) transport: Identified slave [esp32c6][0m
+[0;33mW (4438) H_SDIO_DRV: SDIO clock freq set to [20000]KHz, Max possible (on PCB) is 40000KHz[0m
+[0;32mI (4446) transport: EVENT: 11[0m
+[0;32mI (4449) transport: capabilities: 0xd[0m
+[0;32mI (4452) transport: Features supported are:[0m
+[0;32mI (4456) transport: 	 * WLAN[0m
+[0;32mI (4459) transport: 	   - HCI over SDIO[0m
+[0;32mI (4462) transport: 	   - BLE only[0m
+[0;32mI (4466) transport: EVENT: 13[0m
+[0;33mW (4468) transport: === ESP-Hosted Version Warning ===[0m
+Version on Host is NEWER than version on co-processor
+RPC requests sent by host may encounter timeout errors
+or may not be supported by co-processor
+[0;33mW (4486) transport: === ESP-Hosted Version Warning ===[0m
+[0;32mI (4491) transport: ESP board type is : 13 [0m
+
+[0;32mI (4495) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (4501) H_API: Transport active[0m
+[0;32mI (4504) transport: Slave chip Id[12][0m
+[0;32mI (4507) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (4513) transport: transport_delayed_init[0m
+[0;32mI (4517) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (4522) esp_cli: Registering command: crash[0m
+[0;32mI (4526) esp_cli: Registering command: reboot[0m
+[0;32mI (4530) esp_cli: Registering command: mem-dump[0m
+[0;32mI (4534) esp_cli: Registering command: task-dump[0m
+[0;32mI (4539) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (4543) esp_cli: Registering command: heap-trace[0m
+[0;32mI (4547) esp_cli: Registering command: sock-dump[0m
+[0;32mI (4552) esp_cli: Registering command: host-power-save[0m
+[0;32mI (4557) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (4561) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (4564) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (4568) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (4572) H_SDIO_DRV: Write thread started[0m
+[0;32mI (4602) NIMBLE_BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (4602) NIMBLE_BLE_CLIENT: BLE Client initialization complete.[0m
+[0;32mI (4602) WIFI_CLIENT: Initializing WiFi Client...[0m
+[0;32mI (4608) transport: Attempt connection with slave: retry[0][0m
+[0;32mI (4611) transport: Transport is already up[0m
+[0;32mI (4612) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (4622) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (4625) NIMBLE_BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (4630) NIMBLE_BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (4636) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (4644) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (4649) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (4653) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (4656) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (4669) NimBLE: [0m
+
+[0;32mI (4673) NIMBLE_BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (4673) NIMBLE_BLE_CLIENT: Reconnect task started[0m
+[0;32mI (5319) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (5527) WIFI_CLIENT: wifi_init_sta finished.[0m
+[0;32mI (5527) CM_MASTER: Inicializando CM Master (Protocolo ASCII)...[0m
+[0;32mI (5527) CM_MASTER: UART1 configurado: 115200 baud, TX=4, RX=5[0m
+[0;32mI (5531) CM_MASTER: Iniciando tareas del maestro...[0m
+[0;32mI (5534) RPC_WRAP: ESP Event: wifi station started[0m
+[0;32mI (5540) CM_MASTER: Tarea UART RX iniciada (modo ASCII)[0m
+[0;32mI (5545) CM_MASTER: Tarea maestro iniciada (protocolo SYNC simplificado)[0m
+[0;32mI (5551) CM_MASTER: Tareas del maestro creadas correctamente[0m
+[0;32mI (5557) MainApp: Inicialización completa.[0m
+[0;32mI (5561) main_task: Returned from app_main()[0m
+[0;32mI (5763) WIFI_CLIENT: WIFI_EVENT_STA_START: Initializing connection process.[0m
+[0;32mI (5764) WIFI_MANAGER: Found 2 saved SSIDs in order[0m
+[0;32mI (5764) WIFI_CLIENT: Attempting to connect to MOVISTAR_4B85 (1/2)[0m
+[0;32mI (5770) WIFI_MANAGER: Credentials loaded for SSID: MOVISTAR_4B85[0m
+[0;32mI (5799) H_API: esp_wifi_remote_connect[0m
+[0;33mW (5815) rpc_rsp: Hosted RPC_Resp [0x21a], uid [7], resp code [12295][0m
+[0;32mI (9680) NIMBLE_BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (9680) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (9683) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (9691) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (9698) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (10913) RPC_WRAP: ESP Event: Station mode: Connected[0m
+[0;32mI (10913) esp_wifi_remote: esp_wifi_internal_reg_rxcb: sta: 0x480bbfe4[0m
+[0;32mI (14703) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (14703) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (14707) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (14714) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (14740) esp_netif_handlers: sta ip: 192.168.1.134, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (14740) WIFI_CLIENT: Got IP address: 192.168.1.134[0m
+[0;32mI (14741) WIFI_CLIENT: wifi_connect_task: WiFi Connected[0m
+[0;32mI (14744) WIFI_MANAGER: Updated SSID order: MOVISTAR_4B85,SPOOFER[0m
+[0;32mI (14752) WIFI_CLIENT: Manually set DNS server to 8.8.8.8[0m
+[0;32mI (16086) WIFI_CONNECTIVITY: Internet connectivity confirmed.[0m
+[0;33mW (16557) CM_MASTER: Desconectado del esclavo (timeout)[0m
+[0;33mW (17259) CM_MASTER: Línea demasiado larga, descartando[0m
+[0;33mW (18559) CM_MASTER: Línea demasiado larga, descartando[0m
+[0;33mW (19560) CM_MASTER: Línea demasiado larga, descartando[0m
+[0;32mI (19719) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (19719) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (19723) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (19730) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (20459) CM_MASTER: Línea demasiado larga, descartando[0m
+[0;33mW (20760) CM_MASTER: Línea desconocida: YNC=0.00,0.00,0,0,0,0SYNC=0.00,0.00,0,0,0SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (20860) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (20960) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (21060) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (21360) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0SYNC=0.00,0.00,0,0,0,0!SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (21460) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (21560) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (21760) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (21860) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (22060) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (22160) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (22260) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (22360) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (22460) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (22560) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (22660) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (22760) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (22860) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (22960) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (23060) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (23160) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (23260) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (23360) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (23460) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (23560) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (23660) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (23760) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (23860) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (24060) CM_MASTER: Línea desconocida:  SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (24160) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (24260) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (24360) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (24560) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (24660) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;32mI (24735) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (24735) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (24739) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (24746) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (24760) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (24960) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (25060) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (25160) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (25260) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (25360) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (25460) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (25560) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (25660) CM_MASTER: Línea desconocida: BSYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (25860) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (25960) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (26060) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (26160) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (26560) CM_MASTER: Línea desconocida: SYNC=0.00,0SYNC=0.00SYNC=0.00,0.SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (26760) CM_MASTER: Línea desconocida:  SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (26860) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,0[0m
+[0;33mW (27860) CM_MASTER: Línea demasiado larga, descartando[0m
+[0;33mW (29260) CM_MASTER: Línea demasiado larga, descartando[0m
+[0;33mW (29559) CM_MASTER: Línea desconocida: NC=0.0 SYNC=0.SYNC=0.0[0m
+[0;33mW (29560) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (29751) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (29751) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (29755) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (29762) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (29916) CM_MASTER: Línea desconocida: SYNC=0.00,[0m
+[0;33mW (29959) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,[0m
+[0;33mW (29960) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (31167) CM_MASTER: Línea desconocida: TDATA=0.00,0.0,0.00,1,0,0,0[0m
+[1;31mE (34674) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (34767) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (34767) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (34771) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (34776) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (34780) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (34783) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (34796) NimBLE: [0m
+
+[0;32mI (39801) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (39801) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (39805) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (39812) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (41059) CM_MASTER: Línea desconocida: U[0m
+[0;33mW (41060) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (44817) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (44817) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (44822) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (44829) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (49834) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (49834) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (49838) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (49845) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (54850) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (54850) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (54854) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (54861) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (59866) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (59866) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (59870) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (59877) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (64803) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (64882) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (64882) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (64886) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (64891) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (64895) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (64898) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (64911) NimBLE: [0m
+
+[0;32mI (69915) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (69915) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (69919) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (69926) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (74931) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (74931) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (74935) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (74942) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (79947) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (79947) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (79951) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (79958) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (84963) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (84963) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (84967) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (84974) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (89979) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (89979) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (89983) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (89990) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (94916) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (94995) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (94995) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (94999) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (95004) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (95008) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (95011) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (95024) NimBLE: [0m
+
+[0;32mI (100028) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (100028) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (100032) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (100039) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (102836) ButtonHandler: Botón físico 1 pulsado[0m
+[0;32mI (102837) CM_MASTER: Inclinación objetivo: 0.0%[0m
+[0;32mI (102837) UI: Entrenamiento libre seleccionado (botón físico)[0m
+[0;32mI (102840) CM_MASTER: Training mode: ACTIVADO (entrenando)[0m
+[0;32mI (102845) UI: Training mode activado (botón físico)[0m
+[0;32mI (104189) ButtonHandler: Botón físico 1 pulsado[0m
+[0;32mI (104190) CM_MASTER: Inclinación objetivo: 1.0%[0m
+[0;32mI (105044) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (105044) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (105048) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (105055) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (110060) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (110060) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (110064) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (110071) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (115076) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (115076) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (115080) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (115087) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (119590) ButtonHandler: Botón físico 3 pulsado[0m
+[0;32mI (119591) CM_MASTER: Inclinación objetivo: 0.0%[0m
+[0;32mI (120092) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (120092) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (120096) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (120103) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (125030) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (125108) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (125108) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (125112) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (125117) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (125121) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (125124) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (125137) NimBLE: [0m
+
+[0;32mI (130141) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (130141) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (130145) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (130152) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (133697) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,1[0m
+[0;33mW (134205) CM_MASTER: Línea desconocida: `[[DATA=0.00,0.0,0.00,1,0,0,0[0m
+[0;32mI (135157) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (135157) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (135161) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (135168) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (140173) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (140173) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (140177) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (140184) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (145189) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (145189) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (145193) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (145200) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (150205) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (150205) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (150209) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (150216) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (155143) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (155221) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (155221) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (155225) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (155230) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (155234) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (155237) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (155250) NimBLE: [0m
+
+[0;32mI (160255) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (160255) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (160259) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (160266) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (165271) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (165271) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (165275) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (165282) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (170287) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (170287) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (170291) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (170298) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (175303) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (175303) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (175307) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (175314) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (180319) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (180319) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (180323) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (180330) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (185256) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (185335) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (185335) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (185339) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (185344) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (185348) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (185351) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (185364) NimBLE: [0m
+
+[0;32mI (190368) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (190368) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (190372) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (190379) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (195384) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (195384) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (195388) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (195395) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (200400) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (200400) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (200404) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (200411) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (205416) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (205416) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (205420) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (205427) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (210432) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (210432) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (210436) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (210443) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (215370) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (215448) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (215448) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (215452) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (215457) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (215461) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (215464) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (215477) NimBLE: [0m
+
+[0;32mI (220481) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (220481) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (220485) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (220492) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (225497) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (225497) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (225501) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (225508) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (230513) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (230513) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (230517) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (230524) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (235529) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (235529) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (235533) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (235540) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (240545) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (240545) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (240549) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (240556) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (245483) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (245561) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (245561) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (245565) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (245570) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (245574) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (245577) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (245590) NimBLE: [0m
+
+[0;32mI (250594) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (250594) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (250598) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (250605) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (255610) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (255610) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (255614) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (255622) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (260626) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (260626) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (260630) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (260637) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (265642) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (265642) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (265646) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (265653) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (270658) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (270658) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (270662) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (270669) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (275596) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (275674) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (275674) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (275678) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (275683) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (275687) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (275690) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (275703) NimBLE: [0m
+
+[0;32mI (280707) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (280707) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (280711) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (280718) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (285723) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (285723) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (285727) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (285734) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (290739) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (290739) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (290743) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (290750) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (295755) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (295755) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (295759) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (295766) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (300771) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (300771) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (300775) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (300782) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (305709) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (305787) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (305787) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (305791) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (305796) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (305800) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (305803) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (305816) NimBLE: [0m
+
+[0;32mI (310820) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (310820) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (310824) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (310831) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (315836) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (315836) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (315840) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (315847) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (320852) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (320852) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (320856) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (320863) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (325868) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (325868) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (325872) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (325879) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (330884) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (330884) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (330888) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (330895) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (335822) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (335900) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (335900) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (335904) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (335909) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (335913) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (335916) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (335929) NimBLE: [0m
+
+[0;32mI (340934) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (340934) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (340938) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (340945) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (345950) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (345950) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (345954) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (345961) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (350966) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (350966) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (350970) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (350977) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (355982) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (355982) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (355986) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (355993) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (360998) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (360998) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (361002) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (361009) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (365935) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (366014) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (366014) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (366018) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (366023) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (366027) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (366030) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (366043) NimBLE: [0m
+
+[0;32mI (371047) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (371047) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (371051) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (371058) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (376063) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (376063) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (376067) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (376074) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (381079) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (381079) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (381083) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (381090) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (386095) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (386095) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (386099) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (386106) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (391111) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (391111) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (391115) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (391122) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (396049) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (396127) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (396127) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (396131) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (396136) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (396140) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (396144) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (396156) NimBLE: [0m
+
+[0;32mI (401161) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (401161) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (401165) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (401172) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (406177) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (406177) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (406181) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (406188) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (411193) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (411193) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (411197) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (411204) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (416209) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (416209) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (416213) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (416220) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (421225) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (421225) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (421229) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (421236) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (426163) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (426241) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (426241) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (426245) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (426250) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (426254) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (426257) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (426270) NimBLE: [0m
+
+[0;32mI (431275) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (431275) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (431279) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (431286) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (436291) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (436291) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (436295) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (436302) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (441307) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (441307) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (441311) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (441318) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (446323) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (446323) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (446327) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (446334) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (451339) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (451339) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (451343) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (451350) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (456276) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (456355) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (456355) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (456359) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (456364) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (456368) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (456371) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (456384) NimBLE: [0m
+
+[0;32mI (461388) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (461388) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (461392) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (461399) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (466404) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (466404) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (466408) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (466415) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (471420) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (471420) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (471424) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (471431) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (476436) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (476436) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (476440) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (476447) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (481452) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (481452) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (481456) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (481463) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (486390) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (486468) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (486468) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (486473) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (486478) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (486482) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (486485) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (486498) NimBLE: [0m
+
+[0;32mI (491502) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (491502) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (491506) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (491513) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (496518) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (496518) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (496522) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (496529) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (501534) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (501534) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (501538) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (501545) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (506550) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (506550) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (506554) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (506561) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (511566) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (511566) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (511570) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (511577) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (516503) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (516582) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (516582) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (516586) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (516591) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (516595) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (516598) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (516611) NimBLE: [0m
+
+[0;32mI (521615) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (521615) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (521619) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (521626) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (526631) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (526631) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (526635) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (526642) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (531647) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (531647) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (531651) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (531658) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (536663) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (536663) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (536667) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (536674) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (541679) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (541679) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (541683) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (541690) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (546617) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (546695) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (546695) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (546699) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (546704) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (546708) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (546711) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (546724) NimBLE: [0m
+
+[0;32mI (551728) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (551728) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (551732) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (551739) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (556744) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (556744) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (556748) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (556755) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (561760) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (561760) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (561764) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (561771) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (566776) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (566776) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (566780) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (566787) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (571792) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (571792) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (571796) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (571803) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (576730) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (576808) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (576808) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (576812) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (576817) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (576821) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (576824) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (576837) NimBLE: [0m
+
+[0;32mI (581841) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (581841) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (581845) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (581852) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (586857) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (586857) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (586861) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (586868) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (591873) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (591873) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (591877) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (591884) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (596889) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (596889) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (596893) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (596900) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (601905) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (601905) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (601909) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (601916) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (606843) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (606921) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (606921) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (606925) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (606930) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (606934) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (606937) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (606950) NimBLE: [0m
+
+[0;32mI (611954) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (611954) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (611958) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (611965) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (616970) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (616970) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (616974) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (616981) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (621986) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (621986) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (621990) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (621997) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (627002) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (627002) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (627006) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (627013) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (632018) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (632018) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (632022) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (632029) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (636956) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (637034) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (637034) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (637038) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (637043) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (637047) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (637050) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (637063) NimBLE: [0m
+
+[0;32mI (642068) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (642068) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (642072) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (642079) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (647084) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (647084) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (647088) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (647095) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (652100) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (652100) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (652104) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (652111) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (657116) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (657116) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (657120) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (657127) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (662132) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (662132) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (662136) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (662143) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (667069) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (667148) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (667148) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (667152) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (667157) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (667161) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (667164) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (667177) NimBLE: [0m
+
+[0;33mW (670890) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,1[0m
+[0;33mW (671790) CM_MASTER: Desconectado del esclavo (timeout)[0m
+[0;32mI (672181) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (672181) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (672185) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (672192) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (677197) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (677197) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (677201) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (677208) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (679952) CM_MASTER: Línea desconocida: U{|_**G__EEEGP_WEG(* ((EG*y:O@SGSmM~@PO@ ?T|_EtQ@umMI_d};OUX{SYNC= .00,0.00,0,0,0,1[0m
+[0;33mW (679953) CM_MASTER: Línea desconocida: %[`[0m
+[0;33mW (680003) CM_MASTER: Línea desconocida: ]~y{U@]T? dPX ue [0m
+[0;33mW (680044) CM_MASTER: Línea desconocida:  d(o 8SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (680095) CM_MASTER: Línea desconocida: @4> [0m
+[0;33mW (680244) CM_MASTER: Línea desconocida: P@{|};M@?? ME_m|@!$_@]W[SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (680326) CM_MASTER: Línea desconocida: E@pSe?8d{\;SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (680545) CM_MASTER: Línea desconocida: OX$@@~T PUO{TxhSC>pM_O${EM}Y(?MSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (680546) CM_MASTER: Línea desconocida: IY?[0m
+[0;33mW (680673) CM_MASTER: Línea desconocida: [?  P}tRMSYNC=0.00,0.00$0,0,0,1[0m
+[0;33mW (680827) CM_MASTER: Línea desconocida: =\([M|E\TDU}HWH(@ta<M ESYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (680944) CM_MASTER: Línea desconocida: ? [@A@@$_$? ,0SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (681122) CM_MASTER: Línea desconocida: 8L SS`p}}[0m
+[0;33mW (681125) CM_MASTER: Línea desconocida: uM4SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (681263) CM_MASTER: Línea desconocida: IIMHQ4@H${SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (681446) CM_MASTER: Línea desconocida: M@0H AmSu]HPY|[0m
+[0;33mW (681447) CM_MASTER: Línea desconocida: Q=E9[0m
+[0;33mW (681447) CM_MASTER: Línea desconocida: 0.00,0.00,0,0$0,1[0m
+[0;33mW (681513) CM_MASTER: Línea desconocida: yIQm@:p[0m
+[0;33mW (681544) CM_MASTER: Línea desconocida: z5DQoA@;@T}SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (681544) CM_MASTER: Línea desconocida: \[0m
+[0;33mW (681726) CM_MASTER: Línea desconocida: E$__[X@@]Q@@@SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (681765) CM_MASTER: Línea desconocida: X}[0m
+[0;33mW (681867) CM_MASTER: Línea desconocida: P`:APYOSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (682043) CM_MASTER: Línea desconocida: QD@@AP @Ums@QQZ%ShY{HWPTSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (682144) CM_MASTER: Línea desconocida: ?[}I>SYNC=00 (000,0,0,0,1[0m
+[0;33mW (682145) CM_MASTER: Línea desconocida: A] [0m
+[0;33mW (682167) CM_MASTER: Línea desconocida: 6($m[0m
+[0;32mI (682213) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (682213) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (682217) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (682224) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (682420) CM_MASTER: Línea desconocida: $X}P6 &PQ4>[@}hP?0bbbRU]]&@[0m
+[0;33mW (682447) CM_MASTER: Línea desconocida: $5SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (682587) CM_MASTER: Línea desconocida: [@[@]@%[][0m
+[0;33mW (682668) CM_MASTER: Línea desconocida: 8$XGISYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (682754) CM_MASTER: Línea desconocida: @tmQ[} SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (682947) CM_MASTER: Línea desconocida: D[GG[E QtM ATIMCT_$@Y_]}SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (683075) CM_MASTER: Línea desconocida: }CU$`U] Z@SYNC=0.00,0.00,0,0,0,![0m
+[0;33mW (683279) CM_MASTER: Línea desconocida: ]KU[$WKI_P@M[ISYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (683280) CM_MASTER: Línea desconocida: S][0m
+[0;33mW (683419) CM_MASTER: Línea desconocida: 4;R5SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (683560) CM_MASTER: Línea desconocida: }S}@o@u@;MXSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (683686) CM_MASTER: Línea desconocida: ] m]@[I`ZHv[SYNC=0.00,0.00,0,0[[0m
+[0;33mW (683837) CM_MASTER: Línea desconocida: I$X@ME?T@{4P[M|SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (683979) CM_MASTER: Línea desconocida: [0S~U []XIu\[{brbbbbR] HI[{[0m
+[0;33mW (684146) CM_MASTER: Línea desconocida: [M[@U]_[}Mx@IM.y![u](}@SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (684248) CM_MASTER: Línea desconocida: M<SE [0m
+[0;33mW (684457) CM_MASTER: Línea desconocida: TDSYNC=0.00U[MSIx@"}H;toH[Q}]SZ<?SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (684755) CM_MASTER: Línea desconocida: @[P]E@@[|_R SYN@MPuY]M0@[@;K@I@YH[[0m
+[0;33mW (684895) CM_MASTER: Línea desconocida: []SQ [E[[S[D4PD4]IhH{ Z[0m
+[0;33mW (684976) CM_MASTER: Línea desconocida: QP@[0m
+[0;33mW (685135) CM_MASTER: Línea desconocida: [m;@@Sm]Q][[ M ]PDKH[0m
+[0;33mW (685136) CM_MASTER: Línea desconocida: Pm A]T[0m
+[0;33mW (685176) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0, ,1[0m
+[0;33mW (685506) CM_MASTER: Línea desconocida: _`SH[tmI[EM8@E@_ }m[PmZ]SYNR_S[[@(m[0m
+[0;33mW (685829) CM_MASTER: Línea desconocida: _}m!IRSYNC=0.00,0. $4I@[[RM}?W{P@SPM[0m
+[0;33mW (685829) CM_MASTER: Línea desconocida: K[0m
+[0;33mW (686038) CM_MASTER: Línea desconocida: [[AP{](u$u]u[[WM@m8A[m@[5@E[/m (%Q[0m
+[0;33mW (686416) CM_MASTER: Línea desconocida: @S [I[[A[@E[[HtX]{}``X5ErbrbbbbRE[Yx@[0m
+[0;33mW (686417) CM_MASTER: Línea desconocida: ]0.00,0,0,0,1[0m
+[0;33mW (686548) CM_MASTER: Línea desconocida: ?MM@1#U] PmUQ[@{(c500,0,0,0,1[0m
+[0;33mW (686676) CM_MASTER: Línea desconocida: UQ[T$[A[$0,0,1[0m
+[0;33mW (686676) CM_MASTER: Línea desconocida: @[0m
+[0;33mW (686896) CM_MASTER: Línea desconocida: H} %m(HHh[aU@R=}M@1K7|Mp[@P0,0,1[0m
+[0;33mW (686997) CM_MASTER: Línea desconocida: PYX{[yPI$[{H [-m@P}[SSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (687200) CM_MASTER: Línea desconocida: ;]PM SSH'[@pH[%[[KSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (687201) CM_MASTER: Línea desconocida: @][D`S[0m
+[0;33mW (687210) CM_MASTER: Línea desconocida: Ry[_m[0m
+[0;32mI (687229) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (687229) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (687233) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (687240) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (687275) CM_MASTER: Línea desconocida: ;\SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (687482) CM_MASTER: Línea desconocida: m!m([}dm[$HS4@@@@Sm(m][AJSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (687628) CM_MASTER: Línea desconocida: m;7S|SHP}5@[SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (687670) CM_MASTER: Línea desconocida: [I@P[[]C[(@9[0m
+[0;33mW (687670) CM_MASTER: Línea desconocida: 5[[0m
+[0;33mW (687744) CM_MASTER: Línea desconocida: IIM[0m
+[0;33mW (687807) CM_MASTER: Línea desconocida: MSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (687848) CM_MASTER: Línea desconocida: @[I[_5m4PH]SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (687919) CM_MASTER: Línea desconocida: $S[H@[0m
+[0;33mW (687949) CM_MASTER: Línea desconocida: [S @i[0m
+[0;33mW (688017) CM_MASTER: Línea desconocida: ]{|Hm[0m
+[0;33mW (688080) CM_MASTER: Línea desconocida: [S[E[[@`5HySYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (688141) CM_MASTER: Línea desconocida: [D; @[S[0m
+[0;33mW (688199) CM_MASTER: Línea desconocida: [i[I4_SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (688230) CM_MASTER: Línea desconocida: HeP@Ee[[0m
+[0;33mW (688351) CM_MASTER: Línea desconocida: @PmZI@@@(5P@]$[H$[5[SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (688457) CM_MASTER: Línea desconocida: ,z@SISYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (688575) CM_MASTER: Línea desconocida: [~Q[RQE([0m
+[0;33mW (688575) CM_MASTER: Línea desconocida: % [0m
+[0;33mW (688651) CM_MASTER: Línea desconocida: Z@(%]m{H[@pbx<SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (688771) CM_MASTER: Línea desconocida: @@[S&SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (688911) CM_MASTER: Línea desconocida: A+*[5wm@] @_'[0m
+[0;33mW (688972) CM_MASTER: Línea desconocida: M}[0m
+[0;33mW (688973) CM_MASTER: Línea desconocida: Ae9[0m
+[0;33mW (688973) CM_MASTER: Línea desconocida: 0.00,0.00,0,0 ,![0m
+[0;33mW (689048) CM_MASTER: Línea desconocida: |Q@Z[0m
+[0;33mW (689049) CM_MASTER: Línea desconocida: @-R{[0m
+[0;33mW (689051) CM_MASTER: Línea desconocida: [SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (689175) CM_MASTER: Línea desconocida:  ]P@m}P A[0m
+[0;33mW (689299) CM_MASTER: Línea desconocida: Q[  @I]SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (689359) CM_MASTER: Línea desconocida: IW$@Hh?SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (689598) CM_MASTER: Línea desconocida: S[QHUP((w*S)$)P*ISSSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (689598) CM_MASTER: Línea desconocida: S[0m
+[0;33mW (689671) CM_MASTER: Línea desconocida: ]Q!@t"SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (689789) CM_MASTER: Línea desconocida: C[[0m
+[0;33mW (689811) CM_MASTER: Línea desconocida:  UU{%[0m
+[0;33mW (689860) CM_MASTER: Línea desconocida: P5@-mmSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (689978) CM_MASTER: Línea desconocida: Q@PQP\ M@[R T(6]SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (689978) CM_MASTER: Línea desconocida: AP@@qA[0m
+[0;33mW (690197) CM_MASTER: Línea desconocida: [-m[m[ -[@I$mP gSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (690263) CM_MASTER: Línea desconocida: R[[0m
+[0;33mW (690263) CM_MASTER: Línea desconocida: -]} SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (690337) CM_MASTER: Línea desconocida: /[ P(M\Z[0m
+[0;33mW (690399) CM_MASTER: Línea desconocida: X@( m[[0m
+[0;33mW (690466) CM_MASTER: Línea desconocida: @I[ H8SYNC=0.00,0[0m
+[0;33mW (690670) CM_MASTER: Línea desconocida: P{[m@ @C ;@oRQYN[*I[YI5-%t[0m
+[0;33mW (690671) CM_MASTER: Línea desconocida: ;mt_t[0m
+[0;33mW (690730) CM_MASTER: Línea desconocida: p[S[0m
+[0;33mW (690768) CM_MASTER: Línea desconocida: O +SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (690898) CM_MASTER: Línea desconocida: [;XIM@SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (690899) CM_MASTER: Línea desconocida: ][[0m
+[0;33mW (691089) CM_MASTER: Línea desconocida: A@][D@x[XmI},ADM+SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (691161) CM_MASTER: Línea desconocida: }EP($H[@Am5HH-@C=0.00,0.00,0,0,0,1[0m
+[0;33mW (691232) CM_MASTER: Línea desconocida: [mH[0m
+[0;33mW (691501) CM_MASTER: Línea desconocida: ,M [SP$[ m][SSYNC=0.00,0.[[[]R@p- ?IsSJ@[0m
+[0;33mW (691703) CM_MASTER: Línea desconocida:  WL(%S[[@[[SYNC=0.00,0.00,0(0+[0m
+[0;33mW (691771) CM_MASTER: Línea desconocida:  mu`{I@ [SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (691851) CM_MASTER: Línea desconocida: I( [[@@m[0m
+[0;33mW (692119) CM_MASTER: Línea desconocida: y%WE4[$CUZ=$QIH /x$@?I[mm[0m
+[0;33mW (692199) CM_MASTER: Línea desconocida: @RH{[0m
+[0;32mI (692245) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (692245) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (692249) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (692256) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (692332) CM_MASTER: Línea desconocida: S[] Y%$SYNC=0.000.00(0 [0m
+[0;33mW (692333) CM_MASTER: Línea desconocida: o[0m
+[0;33mW (692412) CM_MASTER: Línea desconocida: J:Q-/MRD[0m
+[0;33mW (692732) CM_MASTER: Línea desconocida: m}}- $[ I}o@QA{}hmyPY?SYNC=0.00,0.0  {mmx_ ?m^[Y bR(-I]CH-[0m
+[0;33mW (693138) CM_MASTER: Línea desconocida: -@[KZ%-@H-Ay,mR%<[MEm[( !m@ <m@[0m
+[0;33mW (693229) CM_MASTER: Línea desconocida: Q Q;Im[-P~HS([0,0,1[0m
+[0;33mW (693283) CM_MASTER: Línea desconocida: ]`1@mj[ [0SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (693612) CM_MASTER: Línea desconocida: @h({z[[L%m@i@[I=I Z)%[iPWUP} @0,1[0m
+[0;33mW (693821) CM_MASTER: Línea desconocida: )5Au@|@[E]  ]"@7@X@_SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (693882) CM_MASTER: Línea desconocida: @;PHK}ISYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (694092) CM_MASTER: Línea desconocida: --[`[M;A;;-| X m[--SSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (694189) CM_MASTER: Línea desconocida: TS  ]SH*]$(SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (694381) CM_MASTER: Línea desconocida: P@-A[M@m ;P[0m
+[0;33mW (694381) CM_MASTER: Línea desconocida: S[0m
+[0;33mW (694382) CM_MASTER: Línea desconocida: [H[SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (694470) CM_MASTER: Línea desconocida: -S@@mp-SwSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (694736) CM_MASTER: Línea desconocida: X'SKmw -<[)+(- U_RSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (694773) CM_MASTER: Línea desconocida: R t[QxsX+SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (694980) CM_MASTER: Línea desconocida: T[[hSI[P@-}|8] SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (695119) CM_MASTER: Línea desconocida: _IS$(~W(4 P o%Pu*SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (695185) CM_MASTER: Línea desconocida: _[@{wIm[0m
+[0;33mW (695300) CM_MASTER: Línea desconocida: @@Pm@@@}{SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (695393) CM_MASTER: Línea desconocida: -y@ @ im-]}K_SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (695464) CM_MASTER: Línea desconocida: %[SA}@I-$[0m
+[0;33mW (695603) CM_MASTER: Línea desconocida: 2{mT!@S R$[[SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (695662) CM_MASTER: Línea desconocida: 0+S $@[0m
+[0;33mW (695690) CM_MASTER: Línea desconocida: mXHS,[SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (695756) CM_MASTER: Línea desconocida: Q[P[0m
+[0;33mW (695874) CM_MASTER: Línea desconocida: _p@%E[{ SSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (696014) CM_MASTER: Línea desconocida: }R$@@SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (696193) CM_MASTER: Línea desconocida: KO|IQPM[  B [@[-SII][PSYNC-0.00,0.00,0,0,0,1[0m
+[0;33mW (696342) CM_MASTER: Línea desconocida: I-ZH%`EGSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (696486) CM_MASTER: Línea desconocida: AWK0 -m([I,}[@]$E!-PVj0.00,0.00,0,0,0,1[0m
+[0;33mW (696583) CM_MASTER: Línea desconocida: !([ Q@m-SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (696840) CM_MASTER: Línea desconocida: *-Rm%PImm-{6X![RB#ZmSSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (696894) CM_MASTER: Línea desconocida: I_(SISA[SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (697143) CM_MASTER: Línea desconocida: T B0I )$4<@S[SH@P_SYNC=0.00,0.00,0,0,0,1[0m
+[1;31mE (697183) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;33mW (697202) CM_MASTER: Línea desconocida: -/[([o[0m
+[0;33mW (697203) CM_MASTER: Línea desconocida: SYNC=0.00,0.00,0,0,0,1[0m
+[0;32mI (697261) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (697261) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (697265) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (697270) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (697274) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (697277) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (697290) NimBLE: [0m
+
+[0;33mW (697325) CM_MASTER: Línea desconocida: jQ ImmAIQIA J[0m
+[0;33mW (697693) CM_MASTER: Línea desconocida: H @Q@IhAQySJSYNC=0.00,0. [}I!@S$SYNC=0.00,0.00,0,0,0 MI[][ [[ [+@7@SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (697836) CM_MASTER: Línea desconocida: 5I[$mZk`$SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (697994) CM_MASTER: Línea desconocida:  %i]{-sSiPS  @- { _[0m
+[0;33mW (697994) CM_MASTER: Línea desconocida: -[0m
+[0;33mW (698133) CM_MASTER: Línea desconocida: $brbbbbRS@$%3$S0,0,0,1[0m
+[0;33mW (698258) CM_MASTER: Línea desconocida: Y /[-@[ZS!YmQE&P@m-P@[X[0m
+[0;33mW (698743) CM_MASTER: Línea desconocida: SYNC=0.00,0. (mQE]m m@m(Q(SSYNC=0.00,0.00,0,0,0,0HSmn`S8 H ')[[ISYNC=0.00,0.00,0,0,0,1!I2P-)X)()@Z(SYNC=0.00,0.00,0,(0(!}[0m
+[0;33mW (698804) CM_MASTER: Línea desconocida: [@*}[0m
+[0;33mW (699201) CM_MASTER: Línea desconocida: !@w[m-QI-@0  HSSYNC=0AP]A[CS'P -*?@wP[-HZ {[/I[0m
+[0;33mW (699925) CM_MASTER: Línea desconocida: }SYNC=0mSWm(4@d bbbbRS)@- m  S-[((+S m@_I0- @--$*[S[ R4HPP% I+IHSYNC=0.000@ [_+P-SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (700235) CM_MASTER: Línea desconocida: mR=P Y [@Z)-i S@[ES @pS4x[(SYNC=0.00,0. S;$/00,0,0,0,1[0m
+[0;33mW (700465) CM_MASTER: Línea desconocida: R$Qi @ [`mP)@I[*-b"bbbbR[0m
+[0;33mW (700496) CM_MASTER: Línea desconocida: I(p@)[/[SSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (700724) CM_MASTER: Línea desconocida: jS[{/@([@@@rbrBbbb[0m
+[0;33mW (700775) CM_MASTER: Línea desconocida: --W[[0m
+[0;33mW (700775) CM_MASTER: Línea desconocida: @[0m
+[0;33mW (700796) CM_MASTER: Línea desconocida:  ]+mSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (700995) CM_MASTER: Línea desconocida: [loS@)[[P1-R SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (701044) CM_MASTER: Línea desconocida: S![0m
+[0;33mW (701093) CM_MASTER: Línea desconocida: S mZISYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (701125) CM_MASTER: Línea desconocida: U m@@[0m
+[0;33mW (701375) CM_MASTER: Línea desconocida: -S{4-RSS$_ISYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (701375) CM_MASTER: Línea desconocida: ?[0m
+[0;33mW (701376) CM_MASTER: Línea desconocida:  N [P`[0m
+[0;33mW (701422) CM_MASTER: Línea desconocida: [@@ @SYNC[0m
+[0;33mW (701422) CM_MASTER: Línea desconocida:  $00,0.00,0,0,0,1[0m
+[0;33mW (701603) CM_MASTER: Línea desconocida: !6!APm-M -PISYNC=0.00,0.00,00,0,1[0m
+[0;33mW (701693) CM_MASTER: Línea desconocida: @- :@+@_[0m
+[0;33mW (701693) CM_MASTER: Línea desconocida: H) SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (701896) CM_MASTER: Línea desconocida: 4SV{mZ P)-[m*@SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (702015) CM_MASTER: Línea desconocida: P*LQP[([-P)[I+mR/SYNC=0.00,0.00,00,0,1[0m
+[0;33mW (702254) CM_MASTER: Línea desconocida: PS-v@mP)(Iw=)<@ui;P,-SYNC=0.00,0.00,0,0,0,1[0m
+[0;32mI (702294) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (702294) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (702298) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (702305) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (702314) CM_MASTER: Línea desconocida: {ZQ[j{@(=9)l@SSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (702496) CM_MASTER: Línea desconocida: @S[5hm1SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (702596) CM_MASTER: Línea desconocida: }=H-@I 4(((u S/SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (702815) CM_MASTER: Línea desconocida: C@!-Y@SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (702815) CM_MASTER: Línea desconocida: @@[0m
+[0;33mW (702907) CM_MASTER: Línea desconocida: IaU@S]zHm-@SMe9z0.00,0.00,0,0,0,1[0m
+[0;33mW (703135) CM_MASTER: Línea desconocida: J $>!A@[N@x,;hSC=0.00,0.00,0,0,0,1[0m
+[0;33mW (703227) CM_MASTER: Línea desconocida: 5`;RPSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (703284) CM_MASTER: Línea desconocida: P{HC}I[PPG(Sm@[0m
+[0;33mW (703433) CM_MASTER: Línea desconocida: @m @*[SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (703534) CM_MASTER: Línea desconocida: (M- -)SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (703705) CM_MASTER: Línea desconocida: |Sh- %TP[%@mPA-7;  [0m
+[0;33mW (703705) CM_MASTER: Línea desconocida: `m [0m
+[0;33mW (703705) CM_MASTER: Línea desconocida: @SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (703752) CM_MASTER: Línea desconocida:   $i[0m
+[0;33mW (703825) CM_MASTER: Línea desconocida: (*$P)m}@SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (703826) CM_MASTER: Línea desconocida: o-[0m
+[0;33mW (704014) CM_MASTER: Línea desconocida: @ H@TSI(H@SICYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (704135) CM_MASTER: Línea desconocida: )p_@-)P/SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (704216) CM_MASTER: Línea desconocida: m?[0m
+[0;33mW (704216) CM_MASTER: Línea desconocida: :[0m
+[0;33mW (704334) CM_MASTER: Línea desconocida: @-=RR)-XH-_U[0m
+[0;33mW (704335) CM_MASTER: Línea desconocida: -SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (704735) CM_MASTER: Línea desconocida: SISB(])?0?P@x -@[m?$Y}@@+I-SY5mSI@P@@/k# "SYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (704917) CM_MASTER: Línea desconocida: sQ@@[I?RH"H@ES XSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (705033) CM_MASTER: Línea desconocida: m-S@_!QPSYNC=0.00,0.00,0,0,0,1[0m
+[0;33mW (705135) CM_MASTER: Línea desconocida: IS/[0m
+[0;33mW (705296) CM_MASTER: Línea desconocida: $$[SYNC=0.00,0 $@@i m*5[0m
+[0;33mW (705386) CM_MASTER: Línea desconocida: P@HSYNC=0.00,AR@Pm $[0m
+[0;33mW (705517) CM_MASTER: Línea desconocida: HD-SYNC=0.00 [0m
+[0;33mW (705599) CM_MASTER: Línea desconocida: _x$h[0m
+[0;32mI (707310) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (707310) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (707314) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (707321) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (709419) CM_MASTER: Línea desconocida: MS-@m@@T-o?  I-!) x[0m
+[0;32mI (712326) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (712326) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (712330) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (712337) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (717342) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (717342) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (717347) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (717354) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (719763) CM_MASTER: Línea desconocida: `P@(R(Rh@H8@9Pz?-@}(P@(1[0m
+[0;32mI (722359) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (722359) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (722363) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (722370) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (723365) CM_MASTER: Línea desconocida: H8*H@@8}XI@@?HU X1[0m
+[1;31mE (727296) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;32mI (727375) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (727375) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (727379) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (727384) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (727388) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (727391) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (727404) NimBLE: [0m
+
+[0;32mI (732408) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (732408) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (732412) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (732419) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (736208) CM_MASTER: Línea desconocida: H RHH@!@H@@|-P-p-/9k@RI@@=HI@--X[0m
+[0;32mI (737424) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (737424) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (737428) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (737435) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (742440) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (742440) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (742444) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (742451) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (742930) CM_MASTER: Línea desconocida: HR@@%H@@$HJpP1[0m

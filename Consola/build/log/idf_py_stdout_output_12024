@@ -1,0 +1,775 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 1 --decode-panic backtrace C:\Esp\Treadmill\Consola\build\lvgl_demo_v8.elf C:\Esp\Treadmill\Consola\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x30f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (26) boot: compile time Nov 11 2025 14:54:14[0m
+[0;32mI (26) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v1.0[0m
+[0;32mI (29) boot: efuse block revision: v0.3[0m
+[0;32mI (32) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (37) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (40) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (55) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (81) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (89) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=48110020 size=9f9bch (653756) map[0m
+[0;32mI (199) esp_image: segment 1: paddr=000af9e4 vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (201) esp_image: segment 2: paddr=000afa54 vaddr=4ff00000 size=005c4h (  1476) load[0m
+[0;32mI (205) esp_image: segment 3: paddr=000b0020 vaddr=48000020 size=109de0h (1088992) map[0m
+[0;32mI (378) esp_image: segment 4: paddr=001b9e08 vaddr=4ff005c4 size=1c534h (116020) load[0m
+[0;32mI (401) esp_image: segment 5: paddr=001d6344 vaddr=4ff1cb00 size=047b4h ( 18356) load[0m
+[0;32mI (406) esp_image: segment 6: paddr=001dab00 vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (413) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (414) boot: Disabling RNG early entropy source...[0m
+[0;32mI (428) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (429) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (429) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (429) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (434) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (439) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (443) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (447) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (452) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (456) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (461) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (466) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (470) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (642) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (674) mmu_psram: .rodata xip on psram[0m
+[0;32mI (726) mmu_psram: .text xip on psram[0m
+[0;32mI (726) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (727) cpu_start: Multicore app[0m
+[0;32mI (1167) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1175) cpu_start: Pro cpu start user code[0m
+[0;32mI (1176) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1176) app_init: Application information:[0m
+[0;32mI (1176) app_init: Project name:     lvgl_demo_v8[0m
+[0;32mI (1180) app_init: App version:      edc81ef-dirty[0m
+[0;32mI (1185) app_init: Compile time:     Nov 12 2025 15:19:04[0m
+[0;32mI (1190) app_init: ELF file SHA256:  86fe29507...[0m
+[0;32mI (1194) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1198) efuse_init: Min chip rev:     v0.1[0m
+[0;32mI (1202) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1206) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1210) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1216) heap_init: At 4FF28120 len 00012EA0 (75 KiB): RAM[0m
+[0;32mI (1222) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1227) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1232) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1238) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1243) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1249) esp_psram: Adding pool of 24K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1261) esp_psram: Adding pool of 1K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1272) spi_flash: detected chip: boya[0m
+[0;32mI (1275) spi_flash: flash io: qio[0m
+[0;32mI (1278) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1293) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1293) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1296) transport: Add ESP-Hosted channel IF[1]: S[0] Tx[0x4800ea10] Rx[0x48022f6c][0m
+[0;32mI (1303) transport: Add ESP-Hosted channel IF[2]: S[0] Tx[0x4800e952] Rx[0x48022f6c][0m
+sdio_mempool_create free:31915176 min-free:31915176 lfb-def:31457280 lfb-8bit:31457280
+
+[0;32mI (1319) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1323) main_task: Started on CPU0[0m
+[0;32mI (1327) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1334) main_task: Calling app_main()[0m
+[0;32mI (1341) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (1342) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (1348) LVGL: Starting LVGL task[0m
+[0;32mI (1351) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1356) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1360) ESP32_P4_EV: Install ILI9881C LCD control panel[0m
+[0;32mI (1511) jd9365: LCD ID: 93 65 04[0m
+[0;32mI (1638) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1699) gsl3680: start init[0m
+[0;32mI (1699) gsl3680: clear reg[0m
+[0;32mI (1829) gsl3680: start load fw[0m
+[0;32mI (2690) gsl3680: load fw success[0m
+[0;32mI (2690) gsl3680: enter[0m
+[0;32mI (2700) gsl_point_id: gsl_DataInit[0m
+[0;32mI (2760) gsl3680: enter[0m
+[0;32mI (2770) gsl_point_id: gsl_DataInit[0m
+[0;32mI (2770) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (2770) UI: Loaded wax counter from NVS: 720 seconds[0m
+[0;32mI (2893) Audio: Inicializando altavoz...[0m
+[0;32mI (2898) ES8311: Work in Slave mode[0m
+[0;32mI (3011) I2S_IF: channel mode 0 bits:16/16 channel:2 mask:1[0m
+[0;32mI (3011) I2S_IF: STD Mode 1 bits:16/16 channel:2 sample_rate:44100 mask:1[0m
+[0;32mI (3043) Adev_Codec: Open codec device OK[0m
+[0;32mI (3065) Audio: Buffer de pitido generado (4410 bytes)[0m
+[0;32mI (3066) Audio: Altavoz y buffer de pitido listos (modo asíncrono).[0m
+[0;32mI (3066) NIMBLE_BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (3067) ButtonHandler: MCP23017 configurado para los botones.[0m
+[0;32mI (3077) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (3082) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (3087) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (4293) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[20000 KHz][0m
+[0;32mI (4293) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (4297) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+Name: 
+Type: SDIO
+Speed: 20.00 MHz (limit: 20.00 MHz)
+Size: 0MB
+CSD: ver=1, sector_size=0, capacity=0 read_bl_len=0
+SCR: sd_spec=0, bus_width=0
+TUPLE: DEVICE, size: 3: D9 01 FF 
+TUPLE: MANFID, size: 4
+  MANF: 0092, CARD: 6666
+TUPLE: FUNCID, size: 2: 0C 00 
+TUPLE: FUNCE, size: 4: 00 00 02 32 
+TUPLE: CONFIG, size: 5: 01 01 00 02 07 
+TUPLE: CFTABLE_ENTRY, size: 8
+  INDX: C1, Intface: 1, Default: 1, Conf-Entry-Num: 1
+  IF: 41
+  FS: 30, misc: 0, mem_space: 1, irq: 1, io_space: 0, timing: 0, power: 0
+  IR: 30, mask: 1,   IRQ: FF FF
+  LEN: FFFF
+TUPLE: END
+[0;32mI (4374) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (4379) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (4383) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (4388) transport: set_transport_state: 1[0m
+[0;32mI (4392) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (4419) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (4419) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (4419) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (4421) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (4426) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (4432) transport: EVENT: 12[0m
+[0;32mI (4434) transport: Identified slave [esp32c6][0m
+[0;33mW (4438) H_SDIO_DRV: SDIO clock freq set to [20000]KHz, Max possible (on PCB) is 40000KHz[0m
+[0;32mI (4446) transport: EVENT: 11[0m
+[0;32mI (4449) transport: capabilities: 0xd[0m
+[0;32mI (4452) transport: Features supported are:[0m
+[0;32mI (4456) transport: 	 * WLAN[0m
+[0;32mI (4459) transport: 	   - HCI over SDIO[0m
+[0;32mI (4462) transport: 	   - BLE only[0m
+[0;32mI (4466) transport: EVENT: 13[0m
+[0;33mW (4468) transport: === ESP-Hosted Version Warning ===[0m
+Version on Host is NEWER than version on co-processor
+RPC requests sent by host may encounter timeout errors
+or may not be supported by co-processor
+[0;33mW (4486) transport: === ESP-Hosted Version Warning ===[0m
+[0;32mI (4491) transport: ESP board type is : 13 [0m
+
+[0;32mI (4495) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (4501) H_API: Transport active[0m
+[0;32mI (4504) transport: Slave chip Id[12][0m
+[0;32mI (4507) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (4513) transport: transport_delayed_init[0m
+[0;32mI (4517) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (4522) esp_cli: Registering command: crash[0m
+[0;32mI (4526) esp_cli: Registering command: reboot[0m
+[0;32mI (4530) esp_cli: Registering command: mem-dump[0m
+[0;32mI (4534) esp_cli: Registering command: task-dump[0m
+[0;32mI (4539) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (4543) esp_cli: Registering command: heap-trace[0m
+[0;32mI (4547) esp_cli: Registering command: sock-dump[0m
+[0;32mI (4552) esp_cli: Registering command: host-power-save[0m
+[0;32mI (4557) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (4561) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (4564) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (4568) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (4571) H_SDIO_DRV: Write thread started[0m
+[0;32mI (4597) NIMBLE_BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (4597) NIMBLE_BLE_CLIENT: BLE Client initialization complete.[0m
+[0;32mI (4597) WIFI_CLIENT: Initializing WiFi Client...[0m
+[0;32mI (4603) transport: Attempt connection with slave: retry[0][0m
+[0;32mI (4606) transport: Transport is already up[0m
+[0;32mI (4607) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (4617) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (4620) NIMBLE_BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (4625) NIMBLE_BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (4631) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (4639) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (4644) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (4648) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (4651) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (4664) NimBLE: [0m
+
+[0;32mI (4668) NIMBLE_BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (4668) NIMBLE_BLE_CLIENT: Reconnect task started[0m
+[0;32mI (5319) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (5527) WIFI_CLIENT: wifi_init_sta finished.[0m
+[0;32mI (5527) CM_MASTER: Inicializando CM Master (Protocolo ASCII)...[0m
+[0;32mI (5527) CM_MASTER: UART1 configurado: 115200 baud, TX=4, RX=5[0m
+[0;32mI (5531) CM_MASTER: Iniciando tareas del maestro...[0m
+[0;32mI (5534) RPC_WRAP: ESP Event: wifi station started[0m
+[0;32mI (5540) CM_MASTER: Tarea UART RX iniciada (modo ASCII)[0m
+[0;32mI (5545) CM_MASTER: Tarea maestro iniciada (protocolo SYNC simplificado)[0m
+[0;32mI (5551) CM_MASTER: Tareas del maestro creadas correctamente[0m
+[0;32mI (5557) MainApp: Inicialización completa.[0m
+[0;32mI (5561) main_task: Returned from app_main()[0m
+[0;32mI (5763) WIFI_CLIENT: WIFI_EVENT_STA_START: Initializing connection process.[0m
+[0;32mI (5763) WIFI_MANAGER: Found 2 saved SSIDs in order[0m
+[0;32mI (5764) WIFI_CLIENT: Attempting to connect to MOVISTAR_4B85 (1/2)[0m
+[0;32mI (5769) WIFI_MANAGER: Credentials loaded for SSID: MOVISTAR_4B85[0m
+[0;32mI (5799) H_API: esp_wifi_remote_connect[0m
+[0;33mW (5815) rpc_rsp: Hosted RPC_Resp [0x21a], uid [7], resp code [12295][0m
+[0;33mW (6654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (6754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (6854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (6954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (7054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (7154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (7354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (7554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (7654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (7854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (7954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (8054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (8254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (8454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (8653) CM_MASTER: Línea desconocida: T[0m
+[0;33mW (8654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (8754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (8854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (9054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (9153) CM_MASTER: Línea desconocida: ([0m
+[0;33mW (9154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (9354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (9454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (9554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (9675) NIMBLE_BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (9675) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (9678) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (9686) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (9693) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (9754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (9854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (9954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (10154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (10254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (10354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (10454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (10554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (10754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (10854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (10913) RPC_WRAP: ESP Event: Station mode: Connected[0m
+[0;32mI (10913) esp_wifi_remote: esp_wifi_internal_reg_rxcb: sta: 0x480bbfe4[0m
+[0;33mW (10954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (11054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (11154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (11353) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (11354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (11453) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (11454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (11554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (11754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (11854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (12054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (12154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (12354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (12454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (12554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (12654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (12754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (12954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (13054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (13254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (13353) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (13354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (13554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (13654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (13853) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (13854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (13954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (14153) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (14154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (14254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (14427) esp_netif_handlers: sta ip: 192.168.1.134, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (14427) WIFI_CLIENT: Got IP address: 192.168.1.134[0m
+[0;32mI (14428) WIFI_CLIENT: wifi_connect_task: WiFi Connected[0m
+[0;32mI (14433) WIFI_MANAGER: Updated SSID order: MOVISTAR_4B85,SPOOFER[0m
+[0;32mI (14439) WIFI_CLIENT: Manually set DNS server to 8.8.8.8[0m
+[0;33mW (14454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (14547) WIFI_CONNECTIVITY: Internet connectivity confirmed.[0m
+[0;33mW (14553) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (14554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (14698) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (14698) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (14703) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (14710) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (14754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (14854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (15053) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (15054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (15254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (15353) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (15354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (15454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (15554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (15654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (15754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (15954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (16054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (16254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (16454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (16554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (16654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (16854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (16954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (17054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (17154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (17253) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (17254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (17354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (17454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (17553) CM_MASTER: Línea desconocida: U[0m
+[0;33mW (17554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (17754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (17954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (18054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (18154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (18254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (18354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (18553) CM_MASTER: Línea desconocida: *[0m
+[0;33mW (18554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (18654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (18854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (18954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (19053) CM_MASTER: Línea desconocida: U[0m
+[0;33mW (19054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (19254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (19453) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (19454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (19554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (19715) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (19715) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (19719) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (19726) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (19753) CM_MASTER: Línea desconocida: *[0m
+[0;33mW (19754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (19854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (19954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (20154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (20353) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (20354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (20454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (20654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (20754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (20854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (21053) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (21054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (21254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (21354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (21453) CM_MASTER: Línea desconocida: 5[0m
+[0;33mW (21454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (21654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (21754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (21954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (22054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (22154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (22254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (22354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (22553) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (22554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (22654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (22854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (22954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (23054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (23154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (23354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (23454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (23553) CM_MASTER: Línea desconocida: U[0m
+[0;33mW (23554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (23754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (23953) CM_MASTER: Línea desconocida:  [0m
+[0;33mW (23954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (24054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (24154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (24354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (24554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (24654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (24731) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (24731) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (24735) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (24742) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (24854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (24954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (25054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (25254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (25353) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (25354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (25554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (25654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (25754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (25854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (26054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (26154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (26354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (26453) CM_MASTER: Línea desconocida: e9[0m
+[0;33mW (26454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (26554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (26754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (26954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (27054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (27254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (27354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (27454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (27554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (27654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (27754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (27854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (28054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (28154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (28254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (28354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (28554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (28654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (28754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (28854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (29054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (29154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (29254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (29354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (29454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (29554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (29654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (29747) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (29747) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (29751) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[0;33mW (29754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[1;31mE (29759) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;33mW (29854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (30054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (30154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (30254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (30354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (30554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (30654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (30754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (30954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (31054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (31254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (31354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (31454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (31554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (31654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (31854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (31954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (32054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (32154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (32354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (32454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (32554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (32754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (32954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (33054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (33154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (33354) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (33554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (33654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (33854) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (33954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (34054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (34154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (34254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (34454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (34554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (34654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[1;31mE (34670) NIMBLE_BLE_CLIENT: Connection attempt failed; status=13. User can re-scan.[0m
+[0;33mW (34754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (34768) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (34768) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (34772) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (34777) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (34781) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (34784) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (34797) NimBLE: [0m
+
+[0;33mW (34954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (35054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (35154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (35254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (35453) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (35454) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (35554) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (35654) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (35754) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (35954) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (36054) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (36154) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;33mW (36254) CM_MASTER: Línea desconocida: 0.00,0.00,0,0,0,0[0m
+[0;32mI (39801) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (39801) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (39805) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (39812) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (41620) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (41624) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (41631) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (41637) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (41662) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (41667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (41674) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (41680) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[0;32mI (41695) CM_MASTER: Velocidad objetivo: 0.00 km/h[0m
+[1;31mE (41701) UI: ═══════════════════════════════════════════════════[0m
+[1;31mE (41715) UI:   SISTEMA BLOQUEADO POR ERROR CRÍTICO[0m
+[1;31mE (41719) UI:   Sensor de fin de carrera de inclinación falló[0m
+[1;31mE (41725) UI:   Todos los controles desactivados[0m
+[1;31mE (41729) UI: ═══════════════════════════════════════════════════[0m
+[1;31mE (41859) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (41863) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (41869) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (41875) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (41959) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (41963) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (41969) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (41975) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42158) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42163) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (42169) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (42175) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42359) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42363) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (42369) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (42375) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42459) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42463) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (42469) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (42475) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42659) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42663) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (42669) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (42676) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42759) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42763) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (42769) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (42775) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42959) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (42963) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (42969) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (42975) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43059) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43063) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (43069) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (43075) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43258) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43263) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (43269) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (43275) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43359) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43363) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (43369) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (43375) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43459) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43463) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (43469) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (43475) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43659) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43663) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (43669) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (43675) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43759) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43763) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (43769) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (43775) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43959) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (43963) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (43969) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (43975) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44158) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44163) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (44169) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (44175) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44259) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44263) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (44269) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (44275) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44459) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44463) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (44469) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (44475) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44559) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44563) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (44569) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (44575) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44759) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44763) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (44769) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (44775) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[0;32mI (44817) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (44817) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (44821) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (44828) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (44859) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (44863) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (44869) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (44875) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45059) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45063) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (45069) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (45075) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45158) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45163) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (45169) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (45175) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45359) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45363) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (45369) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (45375) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45459) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45463) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (45469) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (45475) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45659) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45663) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (45669) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (45675) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45759) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45763) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (45769) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (45775) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45959) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (45963) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (45969) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (45975) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46059) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46063) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (46069) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (46075) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46158) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46163) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (46169) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (46175) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46359) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46363) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (46369) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (46375) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46559) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46563) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (46569) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (46575) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46659) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46663) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (46669) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (46675) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46859) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46863) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (46869) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (46875) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46959) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (46963) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (46969) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (46975) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47159) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47163) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (47169) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (47175) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47259) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47263) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (47269) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (47275) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47459) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47463) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (47469) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (47475) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47559) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47563) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (47569) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (47575) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47659) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47663) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (47669) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (47675) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47759) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47763) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (47769) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (47775) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47859) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (47863) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (47869) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (47875) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48059) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48063) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (48069) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (48075) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48159) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48163) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (48169) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (48175) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48359) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48363) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (48369) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (48375) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48459) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48463) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (48469) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (48475) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48559) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48563) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (48569) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (48575) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48759) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48763) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (48769) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (48775) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48959) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (48963) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (48969) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (48975) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49059) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49063) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (49069) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (49075) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49259) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49263) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (49269) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (49275) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49359) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49363) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (49369) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (49375) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49459) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49463) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (49469) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (49475) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49563) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49567) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (49573) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (49580) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49659) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49663) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (49669) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (49675) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49759) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49763) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (49769) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (49775) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[0;32mI (49833) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (49833) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (49837) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (49844) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (49859) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49864) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (49871) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (49877) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49959) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (49963) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (49969) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (49975) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (50159) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (50163) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (50169) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (50175) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (50259) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (50263) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (50269) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (50275) CM_MASTER: ═══════════════════════════════════════════════════[0m

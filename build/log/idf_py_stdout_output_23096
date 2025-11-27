@@ -1,0 +1,803 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 1 --decode-panic backtrace C:\Esp\SmartbikeP4\build\lvgl_demo_v9.elf C:\Esp\SmartbikeP4\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x30f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (26) boot: compile time Nov 27 2025 19:11:58[0m
+[0;32mI (26) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v1.0[0m
+[0;32mI (29) boot: efuse block revision: v0.3[0m
+[0;32mI (32) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (37) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (40) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (55) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (81) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (89) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=480d0020 size=816ech (530156) map[0m
+[0;32mI (180) esp_image: segment 1: paddr=00091714 vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (182) esp_image: segment 2: paddr=00091784 vaddr=4ff00000 size=0e894h ( 59540) load[0m
+[0;32mI (196) esp_image: segment 3: paddr=000a0020 vaddr=48000020 size=c32e0h (799456) map[0m
+[0;32mI (320) esp_image: segment 4: paddr=00163308 vaddr=4ff0e894 size=0738ch ( 29580) load[0m
+[0;32mI (327) esp_image: segment 5: paddr=0016a69c vaddr=4ff15c80 size=03c14h ( 15380) load[0m
+[0;32mI (332) esp_image: segment 6: paddr=0016e2b8 vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (338) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (338) boot: Disabling RNG early entropy source...[0m
+[0;32mI (355) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (355) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (356) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (356) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (361) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (365) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (370) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (374) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (378) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (383) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (387) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (392) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (397) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (569) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (597) mmu_psram: .rodata xip on psram[0m
+[0;32mI (637) mmu_psram: .text xip on psram[0m
+[0;32mI (638) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (638) cpu_start: Multicore app[0m
+[0;32mI (1094) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1104) cpu_start: Pro cpu start user code[0m
+[0;32mI (1104) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1104) app_init: Application information:[0m
+[0;32mI (1104) app_init: Project name:     lvgl_demo_v9[0m
+[0;32mI (1109) app_init: App version:      37b1dc9-dirty[0m
+[0;32mI (1113) app_init: Compile time:     Nov 27 2025 19:43:11[0m
+[0;32mI (1118) app_init: ELF file SHA256:  852024cd5...[0m
+[0;32mI (1123) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1126) efuse_init: Min chip rev:     v0.1[0m
+[0;32mI (1130) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1134) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1138) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1145) heap_init: At 4FF1D490 len 0001DB30 (118 KiB): RAM[0m
+[0;32mI (1150) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1155) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1161) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1166) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1171) esp_psram: Adding pool of 31360K of PSRAM memory to heap allocator[0m
+[0;32mI (1178) esp_psram: Adding pool of 51K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1189) esp_psram: Adding pool of 58K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1200) spi_flash: detected chip: boya[0m
+[0;32mI (1204) spi_flash: flash io: qio[0m
+[0;32mI (1207) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1221) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1221) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1224) transport: Add ESP-Hosted channel IF[1]: S[0] Tx[0x4800a88c] Rx[0x4801e624][0m
+[0;32mI (1232) transport: Add ESP-Hosted channel IF[2]: S[0] Tx[0x4800a7ce] Rx[0x4801e624][0m
+sdio_mempool_create free:32371940 min-free:32371940 lfb-def:31981568 lfb-8bit:31981568
+
+[0;32mI (1247) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1251) main_task: Started on CPU0[0m
+[0;32mI (1255) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1262) main_task: Calling app_main()[0m
+[0;32mI (1270) LVGL: Starting LVGL task[0m
+[0;32mI (1270) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1274) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1278) ESP32_P4_EV: Install EK79007 LCD control panel[0m
+[0;32mI (1283) jd9165: version: 1.0.2[0m
+[0;32mI (1598) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1672) GT911: TouchPad_ID:0x39,0x31,0x31[0m
+[0;32mI (1672) GT911: TouchPad_Config_Version:99[0m
+[0;32mI (1672) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (1673) UI: Using font: Montserrat 32[0m
+[0;32mI (1680) BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (1682) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (1687) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (1691) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (2897) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (2897) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (2901) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+Name: 
+Type: SDIO
+Speed: 40.00 MHz (limit: 40.00 MHz)
+Size: 0MB
+CSD: ver=1, sector_size=0, capacity=0 read_bl_len=0
+SCR: sd_spec=0, bus_width=0
+TUPLE: DEVICE, size: 3: D9 01 FF 
+TUPLE: MANFID, size: 4
+  MANF: 0092, CARD: 6666
+TUPLE: FUNCID, size: 2: 0C 00 
+TUPLE: FUNCE, size: 4: 00 00 02 32 
+TUPLE: CONFIG, size: 5: 01 01 00 02 07 
+TUPLE: CFTABLE_ENTRY, size: 8
+  INDX: C1, Intface: 1, Default: 1, Conf-Entry-Num: 1
+  IF: 41
+  FS: 30, misc: 0, mem_space: 1, irq: 1, io_space: 0, timing: 0, power: 0
+  IR: 30, mask: 1,   IRQ: FF FF
+  LEN: FFFF
+TUPLE: END
+[0;32mI (2979) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (2983) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (2987) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (2992) transport: set_transport_state: 1[0m
+[0;32mI (2996) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (3047) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (3047) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (3047) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (3056) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (3056) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (3060) transport: EVENT: 12[0m
+[0;32mI (3062) transport: Identified slave [esp32c6][0m
+[0;32mI (3066) transport: EVENT: 11[0m
+[0;32mI (3069) transport: capabilities: 0xd[0m
+[0;32mI (3072) transport: Features supported are:[0m
+[0;32mI (3076) transport: 	 * WLAN[0m
+[0;32mI (3079) transport: 	   - HCI over SDIO[0m
+[0;32mI (3082) transport: 	   - BLE only[0m
+[0;32mI (3086) transport: EVENT: 13[0m
+[0;33mW (3088) transport: === ESP-Hosted Version Warning ===[0m
+Version on Host is NEWER than version on co-processor
+RPC requests sent by host may encounter timeout errors
+or may not be supported by co-processor
+[0;33mW (3106) transport: === ESP-Hosted Version Warning ===[0m
+[0;32mI (3111) transport: ESP board type is : 13 [0m
+
+[0;32mI (3115) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (3121) H_API: Transport active[0m
+[0;32mI (3124) transport: Slave chip Id[12][0m
+[0;32mI (3128) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (3133) transport: transport_delayed_init[0m
+[0;32mI (3137) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (3142) esp_cli: Registering command: crash[0m
+[0;32mI (3146) esp_cli: Registering command: reboot[0m
+[0;32mI (3150) esp_cli: Registering command: mem-dump[0m
+[0;32mI (3155) esp_cli: Registering command: task-dump[0m
+[0;32mI (3159) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (3163) esp_cli: Registering command: heap-trace[0m
+[0;32mI (3168) esp_cli: Registering command: sock-dump[0m
+[0;32mI (3172) esp_cli: Registering command: host-power-save[0m
+[0;32mI (3177) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (3181) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (3185) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (3188) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (3192) H_SDIO_DRV: Write thread started[0m
+[0;32mI (3202) BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (3202) BLE_CLIENT: BLE Client initialization complete.[0m
+[0;32mI (3209) main_task: Returned from app_main()[0m
+[0;32mI (3216) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (3218) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (3219) BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (3223) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (3229) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (3236) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (3241) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (3245) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (3247) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (3248) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (3266) NimBLE: [0m
+
+[0;32mI (3269) BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (3269) BLE_CLIENT: Reconnect task started[0m
+[0;32mI (3676) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (3677) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (3677) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (3828) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (3828) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (3830) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (3928) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (3928) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (3929) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (4128) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (4128) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (4128) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (6728) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (6728) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (6728) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (6928) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (6928) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (6928) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (6932) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (6938) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (6943) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (8877) NimBLE: GAP procedure initiated: [0m
+[0;32mI (8877) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (8882) NimBLE: [0m
+
+[0;32mI (39279) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (39280) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (39280) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (41285) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (41285) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (41286) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (41290) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (41293) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (41306) NimBLE: [0m
+
+[0;32mI (43276) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (43276) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (43278) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (43285) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (43292) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (45401) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (45401) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (45401) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (45502) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (45502) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (45505) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (45602) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (45602) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (45603) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (48212) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (48213) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (48213) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (48296) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (48296) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (48299) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (48304) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (48308) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (48311) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (48324) NimBLE: [0m
+
+[0;32mI (50218) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (50218) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (50220) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (51356) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (51357) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (51357) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (51607) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (51607) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (51610) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (51657) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (51657) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (51658) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (52657) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (52657) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (52657) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (53856) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (53856) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (53856) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (54307) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (54307) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (54308) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (54311) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (54318) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (54322) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (55856) NimBLE: GAP procedure initiated: [0m
+[0;32mI (55856) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (55862) NimBLE: [0m
+
+[0;32mI (92258) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (92259) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (92259) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (93327) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (93327) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (93330) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (93335) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (93339) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (93342) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (93355) NimBLE: [0m
+
+[0;32mI (94264) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (94264) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (94266) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (97668) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (97668) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (97668) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (97818) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (97818) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (97821) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (97919) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (97919) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (97920) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (98218) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (98218) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (98218) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (98868) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (98869) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (98869) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (99268) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (99269) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (99269) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (99273) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (99279) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (99284) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (101768) NimBLE: GAP procedure initiated: [0m
+[0;32mI (101768) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (101774) NimBLE: [0m
+
+[0;32mI (149127) UI: Loading settings screen[0m
+[0;32mI (149169) UI_SETTINGS: Button clicked: Calibrar freno[0m
+[0;32mI (149189) UI_SETTINGS: Button clicked: Calibrar freno[0m
+[0;32mI (183245) UI_SETTINGS: Button clicked: Potencia BLE[0m
+[0;32mI (183265) UI_SETTINGS: Button clicked: Potencia BLE[0m
+[0;32mI (184429) UI_SETTINGS: Button clicked: WIFI[0m
+[0;32mI (184449) UI_SETTINGS: Button clicked: WIFI[0m
+[0;32mI (184470) UI_SETTINGS: Button clicked: WIFI[0m
+[0;32mI (184490) UI_SETTINGS: Button clicked: WIFI[0m
+[0;32mI (184878) UI_SETTINGS: Button clicked: Calibrar potencia[0m
+[0;32mI (184899) UI_SETTINGS: Button clicked: Calibrar potencia[0m
+[0;32mI (184919) UI_SETTINGS: Button clicked: Calibrar potencia[0m
+[0;32mI (185246) UI_SETTINGS: Button clicked: Calibrar freno[0m
+[0;32mI (185266) UI_SETTINGS: Button clicked: Calibrar freno[0m
+[0;32mI (185286) UI_SETTINGS: Button clicked: Calibrar freno[0m
+[0;32mI (185532) UI_SETTINGS: Button clicked: Volver[0m
+[0;32mI (185532) UI: Using font: Montserrat 32[0m
+[0;32mI (210169) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (210170) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (210170) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (212175) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (212175) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (212176) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (212180) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (212183) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (212196) NimBLE: [0m
+
+[0;32mI (213359) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (213359) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (213362) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (213369) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (215938) BLE_CLIENT: Disconnected; reason=574[0m
+[0;32mI (215939) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (215939) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (217944) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (217944) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (217945) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (217949) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (217952) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (217965) NimBLE: [0m
+
+[0;32mI (218373) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (218373) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (218376) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (218383) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (223387) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (223387) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (223390) BLE_CLIENT: Failed to initiate connect; rc=14. Restarting scan.[0m
+[0;32mI (223397) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (223402) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (223410) NimBLE: duration=10000ms[0m
+[0;32mI (223413) NimBLE: [0m
+
+[0;32mI (223417) BLE_CLIENT: Starting BLE scan for Heart Rate sensors...[0m
+[0;32mI (224137) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (224137) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (224137) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (225238) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (225238) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (225240) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (225288) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (225288) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (225289) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (226138) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (226138) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (226138) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (227488) NimBLE: GAP procedure initiated: [0m
+[0;32mI (227488) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (227494) NimBLE: [0m
+
+[0;32mI (231887) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (231888) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (231888) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (233421) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (233421) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (233424) BLE_CLIENT: Failed to initiate connect; rc=15. Restarting scan.[0m
+[1;31mE (233431) BLE_CLIENT: Error starting scan; rc=2[0m
+[0;32mI (233893) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (233893) BLE_CLIENT: Failed to initiate connect; rc=15. Restarting scan.[0m
+[1;31mE (233896) BLE_CLIENT: Error starting scan; rc=2[0m
+[0;32mI (233901) BLE_CLIENT: Scan complete; reason=0[0m
+[0;32mI (238435) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (238435) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (238438) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (238443) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (238447) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (238450) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (238463) NimBLE: [0m
+
+[0;32mI (240661) BLE_CLIENT: Disconnected; reason=574[0m
+[0;32mI (240661) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (240662) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (242667) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (242667) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (242668) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (242672) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (242675) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (242688) NimBLE: [0m
+
+[0;32mI (243467) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (243467) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (243467) BLE_CLIENT: Connection established; conn_handle=0[0m
+[1;31mE (243470) BLE_CLIENT: Failed to initiate connect; rc=14. Restarting scan.[0m
+[0;32mI (243476) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (243482) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (243487) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (243492) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (243506) NimBLE: duration=10000ms[0m
+[0;32mI (243509) NimBLE: [0m
+
+[0;32mI (243513) BLE_CLIENT: Starting BLE scan for Heart Rate sensors...[0m
+[0;32mI (243717) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (243717) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (243720) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (243918) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (243918) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (243919) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (245268) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (245268) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (245268) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (246018) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (246018) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (246019) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (246718) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (246718) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (246718) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (246722) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (246729) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (246733) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (248619) NimBLE: GAP procedure initiated: [0m
+[0;32mI (248619) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (248625) NimBLE: [0m
+
+[0;32mI (253513) BLE_CLIENT: Scan complete; reason=0[0m
+[0;32mI (256018) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (256018) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (256018) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (258023) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (258023) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (258024) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (258028) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (258031) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (258044) NimBLE: [0m
+
+[0;32mI (258517) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (258517) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (258520) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (258527) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (261820) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (261821) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (261821) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (261921) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (261921) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (261924) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (264481) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (264482) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (264482) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (266487) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (266487) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (266488) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (266492) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (266495) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (266508) NimBLE: [0m
+
+[0;32mI (268531) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (268531) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (268534) BLE_CLIENT: Failed to initiate connect; rc=14. Restarting scan.[0m
+[0;32mI (268541) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (268546) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (268554) NimBLE: duration=10000ms[0m
+[0;32mI (268557) NimBLE: [0m
+
+[0;32mI (268561) BLE_CLIENT: Starting BLE scan for Heart Rate sensors...[0m
+[0;32mI (269602) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (269602) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (269602) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (269853) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (269853) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (269856) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (269903) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (269903) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (269904) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (270053) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (270053) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (270053) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (270453) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (270453) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (270453) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (270603) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (270603) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (270603) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (270607) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (270614) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (270618) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (273353) NimBLE: GAP procedure initiated: [0m
+[0;32mI (273353) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (273359) NimBLE: [0m
+
+[0;32mI (278561) BLE_CLIENT: Scan complete; reason=0[0m
+[0;32mI (399754) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (399754) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (399754) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (401759) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (401759) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (401760) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (401764) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (401767) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (401780) NimBLE: [0m
+
+[0;32mI (403565) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (403565) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (403568) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (403575) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (404668) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (404668) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (404668) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (404970) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (404970) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (404972) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (405169) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (405170) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (405171) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (405369) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (405370) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (405370) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (406119) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (406119) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (406119) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (406369) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (406370) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (406370) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (406374) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (406380) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (406385) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (409419) NimBLE: GAP procedure initiated: [0m
+[0;32mI (409419) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (409425) NimBLE: [0m
+
+[0;32mI (546320) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (546320) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (546321) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (548326) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (548326) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (548327) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (548331) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (548334) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (548347) NimBLE: [0m
+
+[0;32mI (548579) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (548579) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (548582) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (548589) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (551030) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (551031) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (551031) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (551131) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (551131) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (551134) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (551182) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (551182) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (551183) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (551282) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (551282) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (551282) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (551532) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (551532) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (551532) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (551682) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (551682) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (551682) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (551686) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (551693) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (551697) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (555830) NimBLE: GAP procedure initiated: [0m
+[0;32mI (555831) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (555836) NimBLE: [0m
+
+[0;32mI (588231) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (588231) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (588232) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (588593) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (588593) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (588596) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (588601) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (588605) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (588608) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (588621) NimBLE: [0m
+
+[0;32mI (590237) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (590237) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (590240) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (593625) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (593625) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (593628) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (593635) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (594780) BLE_CLIENT: Disconnected; reason=574[0m
+[0;32mI (594780) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (594780) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (596786) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (596786) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (596787) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (596791) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (596794) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (596807) NimBLE: [0m
+
+[0;32mI (597585) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (597585) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (597585) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (597686) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (597686) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (597689) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (597736) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (597736) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (597738) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (597836) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (597837) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (597837) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (598086) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (598086) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (598087) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (598286) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (598286) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (598287) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (598291) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (598297) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (598302) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (602385) NimBLE: GAP procedure initiated: [0m
+[0;32mI (602385) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (602391) NimBLE: [0m
+
+[0;32mI (655788) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (655788) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (655788) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (657793) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (657793) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (657794) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (657798) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (657801) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (657814) NimBLE: [0m
+
+[0;32mI (658639) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (658639) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (658642) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (658649) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (660548) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (660549) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (660549) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (660649) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (660650) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (660652) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (660750) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (660750) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (660751) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (660850) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (660850) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (660850) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (661200) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (661200) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (661200) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (661549) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (661549) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (661550) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (661554) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (661560) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (661565) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (665599) NimBLE: GAP procedure initiated: [0m
+[0;32mI (665599) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (665605) NimBLE: [0m
+
+[0;32mI (687000) BLE_CLIENT: Disconnected; reason=520[0m
+[0;32mI (687000) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (687000) BLE_CLIENT: Attempting to reconnect to saved device...[0m
+[0;32mI (688653) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (688653) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (688656) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (688661) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (688665) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (688668) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (688681) NimBLE: [0m
+
+[0;32mI (689005) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (689005) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (689008) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (691913) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (691914) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (691914) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (692114) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (692115) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (692117) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (692165) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (692165) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (692166) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (692315) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (692315) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (692315) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (692615) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (692615) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (692615) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (692815) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (692815) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (692815) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (692819) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (692826) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (692830) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (697564) NimBLE: GAP procedure initiated: [0m
+[0;32mI (697564) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (697570) NimBLE: [0m
+

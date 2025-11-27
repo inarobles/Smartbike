@@ -1,0 +1,150 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM7 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 1 --decode-panic backtrace C:\Esp\Treadmill\Consola\build\lvgl_demo_v8.elf C:\Esp\Treadmill\Consola\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM7'
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x20f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (26) boot: compile time Nov 11 2025 14:54:14[0m
+[0;32mI (26) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v1.0[0m
+[0;32mI (29) boot: efuse block revision: v0.3[0m
+[0;32mI (32) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (37) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (40) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (55) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (81) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (89) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=48110020 size=9fa7ch (653948) map[0m
+[0;32mI (199) esp_image: segment 1: paddr=000afaa4 vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (201) esp_image: segment 2: paddr=000afb14 vaddr=4ff00000 size=00504h (  1284) load[0m
+[0;32mI (205) esp_image: segment 3: paddr=000b0020 vaddr=48000020 size=109e60h (1089120) map[0m
+[0;32mI (378) esp_image: segment 4: paddr=001b9e88 vaddr=4ff00504 size=1c5f4h (116212) load[0m
+[0;32mI (401) esp_image: segment 5: paddr=001d6484 vaddr=4ff1cb00 size=047b4h ( 18356) load[0m
+[0;32mI (406) esp_image: segment 6: paddr=001dac40 vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (414) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (414) boot: Disabling RNG early entropy source...[0m
+[0;32mI (428) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (429) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (429) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (430) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (434) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (439) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (443) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (448) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (452) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (456) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (461) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (466) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (470) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (642) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (674) mmu_psram: .rodata xip on psram[0m
+[0;32mI (726) mmu_psram: .text xip on psram[0m
+[0;32mI (726) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (727) cpu_start: Multicore app[0m
+[0;32mI (1162) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1171) cpu_start: Pro cpu start user code[0m
+[0;32mI (1172) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1172) app_init: Application information:[0m
+[0;32mI (1172) app_init: Project name:     lvgl_demo_v8[0m
+[0;32mI (1176) app_init: App version:      a888cfc[0m
+[0;32mI (1180) app_init: Compile time:     Nov 25 2025 22:54:35[0m
+[0;32mI (1185) app_init: ELF file SHA256:  06145a4be...[0m
+[0;32mI (1190) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1194) efuse_init: Min chip rev:     v0.1[0m
+[0;32mI (1198) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1202) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1206) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1212) heap_init: At 4FF28130 len 00012E90 (75 KiB): RAM[0m
+[0;32mI (1217) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1222) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1228) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1233) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1238) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1245) esp_psram: Adding pool of 24K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1256) esp_psram: Adding pool of 1K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1268) spi_flash: detected chip: boya[0m
+[0;32mI (1271) spi_flash: flash io: qio[0m
+[0;32mI (1274) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1288) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1289) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1291) transport: Add ESP-Hosted channel IF[1]: S[0] Tx[0x4800ea10] Rx[0x48022f6c][0m
+[0;32mI (1299) transport: Add ESP-Hosted channel IF[2]: S[0] Tx[0x4800e952] Rx[0x48022f6c][0m
+sdio_mempool_create free:31914776 min-free:31914776 lfb-def:31457280 lfb-8bit:31457280
+
+[0;32mI (1315) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1319) main_task: Started on CPU0[0m
+[0;32mI (1323) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1330) main_task: Calling app_main()[0m
+[0;32mI (1337) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (1339) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (1344) LVGL: Starting LVGL task[0m
+[0;32mI (1347) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1352) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1356) ESP32_P4_EV: Install ILI9881C LCD control panel[0m
+[0;32mI (1507) jd9365: LCD ID: 00 00 00[0m
+[1;31mE (6506) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
+[1;31mE (6506) task_wdt:  - IDLE0 (CPU 0)[0m
+[1;31mE (6506) task_wdt: Tasks currently running:[0m
+[1;31mE (6506) task_wdt: CPU 0: main[0m
+[1;31mE (6506) task_wdt: CPU 1: IDLE1[0m
+[1;31mE (6506) task_wdt: Print CPU 0 (current core) registers[0m
+Core  0 register dump:
+MEPC    : 0x480720bc  RA      : 0x4806b8c0  SP      : 0x4ff36170  GP      : 0x4ff1d300  
+TP      : 0x4ff36380  T0      : 0x4fc0a9f8  T1      : 0x4ff1ceb9  T2      : 0xffffffff  
+S0/FP   : 0x0000001a  S1      : 0x481afcec  A0      : 0x00ff0000  A1      : 0x00000000  
+A2      : 0x00000015  A3      : 0x500a0000  A4      : 0x00003f00  A5      : 0x0003000b  
+A6      : 0x00000002  A7      : 0x00000010  S2      : 0x4ff3da34  S3      : 0x00000000  
+S4      : 0x48129000  S5      : 0x481afd14  S6      : 0x10624dd3  S7      : 0x000000c5  
+S8      : 0x000000e0  S9      : 0x000003e8  S10     : 0x4819d9e4  S11     : 0x00000000  
+T3      : 0x00000002  T4      : 0x00000001  T5      : 0x0000007d  T6      : 0x00000a02  
+MSTATUS : 0x00001888  MTVEC   : 0x4ff00003  MCAUSE  : 0xdeadc0de  MTVAL   : 0xdeadc0de  
+MHARTID : 0x00000000  
+Please enable CONFIG_ESP_SYSTEM_USE_FRAME_POINTER option to have a full backtrace.
+[1;31mE (11506) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
+[1;31mE (11506) task_wdt:  - IDLE0 (CPU 0)[0m
+[1;31mE (11506) task_wdt: Tasks currently running:[0m
+[1;31mE (11506) task_wdt: CPU 0: main[0m
+[1;31mE (11506) task_wdt: CPU 1: IDLE1[0m
+[1;31mE (11506) task_wdt: Print CPU 0 (current core) registers[0m
+Core  0 register dump:
+MEPC    : 0x480720bc  RA      : 0x4806b8c0  SP      : 0x4ff36170  GP      : 0x4ff1d300  
+TP      : 0x4ff36380  T0      : 0x4fc0a9f8  T1      : 0x4ff1ceb9  T2      : 0xffffffff  
+S0/FP   : 0x0000001a  S1      : 0x481afcec  A0      : 0x00ff0000  A1      : 0x00000000  
+A2      : 0x00000015  A3      : 0x500a0000  A4      : 0x00003f00  A5      : 0x0003000b  
+A6      : 0x00000002  A7      : 0x00000010  S2      : 0x4ff3da34  S3      : 0x00000000  
+S4      : 0x48129000  S5      : 0x481afd14  S6      : 0x10624dd3  S7      : 0x000000c5  
+S8      : 0x000000e0  S9      : 0x000003e8  S10     : 0x4819d9e4  S11     : 0x00000000  
+T3      : 0x00000002  T4      : 0x00000001  T5      : 0x0000007d  T6      : 0x00000a02  
+MSTATUS : 0x00001888  MTVEC   : 0x4ff00003  MCAUSE  : 0xdeadc0de  MTVAL   : 0xdeadc0de  
+MHARTID : 0x00000000  
+Please enable CONFIG_ESP_SYSTEM_USE_FRAME_POINTER option to have a full backtrace.
+[1;31mE (16506) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
+[1;31mE (16506) task_wdt:  - IDLE0 (CPU 0)[0m
+[1;31mE (16506) task_wdt: Tasks currently running:[0m
+[1;31mE (16506) task_wdt: CPU 0: main[0m
+[1;31mE (16506) task_wdt: CPU 1: IDLE1[0m
+[1;31mE (16506) task_wdt: Print CPU 0 (current core) registers[0m
+Core  0 register dump:
+MEPC    : 0x480720bc  RA      : 0x4806b8c0  SP      : 0x4ff36170  GP      : 0x4ff1d300  
+TP      : 0x4ff36380  T0      : 0x4fc0a9f8  T1      : 0x4ff1ceb9  T2      : 0xffffffff  
+S0/FP   : 0x0000001a  S1      : 0x481afcec  A0      : 0x00ff0000  A1      : 0x00000000  
+A2      : 0x00000015  A3      : 0x500a0000  A4      : 0x00003f00  A5      : 0x0003000b  
+A6      : 0x00000002  A7      : 0x00000010  S2      : 0x4ff3da34  S3      : 0x00000000  
+S4      : 0x48129000  S5      : 0x481afd14  S6      : 0x10624dd3  S7      : 0x000000c5  
+S8      : 0x000000e0  S9      : 0x000003e8  S10     : 0x4819d9e4  S11     : 0x00000000  
+T3      : 0x00000002  T4      : 0x00000001  T5      : 0x0000007d  T6      : 0x00000a02  
+MSTATUS : 0x00001888  MTVEC   : 0x4ff00003  MCAUSE  : 0xdeadc0de  MTVAL   : 0xdeadc0de  
+MHARTID : 0x00000000  
+Please enable CONFIG_ESP_SYSTEM_USE_FRAME_POINTER option to have a full backtrace.

@@ -1,0 +1,358 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 1 --decode-panic backtrace C:\Esp\SmartbikeP4\build\lvgl_demo_v9.elf C:\Esp\SmartbikeP4\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x20f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (26) boot: compile time Nov 27 2025 19:11:58[0m
+[0;32mI (26) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v1.0[0m
+[0;32mI (29) boot: efuse block revision: v0.3[0m
+[0;32mI (32) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (37) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (40) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (55) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (81) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (89) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=480d0020 size=816ech (530156) map[0m
+[0;32mI (180) esp_image: segment 1: paddr=00091714 vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (182) esp_image: segment 2: paddr=00091784 vaddr=4ff00000 size=0e894h ( 59540) load[0m
+[0;32mI (196) esp_image: segment 3: paddr=000a0020 vaddr=48000020 size=c30e0h (798944) map[0m
+[0;32mI (320) esp_image: segment 4: paddr=00163108 vaddr=4ff0e894 size=0738ch ( 29580) load[0m
+[0;32mI (327) esp_image: segment 5: paddr=0016a49c vaddr=4ff15c80 size=03c14h ( 15380) load[0m
+[0;32mI (332) esp_image: segment 6: paddr=0016e0b8 vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (338) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (338) boot: Disabling RNG early entropy source...[0m
+[0;32mI (355) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (355) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (356) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (356) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (361) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (365) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (369) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (374) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (378) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (383) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (387) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (392) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (397) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (569) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (597) mmu_psram: .rodata xip on psram[0m
+[0;32mI (637) mmu_psram: .text xip on psram[0m
+[0;32mI (638) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (638) cpu_start: Multicore app[0m
+[0;32mI (1079) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1088) cpu_start: Pro cpu start user code[0m
+[0;32mI (1089) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1089) app_init: Application information:[0m
+[0;32mI (1089) app_init: Project name:     lvgl_demo_v9[0m
+[0;32mI (1093) app_init: App version:      37b1dc9-dirty[0m
+[0;32mI (1098) app_init: Compile time:     Nov 27 2025 19:43:11[0m
+[0;32mI (1103) app_init: ELF file SHA256:  cac879b48...[0m
+[0;32mI (1107) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1111) efuse_init: Min chip rev:     v0.1[0m
+[0;32mI (1115) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1119) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1123) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1130) heap_init: At 4FF1D490 len 0001DB30 (118 KiB): RAM[0m
+[0;32mI (1135) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1140) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1145) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1151) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1156) esp_psram: Adding pool of 31360K of PSRAM memory to heap allocator[0m
+[0;32mI (1163) esp_psram: Adding pool of 51K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1174) esp_psram: Adding pool of 58K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1185) spi_flash: detected chip: boya[0m
+[0;32mI (1189) spi_flash: flash io: qio[0m
+[0;32mI (1192) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1206) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1206) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1209) transport: Add ESP-Hosted channel IF[1]: S[0] Tx[0x4800a88c] Rx[0x4801e624][0m
+[0;32mI (1216) transport: Add ESP-Hosted channel IF[2]: S[0] Tx[0x4800a7ce] Rx[0x4801e624][0m
+sdio_mempool_create free:32372452 min-free:32372452 lfb-def:31981568 lfb-8bit:31981568
+
+[0;32mI (1232) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1236) main_task: Started on CPU0[0m
+[0;32mI (1240) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1247) main_task: Calling app_main()[0m
+[0;32mI (1255) LVGL: Starting LVGL task[0m
+[0;32mI (1255) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1259) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1263) ESP32_P4_EV: Install EK79007 LCD control panel[0m
+[0;32mI (1268) jd9165: version: 1.0.2[0m
+[0;32mI (1583) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1657) GT911: TouchPad_ID:0x39,0x31,0x31[0m
+[0;32mI (1657) GT911: TouchPad_Config_Version:99[0m
+[0;32mI (1657) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (1658) UI: Using font: Montserrat 32[0m
+[0;32mI (1666) BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (1667) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (1672) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (1676) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (2882) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (2882) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (2886) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+Name: 
+Type: SDIO
+Speed: 40.00 MHz (limit: 40.00 MHz)
+Size: 0MB
+CSD: ver=1, sector_size=0, capacity=0 read_bl_len=0
+SCR: sd_spec=0, bus_width=0
+TUPLE: DEVICE, size: 3: D9 01 FF 
+TUPLE: MANFID, size: 4
+  MANF: 0092, CARD: 6666
+TUPLE: FUNCID, size: 2: 0C 00 
+TUPLE: FUNCE, size: 4: 00 00 02 32 
+TUPLE: CONFIG, size: 5: 01 01 00 02 07 
+TUPLE: CFTABLE_ENTRY, size: 8
+  INDX: C1, Intface: 1, Default: 1, Conf-Entry-Num: 1
+  IF: 41
+  FS: 30, misc: 0, mem_space: 1, irq: 1, io_space: 0, timing: 0, power: 0
+  IR: 30, mask: 1,   IRQ: FF FF
+  LEN: FFFF
+TUPLE: END
+[0;32mI (2964) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (2968) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (2972) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (2977) transport: set_transport_state: 1[0m
+[0;32mI (2981) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (3032) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (3032) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (3032) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (3034) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (3039) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (3045) transport: EVENT: 12[0m
+[0;32mI (3047) transport: Identified slave [esp32c6][0m
+[0;32mI (3051) transport: EVENT: 11[0m
+[0;32mI (3054) transport: capabilities: 0xd[0m
+[0;32mI (3057) transport: Features supported are:[0m
+[0;32mI (3061) transport: 	 * WLAN[0m
+[0;32mI (3064) transport: 	   - HCI over SDIO[0m
+[0;32mI (3067) transport: 	   - BLE only[0m
+[0;32mI (3071) transport: EVENT: 13[0m
+[0;33mW (3073) transport: === ESP-Hosted Version Warning ===[0m
+Version on Host is NEWER than version on co-processor
+RPC requests sent by host may encounter timeout errors
+or may not be supported by co-processor
+[0;33mW (3091) transport: === ESP-Hosted Version Warning ===[0m
+[0;32mI (3096) transport: ESP board type is : 13 [0m
+
+[0;32mI (3100) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (3106) H_API: Transport active[0m
+[0;32mI (3109) transport: Slave chip Id[12][0m
+[0;32mI (3113) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (3118) transport: transport_delayed_init[0m
+[0;32mI (3122) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (3127) esp_cli: Registering command: crash[0m
+[0;32mI (3131) esp_cli: Registering command: reboot[0m
+[0;32mI (3135) esp_cli: Registering command: mem-dump[0m
+[0;32mI (3140) esp_cli: Registering command: task-dump[0m
+[0;32mI (3144) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (3148) esp_cli: Registering command: heap-trace[0m
+[0;32mI (3153) esp_cli: Registering command: sock-dump[0m
+[0;32mI (3157) esp_cli: Registering command: host-power-save[0m
+[0;32mI (3162) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (3166) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (3170) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (3173) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (3177) H_SDIO_DRV: Write thread started[0m
+[0;32mI (3187) BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (3187) BLE_CLIENT: BLE Client initialization complete.[0m
+[0;32mI (3194) main_task: Returned from app_main()[0m
+[0;32mI (3201) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (3202) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (3204) BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (3208) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (3214) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (3221) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (3226) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (3230) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (3232) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (3233) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (3251) NimBLE: [0m
+
+[0;32mI (3254) BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (3254) BLE_CLIENT: Reconnect task started[0m
+[0;32mI (3645) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (3645) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (3646) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (3746) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (3746) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (3749) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (3797) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (3797) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (3798) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (3897) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (3897) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (3897) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (4146) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (4147) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (4147) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (4296) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (4297) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (4297) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (4300) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (4307) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (4311) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (5850) UI: Loading settings screen[0m
+[0;32mI (5886) UI_SETTINGS: Button clicked: Calibrar freno[0m
+[0;32mI (6748) UI_SETTINGS: Button clicked: Cardio BLE[0m
+[0;32mI (7749) BLE_CLIENT: Disconnecting from current device to start scan...[0m
+[0;32mI (7749) NimBLE: GAP procedure initiated: terminate connection; conn_handle=0 hci_reason=19[0m
+
+[0;32mI (7796) BLE_CLIENT: Disconnected; reason=534[0m
+[0;32mI (7796) BLE_CLIENT: User initiated disconnect - not auto-reconnecting.[0m
+[0;32mI (8253) BLE_CLIENT: Starting new scan.[0m
+[0;32mI (8253) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (8253) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (8258) NimBLE: duration=10000ms[0m
+[0;32mI (8261) NimBLE: [0m
+
+[0;32mI (8261) BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (8264) BLE_CLIENT: Starting BLE scan for Heart Rate sensors...[0m
+[0;32mI (8269) BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (8282) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (8289) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (8293) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (8296) BLE_CLIENT: Starting new scan.[0m
+[0;32mI (8297) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (8304) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (8317) NimBLE: [0m
+
+[1;31mE (8320) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (8643) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (8643) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (8643) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (8744) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (8744) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (8746) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (8794) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (8794) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (8795) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (8944) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (8944) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (8944) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (9194) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (9194) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (9194) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (9344) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (9344) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (9344) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (9348) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (9354) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (9359) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (10545) BLE_CLIENT: Disconnecting from current device to start scan...[0m
+[0;32mI (10545) NimBLE: GAP procedure initiated: terminate connection; conn_handle=0 hci_reason=19[0m
+
+[0;32mI (10593) BLE_CLIENT: Disconnected; reason=534[0m
+[0;32mI (10594) BLE_CLIENT: User initiated disconnect - not auto-reconnecting.[0m
+[0;32mI (11050) BLE_CLIENT: Starting new scan.[0m
+[0;32mI (11050) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (11050) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (11055) NimBLE: duration=10000ms[0m
+[0;32mI (11058) NimBLE: [0m
+
+[0;32mI (11062) BLE_CLIENT: Starting BLE scan for Heart Rate sensors...[0m
+[0;33mW (11086) BLE_CLIENT: Scan already in progress.[0m
+[0;32mI (11232) BLE_CLIENT: Found Heart Rate device: 6653-1[0m
+[0;32mI (12056) UI_CARDIO: Connecting to device...[0m
+[0;32mI (12057) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (12057) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (12061) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (12065) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (12068) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (12081) NimBLE: [0m
+
+[0;32mI (12091) UI_CARDIO: Connecting to device...[0m
+[0;32mI (12091) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (12095) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (12101) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (12112) UI_CARDIO: Connecting to device...[0m
+[0;32mI (12112) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (12117) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (12123) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (12134) UI_CARDIO: Connecting to device...[0m
+[0;32mI (12134) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (12139) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (12146) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (12156) UI_CARDIO: Connecting to device...[0m
+[0;32mI (12156) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (12162) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (12168) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (12385) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (12385) BLE_CLIENT: Saved device address to NVS.[0m
+[0;32mI (12385) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (12486) BLE_CLIENT: Found Heart Rate Service. Discovering characteristics...[0m
+[0;32mI (12486) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (12488) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (12536) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (12536) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (12537) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (12636) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (12636) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12636) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (12936) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (12936) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12936) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (13086) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (13086) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (13086) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (13090) BLE_CLIENT: Found CCCD for HR Measurement. Enabling notifications.[0m
+[0;32mI (13097) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (13101) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (13955) UI_CARDIO: Connecting to device...[0m
+[0;33mW (13955) BLE_CLIENT: Already connected or connecting.[0m
+[0;32mI (13975) UI_CARDIO: Connecting to device...[0m
+[0;33mW (13975) BLE_CLIENT: Already connected or connecting.[0m
+[0;32mI (13995) UI_CARDIO: Connecting to device...[0m
+[0;33mW (13995) BLE_CLIENT: Already connected or connecting.[0m
+[0;32mI (14016) UI_CARDIO: Connecting to device...[0m
+[0;33mW (14016) BLE_CLIENT: Already connected or connecting.[0m
+[0;32mI (14036) UI_CARDIO: Connecting to device...[0m
+[0;33mW (14036) BLE_CLIENT: Already connected or connecting.[0m
+[0;32mI (14057) UI_CARDIO: Connecting to device...[0m
+[0;33mW (14057) BLE_CLIENT: Already connected or connecting.[0m
+[0;32mI (14077) UI_CARDIO: Connecting to device...[0m
+[0;33mW (14077) BLE_CLIENT: Already connected or connecting.[0m
+[0;32mI (15277) UI_SETTINGS: Button clicked: Cardio BLE[0m
+[0;32mI (16323) UI_SETTINGS: Button clicked: Volver[0m
+[0;32mI (16323) UI: Using font: Montserrat 32[0m
+[0;32mI (17185) NimBLE: GAP procedure initiated: [0m
+[0;32mI (17185) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (17190) NimBLE: [0m
+

@@ -4,10 +4,81 @@
 #include "esp_log.h"
 
 
+#include "ui_training.h"
+#include "ui_settings.h"
+#include "ble_client.h"
+#include "wifi_client.h"
+
 static lv_style_t style_btn;
 static lv_style_t style_label_status;
+static lv_timer_t * s_hr_timer = NULL;
+static lv_obj_t * s_hr_label = NULL;
+static lv_obj_t * s_pwr_label = NULL;
+static lv_obj_t * s_wifi_label = NULL;
 
-static void create_button(lv_obj_t * parent, const char * text)
+static void update_hr_timer_cb(lv_timer_t * timer)
+{
+    // Update Heart Rate
+    if (s_hr_label && lv_obj_is_valid(s_hr_label)) {
+        if (ble_client_is_connected()) {
+            char buffer[64];
+            snprintf(buffer, sizeof(buffer), "Cardio BLE: %d ppm", ble_client_get_heart_rate());
+            lv_label_set_text(s_hr_label, buffer);
+            lv_obj_set_style_text_color(s_hr_label, lv_color_hex(0x00FF00), 0); // Green
+        } else {
+            lv_label_set_text(s_hr_label, "Cardio BLE: Desconectado");
+            lv_obj_set_style_text_color(s_hr_label, lv_color_hex(0x888888), 0); // Grey
+        }
+    }
+
+    // Update Power
+    if (s_pwr_label && lv_obj_is_valid(s_pwr_label)) {
+        if (ble_client_is_power_connected()) {
+            lv_label_set_text(s_pwr_label, "Potencia BLE: Conectado");
+            lv_obj_set_style_text_color(s_pwr_label, lv_color_hex(0x00FF00), 0); // Green
+        } else {
+            lv_label_set_text(s_pwr_label, "Potencia BLE: Desconectado");
+            lv_obj_set_style_text_color(s_pwr_label, lv_color_hex(0x888888), 0); // Grey
+        }
+    }
+
+    // Update WiFi
+    if (s_wifi_label && lv_obj_is_valid(s_wifi_label)) {
+        if (is_wifi_connected()) {
+            lv_label_set_text(s_wifi_label, "WIFI: Conectado");
+            lv_obj_set_style_text_color(s_wifi_label, lv_color_hex(0x00FF00), 0); // Green
+        } else {
+            lv_label_set_text(s_wifi_label, "WIFI: Desconectado");
+            lv_obj_set_style_text_color(s_wifi_label, lv_color_hex(0x888888), 0); // Grey
+        }
+    }
+}
+
+static void btn_event_cb(lv_event_t * e)
+{
+    lv_event_code_t code = lv_event_get_code(e);
+    lv_obj_t * btn = lv_event_get_target(e);
+    if(code == LV_EVENT_CLICKED) {
+        const char * txt = lv_label_get_text(lv_obj_get_child(btn, 0));
+        if (s_hr_timer) {
+            lv_timer_del(s_hr_timer);
+            s_hr_timer = NULL;
+            s_hr_label = NULL;
+            s_pwr_label = NULL;
+            s_wifi_label = NULL;
+        }
+
+        if (strcmp(txt, "Ajustes") == 0) {
+            ESP_LOGI("UI", "Loading settings screen");
+            ui_settings_screen_init();
+        } else {
+            ESP_LOGI("UI", "Loading training screen");
+            ui_training_screen_init();
+        }
+    }
+}
+
+static void create_button(lv_obj_t * parent, const char * text, bool add_event)
 {
     lv_obj_t * btn = lv_button_create(parent);
     lv_obj_set_width(btn, lv_pct(90)); // Increased width (approx +50px)
@@ -15,6 +86,9 @@ static void create_button(lv_obj_t * parent, const char * text)
     lv_obj_add_style(btn, &style_btn, 0);
     lv_obj_add_flag(btn, LV_OBJ_FLAG_SCROLL_ON_FOCUS);
     lv_obj_clear_flag(btn, LV_OBJ_FLAG_SCROLLABLE);
+    
+    // Always add event callback for all buttons now
+    lv_obj_add_event_cb(btn, btn_event_cb, LV_EVENT_CLICKED, NULL);
 
     lv_obj_t * label = lv_label_create(btn);
     lv_label_set_text(label, text);
@@ -94,6 +168,7 @@ void ui_init(void)
     #endif
 
     lv_obj_t * scr = lv_screen_active();
+    lv_obj_clean(scr); // Clear the screen
     lv_obj_set_style_bg_color(scr, lv_color_hex(0x000000), 0); // Black background
     lv_obj_set_style_bg_opa(scr, LV_OPA_COVER, 0);
 
@@ -109,9 +184,9 @@ void ui_init(void)
     lv_obj_set_style_bg_opa(cont, LV_OPA_TRANSP, 0);
 
     // Buttons
-    create_button(cont, "Entrenamiento libre");
-    create_button(cont, "Descarga entrenamiento");
-    create_button(cont, "Ajustes");
+    create_button(cont, "Entrenamiento libre", true);
+    create_button(cont, "Descarga entrenamiento", true);
+    create_button(cont, "Ajustes", false);
 
     // Container for status labels (fills remaining space and centers content)
     lv_obj_t * status_cont = lv_obj_create(cont);
@@ -125,7 +200,71 @@ void ui_init(void)
     lv_obj_set_style_pad_row(status_cont, 10, 0); // Gap between status labels
 
     // Status Labels
-    create_status_label(status_cont, "Cardio BLE: Desconectado");
-    create_status_label(status_cont, "Potencia BLE: Desconectado");
-    create_status_label(status_cont, "WIFI: Desconectado");
+    // Always create the label and store it
+    s_hr_label = lv_label_create(status_cont);
+    lv_obj_set_style_text_align(s_hr_label, LV_TEXT_ALIGN_CENTER, 0);
+    lv_obj_set_width(s_hr_label, lv_pct(90));
+    lv_obj_add_style(s_hr_label, &style_label_status, 0);
+    
+    // Increase font size for status labels
+    #if LV_FONT_MONTSERRAT_20
+    lv_obj_set_style_text_font(s_hr_label, &lv_font_montserrat_20, 0);
+    #elif LV_FONT_MONTSERRAT_16
+    lv_obj_set_style_text_font(s_hr_label, &lv_font_montserrat_16, 0);
+    #endif
+
+    // Initial update
+    if (ble_client_is_connected()) {
+        char buffer[64];
+        snprintf(buffer, sizeof(buffer), "Cardio BLE: %d ppm", ble_client_get_heart_rate());
+        lv_label_set_text(s_hr_label, buffer);
+        lv_obj_set_style_text_color(s_hr_label, lv_color_hex(0x00FF00), 0); // Green
+    } else {
+        lv_label_set_text(s_hr_label, "Cardio BLE: Desconectado");
+        lv_obj_set_style_text_color(s_hr_label, lv_color_hex(0x888888), 0); // Grey
+    }
+
+    // Start timer for updates
+    if (s_hr_timer) {
+        lv_timer_del(s_hr_timer); // Safety check
+    }
+    s_hr_timer = lv_timer_create(update_hr_timer_cb, 1000, NULL);
+
+    // Power Label
+    s_pwr_label = lv_label_create(status_cont);
+    lv_obj_set_style_text_align(s_pwr_label, LV_TEXT_ALIGN_CENTER, 0);
+    lv_obj_set_width(s_pwr_label, lv_pct(90));
+    lv_obj_add_style(s_pwr_label, &style_label_status, 0);
+    
+    #if LV_FONT_MONTSERRAT_20
+    lv_obj_set_style_text_font(s_pwr_label, &lv_font_montserrat_20, 0);
+    #elif LV_FONT_MONTSERRAT_16
+    lv_obj_set_style_text_font(s_pwr_label, &lv_font_montserrat_16, 0);
+    #endif
+
+    if (ble_client_is_power_connected()) {
+        lv_label_set_text(s_pwr_label, "Potencia BLE: Conectado");
+        lv_obj_set_style_text_color(s_pwr_label, lv_color_hex(0x00FF00), 0); // Green
+    } else {
+        lv_label_set_text(s_pwr_label, "Potencia BLE: Desconectado");
+        lv_obj_set_style_text_color(s_pwr_label, lv_color_hex(0x888888), 0); // Grey
+    }
+
+    // WiFi Label
+    s_wifi_label = lv_label_create(status_cont);
+    lv_label_set_text(s_wifi_label, "WIFI: Desconectado");
+    lv_obj_set_style_text_align(s_wifi_label, LV_TEXT_ALIGN_CENTER, 0);
+    lv_obj_set_width(s_wifi_label, lv_pct(90));
+    lv_obj_add_style(s_wifi_label, &style_label_status, 0);
+
+    #if LV_FONT_MONTSERRAT_20
+    lv_obj_set_style_text_font(s_wifi_label, &lv_font_montserrat_20, 0);
+    #elif LV_FONT_MONTSERRAT_16
+    lv_obj_set_style_text_font(s_wifi_label, &lv_font_montserrat_16, 0);
+    #endif
+
+    if (is_wifi_connected()) {
+        lv_label_set_text(s_wifi_label, "WIFI: Conectado");
+        lv_obj_set_style_text_color(s_wifi_label, lv_color_hex(0x00FF00), 0); // Green
+    }
 }

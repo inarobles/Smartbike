@@ -13,9 +13,24 @@
 #include "lv_demos.h"
 
 #include "ui_main.h"
+#include "ble_client.h"
+#include "wifi_manager.h"
+#include "wifi_client.h"
 
 void app_main(void)
 {
+    // Initialize NVS
+    esp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
+
+    // Initialize WiFi
+    wifi_manager_init();
+    wifi_client_init();
+
     bsp_display_cfg_t cfg = {
         .lvgl_port_cfg = ESP_LVGL_PORT_INIT_CONFIG(),
         .buffer_size = BSP_LCD_DRAW_BUFF_SIZE,
@@ -32,7 +47,9 @@ void app_main(void)
     bsp_display_lock(0);
 
     bsp_display_rotate(disp, LV_DISPLAY_ROTATION_90);
+    
     ui_init();
+    ble_client_init();
 
     bsp_display_unlock();
 }

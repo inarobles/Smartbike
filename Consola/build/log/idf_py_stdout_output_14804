@@ -1,0 +1,670 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 1 --decode-panic backtrace C:\Esp\Treadmill\Consola\build\lvgl_demo_v8.elf C:\Esp\Treadmill\Consola\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x30f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (26) boot: compile time Nov 11 2025 14:54:14[0m
+[0;32mI (26) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v1.0[0m
+[0;32mI (29) boot: efuse block revision: v0.3[0m
+[0;32mI (32) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (37) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (40) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (55) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (81) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (89) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=48110020 size=9f9bch (653756) map[0m
+[0;32mI (199) esp_image: segment 1: paddr=000af9e4 vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (201) esp_image: segment 2: paddr=000afa54 vaddr=4ff00000 size=005c4h (  1476) load[0m
+[0;32mI (205) esp_image: segment 3: paddr=000b0020 vaddr=48000020 size=109de0h (1088992) map[0m
+[0;32mI (378) esp_image: segment 4: paddr=001b9e08 vaddr=4ff005c4 size=1c534h (116020) load[0m
+[0;32mI (401) esp_image: segment 5: paddr=001d6344 vaddr=4ff1cb00 size=047b4h ( 18356) load[0m
+[0;32mI (406) esp_image: segment 6: paddr=001dab00 vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (413) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (414) boot: Disabling RNG early entropy source...[0m
+[0;32mI (428) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (429) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (429) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (429) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (434) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (439) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (443) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (447) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (452) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (456) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (461) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (466) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (470) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (642) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (673) mmu_psram: .rodata xip on psram[0m
+[0;32mI (726) mmu_psram: .text xip on psram[0m
+[0;32mI (726) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (727) cpu_start: Multicore app[0m
+[0;32mI (1172) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1181) cpu_start: Pro cpu start user code[0m
+[0;32mI (1181) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1181) app_init: Application information:[0m
+[0;32mI (1181) app_init: Project name:     lvgl_demo_v8[0m
+[0;32mI (1186) app_init: App version:      a220190-dirty[0m
+[0;32mI (1190) app_init: Compile time:     Nov 13 2025 00:32:55[0m
+[0;32mI (1195) app_init: ELF file SHA256:  a924d816d...[0m
+[0;32mI (1200) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1204) efuse_init: Min chip rev:     v0.1[0m
+[0;32mI (1207) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1211) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1215) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1222) heap_init: At 4FF28120 len 00012EA0 (75 KiB): RAM[0m
+[0;32mI (1227) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1232) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1238) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1243) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1248) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1255) esp_psram: Adding pool of 24K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1266) esp_psram: Adding pool of 1K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1277) spi_flash: detected chip: boya[0m
+[0;32mI (1281) spi_flash: flash io: qio[0m
+[0;32mI (1284) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1298) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1298) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1301) transport: Add ESP-Hosted channel IF[1]: S[0] Tx[0x4800ea10] Rx[0x48022f6c][0m
+[0;32mI (1308) transport: Add ESP-Hosted channel IF[2]: S[0] Tx[0x4800e952] Rx[0x48022f6c][0m
+sdio_mempool_create free:31915176 min-free:31915176 lfb-def:31457280 lfb-8bit:31457280
+
+[0;32mI (1324) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1328) main_task: Started on CPU0[0m
+[0;32mI (1332) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1339) main_task: Calling app_main()[0m
+[0;32mI (1345) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (1347) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (1353) LVGL: Starting LVGL task[0m
+[0;32mI (1356) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1361) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1365) ESP32_P4_EV: Install ILI9881C LCD control panel[0m
+[0;32mI (1516) jd9365: LCD ID: 93 65 04[0m
+[0;32mI (1643) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1704) gsl3680: start init[0m
+[0;32mI (1704) gsl3680: clear reg[0m
+[0;32mI (1834) gsl3680: start load fw[0m
+[0;32mI (2695) gsl3680: load fw success[0m
+[0;32mI (2695) gsl3680: enter[0m
+[0;32mI (2705) gsl_point_id: gsl_DataInit[0m
+[0;32mI (2765) gsl3680: enter[0m
+[0;32mI (2775) gsl_point_id: gsl_DataInit[0m
+[0;32mI (2775) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (2775) UI: Loaded wax counter from NVS: 720 seconds[0m
+[0;32mI (2898) Audio: Inicializando altavoz...[0m
+[0;32mI (2903) ES8311: Work in Slave mode[0m
+[0;32mI (3016) I2S_IF: channel mode 0 bits:16/16 channel:2 mask:1[0m
+[0;32mI (3016) I2S_IF: STD Mode 1 bits:16/16 channel:2 sample_rate:44100 mask:1[0m
+[0;32mI (3047) Adev_Codec: Open codec device OK[0m
+[0;32mI (3070) Audio: Buffer de pitido generado (4410 bytes)[0m
+[0;32mI (3071) Audio: Altavoz y buffer de pitido listos (modo asíncrono).[0m
+[0;32mI (3071) NIMBLE_BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (3072) ButtonHandler: MCP23017 configurado para los botones.[0m
+[0;32mI (3082) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (3087) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (3092) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (4298) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[20000 KHz][0m
+[0;32mI (4298) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (4302) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+Name: 
+Type: SDIO
+Speed: 20.00 MHz (limit: 20.00 MHz)
+Size: 0MB
+CSD: ver=1, sector_size=0, capacity=0 read_bl_len=0
+SCR: sd_spec=0, bus_width=0
+TUPLE: DEVICE, size: 3: D9 01 FF 
+TUPLE: MANFID, size: 4
+  MANF: 0092, CARD: 6666
+TUPLE: FUNCID, size: 2: 0C 00 
+TUPLE: FUNCE, size: 4: 00 00 02 32 
+TUPLE: CONFIG, size: 5: 01 01 00 02 07 
+TUPLE: CFTABLE_ENTRY, size: 8
+  INDX: C1, Intface: 1, Default: 1, Conf-Entry-Num: 1
+  IF: 41
+  FS: 30, misc: 0, mem_space: 1, irq: 1, io_space: 0, timing: 0, power: 0
+  IR: 30, mask: 1,   IRQ: FF FF
+  LEN: FFFF
+TUPLE: END
+[0;32mI (4385) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (4389) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (4393) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (4398) transport: set_transport_state: 1[0m
+[0;32mI (4402) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (4424) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (4424) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (4424) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (4436) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (4436) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (4437) transport: EVENT: 12[0m
+[0;32mI (4439) transport: Identified slave [esp32c6][0m
+[0;33mW (4443) H_SDIO_DRV: SDIO clock freq set to [20000]KHz, Max possible (on PCB) is 40000KHz[0m
+[0;32mI (4451) transport: EVENT: 11[0m
+[0;32mI (4454) transport: capabilities: 0xd[0m
+[0;32mI (4457) transport: Features supported are:[0m
+[0;32mI (4461) transport: 	 * WLAN[0m
+[0;32mI (4464) transport: 	   - HCI over SDIO[0m
+[0;32mI (4467) transport: 	   - BLE only[0m
+[0;32mI (4471) transport: EVENT: 13[0m
+[0;33mW (4473) transport: === ESP-Hosted Version Warning ===[0m
+Version on Host is NEWER than version on co-processor
+RPC requests sent by host may encounter timeout errors
+or may not be supported by co-processor
+[0;33mW (4491) transport: === ESP-Hosted Version Warning ===[0m
+[0;32mI (4496) transport: ESP board type is : 13 [0m
+
+[0;32mI (4500) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (4506) H_API: Transport active[0m
+[0;32mI (4509) transport: Slave chip Id[12][0m
+[0;32mI (4512) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (4518) transport: transport_delayed_init[0m
+[0;32mI (4522) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (4527) esp_cli: Registering command: crash[0m
+[0;32mI (4531) esp_cli: Registering command: reboot[0m
+[0;32mI (4535) esp_cli: Registering command: mem-dump[0m
+[0;32mI (4539) esp_cli: Registering command: task-dump[0m
+[0;32mI (4544) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (4548) esp_cli: Registering command: heap-trace[0m
+[0;32mI (4552) esp_cli: Registering command: sock-dump[0m
+[0;32mI (4557) esp_cli: Registering command: host-power-save[0m
+[0;32mI (4562) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (4566) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (4569) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (4573) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (4576) H_SDIO_DRV: Write thread started[0m
+[0;32mI (4607) NIMBLE_BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (4607) NIMBLE_BLE_CLIENT: BLE Client initialization complete.[0m
+[0;32mI (4607) WIFI_CLIENT: Initializing WiFi Client...[0m
+[0;32mI (4613) transport: Attempt connection with slave: retry[0][0m
+[0;32mI (4616) transport: Transport is already up[0m
+[0;32mI (4617) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (4627) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (4630) NIMBLE_BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (4635) NIMBLE_BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (4641) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (4649) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (4654) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (4658) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (4661) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (4674) NimBLE: [0m
+
+[0;32mI (4678) NIMBLE_BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (4678) NIMBLE_BLE_CLIENT: Reconnect task started[0m
+[0;32mI (5324) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (5532) WIFI_CLIENT: wifi_init_sta finished.[0m
+[0;32mI (5532) CM_MASTER: Inicializando CM Master (Protocolo ASCII)...[0m
+[0;32mI (5532) CM_MASTER: UART1 configurado: 115200 baud, TX=4, RX=5[0m
+[0;32mI (5536) CM_MASTER: Iniciando tareas del maestro...[0m
+[0;32mI (5539) RPC_WRAP: ESP Event: wifi station started[0m
+[0;32mI (5545) CM_MASTER: Tarea UART RX iniciada (modo ASCII)[0m
+[0;32mI (5550) CM_MASTER: Tarea maestro iniciada (protocolo SYNC simplificado)[0m
+[0;32mI (5556) CM_MASTER: Tareas del maestro creadas correctamente[0m
+[0;32mI (5562) MainApp: Inicialización completa.[0m
+[0;32mI (5566) main_task: Returned from app_main()[0m
+[0;32mI (5768) WIFI_CLIENT: WIFI_EVENT_STA_START: Initializing connection process.[0m
+[0;32mI (5769) WIFI_MANAGER: Found 2 saved SSIDs in order[0m
+[0;32mI (5769) WIFI_CLIENT: Attempting to connect to MOVISTAR_4B85 (1/2)[0m
+[0;32mI (5775) WIFI_MANAGER: Credentials loaded for SSID: MOVISTAR_4B85[0m
+[0;32mI (5830) H_API: esp_wifi_remote_connect[0m
+[0;33mW (5846) rpc_rsp: Hosted RPC_Resp [0x21a], uid [7], resp code [12295][0m
+[1;31mE (6663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (6667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (6674) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (6680) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[0;32mI (6695) CM_MASTER: Velocidad objetivo: 0.00 km/h[0m
+[1;31mE (6702) UI: ═══════════════════════════════════════════════════[0m
+[1;31mE (6714) UI:   SISTEMA BLOQUEADO POR ERROR CRÍTICO[0m
+[1;31mE (6718) UI:   Sensor de fin de carrera de inclinación falló[0m
+[1;31mE (6724) UI:   Todos los controles desactivados[0m
+[1;31mE (6728) UI: ═══════════════════════════════════════════════════[0m
+[1;31mE (6763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (6767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (6773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (6779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (6863) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (6867) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (6873) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (6879) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (6963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (6967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (6973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (6979) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (7173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (7179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (7373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (7379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7463) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7467) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (7473) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (7479) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7563) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7567) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (7573) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (7579) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (7673) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (7679) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (7773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (7779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (7967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (7973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (7979) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (8173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (8179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8263) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8267) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (8273) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (8279) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (8373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (8379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8463) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8467) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (8473) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (8479) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (8673) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (8679) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8863) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8867) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (8873) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (8879) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (8967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (8973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (8979) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (9173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (9179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9263) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9267) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (9273) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (9279) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (9373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (9379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9463) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9467) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (9473) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (9479) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (9673) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (9679) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[0;32mI (9685) NIMBLE_BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (9701) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (9709) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (9717) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (9724) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (9763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (9773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (9779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9863) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9867) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (9873) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (9879) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (9967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (9973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (9979) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (10173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (10179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10263) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10267) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (10274) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (10280) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (10373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (10379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10463) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10467) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (10473) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (10479) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (10673) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (10679) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (10773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (10779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[0;32mI (10913) RPC_WRAP: ESP Event: Station mode: Connected[0m
+[0;32mI (10913) esp_wifi_remote: esp_wifi_internal_reg_rxcb: sta: 0x480bbfe4[0m
+[1;31mE (10963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (10967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (10973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (10979) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11063) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11067) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (11073) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (11079) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (11173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (11179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (11373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (11379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11563) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11567) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (11573) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (11579) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (11673) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (11680) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (11773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (11779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (11967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (11973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (11979) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12063) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12067) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (12073) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (12079) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (12173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (12179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (12373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (12379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12463) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12467) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (12473) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (12479) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (12673) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (12679) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (12773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (12779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12863) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (12867) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (12873) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (12879) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13063) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13067) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (13073) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (13079) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (13173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (13179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (13373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (13379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13563) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13567) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (13573) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (13579) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (13673) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (13679) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (13773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (13779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (13967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (13973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (13979) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14063) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14067) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (14073) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (14079) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (14173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (14179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14263) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14267) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (14273) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (14279) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14463) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14467) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (14473) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (14479) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14563) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14567) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (14573) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (14579) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (14673) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (14679) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[0;32mI (14729) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (14729) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (14733) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (14740) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (14803) esp_netif_handlers: sta ip: 192.168.1.134, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (14803) WIFI_CLIENT: Got IP address: 192.168.1.134[0m
+[0;32mI (14804) WIFI_CLIENT: wifi_connect_task: WiFi Connected[0m
+[0;32mI (14807) WIFI_MANAGER: Updated SSID order: MOVISTAR_4B85,SPOOFER[0m
+[0;32mI (14815) WIFI_CLIENT: Manually set DNS server to 8.8.8.8[0m
+[1;31mE (14863) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (14867) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (14873) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (14879) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[0;32mI (14922) WIFI_CONNECTIVITY: Internet connectivity confirmed.[0m
+[1;31mE (15063) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15067) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (15073) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (15091) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15263) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15267) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (15273) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (15280) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (15373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (15379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15563) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15567) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (15573) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (15579) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (15773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (15779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15863) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15867) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (15873) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (15880) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (15967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (15973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (15979) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16063) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16067) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (16073) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (16079) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16263) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16267) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (16273) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (16279) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (16373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (16379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16463) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16467) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (16473) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (16479) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16563) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16567) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (16573) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (16579) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (16773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (16779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16863) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (16867) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (16873) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (16879) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17063) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17067) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (17073) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (17080) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (17173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (17179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17263) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17267) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (17273) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (17279) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (17373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (17379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17563) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17567) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (17573) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (17579) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (17773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (17779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (17967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (17973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (17980) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18063) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18067) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (18073) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (18079) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (18173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (18179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18263) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18267) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (18273) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (18280) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (18373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (18379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18463) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18467) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (18473) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (18479) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18563) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18567) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (18573) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (18579) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (18673) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (18679) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18863) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18867) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (18873) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (18879) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (18967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (18973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (18979) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19063) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19067) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (19073) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (19079) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (19173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (19180) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19263) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19267) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (19273) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (19279) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19463) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19467) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (19473) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (19479) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19563) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19567) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (19573) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (19579) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[0;32mI (19745) NIMBLE_BLE_CLIENT: Not connected - attempting reconnect to saved device...[0m
+[0;32mI (19745) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (19749) NIMBLE_BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (19756) NIMBLE_BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (19763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19776) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (19783) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (19789) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (19967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (19973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (19979) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20163) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20167) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (20173) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (20179) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20363) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20367) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (20373) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (20379) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20463) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20467) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (20473) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (20479) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20663) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20667) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (20673) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (20679) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20763) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20767) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (20773) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (20779) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20863) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20867) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (20873) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m
+[1;31mE (20879) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20963) CM_MASTER: ═══════════════════════════════════════════════════[0m
+[1;31mE (20967) CM_MASTER:   ALERTA CRÍTICA: Fallo del sensor de inclinación[0m
+[1;31mE (20973) CM_MASTER:   Sistema bloqueado - Requiere servicio técnico[0m

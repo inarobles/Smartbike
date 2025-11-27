@@ -1,0 +1,378 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 1 --decode-panic backtrace C:\Esp\Treadmill\Consola\build\lvgl_demo_v8.elf C:\Esp\Treadmill\Consola\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x30f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (26) boot: compile time Nov 11 2025 14:54:14[0m
+[0;32mI (26) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v1.0[0m
+[0;32mI (29) boot: efuse block revision: v0.3[0m
+[0;32mI (32) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (37) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (40) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (55) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (81) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (89) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=48110020 size=9f9bch (653756) map[0m
+[0;32mI (199) esp_image: segment 1: paddr=000af9e4 vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (201) esp_image: segment 2: paddr=000afa54 vaddr=4ff00000 size=005c4h (  1476) load[0m
+[0;32mI (205) esp_image: segment 3: paddr=000b0020 vaddr=48000020 size=109de0h (1088992) map[0m
+[0;32mI (378) esp_image: segment 4: paddr=001b9e08 vaddr=4ff005c4 size=1c534h (116020) load[0m
+[0;32mI (401) esp_image: segment 5: paddr=001d6344 vaddr=4ff1cb00 size=047b4h ( 18356) load[0m
+[0;32mI (406) esp_image: segment 6: paddr=001dab00 vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (413) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (414) boot: Disabling RNG early entropy source...[0m
+[0;32mI (428) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (429) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (429) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (429) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (434) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (439) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (443) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (447) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (452) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (456) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (461) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (466) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (470) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (642) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (674) mmu_psram: .rodata xip on psram[0m
+[0;32mI (726) mmu_psram: .text xip on psram[0m
+[0;32mI (726) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (727) cpu_start: Multicore app[0m
+[0;32mI (1165) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1174) cpu_start: Pro cpu start user code[0m
+[0;32mI (1174) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1174) app_init: Application information:[0m
+[0;32mI (1174) app_init: Project name:     lvgl_demo_v8[0m
+[0;32mI (1178) app_init: App version:      a220190-dirty[0m
+[0;32mI (1183) app_init: Compile time:     Nov 13 2025 00:32:55[0m
+[0;32mI (1188) app_init: ELF file SHA256:  a924d816d...[0m
+[0;32mI (1193) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1196) efuse_init: Min chip rev:     v0.1[0m
+[0;32mI (1200) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1204) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1208) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1215) heap_init: At 4FF28120 len 00012EA0 (75 KiB): RAM[0m
+[0;32mI (1220) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1225) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1231) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1236) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1241) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1248) esp_psram: Adding pool of 24K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1259) esp_psram: Adding pool of 1K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1270) spi_flash: detected chip: boya[0m
+[0;32mI (1273) spi_flash: flash io: qio[0m
+[0;32mI (1277) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1291) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1291) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1294) transport: Add ESP-Hosted channel IF[1]: S[0] Tx[0x4800ea10] Rx[0x48022f6c][0m
+[0;32mI (1301) transport: Add ESP-Hosted channel IF[2]: S[0] Tx[0x4800e952] Rx[0x48022f6c][0m
+sdio_mempool_create free:31915176 min-free:31915176 lfb-def:31457280 lfb-8bit:31457280
+
+[0;32mI (1317) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1321) main_task: Started on CPU0[0m
+[0;32mI (1325) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1332) main_task: Calling app_main()[0m
+[0;32mI (1338) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (1340) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (1346) LVGL: Starting LVGL task[0m
+[0;32mI (1349) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1354) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1358) ESP32_P4_EV: Install ILI9881C LCD control panel[0m
+[0;32mI (1509) jd9365: LCD ID: 93 65 04[0m
+[0;32mI (1636) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1697) gsl3680: start init[0m
+[0;32mI (1697) gsl3680: clear reg[0m
+[0;32mI (1827) gsl3680: start load fw[0m
+[0;32mI (2688) gsl3680: load fw success[0m
+[0;32mI (2688) gsl3680: enter[0m
+[0;32mI (2698) gsl_point_id: gsl_DataInit[0m
+[0;32mI (2758) gsl3680: enter[0m
+[0;32mI (2768) gsl_point_id: gsl_DataInit[0m
+[0;32mI (2768) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (2768) UI: Loaded wax counter from NVS: 720 seconds[0m
+[0;32mI (2891) Audio: Inicializando altavoz...[0m
+[0;32mI (2896) ES8311: Work in Slave mode[0m
+[0;32mI (3009) I2S_IF: channel mode 0 bits:16/16 channel:2 mask:1[0m
+[0;32mI (3009) I2S_IF: STD Mode 1 bits:16/16 channel:2 sample_rate:44100 mask:1[0m
+[0;32mI (3041) Adev_Codec: Open codec device OK[0m
+[0;32mI (3063) Audio: Buffer de pitido generado (4410 bytes)[0m
+[0;32mI (3064) Audio: Altavoz y buffer de pitido listos (modo asíncrono).[0m
+[0;32mI (3064) NIMBLE_BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (3065) ButtonHandler: MCP23017 configurado para los botones.[0m
+[0;32mI (3075) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (3080) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (3085) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (4291) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[20000 KHz][0m
+[0;32mI (4291) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (4295) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+Name: 
+Type: SDIO
+Speed: 20.00 MHz (limit: 20.00 MHz)
+Size: 0MB
+CSD: ver=1, sector_size=0, capacity=0 read_bl_len=0
+SCR: sd_spec=0, bus_width=0
+TUPLE: DEVICE, size: 3: D9 01 FF 
+TUPLE: MANFID, size: 4
+  MANF: 0092, CARD: 6666
+TUPLE: FUNCID, size: 2: 0C 00 
+TUPLE: FUNCE, size: 4: 00 00 02 32 
+TUPLE: CONFIG, size: 5: 01 01 00 02 07 
+TUPLE: CFTABLE_ENTRY, size: 8
+  INDX: C1, Intface: 1, Default: 1, Conf-Entry-Num: 1
+  IF: 41
+  FS: 30, misc: 0, mem_space: 1, irq: 1, io_space: 0, timing: 0, power: 0
+  IR: 30, mask: 1,   IRQ: FF FF
+  LEN: FFFF
+TUPLE: END
+[0;32mI (4372) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (4377) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (4381) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (4386) transport: set_transport_state: 1[0m
+[0;32mI (4390) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (4417) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (4417) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (4417) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (4420) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (4424) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (4430) transport: EVENT: 12[0m
+[0;32mI (4432) transport: Identified slave [esp32c6][0m
+[0;33mW (4436) H_SDIO_DRV: SDIO clock freq set to [20000]KHz, Max possible (on PCB) is 40000KHz[0m
+[0;32mI (4444) transport: EVENT: 11[0m
+[0;32mI (4447) transport: capabilities: 0xd[0m
+[0;32mI (4450) transport: Features supported are:[0m
+[0;32mI (4454) transport: 	 * WLAN[0m
+[0;32mI (4457) transport: 	   - HCI over SDIO[0m
+[0;32mI (4460) transport: 	   - BLE only[0m
+[0;32mI (4464) transport: EVENT: 13[0m
+[0;33mW (4466) transport: === ESP-Hosted Version Warning ===[0m
+Version on Host is NEWER than version on co-processor
+RPC requests sent by host may encounter timeout errors
+or may not be supported by co-processor
+[0;33mW (4484) transport: === ESP-Hosted Version Warning ===[0m
+[0;32mI (4489) transport: ESP board type is : 13 [0m
+
+[0;32mI (4493) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (4499) H_API: Transport active[0m
+[0;32mI (4502) transport: Slave chip Id[12][0m
+[0;32mI (4505) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (4511) transport: transport_delayed_init[0m
+[0;32mI (4515) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (4520) esp_cli: Registering command: crash[0m
+[0;32mI (4524) esp_cli: Registering command: reboot[0m
+[0;32mI (4528) esp_cli: Registering command: mem-dump[0m
+[0;32mI (4532) esp_cli: Registering command: task-dump[0m
+[0;32mI (4537) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (4541) esp_cli: Registering command: heap-trace[0m
+[0;32mI (4545) esp_cli: Registering command: sock-dump[0m
+[0;32mI (4550) esp_cli: Registering command: host-power-save[0m
+[0;32mI (4555) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (4559) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (4562) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (4566) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (4569) H_SDIO_DRV: Write thread started[0m
+[0;32mI (4595) NIMBLE_BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (4595) NIMBLE_BLE_CLIENT: BLE Client initialization complete.[0m
+[0;32mI (4595) WIFI_CLIENT: Initializing WiFi Client...[0m
+[0;32mI (4601) transport: Attempt connection with slave: retry[0][0m
+[0;32mI (4604) transport: Transport is already up[0m
+[0;32mI (4605) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (4615) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (4618) NIMBLE_BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (4623) NIMBLE_BLE_CLIENT: Successfully loaded saved device address from NVS.[0m
+[0;32mI (4629) NIMBLE_BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (4637) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (4642) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (4646) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (4649) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (4662) NimBLE: [0m
+
+[0;32mI (4666) NIMBLE_BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (4666) NIMBLE_BLE_CLIENT: Reconnect task started[0m
+[0;32mI (5317) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (5525) WIFI_CLIENT: wifi_init_sta finished.[0m
+[0;32mI (5525) CM_MASTER: Inicializando CM Master (Protocolo ASCII)...[0m
+[0;32mI (5525) CM_MASTER: UART1 configurado: 115200 baud, TX=4, RX=5[0m
+[0;32mI (5529) CM_MASTER: Iniciando tareas del maestro...[0m
+[0;32mI (5532) RPC_WRAP: ESP Event: wifi station started[0m
+[0;32mI (5538) CM_MASTER: Tarea UART RX iniciada (modo ASCII)[0m
+[0;32mI (5543) CM_MASTER: Tarea maestro iniciada (protocolo SYNC simplificado)[0m
+[0;32mI (5549) CM_MASTER: Tareas del maestro creadas correctamente[0m
+[0;32mI (5555) MainApp: Inicialización completa.[0m
+[0;32mI (5559) main_task: Returned from app_main()[0m
+[0;32mI (5657) WIFI_CLIENT: WIFI_EVENT_STA_START: Initializing connection process.[0m
+[0;32mI (5657) WIFI_MANAGER: Found 2 saved SSIDs in order[0m
+[0;32mI (5657) WIFI_CLIENT: Attempting to connect to MOVISTAR_4B85 (1/2)[0m
+[0;32mI (5663) WIFI_MANAGER: Credentials loaded for SSID: MOVISTAR_4B85[0m
+[0;32mI (5788) H_API: esp_wifi_remote_connect[0m
+[0;33mW (5813) rpc_rsp: Hosted RPC_Resp [0x21a], uid [7], resp code [12295][0m
+[0;33mW (7272) CM_MASTER: Línea desconocida: @DATA=0.00,0.0,0.00,1,0,0,0[0m
+Guru Meditation Error: Core  1 panic'ed (Interrupt wdt timeout on CPU1). 
+
+Core  1 register dump:
+MEPC    : 0x4ff128f0  RA      : 0x4ff12d4c  SP      : 0x4ff222a0  GP      : 0x4ff1d300  
+TP      : 0x4ff37280  T0      : 0x00000fff  T1      : 0x6f840000  T2      : 0x00000000  
+S0/FP   : 0x920cccca  S1      : 0x4ff222d8  A0      : 0x00000001  A1      : 0x00000000  
+A2      : 0x00000004  A3      : 0x00000004  A4      : 0x4ff277bc  A5      : 0x4ff27760  
+A6      : 0xfa000000  A7      : 0x00000000  S2      : 0x00000002  S3      : 0x4ff277c8  
+S4      : 0x03ffffff  S5      : 0x00000034  S6      : 0x4ff27000  S7      : 0x00000000  
+S8      : 0x00000000  S9      : 0x00000000  S10     : 0x00000000  S11     : 0x00000000  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001880  MTVEC   : 0x4ff00003  MCAUSE  : 0x00001018  MTVAL   : 0x00000000  
+MHARTID : 0x00000001  
+
+add symbol table from file "C:\Esp\Treadmill\Consola\build\bootloader\bootloader.elf"
+warning: could not convert 'main' from the host encoding (CP1252) to UTF-32.
+This normally should not happen, please file a bug report.
+0x4ff128f0 in vPortYieldFromISR () at C:/Espressif/frameworks/esp-idf-v5.5.1/components/freertos/FreeRTOS-Kernel/portable/riscv/port.c:658
+658	    xPortSwitchFlag[coreID] = 1;
+#0  0x4ff128f0 in vPortYieldFromISR () at C:/Espressif/frameworks/esp-idf-v5.5.1/components/freertos/FreeRTOS-Kernel/portable/riscv/port.c:658
+#1  0x4ff12d4c in xPortSysTickHandler () at C:/Espressif/frameworks/esp-idf-v5.5.1/components/freertos/port_systick.c:241
+#2  SysTickIsrHandler (arg=0x4ff222d8 <systimer_hal>) at C:/Espressif/frameworks/esp-idf-v5.5.1/components/freertos/port_systick.c:148
+#3  0x4ff002d0 in _interrupt_handler () at C:/Espressif/frameworks/esp-idf-v5.5.1/components/riscv\vectors.S:456
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+4ff22460: 0x00000011 0x00000000 0x00000036 0x00000101 0x00140014 0x00000000 0x00000000 0x00000000
+4ff22480: 0x00000000 0x4ff296d0 0x4ff29750 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff224a0: 0x00000000 0x48019584 0x48019584 0x48019584 0x48019584 0x48019584 0x48019584 0x48019584
+4ff224c0: 0x48019584 0x48019584 0x48019584 0x48019584 0x48019584 0x48019584 0x00000000 0x00000000
+4ff224e0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff22500: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff22520: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff22540: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x4ff29910 0x4ff29db8 0x4ff2a260
+4ff22560: 0x4ff29b64 0x4ff2a00c 0x4ff2a4b4 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff22580: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff225a0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff225c0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff225e0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff22600: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff22620: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff22640: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff22660: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4ff22680: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+Core  0 register dump:
+MEPC    : 0x4ff10a14  RA      : 0x4ff10a18  SP      : 0x4ff21c90  GP      : 0x4ff1d300  
+TP      : 0x4ff36b20  T0      : 0x4ff27000  T1      : 0x4ff27784  T2      : 0x00000000  
+S0/FP   : 0x4ff24e64  S1      : 0x4ff24e70  A0      : 0x4ff27e10  A1      : 0xe7ffffff  
+A2      : 0x000004b0  A3      : 0x00400000  A4      : 0x00000002  A5      : 0x00000000  
+A6      : 0x4ff214cc  A7      : 0x00000000  S2      : 0x00000001  S3      : 0x4ff277c4  
+S4      : 0x03ffffff  S5      : 0x00000030  S6      : 0x4ff27000  S7      : 0x00000000  
+S8      : 0x00000000  S9      : 0x00000000  S10     : 0x00000000  S11     : 0x00000000  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x4ff2775c  T6      : 0x00000000  
+MSTATUS : 0x00001880  MTVEC   : 0x4ff00003  MCAUSE  : 0x00001018  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+add symbol table from file "C:\Esp\Treadmill\Consola\build\bootloader\bootloader.elf"
+warning: could not convert 'main' from the host encoding (CP1252) to UTF-32.
+This normally should not happen, please file a bug report.
+0x4ff10a14 in esp_vApplicationTickHook () at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/freertos_hooks.c:35
+35	        if (tick_cb[core][n] != NULL) {
+#0  0x4ff10a14 in esp_vApplicationTickHook () at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/freertos_hooks.c:35
+#1  0x4ff12d16 in xPortSysTickHandler () at C:/Espressif/frameworks/esp-idf-v5.5.1/components/freertos/port_systick.c:199
+#2  SysTickIsrHandler (arg=0x4ff222d8 <systimer_hal>) at C:/Espressif/frameworks/esp-idf-v5.5.1/components/freertos/port_systick.c:148
+#3  0x4ff002d0 in _interrupt_handler () at C:/Espressif/frameworks/esp-idf-v5.5.1/components/riscv\vectors.S:456
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+
+
+ELF file SHA256: a924d816d
+
+Rebooting...
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0xc (SW_CPU_RESET),boot:0x30f (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x480015ec
+Core1 Saved PC:0x4ff10f76
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (33) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (33) boot: compile time Nov 11 2025 14:54:14[0m
+[0;32mI (34) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v1.0[0m
+[0;32mI (36) boot: efuse block revision: v0.3[0m
+[0;32mI (40) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (48) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (52) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (56) boot: Enabling RNG early entropy source...[0m
+[0;32mI (60) boot: Partition Table:[0m
+[0;32mI (63) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (82) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (89) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (96) boot: End of partition table[0m
+[0;32mI (99) esp_image: segment 0: paddr=00010020 vaddr=48110020 size=9f9bch (653756) map[0m
+[0;32mI (180) esp_image: segment 1: paddr=000af9e4 vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (181) esp_image: segment 2: paddr=000afa54 vaddr=4ff00000 size=005c4h (  1476) load[0m
+[0;32mI (184) esp_image: segment 3: paddr=000b0020 vaddr=48000020 size=109de0h (1088992) map[0m
+[0;32mI (313) esp_image: segment 4: paddr=001b9e08 vaddr=4ff005c4 size=1c534h (116020) load[0m
+[0;32mI (331) esp_image: segment 5: paddr=001d6344 vaddr=4ff1cb00 size=047b4h ( 18356) load[0m
+[0;32mI (335) esp_image: segment 6: paddr=001dab00 vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (342) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (343) boot: Disabling RNG early entropy source...[0m
+[0;32mI (359) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (359) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (359) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (360) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (364) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (369) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (373) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (378) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (382) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (386) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (391) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (396) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (400) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (572) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (604) mmu_psram: .rodata xip on psram[0m
+[0;32mI (656) mmu_psram: .text xip on psram[0m
+[0;32mI (657) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (658) cpu_start: Multicore app[0m
+[0;32mI (1093) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1102) cpu_start: Pro cpu start user code[0m
+[0;32mI (1102) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1102) app_init: Application information:[0m
+[0;32mI (1102) app_init: Project name:     lvgl_demo_v8[0m
+[0;32mI (1107) app_init: App version:      a220190-dirty[0m
+[0;32mI (1111) app_init: Compile time:     Nov 13 2025 00:32:55[0m
+[0;32mI (1116) app_init: ELF file SHA256:  a924d816d...[0m
+[0;32mI (1121) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1125) efuse_init: Min chip rev:     v0.1[0m
+[0;32mI (1129) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1133) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1137) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1143) heap_init: At 4FF28120 len 00012EA0 (75 KiB): RAM[0m
+[0;32mI (1148) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1153) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1159) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1164) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1169) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1176) esp_psram: Adding pool of 24K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1187) esp_psram: Adding pool of 1K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1199) spi_flash: detected chip: boya[0m
+[0;32mI (1202) spi_flash: flash io: qio[0m
+[0;32mI (1205) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1219) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
