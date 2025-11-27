@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "lvgl_demo_v9",
-    "project_version":    "37b1dc9-dirty",
+    "project_version":    "bb10cc1-dirty",
     "project_path":       "C:/Esp/SmartbikeP4",
     "idf_path":           "C:/Espressif/frameworks/esp-idf-v5.5.1",
     "build_dir":          "C:/Esp/SmartbikeP4/build",

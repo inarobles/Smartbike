@@ -1,0 +1,18 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 1 --decode-panic backtrace C:\Esp\SmartbikeP4\build\lvgl_demo_v9.elf C:\Esp\SmartbikeP4\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+[0;33m--- Warning: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM4 instead...[0m
+[0;33m--- esp-idf-monitor 1.8.0 on \\.\COM4 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x4ff29ed0: [0;33mesp_bootloader_get_description[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_bootloader_format/esp_bootloader_desc.c[0m[0m:[1;31m39[0m
+[0m--- 0x4ff2cbd0: [0;33mesp_flash_encryption_enabled[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/flash_encrypt.c[0m[0m:[1;31m89[0m
+[0m--- 0x4ff29eda: [0;33mcall_start_cpu0[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0m--- 0x4800b6ac: [0;33mtransport_drv_sta_tx[0m[0m at [0;32mC:/Esp/SmartbikeP4/managed_components/espressif__esp_hosted/host/drivers/transport/transport_drv.c[0m[0m:[1;31m248[0m
+[0m--- 0x4801fbd4: [0;33mesp_wifi_remote_channel_rx[0m[0m at [0;32mC:/Esp/SmartbikeP4/managed_components/espressif__esp_wifi_remote/esp_wifi_remote_net.c[0m[0m:[1;31m19[0m
+[0m--- 0x4800b5ee: [0;33mtransport_drv_ap_tx[0m[0m at [0;32mC:/Esp/SmartbikeP4/managed_components/espressif__esp_hosted/host/drivers/transport/transport_drv.c[0m[0m:[1;31m278[0m
+[0m--- 0x4801fbd4: [0;33mesp_wifi_remote_channel_rx[0m[0m at [0;32mC:/Esp/SmartbikeP4/managed_components/espressif__esp_wifi_remote/esp_wifi_remote_net.c[0m[0m:[1;31m19[0m
+[0;33m--- Stack dump detected[0m
+[0m--- 0x480288f4: [0;33mlv_obj_create[0m[0m at [0;32mC:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj.c[0m[0m:[1;31m217[0m
+[0m--- 0x480288e4: [0;33mlv_obj_create[0m[0m at [0;32mC:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj.c[0m[0m:[1;31m217[0m
+[0m--- 0x4ff13ee4: [0;33mesp_flash_init_main[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/spi_flash/esp_flash_api.c[0m[0m:[1;31m385[0m
+[0m--- 0x4ff00003: [0;33m_vector_table[0m[0m at [0;32m??[0m[0m:[1;31m?[0m
+[0m
