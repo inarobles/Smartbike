@@ -59,4 +59,7 @@ bool ble_client_is_connected(void); // Checks HR connection
 int16_t ble_client_get_power(void);
 bool ble_client_is_power_connected(void);
 
+// Helper to get current Cadence (thread safe)
+uint8_t ble_client_get_cadence(void);
+
 #endif // BLE_CLIENT_H

@@ -29,6 +29,7 @@ static uint16_t g_num_scanned_networks = 0;
 
 // --- Forward declarations ---
 void ui_open_wifi_list(void);
+void ui_wifi_notify_connection_success(void);
 static void build_wifi_list(void);
 static void loading_screen_event_cb(lv_event_t *e);
 static void wifi_scan_task(void *pvParameters);
@@ -212,7 +213,7 @@ static void wifi_network_connect_cb(lv_event_t *e) {
         wifi_password_textarea = lv_textarea_create(scr_wifi_password);
         lv_obj_set_size(wifi_password_textarea, LV_PCT(90), 60);
         lv_obj_align(wifi_password_textarea, LV_ALIGN_TOP_MID, 0, 20);
-        lv_textarea_set_password_mode(wifi_password_textarea, true);
+        lv_textarea_set_password_mode(wifi_password_textarea, false);
         lv_textarea_set_one_line(wifi_password_textarea, true);
 
         lv_obj_t *kb = lv_keyboard_create(scr_wifi_password);
@@ -454,15 +455,17 @@ static void wifi_scan_task(void *pvParameters) {
 
     wifi_manager_scan_networks(g_scanned_networks, WIFI_MANAGER_MAX_NETWORKS, &g_num_scanned_networks);
 
-    bsp_display_lock(0);
-    lv_obj_send_event(scr_loading, LV_EVENT_WIFI_SCAN_DONE, NULL);
+    bsp_display_lock(portMAX_DELAY);
+    if (scr_loading) {
+        lv_obj_send_event(scr_loading, LV_EVENT_WIFI_SCAN_DONE, NULL);
+    }
     bsp_display_unlock();
 
     vTaskDelete(NULL);
 }
 
 void ui_open_wifi_list(void) {
-    bsp_display_lock(0);
+    bsp_display_lock(portMAX_DELAY);
 
     // Register event if not already
     if (LV_EVENT_WIFI_SCAN_DONE == 0) {
@@ -494,13 +497,20 @@ void ui_open_wifi_list(void) {
     bsp_display_unlock();
 }
 
+void ui_wifi_notify_connection_success(void) {
+    if (scr_loading && lv_obj_is_valid(scr_loading)) {
+        bsp_display_lock(portMAX_DELAY);
+        lv_obj_del(scr_loading);
+        scr_loading = NULL;
+        bsp_display_unlock();
+        
+        // Refresh the list to show connected status
+        ui_open_wifi_list();
+    }
+}
+
 void ui_loading_complete(void) {
-    ESP_LOGI(TAG, "Loading complete, going to settings or wifi list");
-    // If we were connecting, we might want to go back to settings or stay in wifi list
-    // For now, let's go to settings as a safe default or reload wifi list
-    // But typically this is called after connection attempt.
-    // Let's reload wifi list to show connected status
-    ui_open_wifi_list();
+    // Legacy/Unused
 }
 
 void ui_upload_complete(bool success) {

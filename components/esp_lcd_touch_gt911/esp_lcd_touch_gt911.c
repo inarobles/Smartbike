@@ -12,6 +12,7 @@
  #include "esp_err.h"
  #include "esp_log.h"
  #include "esp_check.h"
+ #include "esp_timer.h"
  #include "driver/gpio.h"
  #include "esp_lcd_panel_io.h"
  #include "esp_lcd_touch.h"
@@ -218,7 +219,20 @@
      assert(tp != NULL);
  
      err = touch_gt911_i2c_read(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, buf, 1);
-     ESP_RETURN_ON_ERROR(err, TAG, "I2C read error!");
+    ESP_RETURN_ON_ERROR(err, TAG, "I2C read error!");
+
+    // Software Debounce: Ignore touches within 150ms of release
+    static int64_t last_release_time = 0;
+    bool is_touched = ((buf[0] & 0x80) == 0x80) && ((buf[0] & 0x0f) > 0);
+    
+    if (is_touched) {
+        if ((esp_timer_get_time() - last_release_time) < 150000) { // 150ms debounce
+             touch_gt911_i2c_write(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, 0);
+             return ESP_OK;
+        }
+    } else {
+        last_release_time = esp_timer_get_time();
+    }
  
      /* Any touch data? */
      if ((buf[0] & 0x80) == 0x00) {

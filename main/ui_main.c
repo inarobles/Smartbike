@@ -1,7 +1,7 @@
-#include "ui_main.h"
 #include "lvgl.h"
 #include <stdio.h>
 #include "esp_log.h"
+#include "audio_manager.h"
 
 
 #include "ui_training.h"
@@ -54,11 +54,102 @@ static void update_hr_timer_cb(lv_timer_t * timer)
     }
 }
 
+
+//==================================================================================
+// COUNTDOWN LOGIC
+//==================================================================================
+
+static lv_obj_t *scr_countdown = NULL;
+static lv_obj_t *label_countdown = NULL;
+static int countdown_value = 3;
+
+static void countdown_anim_ready_cb(lv_anim_t * a);
+
+
+static void set_scale_anim(void * obj, int32_t v) {
+    lv_obj_set_style_transform_scale((lv_obj_t *)obj, v, 0);
+}
+
+static void set_opa_anim(void * obj, int32_t v) {
+    lv_obj_set_style_opa((lv_obj_t *)obj, v, 0);
+}
+
+static void show_next_countdown_number(void) {
+    if (countdown_value >= 0) {
+        int32_t end_scale = 512; // Consistent 2x scale for both numbers and GO!
+
+        if (countdown_value > 0) {
+            lv_label_set_text_fmt(label_countdown, "%d", countdown_value);
+            audio_manager_play_event(AUDIO_EVENT_COUNTDOWN_STEP);
+        } else {
+            lv_label_set_text(label_countdown, "GO!");
+            audio_manager_play_event(AUDIO_EVENT_COUNTDOWN_GO);
+        }
+
+        // Reset scale and opacity for new number
+        lv_obj_set_style_transform_scale(label_countdown, 256, 0); // 1x scale
+        lv_obj_set_style_opa(label_countdown, LV_OPA_COVER, 0);
+
+        // Animation for scaling (Zoom in)
+        lv_anim_t a;
+        lv_anim_init(&a);
+        lv_anim_set_var(&a, label_countdown);
+        lv_anim_set_values(&a, 256, end_scale); 
+        lv_anim_set_time(&a, 800);
+        lv_anim_set_exec_cb(&a, set_scale_anim); // Use wrapper
+        lv_anim_set_path_cb(&a, lv_anim_path_ease_out);
+        lv_anim_set_ready_cb(&a, countdown_anim_ready_cb);
+        lv_anim_start(&a);
+
+        // Opacity animation removed for performance
+        lv_obj_set_style_opa(label_countdown, LV_OPA_COVER, 0);
+
+    } else {
+        // Countdown finished
+        ESP_LOGI("UI", "Countdown finished, loading training screen");
+        ui_training_screen_init();
+    }
+}
+
+static void countdown_anim_ready_cb(lv_anim_t * a) {
+    countdown_value--;
+    show_next_countdown_number();
+}
+
+static void create_countdown_screen(void) {
+    if (scr_countdown == NULL) {
+        scr_countdown = lv_obj_create(NULL);
+        lv_obj_set_style_bg_color(scr_countdown, lv_color_hex(0x000000), 0);
+        lv_obj_set_style_bg_opa(scr_countdown, LV_OPA_COVER, 0);
+
+        label_countdown = lv_label_create(scr_countdown);
+        lv_obj_set_style_text_color(label_countdown, lv_color_hex(0xFFFFFF), 0);
+        lv_obj_align(label_countdown, LV_ALIGN_CENTER, 0, 0);
+        
+        // Use the largest available font
+        #if LV_FONT_MONTSERRAT_48
+        lv_obj_set_style_text_font(label_countdown, &lv_font_montserrat_48, 0);
+        #elif LV_FONT_MONTSERRAT_32
+        lv_obj_set_style_text_font(label_countdown, &lv_font_montserrat_32, 0);
+        #else
+        lv_obj_set_style_text_font(label_countdown, LV_FONT_DEFAULT, 0);
+        #endif
+    }
+}
+
+static void start_countdown(void) {
+    create_countdown_screen();
+    lv_screen_load(scr_countdown);
+    countdown_value = 3;
+    show_next_countdown_number();
+}
+
 static void btn_event_cb(lv_event_t * e)
 {
     lv_event_code_t code = lv_event_get_code(e);
     lv_obj_t * btn = lv_event_get_target(e);
     if(code == LV_EVENT_CLICKED) {
+        audio_manager_play_event(AUDIO_EVENT_BUTTON);
         const char * txt = lv_label_get_text(lv_obj_get_child(btn, 0));
         if (s_hr_timer) {
             lv_timer_del(s_hr_timer);
@@ -71,6 +162,9 @@ static void btn_event_cb(lv_event_t * e)
         if (strcmp(txt, "Ajustes") == 0) {
             ESP_LOGI("UI", "Loading settings screen");
             ui_settings_screen_init();
+        } else if (strcmp(txt, "Entrenamiento libre") == 0) {
+            ESP_LOGI("UI", "Starting countdown for Free Training");
+            start_countdown();
         } else {
             ESP_LOGI("UI", "Loading training screen");
             ui_training_screen_init();

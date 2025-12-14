@@ -1,19 +1,72 @@
 #include "ui_settings.h"
 #include "ui_main.h"
+#include "audio_manager.h"
 #include "ui_cardio.h" // Include cardio screen header
 #include "ui_power.h" // Include power screen header
 #include "ui_wifi.h" // Include wifi screen header
+#include "ui_bike_config.h" // Include bike config screen header
+#include "ui_app_config.h" // Include app config screen header
 #include "lvgl.h"
 #include <stdio.h>
 #include "esp_log.h"
 
 static lv_style_t style_btn;
 
+#include "button_manager.h" // For calibration API
+
+static lv_obj_t * s_calib_msgbox = NULL;
+static lv_timer_t * s_calib_timer = NULL;
+
+static void msgbox_close_event_cb(lv_event_t * e)
+{
+    lv_obj_t * mbox = lv_event_get_user_data(e);
+    lv_msgbox_close(mbox);
+}
+
+static void calib_timer_cb(lv_timer_t * timer) {
+    if (!button_manager_is_calibrating()) {
+        // Finished
+        float min_v=0, max_v=0;
+        bool success = button_manager_get_calibration_result(&min_v, &max_v);
+        
+        // Close the "Calibrating..." msgbox
+        if (s_calib_msgbox) {
+             lv_msgbox_close(s_calib_msgbox);
+             s_calib_msgbox = NULL;
+        }
+
+        // Create Result MsgBox
+        lv_obj_t * mbox = lv_msgbox_create(NULL);
+        
+        if (success) {
+             char msg[128];
+             snprintf(msg, sizeof(msg), "Min: %.2f V\nMax: %.2f V", min_v, max_v);
+             lv_msgbox_add_title(mbox, "Calibracion completada");
+             lv_msgbox_add_text(mbox, msg);
+        } else {
+             lv_msgbox_add_title(mbox, "Error");
+             lv_msgbox_add_text(mbox, "Fallo en la calibracion.\nVer logs.");
+        }
+        
+        // Add Close Button (X in header) and/or Footer Button
+        // lv_msgbox_add_close_button(mbox); 
+        lv_obj_t * btn = lv_msgbox_add_footer_button(mbox, "OK");
+        lv_obj_add_event_cb(btn, msgbox_close_event_cb, LV_EVENT_CLICKED, mbox);
+
+        lv_obj_center(mbox);
+        
+        // Stop timer
+        lv_timer_del(timer);
+        s_calib_timer = NULL;
+    }
+}
+
 static void btn_event_cb(lv_event_t * e)
 {
     lv_event_code_t code = lv_event_get_code(e);
     lv_obj_t * btn = lv_event_get_target(e);
     if(code == LV_EVENT_CLICKED) {
+        audio_manager_play_event(AUDIO_EVENT_BUTTON);
         const char * txt = lv_label_get_text(lv_obj_get_child(btn, 0));
         ESP_LOGI("UI_SETTINGS", "Button clicked: %s", txt);
         
@@ -23,6 +76,25 @@ static void btn_event_cb(lv_event_t * e)
             ui_power_screen_init();
         } else if (strcmp(txt, "WIFI") == 0) {
             ui_open_wifi_list();
+        } else if (strcmp(txt, "Configurar bicicleta") == 0) {
+            ui_bike_configuration_screen_init();
+        } else if (strcmp(txt, "Configurar APP") == 0) {
+            ui_app_config_screen_init();
+        } else if (strcmp(txt, "Calibrar freno") == 0) {
+            // Start Calibration
+            button_manager_start_calibration();
+            
+            // Show MsgBox (Calibrating...)
+            s_calib_msgbox = lv_msgbox_create(NULL);
+            lv_msgbox_add_title(s_calib_msgbox, "Calibrando...");
+            lv_msgbox_add_text(s_calib_msgbox, "Buscando topes mecanicos...\nMovimiento automatico.");
+            // No buttons -> user waits
+            lv_obj_center(s_calib_msgbox);
+            
+            // Start polling timer
+            if (s_calib_timer) lv_timer_del(s_calib_timer);
+            s_calib_timer = lv_timer_create(calib_timer_cb, 500, NULL);
+            
         } else if (strcmp(txt, "Volver") == 0) {
             ui_init();
         }
@@ -95,5 +167,7 @@ void ui_settings_screen_init(void)
     create_button(cont, "WIFI");
     create_button(cont, "Calibrar potencia");
     create_button(cont, "Calibrar freno");
+    create_button(cont, "Configurar bicicleta");
+    create_button(cont, "Configurar APP");
     create_button(cont, "Volver");
 }

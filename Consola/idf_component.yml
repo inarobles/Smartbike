@@ -1,5 +1,0 @@
-## IDF Component Manager Manifest File
-dependencies:
-  espressif/nimble: '*'
-  espressif/esp_hosted: '*'
-  espressif/esp_wifi_remote: '*'

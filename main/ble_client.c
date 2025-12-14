@@ -68,6 +68,12 @@ static bool s_hr_connected = false;
 static int16_t s_power_watts = 0;
 static bool s_power_connected = false;
 
+// Cadence state
+static uint8_t s_cadence = 0;
+static uint16_t s_prev_crank_revs = 0;
+static uint16_t s_prev_crank_time = 0;
+static bool s_first_crank_meas = true;
+
 // Forward declarations
 static void ble_reconnect_task(void *pvParameters);
 static void ble_client_scan_internal(void);
@@ -115,6 +121,15 @@ bool ble_client_is_power_connected(void) {
         xSemaphoreGive(g_ble_state_mutex);
     }
     return connected;
+}
+
+uint8_t ble_client_get_cadence(void) {
+    uint8_t cad = 0;
+    if (g_ble_state_mutex && xSemaphoreTake(g_ble_state_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
+        cad = s_cadence;
+        xSemaphoreGive(g_ble_state_mutex);
+    }
+    return cad;
 }
 
 void ble_client_start_scan(ble_device_found_callback_t cb, uint16_t service_uuid) {
@@ -370,11 +385,51 @@ static int ble_client_gap_event(struct ble_gap_event *event, void *arg) {
                 // Cycling Power Measurement Characteristic (0x2A63)
                 // Flags (16 bits) + Instantaneous Power (16 bits)
                 int16_t watts = (data[3] << 8) | data[2];
+                uint16_t flags = (data[1] << 8) | data[0];
+                int offset = 4;
+                
+                if (flags & 0x01) { // Pedal Power Balance
+                    offset += 1;
+                }
+                if (flags & 0x04) { // Accumulated Torque
+                    offset += 2;
+                }
+                if (flags & 0x10) { // Wheel Revolution Data
+                    offset += 6;
+                }
+                
+                uint8_t current_cadence = 0;
+                
+                if (flags & 0x20) { // Crank Revolution Data
+                    if (len >= offset + 4) {
+                        uint16_t crank_revs = (data[offset+1] << 8) | data[offset];
+                        uint16_t crank_time = (data[offset+3] << 8) | data[offset+2];
+                        
+                        if (!s_first_crank_meas) {
+                            uint16_t rev_diff = crank_revs - s_prev_crank_revs;
+                            uint16_t time_diff = crank_time - s_prev_crank_time;
+                            
+                            if (time_diff > 0) {
+                                // time unit is 1/1024 seconds
+                                // RPM = (rev_diff * 1024 * 60) / time_diff
+                                uint32_t val = (uint32_t)rev_diff * 1024 * 60;
+                                current_cadence = (uint8_t)(val / time_diff);
+                            }
+                        } else {
+                            s_first_crank_meas = false;
+                        }
+                        
+                        s_prev_crank_revs = crank_revs;
+                        s_prev_crank_time = crank_time;
+                    }
+                }
+                
                 if (xSemaphoreTake(g_ble_state_mutex, pdMS_TO_TICKS(50)) == pdTRUE) {
                     s_power_watts = watts;
+                    if (current_cadence > 0) s_cadence = current_cadence;
                     xSemaphoreGive(g_ble_state_mutex);
                 }
-                ESP_LOGD(TAG, "Power: %d W", watts);
+                ESP_LOGD(TAG, "Power: %d W, Cadence: %d", watts, s_cadence);
             }
         }
         return 0;

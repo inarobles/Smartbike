@@ -17,6 +17,12 @@
 #include "wifi_manager.h"
 #include "wifi_client.h"
 
+#include "bike_config.h"
+#include "audio_manager.h"
+#include "button_manager.h"
+#include "cadence_sensor.h"
+#include "ina3221.h"
+
 void app_main(void)
 {
     // Initialize NVS
@@ -27,9 +33,7 @@ void app_main(void)
     }
     ESP_ERROR_CHECK(ret);
 
-    // Initialize WiFi
-    wifi_manager_init();
-    wifi_client_init();
+    ESP_ERROR_CHECK(ret);
 
     bsp_display_cfg_t cfg = {
         .lvgl_port_cfg = ESP_LVGL_PORT_INIT_CONFIG(),
@@ -42,14 +46,40 @@ void app_main(void)
         }
     };
     lv_display_t *disp = bsp_display_start_with_config(&cfg);
+    lv_display_set_rotation(disp, LV_DISPLAY_ROTATION_90);
+    
+    // Initialize Audio (After BSP I2C is ready)
+    // Initialize Bike Configuration (Load from NVS)
+    bike_config_init();
+
+    // Initialize Audio (After BSP I2C is ready)
+    audio_manager_init();
+
+    // Initialize MCP23017 Button Manager (Shares BSP I2C)
+    // Note: button_manager_init -> mcp23017_init requires BSP I2C handle.
+    // mcp23017 driver uses bsp_i2c_get_handle() internally.
+    // bsp_display_start_with_config initializes I2C if not already (or checks it).
+    // Let's ensure button_manager_init is called.
+    button_manager_init();
+
     bsp_display_backlight_on();
 
-    bsp_display_lock(0);
+    bsp_display_lock(portMAX_DELAY);
+    ui_init(); 
+    bsp_display_unlock();
 
-    bsp_display_rotate(disp, LV_DISPLAY_ROTATION_90);
-    
-    ui_init();
+    // Initialize INA3221 (Shares BSP I2C)
+    // Needs BSP I2C handle which is available after display start (if display manages I2C)
+    // or we get it via bsp_i2c_get_handle().
+    ina3221_init(bsp_i2c_get_handle());
+
+    // Initialize WiFi after UI is ready
+    wifi_manager_init();
+    wifi_client_init();
+
+    // Initialize BLE Client
     ble_client_init();
 
-    bsp_display_unlock();
+    // Initialize Cadence Sensor
+    cadence_sensor_init();
 }

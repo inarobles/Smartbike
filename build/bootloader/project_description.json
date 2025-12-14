@@ -14,7 +14,7 @@
     "git_revision":       "v5.5.1",
     "target":             "esp32p4",
     "rev":                "",
-    "min_rev":            "1",
+    "min_rev":            "100",
     "max_rev":            "199",
     "phy_data_partition": "",
     "monitor_baud" :      "115200",

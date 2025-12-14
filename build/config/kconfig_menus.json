@@ -36701,6 +36701,16 @@
                             {
                                 "children": [],
                                 "depends_on": "ESP_HOSTED_SDIO_HOST_INTERFACE && ESP_HOSTED_ENABLED",
+                                "help": "The co-processor needs some time to be ready after being reset by the host.\nIncrease this value if host sees SDMMC errors after resetting the co-processor.",
+                                "id": "ESP_HOSTED_SDIO_RESET_DELAY_MS",
+                                "name": "ESP_HOSTED_SDIO_RESET_DELAY_MS",
+                                "range": null,
+                                "title": "Delay (in ms) after Co-processor Reset",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "ESP_HOSTED_SDIO_HOST_INTERFACE && ESP_HOSTED_ENABLED",
                                 "help": "ENABLE/DISABLE software SDIO checksum",
                                 "id": "ESP_HOSTED_SDIO_CHECKSUM",
                                 "name": "ESP_HOSTED_SDIO_CHECKSUM",
@@ -37670,6 +37680,16 @@
                     {
                         "children": [
                             {
+                                "children": [],
+                                "depends_on": "ESP_HOSTED_ENABLED",
+                                "help": "Suppress warnings when host and co-processor firmware versions do not match.\nBy default, version mismatch warnings are shown during initialization.\nEnable this option to suppress these warnings.",
+                                "id": "ESP_HOSTED_FW_VERSION_MISMATCH_WARNING_SUPPRESS",
+                                "name": "ESP_HOSTED_FW_VERSION_MISMATCH_WARNING_SUPPRESS",
+                                "range": null,
+                                "title": "Suppress firmware version mismatch warnings",
+                                "type": "bool"
+                            },
+                            {
                                 "children": [
                                     {
                                         "children": [
@@ -37859,121 +37879,6 @@
                         "name": "ESP_HOSTED_DECODE_WIFI_RESERVED_FIELD",
                         "range": null,
                         "title": "Copy Wi-Fi configuration reserved field values",
-                        "type": "bool"
-                    },
-                    {
-                        "children": [
-                            {
-                                "children": [
-                                    {
-                                        "children": [
-                                            {
-                                                "children": [],
-                                                "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                                "help": "Host side TCP start port. Slave defaults to 61440\nSlave range: 61440-65535\nHost range: 49152-61439",
-                                                "id": "LWIP_TCP_LOCAL_PORT_RANGE_START",
-                                                "name": "LWIP_TCP_LOCAL_PORT_RANGE_START",
-                                                "range": null,
-                                                "title": "Host TCP start port",
-                                                "type": "int"
-                                            },
-                                            {
-                                                "children": [],
-                                                "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                                "help": "Host side TCP end port. Slave defaults to 65535\nSlave range: 61440-65535\nHost range: 49152-61439",
-                                                "id": "LWIP_TCP_LOCAL_PORT_RANGE_END",
-                                                "name": "LWIP_TCP_LOCAL_PORT_RANGE_END",
-                                                "range": null,
-                                                "title": "Host TCP end port",
-                                                "type": "int"
-                                            },
-                                            {
-                                                "children": [],
-                                                "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                                "help": "Host side UDP start port. Slave defaults to 61440\nSlave range: 61440-65535\nHost range: 49152-61439",
-                                                "id": "LWIP_UDP_LOCAL_PORT_RANGE_START",
-                                                "name": "LWIP_UDP_LOCAL_PORT_RANGE_START",
-                                                "range": null,
-                                                "title": "Host UDP start port",
-                                                "type": "int"
-                                            },
-                                            {
-                                                "children": [],
-                                                "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                                "help": "Host side UDP end port. Slave defaults to 65535\nSlave range: 61440-65535\nHost range: 49152-61439",
-                                                "id": "LWIP_UDP_LOCAL_PORT_RANGE_END",
-                                                "name": "LWIP_UDP_LOCAL_PORT_RANGE_END",
-                                                "range": null,
-                                                "title": "Host UDP end port",
-                                                "type": "int"
-                                            }
-                                        ],
-                                        "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                        "id": "component-config-esp-hosted-config-enable-network-split-shared-ip-address-between-host-and-slave-lwip-port-config-host-side-remote-lwip-port-config",
-                                        "title": "Host side (remote) LWIP port config",
-                                        "type": "menu"
-                                    },
-                                    {
-                                        "children": [
-                                            {
-                                                "children": [],
-                                                "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                                "help": "Slave side TCP start port. Host defaults to 49152\nSlave range: 61440-65535\nHost range: 49152-61439",
-                                                "id": "LWIP_TCP_REMOTE_PORT_RANGE_START",
-                                                "name": "LWIP_TCP_REMOTE_PORT_RANGE_START",
-                                                "range": null,
-                                                "title": "Slave TCP start port",
-                                                "type": "int"
-                                            },
-                                            {
-                                                "children": [],
-                                                "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                                "help": "Slave side TCP end port. Host defaults to 61439\nSlave range: 61440-65535\nHost range: 49152-61439",
-                                                "id": "LWIP_TCP_REMOTE_PORT_RANGE_END",
-                                                "name": "LWIP_TCP_REMOTE_PORT_RANGE_END",
-                                                "range": null,
-                                                "title": "Slave TCP end port",
-                                                "type": "int"
-                                            },
-                                            {
-                                                "children": [],
-                                                "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                                "help": "Slave side UDP start port. Host defaults to 49152\nSlave range: 61440-65535\nHost range: 49152-61439",
-                                                "id": "LWIP_UDP_REMOTE_PORT_RANGE_START",
-                                                "name": "LWIP_UDP_REMOTE_PORT_RANGE_START",
-                                                "range": null,
-                                                "title": "Slave UDP start port",
-                                                "type": "int"
-                                            },
-                                            {
-                                                "children": [],
-                                                "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                                "help": "Slave side UDP end port. Host defaults to 61439\nSlave range: 61440-65535\nHost range: 49152-61439",
-                                                "id": "LWIP_UDP_REMOTE_PORT_RANGE_END",
-                                                "name": "LWIP_UDP_REMOTE_PORT_RANGE_END",
-                                                "range": null,
-                                                "title": "Slave UDP end port",
-                                                "type": "int"
-                                            }
-                                        ],
-                                        "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                        "id": "component-config-esp-hosted-config-enable-network-split-shared-ip-address-between-host-and-slave-lwip-port-config-slave-side-remote-lwip-port-config",
-                                        "title": "Slave side (remote) LWIP port config",
-                                        "type": "menu"
-                                    }
-                                ],
-                                "depends_on": "ESP_HOSTED_NETWORK_SPLIT_ENABLED && ESP_HOSTED_ENABLED",
-                                "id": "component-config-esp-hosted-config-enable-network-split-shared-ip-address-between-host-and-slave-lwip-port-config",
-                                "title": "LWIP port config",
-                                "type": "menu"
-                            }
-                        ],
-                        "depends_on": "ESP_HOSTED_ENABLED",
-                        "help": "Enables the LWIP stack on the slave to process its own set of ports,\nalongside the host stack. Helps split network traffic and allows\nbackground tasks on the slave, even when the host is in low-power mode.",
-                        "id": "ESP_HOSTED_NETWORK_SPLIT_ENABLED",
-                        "name": "ESP_HOSTED_NETWORK_SPLIT_ENABLED",
-                        "range": null,
-                        "title": "Enable Network Split: Shared IP address between host and slave",
                         "type": "bool"
                     },
                     {
@@ -41545,6 +41450,16 @@
                                         "children": [],
                                         "depends_on": "<choice LV_USE_OS>",
                                         "help": null,
+                                        "id": "LV_OS_SDL2",
+                                        "name": "LV_OS_SDL2",
+                                        "range": null,
+                                        "title": "7: SDL2",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice LV_USE_OS>",
+                                        "help": null,
                                         "id": "LV_OS_CUSTOM",
                                         "name": "LV_OS_CUSTOM",
                                         "range": null,
@@ -41558,16 +41473,6 @@
                                 "name": "LV_USE_OS",
                                 "title": "Default operating system to use",
                                 "type": "choice"
-                            },
-                            {
-                                "children": [],
-                                "depends_on": null,
-                                "help": null,
-                                "id": "LV_USE_OS",
-                                "name": "LV_USE_OS",
-                                "range": null,
-                                "title": null,
-                                "type": "int"
                             },
                             {
                                 "children": [],
@@ -41639,12 +41544,35 @@
                             },
                             {
                                 "children": [],
-                                "depends_on": "LV_USE_OS > 0",
+                                "depends_on": null,
+                                "help": "Limit the max allocated memory for simple and transformed layers.\nIt should be at least `LV_DRAW_LAYER_SIMPLE_BUF_SIZE` sized but if transformed layers are also used\nit should be enough to store the largest widget too (width x height x 4 area).\nSet it to 0 to have no limit.",
+                                "id": "LV_DRAW_LAYER_MAX_MEMORY",
+                                "name": "LV_DRAW_LAYER_MAX_MEMORY",
+                                "range": null,
+                                "title": "The maximum amount of memory that can be used for layers",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "!LV_OS_NONE",
                                 "help": "If FreeType or ThorVG is enabled, it is recommended to set it to 32KB or more.",
                                 "id": "LV_DRAW_THREAD_STACK_SIZE",
                                 "name": "LV_DRAW_THREAD_STACK_SIZE",
                                 "range": null,
                                 "title": "Stack size of draw thread in bytes",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "!LV_OS_NONE",
+                                "help": "Thread priority controls the relative importance of the drawing threads.\nValues correspond to lv_thread_prio_t enum in lv_os.h:\n0: LV_THREAD_PRIO_LOWEST\n1: LV_THREAD_PRIO_LOW\n2: LV_THREAD_PRIO_MID (default)\n3: LV_THREAD_PRIO_HIGH\n4: LV_THREAD_PRIO_HIGHEST\n\nHigher priority can improve rendering performance but might cause\nstarvation of lower priority tasks.",
+                                "id": "LV_DRAW_THREAD_PRIO",
+                                "name": "LV_DRAW_THREAD_PRIO",
+                                "range": [
+                                    0,
+                                    4
+                                ],
+                                "title": "Thread priority for the drawing thread",
                                 "type": "int"
                             },
                             {
@@ -41703,6 +41631,16 @@
                                         "children": [],
                                         "depends_on": "LV_USE_DRAW_SW",
                                         "help": null,
+                                        "id": "LV_DRAW_SW_SUPPORT_ARGB8888_PREMULTIPLIED",
+                                        "name": "LV_DRAW_SW_SUPPORT_ARGB8888_PREMULTIPLIED",
+                                        "range": null,
+                                        "title": "Enable support for ARGB8888 premultiplied color format",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_DRAW_SW",
+                                        "help": null,
                                         "id": "LV_DRAW_SW_SUPPORT_L8",
                                         "name": "LV_DRAW_SW_SUPPORT_L8",
                                         "range": null,
@@ -41730,7 +41668,21 @@
                                         "type": "bool"
                                     },
                                     {
-                                        "children": [],
+                                        "children": [
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_DRAW_SW_SUPPORT_I1",
+                                                "help": null,
+                                                "id": "LV_DRAW_SW_I1_LUM_THRESHOLD",
+                                                "name": "LV_DRAW_SW_I1_LUM_THRESHOLD",
+                                                "range": [
+                                                    0,
+                                                    254
+                                                ],
+                                                "title": "Luminance threshold for a pixel to be active",
+                                                "type": "int"
+                                            }
+                                        ],
                                         "depends_on": "LV_USE_DRAW_SW",
                                         "help": null,
                                         "id": "LV_DRAW_SW_SUPPORT_I1",
@@ -41892,58 +41844,6 @@
                                 "children": [
                                     {
                                         "children": [],
-                                        "depends_on": "LV_USE_DRAW_VGLITE",
-                                        "help": null,
-                                        "id": "LV_USE_VGLITE_BLIT_SPLIT",
-                                        "name": "LV_USE_VGLITE_BLIT_SPLIT",
-                                        "range": null,
-                                        "title": "Enable blit quality degradation workaround recommended for screen's dimension > 352 pixels",
-                                        "type": "bool"
-                                    },
-                                    {
-                                        "children": [
-                                            {
-                                                "children": [],
-                                                "depends_on": "LV_USE_VGLITE_DRAW_THREAD",
-                                                "help": "Queue multiple tasks and flash them once to the GPU. The task ready state will be send asynchronous to dispatcher.",
-                                                "id": "LV_USE_VGLITE_DRAW_ASYNC",
-                                                "name": "LV_USE_VGLITE_DRAW_ASYNC",
-                                                "range": null,
-                                                "title": "Enable VGLite draw async",
-                                                "type": "bool"
-                                            }
-                                        ],
-                                        "depends_on": "LV_USE_DRAW_VGLITE && LV_USE_OS > 0",
-                                        "help": null,
-                                        "id": "LV_USE_VGLITE_DRAW_THREAD",
-                                        "name": "LV_USE_VGLITE_DRAW_THREAD",
-                                        "range": null,
-                                        "title": "Use additional draw thread for VG-Lite processing",
-                                        "type": "bool"
-                                    },
-                                    {
-                                        "children": [],
-                                        "depends_on": "LV_USE_DRAW_VGLITE",
-                                        "help": null,
-                                        "id": "LV_USE_VGLITE_ASSERT",
-                                        "name": "LV_USE_VGLITE_ASSERT",
-                                        "range": null,
-                                        "title": "Enable VGLite asserts",
-                                        "type": "bool"
-                                    }
-                                ],
-                                "depends_on": null,
-                                "help": null,
-                                "id": "LV_USE_DRAW_VGLITE",
-                                "name": "LV_USE_DRAW_VGLITE",
-                                "range": null,
-                                "title": "Use NXP's VG-Lite GPU on iMX RTxxx platforms",
-                                "type": "bool"
-                            },
-                            {
-                                "children": [
-                                    {
-                                        "children": [],
                                         "depends_on": "LV_USE_PXP",
                                         "help": null,
                                         "id": "LV_USE_DRAW_PXP",
@@ -41973,7 +41873,7 @@
                             },
                             {
                                 "children": [],
-                                "depends_on": "LV_USE_DRAW_PXP && LV_USE_OS > 0",
+                                "depends_on": "LV_USE_DRAW_PXP && !LV_OS_NONE",
                                 "help": null,
                                 "id": "LV_USE_PXP_DRAW_THREAD",
                                 "name": "LV_USE_PXP_DRAW_THREAD",
@@ -41989,6 +41889,67 @@
                                 "name": "LV_USE_PXP_ASSERT",
                                 "range": null,
                                 "title": "Enable PXP asserts",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_G2D",
+                                        "help": null,
+                                        "id": "LV_USE_DRAW_G2D",
+                                        "name": "LV_USE_DRAW_G2D",
+                                        "range": null,
+                                        "title": "Use G2D for drawing.",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_G2D",
+                                        "help": null,
+                                        "id": "LV_USE_ROTATE_G2D",
+                                        "name": "LV_USE_ROTATE_G2D",
+                                        "range": null,
+                                        "title": "Use G2D to rotate display.",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_G2D",
+                                        "help": "Includes the frame buffers and assets.",
+                                        "id": "LV_G2D_HASH_TABLE_SIZE",
+                                        "name": "LV_G2D_HASH_TABLE_SIZE",
+                                        "range": null,
+                                        "title": "Maximum number of buffers that can be stored for G2D draw unit.",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_G2D",
+                                "name": "LV_USE_G2D",
+                                "range": null,
+                                "title": "Use NXP's G2D on MPU platforms",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "LV_USE_DRAW_G2D && !LV_OS_NONE",
+                                "help": null,
+                                "id": "LV_USE_G2D_DRAW_THREAD",
+                                "name": "LV_USE_G2D_DRAW_THREAD",
+                                "range": null,
+                                "title": "Use additional draw thread for G2D processing",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "LV_USE_G2D",
+                                "help": null,
+                                "id": "LV_USE_G2D_ASSERT",
+                                "name": "LV_USE_G2D_ASSERT",
+                                "range": null,
+                                "title": "Enable G2D asserts",
                                 "type": "bool"
                             },
                             {
@@ -42072,6 +42033,26 @@
                                         "range": null,
                                         "title": "VG-Lite stroke maximum cache number.",
                                         "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_DRAW_VG_LITE",
+                                        "help": null,
+                                        "id": "LV_VG_LITE_DISABLE_VLC_OP_CLOSE",
+                                        "name": "LV_VG_LITE_DISABLE_VLC_OP_CLOSE",
+                                        "range": null,
+                                        "title": "Remove VLC_OP_CLOSE path instruction (Workaround for NXP)",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_DRAW_VG_LITE",
+                                        "help": null,
+                                        "id": "LV_VG_LITE_DISABLE_LINEAR_GRADIENT_EXT",
+                                        "name": "LV_VG_LITE_DISABLE_LINEAR_GRADIENT_EXT",
+                                        "range": null,
+                                        "title": "Disable linear gradient extension for some older versions of drivers.",
+                                        "type": "bool"
                                     }
                                 ],
                                 "depends_on": null,
@@ -42090,6 +42071,99 @@
                                 "name": "LV_USE_VECTOR_GRAPHIC",
                                 "range": null,
                                 "title": "Use Vector Graphic APIs",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_DRAW_DMA2D",
+                                        "help": null,
+                                        "id": "LV_DRAW_DMA2D_HAL_INCLUDE",
+                                        "name": "LV_DRAW_DMA2D_HAL_INCLUDE",
+                                        "range": null,
+                                        "title": "the header file for LVGL to include for DMA2D",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_DRAW_DMA2D",
+                                        "help": "if enabled, the user is required to call\n`lv_draw_dma2d_transfer_complete_interrupt_handler`\nupon receiving the DMA2D global interrupt",
+                                        "id": "LV_USE_DRAW_DMA2D_INTERRUPT",
+                                        "name": "LV_USE_DRAW_DMA2D_INTERRUPT",
+                                        "range": null,
+                                        "title": "use the DMA2D transfer complete interrupt",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": "Accelerate blends, fills, image decoding, etc. with STM32 DMA2D.",
+                                "id": "LV_USE_DRAW_DMA2D",
+                                "name": "LV_USE_DRAW_DMA2D",
+                                "range": null,
+                                "title": "Use DMA2D on the supporting STM32 platforms",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "LV_USE_OPENGLES",
+                                "help": null,
+                                "id": "LV_USE_DRAW_OPENGLES",
+                                "name": "LV_USE_DRAW_OPENGLES",
+                                "range": null,
+                                "title": "Draw using cached OpenGLES textures",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PPA",
+                                        "help": null,
+                                        "id": "LV_USE_PPA_IMG",
+                                        "name": "LV_USE_PPA_IMG",
+                                        "range": null,
+                                        "title": "Use Espressif's PPA accelerator for Image draw",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_PPA",
+                                "name": "LV_USE_PPA",
+                                "range": null,
+                                "title": "Use Espressif's PPA accelerator for ESP SoCs",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_DRAW_EVE",
+                                        "help": null,
+                                        "id": "LV_DRAW_EVE_EVE_GENERATION",
+                                        "name": "LV_DRAW_EVE_EVE_GENERATION",
+                                        "range": null,
+                                        "title": "EVE_GEN value",
+                                        "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_DRAW_EVE",
+                                        "help": null,
+                                        "id": "LV_DRAW_EVE_WRITE_BUFFER_SIZE",
+                                        "name": "LV_DRAW_EVE_WRITE_BUFFER_SIZE",
+                                        "range": null,
+                                        "title": "Max bytes to buffer for each SPI transmission or 0 to disable buffering",
+                                        "type": "int"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_DRAW_EVE",
+                                "name": "LV_USE_DRAW_EVE",
+                                "range": null,
+                                "title": "Use EVE FT81X GPU.",
                                 "type": "bool"
                             }
                         ],
@@ -42502,34 +42576,43 @@
                                         "type": "bool"
                                     },
                                     {
-                                        "children": [
-                                            {
-                                                "children": [],
-                                                "depends_on": "LV_USE_OBJ_ID",
-                                                "help": null,
-                                                "id": "LV_OBJ_ID_AUTO_ASSIGN",
-                                                "name": "LV_OBJ_ID_AUTO_ASSIGN",
-                                                "range": null,
-                                                "title": "Automatically assign an ID when obj is created",
-                                                "type": "bool"
-                                            },
-                                            {
-                                                "children": [],
-                                                "depends_on": "LV_USE_OBJ_ID",
-                                                "help": null,
-                                                "id": "LV_USE_OBJ_ID_BUILTIN",
-                                                "name": "LV_USE_OBJ_ID_BUILTIN",
-                                                "range": null,
-                                                "title": "Use builtin method to deal with obj ID",
-                                                "type": "bool"
-                                            }
-                                        ],
+                                        "children": [],
                                         "depends_on": null,
                                         "help": null,
                                         "id": "LV_USE_OBJ_ID",
                                         "name": "LV_USE_OBJ_ID",
                                         "range": null,
                                         "title": "Add id field to obj",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": null,
+                                        "help": null,
+                                        "id": "LV_USE_OBJ_NAME",
+                                        "name": "LV_USE_OBJ_NAME",
+                                        "range": null,
+                                        "title": "Enable support widget names",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_OBJ_ID",
+                                        "help": null,
+                                        "id": "LV_OBJ_ID_AUTO_ASSIGN",
+                                        "name": "LV_OBJ_ID_AUTO_ASSIGN",
+                                        "range": null,
+                                        "title": "Automatically assign an ID when obj is created",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_OBJ_ID",
+                                        "help": null,
+                                        "id": "LV_USE_OBJ_ID_BUILTIN",
+                                        "name": "LV_USE_OBJ_ID_BUILTIN",
+                                        "range": null,
+                                        "title": "Use builtin method to deal with obj ID",
                                         "type": "bool"
                                     },
                                     {
@@ -42622,6 +42705,16 @@
                                         "name": "LV_USE_VG_LITE_THORVG",
                                         "range": null,
                                         "title": "VG-Lite Simulator",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_FLOAT",
+                                        "help": null,
+                                        "id": "LV_USE_GESTURE_RECOGNITION",
+                                        "name": "LV_USE_GESTURE_RECOGNITION",
+                                        "range": null,
+                                        "title": "Enable the multi-touch gesture recognition feature",
                                         "type": "bool"
                                     }
                                 ],
@@ -42942,20 +43035,20 @@
                                         "children": [],
                                         "depends_on": null,
                                         "help": null,
-                                        "id": "LV_FONT_SIMSUN_14_CJK",
-                                        "name": "LV_FONT_SIMSUN_14_CJK",
+                                        "id": "LV_FONT_SOURCE_HAN_SANS_SC_14_CJK",
+                                        "name": "LV_FONT_SOURCE_HAN_SANS_SC_14_CJK",
                                         "range": null,
-                                        "title": "Enable Simsun 14 CJK",
+                                        "title": "Enable SourceHanSansSC 14 CJK",
                                         "type": "bool"
                                     },
                                     {
                                         "children": [],
                                         "depends_on": null,
                                         "help": null,
-                                        "id": "LV_FONT_SIMSUN_16_CJK",
-                                        "name": "LV_FONT_SIMSUN_16_CJK",
+                                        "id": "LV_FONT_SOURCE_HAN_SANS_SC_16_CJK",
+                                        "name": "LV_FONT_SOURCE_HAN_SANS_SC_16_CJK",
                                         "range": null,
-                                        "title": "Enable Simsun 16 CJK",
+                                        "title": "Enable SourceHanSansSC 16 CJK",
                                         "type": "bool"
                                     },
                                     {
@@ -43220,20 +43313,20 @@
                                         "children": [],
                                         "depends_on": "<choice LV_FONT_DEFAULT>",
                                         "help": null,
-                                        "id": "LV_FONT_DEFAULT_SIMSUN_14_CJK",
-                                        "name": "LV_FONT_DEFAULT_SIMSUN_14_CJK",
+                                        "id": "LV_FONT_DEFAULT_SOURCE_HAN_SANS_SC_14_CJK",
+                                        "name": "LV_FONT_DEFAULT_SOURCE_HAN_SANS_SC_14_CJK",
                                         "range": null,
-                                        "title": "Simsun 14 CJK",
+                                        "title": "SourceHanSansSC 14 CJK",
                                         "type": "bool"
                                     },
                                     {
                                         "children": [],
                                         "depends_on": "<choice LV_FONT_DEFAULT>",
                                         "help": null,
-                                        "id": "LV_FONT_DEFAULT_SIMSUN_16_CJK",
-                                        "name": "LV_FONT_DEFAULT_SIMSUN_16_CJK",
+                                        "id": "LV_FONT_DEFAULT_SOURCE_HAN_SANS_SC_16_CJK",
+                                        "name": "LV_FONT_DEFAULT_SOURCE_HAN_SANS_SC_16_CJK",
                                         "range": null,
-                                        "title": "Simsun 16 CJK",
+                                        "title": "SourceHanSansSC 16 CJK",
                                         "type": "bool"
                                     },
                                     {
@@ -43293,6 +43386,24 @@
                                 "range": null,
                                 "title": "Enable drawing placeholders when glyph dsc is not found",
                                 "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_DEMO_BENCHMARK",
+                                        "help": null,
+                                        "id": "LV_DEMO_BENCHMARK_ALIGNED_FONTS",
+                                        "name": "LV_DEMO_BENCHMARK_ALIGNED_FONTS",
+                                        "range": null,
+                                        "title": "Use static aligned fonts",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "id": "component-config-lvgl-configuration-font-usage-enable-static-fonts",
+                                "title": "Enable static fonts",
+                                "type": "menu"
                             }
                         ],
                         "depends_on": null,
@@ -43371,6 +43482,16 @@
                                 "range": null,
                                 "title": "Min num chars after break",
                                 "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_TXT_COLOR_CMD",
+                                "name": "LV_TXT_COLOR_CMD",
+                                "range": null,
+                                "title": "The control character to use for signalling text recoloring",
+                                "type": "string"
                             },
                             {
                                 "children": [
@@ -43475,6 +43596,16 @@
                                 "children": [],
                                 "depends_on": null,
                                 "help": null,
+                                "id": "LV_USE_ARCLABEL",
+                                "name": "LV_USE_ARCLABEL",
+                                "range": null,
+                                "title": "Arc Label",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
                                 "id": "LV_USE_BAR",
                                 "name": "LV_USE_BAR",
                                 "range": null,
@@ -43512,6 +43643,84 @@
                                         "range": null,
                                         "title": "Calendar week starts monday",
                                         "type": "bool"
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_CALENDAR",
+                                                "help": null,
+                                                "id": "LV_MONDAY_STR",
+                                                "name": "LV_MONDAY_STR",
+                                                "range": null,
+                                                "title": "Shortened string for Monday",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_CALENDAR",
+                                                "help": null,
+                                                "id": "LV_TUESDAY_STR",
+                                                "name": "LV_TUESDAY_STR",
+                                                "range": null,
+                                                "title": "Shortened string for Tuesday",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_CALENDAR",
+                                                "help": null,
+                                                "id": "LV_WEDNESDAY_STR",
+                                                "name": "LV_WEDNESDAY_STR",
+                                                "range": null,
+                                                "title": "Shortened string for Wednesday",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_CALENDAR",
+                                                "help": null,
+                                                "id": "LV_THURSDAY_STR",
+                                                "name": "LV_THURSDAY_STR",
+                                                "range": null,
+                                                "title": "Shortened string for Thursday",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_CALENDAR",
+                                                "help": null,
+                                                "id": "LV_FRIDAY_STR",
+                                                "name": "LV_FRIDAY_STR",
+                                                "range": null,
+                                                "title": "Shortened string for Friday",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_CALENDAR",
+                                                "help": null,
+                                                "id": "LV_SATURDAY_STR",
+                                                "name": "LV_SATURDAY_STR",
+                                                "range": null,
+                                                "title": "Shortened string for Saturday",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_CALENDAR",
+                                                "help": null,
+                                                "id": "LV_SUNDAY_STR",
+                                                "name": "LV_SUNDAY_STR",
+                                                "range": null,
+                                                "title": "Shortened string for Sunday",
+                                                "type": "string"
+                                            }
+                                        ],
+                                        "depends_on": "LV_USE_CALENDAR",
+                                        "id": "component-config-lvgl-configuration-widget-usage-calendar-days-name-configuration",
+                                        "title": "Days name configuration",
+                                        "type": "menu"
                                     },
                                     {
                                         "children": [],
@@ -43974,8 +44183,8 @@
                                 "children": [],
                                 "depends_on": null,
                                 "help": "Setting a default drive letter allows skipping the driver prefix in filepaths",
-                                "id": "LV_FS_DEFAULT_DRIVE_LETTER",
-                                "name": "LV_FS_DEFAULT_DRIVE_LETTER",
+                                "id": "LV_FS_DEFAULT_DRIVER_LETTER",
+                                "name": "LV_FS_DEFAULT_DRIVER_LETTER",
                                 "range": null,
                                 "title": "Default drive letter (e.g. 65 for 'A')",
                                 "type": "int"
@@ -43989,7 +44198,7 @@
                                         "id": "LV_FS_STDIO_LETTER",
                                         "name": "LV_FS_STDIO_LETTER",
                                         "range": null,
-                                        "title": "Set an upper cased letter on which the drive will accessible (e.g. 65 for 'A')",
+                                        "title": "Set an upper-cased driver-identifier letter for this driver (e.g. 65 for 'A')",
                                         "type": "int"
                                     },
                                     {
@@ -44030,7 +44239,7 @@
                                         "id": "LV_FS_POSIX_LETTER",
                                         "name": "LV_FS_POSIX_LETTER",
                                         "range": null,
-                                        "title": "Set an upper cased letter on which the drive will accessible (e.g. 65 for 'A')",
+                                        "title": "Set an upper-cased driver-identifier letter for this driver (e.g. 65 for 'A')",
                                         "type": "int"
                                     },
                                     {
@@ -44071,7 +44280,7 @@
                                         "id": "LV_FS_WIN32_LETTER",
                                         "name": "LV_FS_WIN32_LETTER",
                                         "range": null,
-                                        "title": "Set an upper cased letter on which the drive will accessible (e.g. 65 for 'A')",
+                                        "title": "Set an upper-cased driver-identifier letter for this driver (e.g. 65 for 'A')",
                                         "type": "int"
                                     },
                                     {
@@ -44112,8 +44321,18 @@
                                         "id": "LV_FS_FATFS_LETTER",
                                         "name": "LV_FS_FATFS_LETTER",
                                         "range": null,
-                                        "title": "Set an upper cased letter on which the drive will accessible (e.g. 65 for 'A')",
+                                        "title": "Set an upper-cased driver-identifier letter for this driver (e.g. 65 for 'A')",
                                         "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_FS_FATFS",
+                                        "help": null,
+                                        "id": "LV_FS_FATFS_PATH",
+                                        "name": "LV_FS_FATFS_PATH",
+                                        "range": null,
+                                        "title": "Set the working directory",
+                                        "type": "string"
                                     },
                                     {
                                         "children": [],
@@ -44143,7 +44362,7 @@
                                         "id": "LV_FS_MEMFS_LETTER",
                                         "name": "LV_FS_MEMFS_LETTER",
                                         "range": null,
-                                        "title": "Set an upper cased letter on which the drive will accessible (e.g. 65 for 'A')",
+                                        "title": "Set an upper-cased driver-identifier letter for this driver (e.g. 65 for 'A')",
                                         "type": "int"
                                     }
                                 ],
@@ -44164,8 +44383,18 @@
                                         "id": "LV_FS_LITTLEFS_LETTER",
                                         "name": "LV_FS_LITTLEFS_LETTER",
                                         "range": null,
-                                        "title": "Set an upper cased letter on which the drive will accessible (e.g. 65 for 'A')",
+                                        "title": "Set an upper-cased driver-identifier letter for this driver (e.g. 65 for 'A')",
                                         "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_FS_LITTLEFS",
+                                        "help": null,
+                                        "id": "LV_FS_LITTLEFS_PATH",
+                                        "name": "LV_FS_LITTLEFS_PATH",
+                                        "range": null,
+                                        "title": "Set the working directory",
+                                        "type": "string"
                                     }
                                 ],
                                 "depends_on": null,
@@ -44185,8 +44414,18 @@
                                         "id": "LV_FS_ARDUINO_ESP_LITTLEFS_LETTER",
                                         "name": "LV_FS_ARDUINO_ESP_LITTLEFS_LETTER",
                                         "range": null,
-                                        "title": "Set an upper cased letter on which the drive will accessible (e.g. 65 for 'A')",
+                                        "title": "Set an upper-cased driver-identifier letter for this driver (e.g. 65 for 'A')",
                                         "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_FS_ARDUINO_ESP_LITTLEFS",
+                                        "help": null,
+                                        "id": "LV_FS_ARDUINO_ESP_LITTLEFS_PATH",
+                                        "name": "LV_FS_ARDUINO_ESP_LITTLEFS_PATH",
+                                        "range": null,
+                                        "title": "Set the working directory",
+                                        "type": "string"
                                     }
                                 ],
                                 "depends_on": null,
@@ -44206,8 +44445,18 @@
                                         "id": "LV_FS_ARDUINO_SD_LETTER",
                                         "name": "LV_FS_ARDUINO_SD_LETTER",
                                         "range": null,
-                                        "title": "Set an upper cased letter on which the drive will accessible (e.g. 65 for 'A')",
+                                        "title": "Set an upper-cased driver-identifier letter for this driver (e.g. 65 for 'A')",
                                         "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_FS_ARDUINO_SD",
+                                        "help": null,
+                                        "id": "LV_FS_ARDUINO_SD_PATH",
+                                        "name": "LV_FS_ARDUINO_SD_PATH",
+                                        "range": null,
+                                        "title": "Set the working directory",
+                                        "type": "string"
                                     }
                                 ],
                                 "depends_on": null,
@@ -44216,6 +44465,48 @@
                                 "name": "LV_USE_FS_ARDUINO_SD",
                                 "range": null,
                                 "title": "File system on top of Arduino SD API",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_FS_UEFI",
+                                        "help": null,
+                                        "id": "LV_USE_FS_UEFI_LETTER",
+                                        "name": "LV_USE_FS_UEFI_LETTER",
+                                        "range": null,
+                                        "title": "Set an upper-cased driver-identifier letter for this driver (e.g. 65 for 'A')",
+                                        "type": "int"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_FS_UEFI",
+                                "name": "LV_USE_FS_UEFI",
+                                "range": null,
+                                "title": "File system on top of the UEFI EFI_SIMPLE_FILE_SYSTEM_PROTOCOL",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_FS_FROGFS",
+                                        "help": null,
+                                        "id": "LV_FS_FROGFS_LETTER",
+                                        "name": "LV_FS_FROGFS_LETTER",
+                                        "range": null,
+                                        "title": "Set an upper-cased driver-identifier letter for this driver (e.g. 65 for 'A')",
+                                        "type": "int"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_FS_FROGFS",
+                                "name": "LV_USE_FS_FROGFS",
+                                "range": null,
+                                "title": "FrogFS read-only filesystem",
                                 "type": "bool"
                             },
                             {
@@ -44300,6 +44591,27 @@
                                 "type": "bool"
                             },
                             {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_SVG",
+                                        "help": null,
+                                        "id": "LV_USE_SVG_ANIMATION",
+                                        "name": "LV_USE_SVG_ANIMATION",
+                                        "range": null,
+                                        "title": "SVG animation",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": "LV_USE_VECTOR_GRAPHIC",
+                                "help": null,
+                                "id": "LV_USE_SVG",
+                                "name": "LV_USE_SVG",
+                                "range": null,
+                                "title": "SVG library",
+                                "type": "bool"
+                            },
+                            {
                                 "children": [],
                                 "depends_on": null,
                                 "help": null,
@@ -44380,7 +44692,17 @@
                                         "name": "LV_TINY_TTF_CACHE_GLYPH_CNT",
                                         "range": null,
                                         "title": "Tiny ttf cache entries count",
-                                        "type": "bool"
+                                        "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_TINY_TTF",
+                                        "help": null,
+                                        "id": "LV_TINY_TTF_CACHE_KERNING_CNT",
+                                        "name": "LV_TINY_TTF_CACHE_KERNING_CNT",
+                                        "range": null,
+                                        "title": "Tiny ttf kerning cache entries count",
+                                        "type": "int"
                                     }
                                 ],
                                 "depends_on": null,
@@ -44493,6 +44815,16 @@
                                         "name": "LV_FFMPEG_DUMP_FORMAT",
                                         "range": null,
                                         "title": "Dump format",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_FFMPEG",
+                                        "help": "You won't be able to open URLs after enabling this feature.\nNote that FFmpeg image decoder will always use lvgl file system.",
+                                        "id": "LV_FFMPEG_PLAYER_USE_LV_FS",
+                                        "name": "LV_FFMPEG_PLAYER_USE_LV_FS",
+                                        "range": null,
+                                        "title": "Use lvgl file path in FFmpeg Player widget",
                                         "type": "bool"
                                     }
                                 ],
@@ -44771,13 +45103,33 @@
                                         "children": [
                                             {
                                                 "children": [],
-                                                "depends_on": "LV_USE_PROFILER_BUILTIN",
+                                                "depends_on": "LV_USE_PROFILER_BUILTIN && LV_USE_PROFILER",
                                                 "help": null,
                                                 "id": "LV_PROFILER_BUILTIN_BUF_SIZE",
                                                 "name": "LV_PROFILER_BUILTIN_BUF_SIZE",
                                                 "range": null,
                                                 "title": "Default profiler trace buffer size in bytes",
                                                 "type": "int"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_PROFILER_BUILTIN && LV_USE_PROFILER",
+                                                "help": null,
+                                                "id": "LV_PROFILER_BUILTIN_DEFAULT_ENABLE",
+                                                "name": "LV_PROFILER_BUILTIN_DEFAULT_ENABLE",
+                                                "range": null,
+                                                "title": "Enable built-in profiler by default",
+                                                "type": "bool"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_PROFILER_BUILTIN && LV_USE_PROFILER",
+                                                "help": null,
+                                                "id": "LV_USE_PROFILER_BUILTIN_POSIX",
+                                                "name": "LV_USE_PROFILER_BUILTIN_POSIX",
+                                                "range": null,
+                                                "title": "Enable POSIX profiler port",
+                                                "type": "bool"
                                             }
                                         ],
                                         "depends_on": "LV_USE_PROFILER",
@@ -44797,15 +45149,126 @@
                                         "range": null,
                                         "title": "Header to include for the profiler",
                                         "type": "string"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_LAYOUT",
+                                        "name": "LV_PROFILER_LAYOUT",
+                                        "range": null,
+                                        "title": "Enable layout profiler",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_REFR",
+                                        "name": "LV_PROFILER_REFR",
+                                        "range": null,
+                                        "title": "Enable disp refr profiler",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_DRAW",
+                                        "name": "LV_PROFILER_DRAW",
+                                        "range": null,
+                                        "title": "Enable draw profiler",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_INDEV",
+                                        "name": "LV_PROFILER_INDEV",
+                                        "range": null,
+                                        "title": "Enable indev profiler",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_DECODER",
+                                        "name": "LV_PROFILER_DECODER",
+                                        "range": null,
+                                        "title": "Enable decoder profiler",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_FONT",
+                                        "name": "LV_PROFILER_FONT",
+                                        "range": null,
+                                        "title": "Enable font profiler",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_FS",
+                                        "name": "LV_PROFILER_FS",
+                                        "range": null,
+                                        "title": "Enable fs profiler",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_STYLE",
+                                        "name": "LV_PROFILER_STYLE",
+                                        "range": null,
+                                        "title": "Enable style profiler",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_TIMER",
+                                        "name": "LV_PROFILER_TIMER",
+                                        "range": null,
+                                        "title": "Enable timer profiler",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_CACHE",
+                                        "name": "LV_PROFILER_CACHE",
+                                        "range": null,
+                                        "title": "Enable cache profiler",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_PROFILER",
+                                        "help": null,
+                                        "id": "LV_PROFILER_EVENT",
+                                        "name": "LV_PROFILER_EVENT",
+                                        "range": null,
+                                        "title": "Enable event profiler",
+                                        "type": "bool"
                                     }
                                 ],
                                 "depends_on": null,
                                 "help": null,
                                 "id": "LV_USE_PROFILER",
+                                "is_menuconfig": true,
                                 "name": "LV_USE_PROFILER",
                                 "range": null,
                                 "title": "Runtime performance profiler",
-                                "type": "bool"
+                                "type": "menu"
                             },
                             {
                                 "children": [],
@@ -44938,6 +45401,78 @@
                                 "name": "LV_USE_FILE_EXPLORER",
                                 "range": null,
                                 "title": "Enable file explorer",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_FONT_MANAGER",
+                                        "help": null,
+                                        "id": "LV_FONT_MANAGER_NAME_MAX_LEN",
+                                        "name": "LV_FONT_MANAGER_NAME_MAX_LEN",
+                                        "range": null,
+                                        "title": "Font manager name max length",
+                                        "type": "int"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_FONT_MANAGER",
+                                "name": "LV_USE_FONT_MANAGER",
+                                "range": null,
+                                "title": "Enable Font manager",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_TEST",
+                                        "help": null,
+                                        "id": "LV_USE_TEST_SCREENSHOT_COMPARE",
+                                        "name": "LV_USE_TEST_SCREENSHOT_COMPARE",
+                                        "range": null,
+                                        "title": "Enable `lv_test_screenshot_compare`. Requires libpng and a few MB of extra RAM.",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_TEST",
+                                "name": "LV_USE_TEST",
+                                "range": null,
+                                "title": "Enable emulated input devices, time emulation, and screenshot compares.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_TRANSLATION",
+                                "name": "LV_USE_TRANSLATION",
+                                "range": null,
+                                "title": "Enable text translation support",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_XML",
+                                "name": "LV_USE_XML",
+                                "range": null,
+                                "title": "Enable loading XML UIs runtime",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_COLOR_FILTER",
+                                "name": "LV_USE_COLOR_FILTER",
+                                "range": null,
+                                "title": "Enable color filter style",
                                 "type": "bool"
                             },
                             {
@@ -45246,10 +45781,60 @@
                                         "children": [],
                                         "depends_on": "LV_USE_WAYLAND",
                                         "help": null,
-                                        "id": "LV_WAYLAND_WL_SHELL",
-                                        "name": "LV_WAYLAND_WL_SHELL",
+                                        "id": "LV_WAYLAND_BUF_COUNT",
+                                        "name": "LV_WAYLAND_BUF_COUNT",
                                         "range": null,
-                                        "title": "Support the legacy wl_shell instead of the default XDG Shell protocol",
+                                        "title": "Use 1 for single buffer with partial render mode or 2 for double buffer with full render mode",
+                                        "type": "int"
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "children": [],
+                                                "depends_on": "!LV_WAYLAND_USE_DMABUF && <choice>",
+                                                "help": null,
+                                                "id": "LV_WAYLAND_RENDER_MODE_PARTIAL",
+                                                "name": "LV_WAYLAND_RENDER_MODE_PARTIAL",
+                                                "range": null,
+                                                "title": "Use the buffer(s) to render the screen is smaller parts",
+                                                "type": "bool"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_WAYLAND_USE_DMABUF && <choice>",
+                                                "help": null,
+                                                "id": "LV_WAYLAND_RENDER_MODE_DIRECT",
+                                                "name": "LV_WAYLAND_RENDER_MODE_DIRECT",
+                                                "range": null,
+                                                "title": "Only the changed areas will be updated with 2 screen sized buffers",
+                                                "type": "bool"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_WAYLAND_USE_DMABUF && <choice>",
+                                                "help": null,
+                                                "id": "LV_WAYLAND_RENDER_MODE_FULL",
+                                                "name": "LV_WAYLAND_RENDER_MODE_FULL",
+                                                "range": null,
+                                                "title": "Always redraw the whole screen even if only one pixel has been changed with 2 screen sized buffers",
+                                                "type": "bool"
+                                            }
+                                        ],
+                                        "depends_on": "LV_USE_WAYLAND",
+                                        "help": null,
+                                        "id": "component-config-lvgl-configuration-devices-use-the-wayland-client-to-open-a-window-and-handle-inputs-on-linux-or-bsd-wayland-rendering-mode",
+                                        "name": null,
+                                        "title": "Wayland rendering mode",
+                                        "type": "choice"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_WAYLAND && LV_USE_G2D",
+                                        "help": null,
+                                        "id": "LV_WAYLAND_USE_DMABUF",
+                                        "name": "LV_WAYLAND_USE_DMABUF",
+                                        "range": null,
+                                        "title": "Use DMA buffers for frame buffers",
                                         "type": "bool"
                                     }
                                 ],
@@ -45372,6 +45957,16 @@
                                         "range": null,
                                         "title": "Custom partial buffer size (in number of rows)",
                                         "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_LINUX_FBDEV",
+                                        "help": null,
+                                        "id": "LV_LINUX_FBDEV_MMAP",
+                                        "name": "LV_LINUX_FBDEV_MMAP",
+                                        "range": null,
+                                        "title": "Framebuffer device supports mmap",
+                                        "type": "bool"
                                     }
                                 ],
                                 "depends_on": null,
@@ -45384,6 +45979,27 @@
                             },
                             {
                                 "children": [
+                                    {
+                                        "children": [
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_NUTTX_INDEPENDENT_IMAGE_HEAP",
+                                                "help": null,
+                                                "id": "LV_NUTTX_DEFAULT_DRAW_BUF_USE_INDEPENDENT_IMAGE_HEAP",
+                                                "name": "LV_NUTTX_DEFAULT_DRAW_BUF_USE_INDEPENDENT_IMAGE_HEAP",
+                                                "range": null,
+                                                "title": "Use independent image heap for default draw buffer",
+                                                "type": "bool"
+                                            }
+                                        ],
+                                        "depends_on": "LV_USE_NUTTX",
+                                        "help": null,
+                                        "id": "LV_USE_NUTTX_INDEPENDENT_IMAGE_HEAP",
+                                        "name": "LV_USE_NUTTX_INDEPENDENT_IMAGE_HEAP",
+                                        "range": null,
+                                        "title": "Use independent image heap",
+                                        "type": "bool"
+                                    },
                                     {
                                         "children": [],
                                         "depends_on": "LV_USE_NUTTX",
@@ -45476,13 +46092,66 @@
                                         "type": "bool"
                                     },
                                     {
-                                        "children": [],
+                                        "children": [
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_NUTTX_TOUCHSCREEN",
+                                                "help": "Set to 0 to disable cursor, or set to a value greater than 0 to set the cursor size in pixels.",
+                                                "id": "LV_NUTTX_TOUCHSCREEN_CURSOR_SIZE",
+                                                "name": "LV_NUTTX_TOUCHSCREEN_CURSOR_SIZE",
+                                                "range": null,
+                                                "title": "Touchscreen cursor size in pixels",
+                                                "type": "int"
+                                            }
+                                        ],
                                         "depends_on": "LV_USE_NUTTX",
                                         "help": null,
                                         "id": "LV_USE_NUTTX_TOUCHSCREEN",
                                         "name": "LV_USE_NUTTX_TOUCHSCREEN",
                                         "range": null,
                                         "title": "Use NuttX touchscreen driver",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_NUTTX_MOUSE",
+                                                "help": "Set the step size of the mouse movement in pixels.",
+                                                "id": "LV_USE_NUTTX_MOUSE_MOVE_STEP",
+                                                "name": "LV_USE_NUTTX_MOUSE_MOVE_STEP",
+                                                "range": null,
+                                                "title": "Mouse movement step (pixels)",
+                                                "type": "int"
+                                            }
+                                        ],
+                                        "depends_on": "LV_USE_NUTTX",
+                                        "help": null,
+                                        "id": "LV_USE_NUTTX_MOUSE",
+                                        "name": "LV_USE_NUTTX_MOUSE",
+                                        "range": null,
+                                        "title": "Use NuttX mouse driver",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_NUTTX_TRACE_FILE",
+                                                "help": null,
+                                                "id": "LV_NUTTX_TRACE_FILE_PATH",
+                                                "name": "LV_NUTTX_TRACE_FILE_PATH",
+                                                "range": null,
+                                                "title": "NuttX trace file path",
+                                                "type": "string"
+                                            }
+                                        ],
+                                        "depends_on": "LV_USE_NUTTX && LV_USE_PROFILER_BUILTIN",
+                                        "help": null,
+                                        "id": "LV_USE_NUTTX_TRACE_FILE",
+                                        "name": "LV_USE_NUTTX_TRACE_FILE",
+                                        "range": null,
+                                        "title": "Use NuttX trace file",
                                         "type": "bool"
                                     }
                                 ],
@@ -45512,6 +46181,27 @@
                                 "name": "LV_USE_TFT_ESPI",
                                 "range": null,
                                 "title": "Use TFT_eSPI driver",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_LOVYAN_GFX",
+                                        "help": null,
+                                        "id": "LV_LGFX_USER_INCLUDE",
+                                        "name": "LV_LGFX_USER_INCLUDE",
+                                        "range": null,
+                                        "title": "Header for LovyanGFX user configuration",
+                                        "type": "string"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_LOVYAN_GFX",
+                                "name": "LV_USE_LOVYAN_GFX",
+                                "range": null,
+                                "title": "Use LovyanGFX driver",
                                 "type": "bool"
                             },
                             {
@@ -45609,10 +46299,51 @@
                                 "children": [],
                                 "depends_on": null,
                                 "help": null,
+                                "id": "LV_USE_NXP_ELCDIF",
+                                "name": "LV_USE_NXP_ELCDIF",
+                                "range": null,
+                                "title": "Use NXP ELCDIF to generate display",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
                                 "id": "LV_USE_RENESAS_GLCDC",
                                 "name": "LV_USE_RENESAS_GLCDC",
                                 "range": null,
                                 "title": "Use Renesas GLCDC driver",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_ST_LTDC && !LV_USE_DRAW_DMA2D",
+                                        "help": null,
+                                        "id": "LV_ST_LTDC_USE_DMA2D_FLUSH",
+                                        "name": "LV_ST_LTDC_USE_DMA2D_FLUSH",
+                                        "range": null,
+                                        "title": "Only used for created partial mode LTDC displays",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_ST_LTDC",
+                                "name": "LV_USE_ST_LTDC",
+                                "range": null,
+                                "title": "Driver for ST LTDC",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_FT81X",
+                                "name": "LV_USE_FT81X",
+                                "range": null,
+                                "title": "Use ft81x EVE driver",
                                 "type": "bool"
                             },
                             {
@@ -45623,6 +46354,37 @@
                                 "name": "LV_USE_WINDOWS",
                                 "range": null,
                                 "title": "Use LVGL Windows backend",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_UEFI",
+                                        "help": null,
+                                        "id": "LV_USE_UEFI_INCLUDE",
+                                        "name": "LV_USE_UEFI_INCLUDE",
+                                        "range": null,
+                                        "title": "Header that hides the actual framework (EDK2, gnu-efi, ...)",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_UEFI",
+                                        "help": null,
+                                        "id": "LV_UEFI_USE_MEMORY_SERVICES",
+                                        "name": "LV_UEFI_USE_MEMORY_SERVICES",
+                                        "range": null,
+                                        "title": "Use the memory services from the boot services table",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "LV_USE_UEFI",
+                                "name": "LV_USE_UEFI",
+                                "range": null,
+                                "title": "Use LVGL UEFI backend",
                                 "type": "bool"
                             },
                             {
@@ -45694,164 +46456,205 @@
                     {
                         "children": [
                             {
-                                "children": [],
-                                "depends_on": null,
-                                "help": null,
-                                "id": "LV_USE_DEMO_WIDGETS",
-                                "name": "LV_USE_DEMO_WIDGETS",
-                                "range": null,
-                                "title": "Show some widget",
-                                "type": "bool"
-                            },
-                            {
-                                "children": [],
-                                "depends_on": null,
-                                "help": null,
-                                "id": "LV_USE_DEMO_KEYPAD_AND_ENCODER",
-                                "name": "LV_USE_DEMO_KEYPAD_AND_ENCODER",
-                                "range": null,
-                                "title": "Demonstrate the usage of encoder and keyboard",
-                                "type": "bool"
-                            },
-                            {
-                                "children": [],
-                                "depends_on": "LV_FONT_MONTSERRAT_14 && LV_FONT_MONTSERRAT_24 && LV_USE_DEMO_WIDGETS",
-                                "help": null,
-                                "id": "LV_USE_DEMO_BENCHMARK",
-                                "name": "LV_USE_DEMO_BENCHMARK",
-                                "range": null,
-                                "title": "Benchmark your system",
-                                "type": "bool"
-                            },
-                            {
-                                "children": [],
-                                "depends_on": null,
-                                "help": null,
-                                "id": "LV_USE_DEMO_RENDER",
-                                "name": "LV_USE_DEMO_RENDER",
-                                "range": null,
-                                "title": "Render test for each primitives. Requires at least 480x272 display",
-                                "type": "bool"
-                            },
-                            {
-                                "children": [],
-                                "depends_on": null,
-                                "help": null,
-                                "id": "LV_USE_DEMO_SCROLL",
-                                "name": "LV_USE_DEMO_SCROLL",
-                                "range": null,
-                                "title": "Scroll settings test for LVGL",
-                                "type": "bool"
-                            },
-                            {
-                                "children": [],
-                                "depends_on": null,
-                                "help": null,
-                                "id": "LV_USE_DEMO_STRESS",
-                                "name": "LV_USE_DEMO_STRESS",
-                                "range": null,
-                                "title": "Stress test for LVGL",
-                                "type": "bool"
-                            },
-                            {
-                                "children": [],
-                                "depends_on": "LV_FONT_MONTSERRAT_18",
-                                "help": null,
-                                "id": "LV_USE_DEMO_TRANSFORM",
-                                "name": "LV_USE_DEMO_TRANSFORM",
-                                "range": null,
-                                "title": "Transform test for LVGL",
-                                "type": "bool"
-                            },
-                            {
                                 "children": [
                                     {
                                         "children": [],
-                                        "depends_on": "LV_USE_DEMO_MUSIC",
+                                        "depends_on": "LV_BUILD_DEMOS",
                                         "help": null,
-                                        "id": "LV_DEMO_MUSIC_SQUARE",
-                                        "name": "LV_DEMO_MUSIC_SQUARE",
+                                        "id": "LV_USE_DEMO_WIDGETS",
+                                        "name": "LV_USE_DEMO_WIDGETS",
                                         "range": null,
-                                        "title": "Enable Square",
+                                        "title": "Show some widget",
                                         "type": "bool"
                                     },
                                     {
                                         "children": [],
-                                        "depends_on": "LV_USE_DEMO_MUSIC",
+                                        "depends_on": "LV_BUILD_DEMOS",
                                         "help": null,
-                                        "id": "LV_DEMO_MUSIC_LANDSCAPE",
-                                        "name": "LV_DEMO_MUSIC_LANDSCAPE",
+                                        "id": "LV_USE_DEMO_KEYPAD_AND_ENCODER",
+                                        "name": "LV_USE_DEMO_KEYPAD_AND_ENCODER",
                                         "range": null,
-                                        "title": "Enable Landscape",
+                                        "title": "Demonstrate the usage of encoder and keyboard",
                                         "type": "bool"
                                     },
                                     {
                                         "children": [],
-                                        "depends_on": "LV_USE_DEMO_MUSIC",
+                                        "depends_on": "LV_BUILD_DEMOS",
                                         "help": null,
-                                        "id": "LV_DEMO_MUSIC_ROUND",
-                                        "name": "LV_DEMO_MUSIC_ROUND",
+                                        "id": "LV_USE_DEMO_BENCHMARK",
+                                        "name": "LV_USE_DEMO_BENCHMARK",
                                         "range": null,
-                                        "title": "Enable Round",
+                                        "title": "Benchmark your system",
                                         "type": "bool"
                                     },
                                     {
                                         "children": [],
-                                        "depends_on": "LV_USE_DEMO_MUSIC",
+                                        "depends_on": "LV_BUILD_DEMOS",
                                         "help": null,
-                                        "id": "LV_DEMO_MUSIC_LARGE",
-                                        "name": "LV_DEMO_MUSIC_LARGE",
+                                        "id": "LV_USE_DEMO_RENDER",
+                                        "name": "LV_USE_DEMO_RENDER",
                                         "range": null,
-                                        "title": "Enable Large",
+                                        "title": "Render test for each primitives. Requires at least 480x272 display",
                                         "type": "bool"
                                     },
                                     {
                                         "children": [],
-                                        "depends_on": "LV_USE_DEMO_MUSIC",
+                                        "depends_on": "LV_BUILD_DEMOS",
                                         "help": null,
-                                        "id": "LV_DEMO_MUSIC_AUTO_PLAY",
-                                        "name": "LV_DEMO_MUSIC_AUTO_PLAY",
+                                        "id": "LV_USE_DEMO_SCROLL",
+                                        "name": "LV_USE_DEMO_SCROLL",
                                         "range": null,
-                                        "title": "Enable Auto play",
+                                        "title": "Scroll settings test for LVGL",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_BUILD_DEMOS",
+                                        "help": null,
+                                        "id": "LV_USE_DEMO_STRESS",
+                                        "name": "LV_USE_DEMO_STRESS",
+                                        "range": null,
+                                        "title": "Stress test for LVGL",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_FONT_MONTSERRAT_18 && LV_BUILD_DEMOS",
+                                        "help": null,
+                                        "id": "LV_USE_DEMO_TRANSFORM",
+                                        "name": "LV_USE_DEMO_TRANSFORM",
+                                        "range": null,
+                                        "title": "Transform test for LVGL",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_DEMO_MUSIC && LV_BUILD_DEMOS",
+                                                "help": null,
+                                                "id": "LV_DEMO_MUSIC_SQUARE",
+                                                "name": "LV_DEMO_MUSIC_SQUARE",
+                                                "range": null,
+                                                "title": "Enable Square",
+                                                "type": "bool"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_DEMO_MUSIC && LV_BUILD_DEMOS",
+                                                "help": null,
+                                                "id": "LV_DEMO_MUSIC_LANDSCAPE",
+                                                "name": "LV_DEMO_MUSIC_LANDSCAPE",
+                                                "range": null,
+                                                "title": "Enable Landscape",
+                                                "type": "bool"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_DEMO_MUSIC && LV_BUILD_DEMOS",
+                                                "help": null,
+                                                "id": "LV_DEMO_MUSIC_ROUND",
+                                                "name": "LV_DEMO_MUSIC_ROUND",
+                                                "range": null,
+                                                "title": "Enable Round",
+                                                "type": "bool"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_DEMO_MUSIC && LV_BUILD_DEMOS",
+                                                "help": null,
+                                                "id": "LV_DEMO_MUSIC_LARGE",
+                                                "name": "LV_DEMO_MUSIC_LARGE",
+                                                "range": null,
+                                                "title": "Enable Large",
+                                                "type": "bool"
+                                            },
+                                            {
+                                                "children": [],
+                                                "depends_on": "LV_USE_DEMO_MUSIC && LV_BUILD_DEMOS",
+                                                "help": null,
+                                                "id": "LV_DEMO_MUSIC_AUTO_PLAY",
+                                                "name": "LV_DEMO_MUSIC_AUTO_PLAY",
+                                                "range": null,
+                                                "title": "Enable Auto play",
+                                                "type": "bool"
+                                            }
+                                        ],
+                                        "depends_on": "LV_BUILD_DEMOS",
+                                        "help": null,
+                                        "id": "LV_USE_DEMO_MUSIC",
+                                        "name": "LV_USE_DEMO_MUSIC",
+                                        "range": null,
+                                        "title": "Music player demo",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_BUILD_DEMOS",
+                                        "help": null,
+                                        "id": "LV_USE_DEMO_FLEX_LAYOUT",
+                                        "name": "LV_USE_DEMO_FLEX_LAYOUT",
+                                        "range": null,
+                                        "title": "Flex layout previewer",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_BUILD_DEMOS",
+                                        "help": null,
+                                        "id": "LV_USE_DEMO_MULTILANG",
+                                        "name": "LV_USE_DEMO_MULTILANG",
+                                        "range": null,
+                                        "title": "multi-language demo",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_USE_VECTOR_GRAPHIC && LV_BUILD_DEMOS",
+                                        "help": null,
+                                        "id": "LV_USE_DEMO_VECTOR_GRAPHIC",
+                                        "name": "LV_USE_DEMO_VECTOR_GRAPHIC",
+                                        "range": null,
+                                        "title": "vector graphic demo",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_BUILD_DEMOS",
+                                        "help": null,
+                                        "id": "LV_USE_DEMO_SMARTWATCH",
+                                        "name": "LV_USE_DEMO_SMARTWATCH",
+                                        "range": null,
+                                        "title": "Smartwatch demo",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_BUILD_DEMOS",
+                                        "help": null,
+                                        "id": "LV_USE_DEMO_EBIKE",
+                                        "name": "LV_USE_DEMO_EBIKE",
+                                        "range": null,
+                                        "title": "Ebike demo",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "LV_BUILD_DEMOS",
+                                        "help": null,
+                                        "id": "LV_USE_DEMO_HIGH_RES",
+                                        "name": "LV_USE_DEMO_HIGH_RES",
+                                        "range": null,
+                                        "title": "High resolution demo",
                                         "type": "bool"
                                     }
                                 ],
                                 "depends_on": null,
                                 "help": null,
-                                "id": "LV_USE_DEMO_MUSIC",
-                                "name": "LV_USE_DEMO_MUSIC",
+                                "id": "LV_BUILD_DEMOS",
+                                "name": "LV_BUILD_DEMOS",
                                 "range": null,
-                                "title": "Music player demo",
-                                "type": "bool"
-                            },
-                            {
-                                "children": [],
-                                "depends_on": null,
-                                "help": null,
-                                "id": "LV_USE_DEMO_FLEX_LAYOUT",
-                                "name": "LV_USE_DEMO_FLEX_LAYOUT",
-                                "range": null,
-                                "title": "Flex layout previewer",
-                                "type": "bool"
-                            },
-                            {
-                                "children": [],
-                                "depends_on": null,
-                                "help": null,
-                                "id": "LV_USE_DEMO_MULTILANG",
-                                "name": "LV_USE_DEMO_MULTILANG",
-                                "range": null,
-                                "title": "multi-language demo",
-                                "type": "bool"
-                            },
-                            {
-                                "children": [],
-                                "depends_on": "LV_USE_VECTOR_GRAPHIC",
-                                "help": null,
-                                "id": "LV_USE_DEMO_VECTOR_GRAPHIC",
-                                "name": "LV_USE_DEMO_VECTOR_GRAPHIC",
-                                "range": null,
-                                "title": "vector graphic demo",
+                                "title": "Build demos",
                                 "type": "bool"
                             }
                         ],

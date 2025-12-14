@@ -18,6 +18,7 @@
 #include "lvgl.h"
 #include "ui_main.h" // Changed from ui.h
 #include "ui_wifi.h" // For ui_open_wifi_list
+extern void ui_wifi_notify_connection_success(void);
 #include "wifi_manager.h"
 
 static const char *TAG = "WIFI_CLIENT";
@@ -62,6 +63,7 @@ static int s_connection_attempt_index = 0;
 // --- WIFI STATUS ---
 static bool g_wifi_connected = false;
 bool g_internet_connected = false;
+static bool s_is_manual_connecting = false;
 
 // --- SNTP STATUS ---
 static bool g_sntp_initialized = false;
@@ -148,7 +150,7 @@ static void wifi_connect_task(void *pvParameters)
 {
     EventBits_t bits = xEventGroupWaitBits(s_wifi_event_group,
                                            WIFI_CONNECTED_BIT | WIFI_FAIL_BIT,
-                                           pdFALSE,
+                                           pdTRUE,
                                            pdFALSE,
                                            portMAX_DELAY);
 
@@ -196,7 +198,7 @@ static void try_next_saved_network(void) {
         xEventGroupSetBits(s_wifi_event_group, WIFI_FAIL_BIT);
         
         // Open WiFi selector screen in a separate task to avoid sys_evt stack overflow/context issues
-        xTaskCreate(open_ui_task, "open_ui_task", 8192, NULL, 5, NULL);
+        // xTaskCreate(open_ui_task, "open_ui_task", 8192, NULL, 5, NULL);
     }
 }
 
@@ -205,8 +207,8 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,
 {
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
         ESP_LOGI(TAG, "WIFI_EVENT_STA_START: Initializing connection process.");
-        // wifi_manager_get_saved_ssids_ordered(s_saved_networks, WIFI_MANAGER_MAX_NETWORKS, &s_num_saved_networks);
-        s_num_saved_networks = 0; // Force no saved networks for debugging
+        wifi_manager_get_saved_ssids_ordered(s_saved_networks, WIFI_MANAGER_MAX_NETWORKS, &s_num_saved_networks);
+        // s_num_saved_networks = 0; // Force no saved networks for debugging
         s_connection_attempt_index = 0;
         try_next_saved_network();
 
@@ -214,6 +216,12 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,
         ESP_LOGI(TAG, "WIFI_EVENT_STA_DISCONNECTED: Connection failed or lost.");
         g_wifi_connected = false;
         g_internet_connected = false;
+
+        if (s_is_manual_connecting) {
+            ESP_LOGI(TAG, "Manual connection in progress, ignoring disconnect event.");
+            s_is_manual_connecting = false;
+            return;
+        }
 
         // Try next network
         ESP_LOGI(TAG, "Trying next saved network...");
@@ -242,6 +250,9 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,
 
         // Check internet connectivity in a separate task
         xTaskCreate(&internet_check_task, "internet_check_task", 4096, NULL, 5, NULL);
+
+        // Notify UI to close loading screen
+        ui_wifi_notify_connection_success();
     }
 }
 
@@ -257,6 +268,8 @@ esp_err_t wifi_client_connect(const char *ssid, const char *password)
 
     ESP_LOGI(TAG, "Connecting to %s...", ssid);
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
+    
+    s_is_manual_connecting = true;
     esp_wifi_disconnect();
     esp_wifi_connect();
 

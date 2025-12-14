@@ -1,6 +1,59 @@
 # Changelog
 
+## 2.7.0
+
+### Bug Fixes
+Restructured the ESP-Hosted-MCU commits
+
+## 2.6.8
+
+### Bug Fixes
+- Clean up ESP-Hosted prints at host
+
+## 2.6.7
+
+### Features
+
+- Added Hosted API call to get co-processor Application Descriptor
+
+## 2.6.6
+
+### Bug Fixes
+
+- Fixed sta connection to remove extra disconnected event if incoming station config is different from current station config
+- IRAM size limitation when using UART transport only applies to ESP32, not to all SOCs.
+- workaround a bug in `esp_wifi_get_protocol()` that can cause memory corruption. See this [ESP-IDF Issue](https://github.com/espressif/esp-idf/issues/17502).
+- updated CI pipelines to build mqtt/tcp example from Registry Component on master branch
+
+## 2.6.5
+
+### Features
+
+- Add example showing concurrent use of a SD Card and ESP-Hosted.
+
+## 2.6.4
+
+### Bug Fixes
+
+- Fix the `esp_wifi_deinit()` call from host
+
+## 2.6.3
+
+### Bug Fixes
+
+- Increase timing used to reset co-processors to work with a slower FreeRTOS clock tick
+- Updated documentation on performance optimization
+
+## 2.6.2
+
+### Bug Fixes
+
+- fixed bug in enabling `esp_eap_client_set_eap_methods` on co-processor based on ESP-IDF version
+
 ## 2.6.1
+
+### Bug Fixes
+
 Minor fixes in Slave OTA example
 
 ## 2.6.0
@@ -57,7 +110,7 @@ Minor fixes in Slave OTA example
 
 ### Bug Fixes
 
-- Fixed build break when Network Split and CLI Commands are enabled on coprocessor
+- Fixed build break when CLI Commands are enabled on coprocessor
 
 ## 2.5.6
 
@@ -204,3 +257,55 @@ Minor fixes in Slave OTA example
 ### Features
 
 - Refactored common and port specific code
+
+## 2.2.4
+
+### Bug Fixes
+
+- Fixed SPI Full Duplex startup sequence
+- Fixed incorrect Handshake GPIO assignment for C5 on Module
+- Added valid CPU freqencies in ITWT Example for H2
+
+## 2.2.3
+
+### Bug Fixes
+
+- Fixed itwt build break for IDF v5.3.1
+
+## 2.2.2
+
+### Features
+
+- Added support for Wi-Fi Power Save and ITWT
+- Added ITWT example
+- Updated copyright check to allow Unlicensed or CC0-1.0 files
+
+### APIs added
+
+- `esp_wifi_set_inactive_time()`
+- `esp_wifi_get_inactive_time()`
+- `esp_wifi_sta_twt_config()`
+- `esp_wifi_sta_itwt_setup()`
+- `esp_wifi_sta_itwt_teardown()`
+- `esp_wifi_sta_itwt_suspend()`
+- `esp_wifi_sta_itwt_get_flow_id_status()`
+- `esp_wifi_sta_itwt_send_probe_req()`
+- `esp_wifi_sta_itwt_set_target_wake_time_offset()`
+
+## 2.2.1
+
+### Features
+
+- Allow external code to override Hosted BT Tx function by making it a `weak` reference
+
+## 2.2.0
+
+### Features
+
+- Add support for fragmentation of packets from sdio host to slave
+
+## 2.1.11
+
+### Bug Fixes
+
+- Fixed SoftAP operation issues

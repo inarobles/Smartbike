@@ -510,6 +510,14 @@ enum {
   #define H_HOST_WAKEUP_GPIO_LEVEL 1 /* High */
 #endif
 
+// adjust this value if co-processor needs more time to be ready
+// after reset from host
+#if CONFIG_ESP_HOSTED_SDIO_RESET_DELAY_MS
+  #define H_HOST_SDIO_RESET_DELAY_MS CONFIG_ESP_HOSTED_SDIO_RESET_DELAY_MS
+#else
+  #define H_HOST_SDIO_RESET_DELAY_MS 1500
+#endif
+
 /* Conflict checks for host power save configuration */
 #if (H_HOST_PS_ALLOWED == 1)
   #if (H_HOST_WAKEUP_GPIO == -1)
@@ -537,35 +545,8 @@ enum {
 
 /*  ---------------------- ESP-IDF Specific Config end ----------------------  */
 
-/* --------------------- Network Split -------------------------------------- */
-#ifdef CONFIG_ESP_HOSTED_NETWORK_SPLIT_ENABLED
-  #define H_NETWORK_SPLIT_ENABLED 1
-#else
-  #define H_NETWORK_SPLIT_ENABLED 0
-#endif
-
-#if H_NETWORK_SPLIT_ENABLED
-#if !defined(CONFIG_LWIP_TCP_LOCAL_PORT_RANGE_START) || \
-    !defined(CONFIG_LWIP_TCP_LOCAL_PORT_RANGE_END)   || \
-    !defined(CONFIG_LWIP_UDP_LOCAL_PORT_RANGE_START) || \
-    !defined(CONFIG_LWIP_UDP_LOCAL_PORT_RANGE_END)
-#error "LWIP ports at host need to configured, ensure they are exclusive and different from slave"
-#endif
-
-#define H_HOST_TCP_LOCAL_PORT_RANGE_START CONFIG_LWIP_TCP_LOCAL_PORT_RANGE_START
-#define H_HOST_TCP_LOCAL_PORT_RANGE_END CONFIG_LWIP_TCP_LOCAL_PORT_RANGE_END
-#define H_HOST_UDP_LOCAL_PORT_RANGE_START CONFIG_LWIP_UDP_LOCAL_PORT_RANGE_START
-#define H_HOST_UDP_LOCAL_PORT_RANGE_END CONFIG_LWIP_UDP_LOCAL_PORT_RANGE_END
-
-#define H_SLAVE_TCP_REMOTE_PORT_RANGE_START CONFIG_LWIP_TCP_REMOTE_PORT_RANGE_START
-#define H_SLAVE_TCP_REMOTE_PORT_RANGE_END CONFIG_LWIP_TCP_REMOTE_PORT_RANGE_END
-#define H_SLAVE_UDP_REMOTE_PORT_RANGE_START CONFIG_LWIP_UDP_REMOTE_PORT_RANGE_START
-#define H_SLAVE_UDP_REMOTE_PORT_RANGE_END CONFIG_LWIP_UDP_REMOTE_PORT_RANGE_END
-
-#endif
 
 
-#define H_HOST_USES_STATIC_NETIF 0 /* yet unsupported */
 
 esp_err_t esp_hosted_set_default_config(void);
 bool esp_hosted_is_config_valid(void);

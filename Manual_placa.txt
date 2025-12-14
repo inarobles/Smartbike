@@ -1,0 +1,380 @@
+JC1060P470 ESP32-P4 Display and Touch Setup
+42 fuentes
+Los documentos se centran en el microcontrolador (MCU) ESP32-P4 de alto rendimiento de Espressif, ofreciendo una ficha técnica detallada que incluye especificaciones de su procesador RISC-V de doble y un solo núcleo, arquitectura de memoria, características de seguridad y una amplia gama de periféricos para procesamiento de imágenes y voz. También se explica cómo usar el Flash Download Tool para cargar firmware en la MCU. Varios archivos README.md proporcionan ejemplos de aplicación, como una interfaz de teléfono tipo Android para la placa de desarrollo ESP32-P4 que utiliza interfaces MIPI-DSI, MIPI-CSI y una cámara/pantalla táctil (GT911 I2C), con soporte limitado a videos en formato MJPEG para la función de reproducción. Un fragmento adicional indica un error de red.
+
+martes, 2 de diciembre d
+Te he subido documentación sobre una placa con esp32, quiero que hagas un manual básico que describa las características más importantes y las cosas que se pueden hacer con ella.
+
+Este es un manual básico que describe las características más importantes y las funcionalidades de la placa de desarrollo JC1060P470 (o sus variantes, basadas en el chip ESP32-P4), basándose en la documentación proporcionada.
+
+--------------------------------------------------------------------------------
+Manual Básico de la Placa JC1060P470 (Módulo ESP32-P4)
+La placa JC1060P470 es un módulo LCD que utiliza el ESP32-P4 como controlador principal, diseñado para aplicaciones multimedia y de interfaz hombre-máquina (HMI).
+1. Características Principales del Hardware
+1.1 Chip Principal y Arquitectura
+El módulo se basa en el chip ESP32-P4, que es un microcontrolador de alto rendimiento (MCU).
+• CPU: El ESP32-P4 integra un sistema de alto rendimiento (HP) y uno de bajo consumo (LP).
+    ◦ El sistema HP es impulsado por un procesador RISC-V de 32 bits de doble núcleo, con una frecuencia de hasta 400 MHz. También admite extensiones de instrucciones de IA y FPU de precisión simple.
+    ◦ El sistema LP es impulsado por un procesador RISC-V de 32 bits de un solo núcleo, con una frecuencia de hasta 40 MHz, optimizado para aplicaciones de bajo consumo.
+• Memoria/Almacenamiento: El módulo cuenta con 32 MB de PSRAM (Memoria de acceso aleatorio pseudoestática) y 16 MB de Flash. Además, dispone de 768 KB de HP L2MEM, 32 KB de LP SRAM y 128 KB de HP ROM.
+• Conectividad Inalámbrica: El ESP32-P4 por sí mismo no tiene funciones Wi-Fi ni Bluetooth. Para habilitar esta funcionalidad, la placa utiliza un SOC inalámbrico ESP32-C6 adicional, al cual se conecta a través de interfaces SDIO/SPI/UART (utilizando el esquema ESP-Hosted).
+1.2 Características de la Pantalla y Táctil
+La placa presenta una pantalla LCD con las siguientes especificaciones:
+• Tamaño: 7.0 pulgadas.
+• Resolución: 1024x600 píxeles/puntos.
+• Tipo de Pantalla: Módulo TFT LCD de tipo transmisivo, Normalmente Negro, con ángulo de visión IPS.
+• Colores: Soporta 16.7 millones de colores (24 BIT RGB).
+• Chip Controlador: Utiliza el chip JD9165 (o, en el contexto de los ejemplos de desarrollo, el EK79007).
+• Interfaz de Comunicación: MIPI (Mobile Industry Processor Interface), específicamente a través de la interfaz MIPI-DSI (Display Serial Interface).
+• Táctil: La placa se ofrece en variantes sin táctil (SKU: JC1060P470N_I_W) o con táctil capacitivo (SKU: JC1060P470C_I_W). El controlador táctil implementado en el contexto de desarrollo es a menudo el GT911 (a través de I2C).
+1.3 Puertos e Interfaces Integradas
+La placa JC1060P470 incluye varios conectores y circuitos periféricos:
+• Puertos USB: Múltiples puertos USB Tipo C, incluyendo puertos para USB-UART (para alimentación y visualización de salida serial), Full Speed USB y High Speed USB.
+• Alimentación: Opera con un voltaje de 5V y un consumo de energía de aproximadamente 600mA. Incluye un circuito de interfaz para batería de litio (MX 1.25-2P).
+• Almacenamiento: Ranura para tarjeta TF (MicroSD) para fácil expansión del almacenamiento.
+• Audio: Interfaces para altavoz (Speaker) y un conector MX 1.25-2P. Utiliza un códec de audio, el ES8311, compatible con ADC/DAC y I2S para funciones de voz/música.
+• Cámara: Interfaz FPC 1.0 15P para cámara (Camera FPC), compatible con la interfaz MIPI-CSI.
+• Expansión: Múltiples interfaces de E/S extendidas (Extended IO) a través de conectores FPC 0.5 14P y FPC 0.2 14P. El chip ESP32-P4 ofrece 55 GPIOs programables.
+• RTC: Incluye un soporte RTC/CR1220 para reloj de tiempo real.
+2. Capacidades y Cosas que se Pueden Hacer
+La arquitectura avanzada del ESP32-P4, junto con los periféricos de la placa, permite una amplia gama de aplicaciones:
+2.1 Desarrollo de Software y GUI
+• Entornos de Desarrollo: Soporta desarrollo en Arduino IDE, ESP IDE (ESP-IDF), Micropython y Guition.
+• Plataforma Arduino: Es posible programar el módulo usando el Arduino IDE (versión 2.3.4 o superior), seleccionando el módulo de desarrollo "ESP32P4 Dev Module". Para subir código, se recomienda seleccionar el programador "esptool".
+• Interfaces Gráficas (GUI): El módulo es ideal para desarrollar interfaces de usuario ricas y complejas, ya que soporta el motor de interfaz gráfica LVGL (Light and Versatile Graphics Library), incluyendo las versiones v8 y v9.
+2.2 Procesamiento Multimedia
+• Imágenes y Vídeo: El chip ESP32-P4 está diseñado con potentes capacidades de procesamiento de imágenes y voz. Incorpora aceleradores de hardware para:
+    ◦ Codificación/Decodificación de imágenes JPEG.
+    ◦ Codificación de vídeo H264.
+    ◦ Funciones de Procesador de Señal de Imagen (ISP) y Acelerador de Procesamiento de Píxeles (PPA), que permiten rotación, escalado, mirroring y mezcla de imágenes.
+• Cámara y Pantalla: La placa soporta la conexión de una cámara a través de la interfaz MIPI-CSI y la visualización de la salida a través de la interfaz MIPI-DSI.
+• Reproducción de Video: Permite la reproducción de videos, aunque actualmente solo se admite el formato MJPEG cuando se utiliza la tarjeta SD.
+2.3 Funcionalidades de Audio
+• Grabación y Reproducción: Mediante el códec ES8311 y la interfaz I2S, se pueden implementar funciones de audio como la reproducción de música (modo music) y la grabación/eco (modo echo), utilizando micrófono y altavoz.
+2.4 Aplicaciones Avanzadas y Conectividad
+• Pantalla de Extensión USB: El módulo puede funcionar como una pantalla adicional (USB Extension Screen) para sistemas operativos como Windows, con una tasa de refresco de 1024×600 a 60 FPS, y soporte para entrada/salida de audio y hasta cinco puntos táctiles.
+• Seguridad: El ESP32-P4 incorpora mecanismos de seguridad robustos, incluyendo arranque seguro (Secure Boot), cifrado de Flash (mediante XTS-AES), aceleradores de cifrado (AES, SHA, RSA, ECC), firma digital, y un generador de números aleatorios verdaderos (TRNG). Es posible configurar el cifrado del firmware usando la herramienta Flash Download Tool.
+• Bajo Consumo: El sistema de bajo consumo (LP) permite que el módulo sea adecuado para dispositivos IoT (Internet de las Cosas), como sistemas de automatización industrial, salud, agricultura inteligente y hubs de sensores de bajo consumo.
+2.5 Uso de la Herramienta de Descarga (Flash Download Tool)
+Para cargar firmware en el chip, se puede utilizar la herramienta de descarga (Flash Download Tool), que soporta el ESP32-P4.
+• Modos de Operación: La herramienta tiene un modo Desarrollador (para flasheo de un solo chip con rutas absolutas) y un modo Fábrica (para producción masiva con rutas relativas).
+• Proceso de Descarga Regular: Para el ESP32, es necesario poner el dispositivo en modo descarga (usando el pin GPIO0 en bajo), configurar la velocidad y modo SPI, el puerto COM y la tasa de baudios.
+• Cifrado de Firmware: La herramienta permite configurar la encriptación del firmware en el flash. El chip usa una clave en el eFuse para cifrar el firmware y escribirlo. Si no hay una clave, la herramienta puede generar una aleatoria y grabarla en el eFuse.
+
+--------------------------------------------------------------------------------
+Analogía para Solidificar la Comprensión:
+Considere esta placa como un "Mini-ordenador Central Multimedia". El ESP32-P4 es el cerebro principal, siendo un procesador muy potente y especializado en manejar gráficos (como un GPU dedicado). Pero, como no puede hablar por sí mismo (no tiene Wi-Fi/Bluetooth), necesita un traductor: el ESP32-C6, que le da la capacidad de conectarse a la red. La pantalla IPS de 7 pulgadas actúa como su ventana de salida visual, y los puertos de expansión (SD, cámara, audio) son como sus "sentidos" y capacidades de almacenamiento, permitiéndole interactuar con el mundo digital y físico de forma completa.
+ok, ahora quiero un manual exhaustivo con absolutamente toda la información disponible, en formato entendible para una ia. El el documento que pasaré a la IA para que tenga conocimiento completo de todo lo relativo a la placa.
+
+Este manual exhaustivo presenta la información completa relativa a la placa de desarrollo JC1060P470 (o la serie JC1060WP470N/C_I_W) en un formato estructurado y detallado, optimizado para ser consumido y procesado por un sistema de inteligencia artificial, con citación exhaustiva de todas las fuentes de información proporcionadas.
+
+--------------------------------------------------------------------------------
+Manual Exhaustivo de la Placa de Desarrollo JC1060P470 (ESP32-P4)
+1. Identificación del Producto y Versiones
+Parámetro
+Valor/Descripción
+Fuentes
+Modelo Principal de la Placa
+JC1060P470
+SKU (Sin Táctil)
+JC1060P470N_I_W
+SKU (Táctil Capacitivo)
+JC1060P470C_I_W
+Tipo de Producto
+Módulo LCD / Placa de desarrollo funcional ESP32-P4
+Fabricante/Marca
+Guition, JCZN
+2. Especificaciones del Hardware Principal
+2.1 Unidad Central de Procesamiento (MCU: ESP32-P4)
+El ESP32-P4 es un microcontrolador de alto rendimiento (MCU) diseñado con potentes capacidades de procesamiento de imagen y voz.
+Característica
+Detalle
+Fuentes
+Sistema HP (Alto Rendimiento)
+Procesador RISC-V 32 bits de doble núcleo. Frecuencia principal de hasta 400 MHz. Soporta extensiones de instrucciones de IA y FPU (precisión simple). Arquitectura de pipeline de cinco etapas.
+Sistema LP (Bajo Consumo)
+Procesador RISC-V 32 bits de un solo núcleo. Frecuencia principal de hasta 40 MHz. Arquitectura de pipeline de dos etapas. Mantiene el estado en modo Deep-sleep.
+Arquitectura ISA
+RV32IMAFC (HP Core); RV32IMAC (LP Core).
+Extensiones de IA
+Soporte para extensiones de IA y DSP personalizadas (Xai) para mejorar algoritmos de IA y DSP.
+2.2 Memoria y Almacenamiento
+Recurso
+Capacidad/Tipo
+Observaciones
+Fuentes
+PSRAM (Integrada)
+32 MB (opcional 16 MB). Tipo OPI/HPI, 1.8 V.
+La PSRAM está integrada en el chip, los pines no están expuestos.
+Flash (Externa)
+16 MB. Máximo soportado por el chip: 128 MB.
+Soporta SPI, Dual SPI, Quad SPI / QPI.
+HP ROM
+128 KB (200 MHz).
+Para arranque y funciones de kernel del HP CPU.
+HP L2MEM
+768 KB (200 MHz).
+Para datos e instrucciones del HP CPU.
+LP ROM
+16 KB (40 MHz).
+Para arranque y kernel del LP CPU.
+LP SRAM
+32 KB (40 MHz).
+Para datos e instrucciones del LP CPU.
+TCM
+8 KB (400 MHz).
+Memoria de acoplamiento estrecho para acceso rápido del HP CPU.
+eFuse
+4 Kbit, 1792 bits disponibles para el usuario.
+Uso de almacenamiento de una sola vez para claves o ID.
+Ranura de Expansión
+Ranura para tarjeta TF (MicroSD).
+Utiliza el controlador SD/MMC Host (SDHOST).
+2.3 Conectividad Inalámbrica
+El chip ESP32-P4 no incluye funciones Wi-Fi ni Bluetooth por sí mismo.
+Característica
+Detalle
+Fuentes
+SOC Inalámbrico
+ESP32-C6.
+Proporciona las funciones de WI-FI y Bluetooth.
+Interfaz
+Conectado a través de interfaces SDIO/SPI/UART (utilizando el esquema ESP-Hosted).
+La conexión SDIO puede ser configurada en idf.py menuconfig (Example Configuration -> SDIO Configuration -> SDIO Slave Timing).
+3. Especificaciones de Pantalla y Táctil
+La placa es un módulo LCD de 7.0 pulgadas.
+3.1 Pantalla LCD (JC1060M070N-I)
+Parámetro
+Valor/Detalle
+Fuentes
+Tamaño
+7.0 pulgadas.
+Módulo TFT LCD de tipo transmisivo.
+Resolución
+1024 (RGB) x 600 puntos.
+Área activa (AA): 154.2144 x 85.92 mm.
+Colores
+16.7M colores (24 BIT RGB).
+Tecnología / Vista
+Ángulo de visión IPS. Tipo Normally Black.
+Rango de ángulo de visión horizontal y vertical (CR≥10): 80-85 grados.
+Controlador LCD
+JD9165BA-DS.
+Los ejemplos de desarrollo de Espressif a menudo usan el controlador EK79007 para esta resolución.
+Interfaz de Pantalla
+MIPI (Mobile Industry Processor Interface) - Específicamente MIPI-DSI.
+Utiliza 2-lane a 1.5 Gbps.
+Tasa de Reloj (DCLK)
+Típico 51.2 MHz (@ 60Hz Frame Rate).
+Mínimo 40.8 MHz, Máximo 67.2 MHz.
+Dimensiones Físicas
+Módulo: 165.0 x 104.0 mm. Área LCD: 164.86 ±0.2 x 99.96 ±0.2 mm. Grosor total máximo: 3.5 mm.
+Dimensiones del panel táctil (TP): 165.20 ±0.2 x 100.30 ±0.2 mm.
+Retroiluminación
+27 LEDs blancos.
+Típico: 9.3V / 180mA.
+3.2 Controlador Táctil
+Parámetro
+Valor/Detalle
+Fuentes
+Tipo de Táctil
+Capacitivo (SKU: JC1060P470C_I_W).
+Soporta hasta cinco puntos táctiles cuando se usa como pantalla de extensión USB.
+Controlador Táctil
+GT911.
+La interfaz de comunicación es I2C.
+Pines Táctiles FPC
+6 pines: GND, SDA, SCL, REST, INT, VDD.
+4. Periféricos e Interfaces de la Placa
+La placa incorpora múltiples interfaces para una amplia funcionalidad.
+Interfaz
+Conector/Componente
+Detalle
+Fuentes
+Power Input (5V)
+USB Type-C (UART).
+Se utiliza para alimentación y visualización de salida serial.
+USB Serial/JTAG
+USB Type-C (CH340).
+Controlador CH340C integrado. Utilizado para flasheo y depuración.
+High Speed USB
+USB Type-C.
+USB 2.0 OTG de alta velocidad (480 Mbit/s).
+Full Speed USB
+USB Type-C.
+USB 2.0 OTG de velocidad completa (12 Mbit/s).
+Batería
+Interfaz de Batería de Litio (MX 1.25-2P).
+Circuito de carga/interfaz integrado.
+Almacenamiento
+Ranura para TF Card.
+Admite tarjeta MicroSD.
+Cámara
+FPC 1.0 15P (Camera FPC).
+Compatible con interfaz MIPI-CSI. Recomendado: cámara con IC SC2336.
+Audio
+Interfaz de Altavoz (MX 1.25-2P).
+Utiliza el códec ES8311 (compatible con ADC/DAC, I2S).
+Micrófono
+Soporte para entrada de micrófono (a través del códec ES8311).
+RTC
+Soporte para RTC/CR1220.
+E/S Extendidas
+FPC 0.5 14P y FPC 0.2 14P (Extended IO).
+Proporciona acceso a GPIOs configurables.
+Botones (Input)
+Cuatro botones de entrada (S1-S4).
+4.1 Pines y Configuraciones Específicas (Basado en ejemplos IDF)
+La configuración de pines utilizada en el BSP (Board Support Package) del ejemplo esp32-p4-function-ev-board es importante para el desarrollo:
+Función
+Pin GPIO
+Propósito
+Fuentes
+Amplificador de potencia (Audio)
+GPIO_NUM_20
+BSP_POWER_AMP_IO.
+Luz de fondo LCD
+GPIO_NUM_23
+BSP_LCD_BACKLIGHT.
+Reset LCD
+GPIO_NUM_27
+BSP_LCD_RST.
+Reset Táctil
+GPIO_NUM_22
+BSP_LCD_TOUCH_RST.
+Interrupción Táctil
+GPIO_NUM_21
+BSP_LCD_TOUCH_INT.
+Tasa de bits DSI
+—
+Configurado a 550 Mbps (lane_bit_rate_mbps).
+5. Capacidades Funcionales Avanzadas (ESP32-P4)
+El chip ESP32-P4 está diseñado con una amplia gama de periféricos dedicados a tareas multimedia y de control.
+5.1 Procesamiento Multimedia y Gráfico
+Función
+Detalle
+Fuentes
+Aceleradores Gráficos
+Pixel Processing Accelerator (PPA) para rotación, escalado, mirroring y mezcla (blending) de imágenes.
+Acelerador de Imagen
+Image Signal Processor (ISP) con soporte de pipeline para reducción de ruido, demosaicing, corrección de color (CCM), corrección Gamma, enfoque, y estadísticas AE/AF/AWB.
+Codificación/Decodificación
+Aceleradores de hardware para JPEG (codificación/decodificación). Soporte para H264 (solo codificación baseline).
+Rendimiento MJPEG
+Codificación máxima de 720p@88fps o 1080p@34fps. Decodificación máxima de 720p@88fps o 1080p@30fps.
+Reproducción de Video
+Soporta la reproducción de video en formato MJPEG a través de la tarjeta SD.
+Interfaces de Pantalla
+MIPI DSI (2-lane x 1.5 Gbps) y 24-bit LCD interface.
+Interfaces de Cámara
+MIPI CSI-2 (2-lane x 1.5 Gbps) y 16-bit CAM interface.
+5.2 Conectividad y E/S Digitales
+Periférico
+Descripción y Estándares
+Fuentes
+UART
+5 controladores UART (UART0-4), soportan flujo de control HW/SW, hasta 5 Mbps.
+SPI
+3 controladores SPI (SPI2, SPI3, LP-SPI). SPI2 soporta Octal SPI y OPI, hasta 80 MHz (Host).
+I2C
+2 controladores I2C (estándar, rápido hasta 800 Kbit/s) y 1 I2C Análogo (Master).
+I3C
+1 controlador I3C Host (Main Master) y 1 I3C Slave.
+I2S
+3 controladores I2S (incluyendo LP I2S).
+USB 2.0 OTG
+Puertos de Alta y Velocidad Completa.
+USB Serial/JTAG
+Controlador dedicado, compatible con USB 2.0 Full Speed (12 Mbit/s).
+Ethernet MAC (EMAC)
+Soporte para Ethernet de 100 Mbps (interfaces MII o RMII).
+TWAI®
+Controlador CAN compatible con ISO 11898-1 (CAN 2.0), hasta 1 Mbit/s.
+SD/MMC Host
+Soporta SD 3.0/3.01, SDIO 3.0, MMC 4.41/eMMC 4.5/4.51.
+5.3 Seguridad y Criptografía
+El chip integra numerosos aceleradores de hardware para seguridad.
+Mecanismo
+Detalle
+Fuentes
+Cifrado de Flash
+Uso del algoritmo XTS-AES (IEEE Std 1619-2007) para proteger el código de aplicación y los datos en la flash externa.
+Arranque Seguro (Secure Boot)
+Mecanismo de seguridad para verificar el firmware.
+Aceleradores Criptográficos
+AES-128/256 (FIPS PUB 197), SHA (FIPS PUB 180-4), RSA, ECC.
+Firma Digital (DS)
+Módulo dedicado para generar firmas digitales basadas en RSA de hasta 4096 bits.
+ECDSA
+Acelerador para el Algoritmo de Firma Digital de Curva Elíptica (P-192 y P-256).
+TRNG
+Generador de números aleatorios verdaderos basado en procesos físicos.
+Key Manager (PUF)
+Utiliza la característica física no clonable (PUF) del chip para generar una clave de hardware única (HUK).
+5.4 Funcionalidad de Pantalla de Extensión USB
+La placa puede funcionar como una pantalla adicional para sistemas operativos como Windows.
+Capacidad
+Detalle
+Fuentes
+Frecuencia de Refresco
+Soporta 1024x600 a 60 FPS.
+Interacción
+Soporta hasta cinco puntos táctiles.
+Audio
+Soporta entrada y salida de audio.
+Conexión
+Se requiere conectar el puerto High-speed USB de la placa al PC.
+Configuración
+Se puede modificar la calidad de imagen JPEG (Ejpg4) y la resolución (R1024x600) en usb_descriptor.c. Solo soporta orientación horizontal (landscape).
+6. Desarrollo y Entorno de Programación
+6.1 Entornos Soportados
+La placa soporta múltiples entornos para la creación de aplicaciones.
+Entorno
+Versión / Requisito
+Fuentes
+Arduino IDE
+Versión 2.3.4 o superior.
+Se debe seleccionar la placa "ESP32P4 Dev Module" y el programador "esptool".
+ESP-IDF
+Requiere la versión release/v5.3 o posterior (o release/v5.4 para ejemplos específicos).
+Desarrollo típico mediante idf.py menuconfig y idf.py flash monitor.
+Otras Plataformas
+Micropython y Guition.
+6.2 Uso de Librerías Gráficas (LVGL)
+La placa es ideal para el desarrollo de interfaces HMI ricas en gráficos.
+• Soporte LVGL: La placa admite la librería LVGL (Light and Versatile Graphics Library) en las versiones v8 y v9.
+• Configuración LVGL (Arduino): Para usar LVGL, se debe buscar e instalar la librería LVGL (versión > v8.3.0) en el Library Manager de Arduino. Es necesario copiar el archivo de configuración (lv_conf.h) provisto por el centro de datos a la carpeta raíz de la librería lvgl en el directorio de librerías de Arduino.
+6.3 Herramienta de Descarga de Firmware (Flash Download Tool)
+Se utiliza la herramienta de descarga (v3.9.7 es la versión más reciente que soporta ESP32-P4) para cargar el firmware en la memoria flash.
+Modo de Operación
+Descripción
+Fuentes
+Developer Mode
+Utiliza rutas absolutas de firmware, solo soporta la grabación de un solo chip a la vez.
+Factory Mode
+Utiliza rutas relativas, recomendado para producción masiva. El firmware debe colocarse en la carpeta bin de la herramienta.
+Requisitos de Flasheo
+Se debe seleccionar el ChipType (ESP32 o ESP32-P4 si está disponible). El LoadMode es UART.
+Puesta en Modo Descarga
+Se logra tirando el pin GPIO0 a bajo (pulled low).
+Configuración de SPI Flash
+Incluye selección de SPI SPEED (e.g., 40 MHz) y SPI MODE (e.g., DIO, QIO).
+Seguridad de Flasheo
+La herramienta permite configurar el Secure Boot y Flash Encryption a través de la interfaz (aunque los ejemplos se centran en ESP32, la herramienta lo soporta para ESP32-P4).
+Hoy • 20:20
+hay información sobre cómo activar los 200mhz de la psram? en menuconfig solo me salen para seleccionar 20 y 80mhz.
+
+Basado en la documentación proporcionada, puedo ofrecer información sobre las capacidades de velocidad de la PSRAM del chip ESP32-P4, aunque las fuentes no contienen los pasos exactos dentro de menuconfig para activar los 200 MHz.
+Aquí está la información relevante:
+Capacidad de Velocidad de la PSRAM
+El chip ESP32-P4 integra la PSRAM, la cual se conecta a través de interfaces OPI (Octal/Ocho líneas) o HPI (High-speed Parallel Interface). La PSRAM SPI (Serial Peripheral Interface) del chip soporta operaciones de lectura/escritura DDR (Doble Tasa de Datos) de hasta 16 líneas.
+• El documento técnico (datasheet) del ESP32-P4 indica que la frecuencia de reloj máxima soportada para el modo PSRAM SPI DDR es de 250 MHz.
+• En contraste, la frecuencia de reloj máxima soportada para el modo Flash SPI SDR (Single Data Rate) es de 120 MHz.
+Aunque la especificación máxima es de 250 MHz para el modo DDR de la PSRAM, la documentación de la herramienta de descarga (Flash Download Tool) muestra que las opciones de SPI SPEED disponibles para configurar el flasheo o la memoria externa son 20 MHz, 26.7 MHz, 40 MHz y 80 MHz,.
+Observación sobre menuconfig
+La documentación detalla que la placa JC1060P470 soporta desarrollo utilizando ESP-IDF (ESP IDE),, que es donde se ejecuta menuconfig.
+La falta de opciones superiores a 80 MHz en su menuconfig podría deberse a:
+1. Configuración de Clock Source: Es posible que los 200 MHz que busca no correspondan al reloj principal (CPU HP Core, que es de hasta 400 MHz), sino a la velocidad del bus de memoria externo que es seleccionable en las configuraciones del BSP (Board Support Package).
+2. Versión del IDF/Soporte del BSP: La capacidad de la PSRAM de funcionar a 250 MHz es una característica del hardware del chip. La visibilidad de opciones de software (como 200 MHz) en el menuconfig depende de si el Board Support Package (BSP) o la versión de ESP-IDF que está utilizando para el ESP32-P4 tiene implementado y habilitado ese rango de frecuencia en el menú de configuración.
+3. Memoria Interna vs. Externa: La HP L2MEM (Memoria L2 de alto rendimiento) interna del chip sí está especificada para operar a 200 MHz. Es posible que las opciones visibles en el menú hagan referencia a velocidades más conservadoras o a la velocidad del bus de caché y no directamente al máximo teórico de la PSRAM DDR externa (250 MHz).
+Los documentos proporcionados no ofrecen una guía específica, ruta o sección dentro de menuconfig que muestre cómo seleccionar explícitamente la frecuencia de 200 MHz para la PSRAM. Solamente se confirma que el hardware del chip está diseñado para soportar frecuencias de PSRAM de hasta 250 MHz en modo DDR

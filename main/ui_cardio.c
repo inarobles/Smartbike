@@ -6,7 +6,7 @@
 #include "esp_log.h"
 
 static lv_obj_t * list_devices;
-static lv_style_t style_btn;
+
 
 static void device_btn_event_cb(lv_event_t * e)
 {
