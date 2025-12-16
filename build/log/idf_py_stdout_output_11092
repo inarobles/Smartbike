@@ -1,0 +1,1005 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 100 --decode-panic backtrace C:\Esp\SmartbikeP4\build\lvgl_demo_v9.elf C:\Esp\SmartbikeP4\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x30f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (26) boot: compile time Dec 12 2025 21:17:17[0m
+[0;32mI (26) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v1.0[0m
+[0;32mI (29) boot: efuse block revision: v0.3[0m
+[0;32mI (32) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (37) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (40) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (55) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (81) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (89) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=48110020 size=9e6c4h (648900) map[0m
+[0;32mI (199) esp_image: segment 1: paddr=000ae6ec vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (200) esp_image: segment 2: paddr=000ae75c vaddr=4ff00000 size=018bch (  6332) load[0m
+[0;32mI (205) esp_image: segment 3: paddr=000b0020 vaddr=48000020 size=10db60h (1104736) map[0m
+[0;32mI (380) esp_image: segment 4: paddr=001bdb88 vaddr=4ff018bc size=14ee0h ( 85728) load[0m
+[0;32mI (397) esp_image: segment 5: paddr=001d2a70 vaddr=4ff16800 size=03d34h ( 15668) load[0m
+[0;32mI (402) esp_image: segment 6: paddr=001d67ac vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (408) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (408) boot: Disabling RNG early entropy source...[0m
+[0;32mI (425) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (425) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (425) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (426) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (430) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (435) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (439) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (444) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (448) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (452) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (457) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (462) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (466) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (639) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (670) mmu_psram: .rodata xip on psram[0m
+[0;32mI (723) mmu_psram: .text xip on psram[0m
+[0;32mI (723) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (723) cpu_start: Multicore app[0m
+[0;32mI (1160) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1170) cpu_start: Pro cpu start user code[0m
+[0;32mI (1170) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1170) app_init: Application information:[0m
+[0;32mI (1170) app_init: Project name:     lvgl_demo_v9[0m
+[0;32mI (1175) app_init: App version:      96c3ba1d-dirty[0m
+[0;32mI (1179) app_init: Compile time:     Dec 15 2025 15:53:58[0m
+[0;32mI (1184) app_init: ELF file SHA256:  18bc64ee2...[0m
+[0;32mI (1189) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1193) efuse_init: Min chip rev:     v1.0[0m
+[0;32mI (1197) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1201) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1205) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1211) heap_init: At 4FF1F640 len 0001B980 (110 KiB): RAM[0m
+[0;32mI (1216) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1221) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1227) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1232) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1237) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1244) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1255) esp_psram: Adding pool of 6K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1267) spi_flash: detected chip: boya[0m
+[0;32mI (1270) spi_flash: flash io: qio[0m
+[0;32mI (1273) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1287) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1288) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1291) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1295) main_task: Started on CPU0[0m
+[0;32mI (1299) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1306) main_task: Calling app_main()[0m
+[0;32mI (1313) LVGL: Starting LVGL task[0m
+[0;32mI (1313) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1318) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1322) ESP32_P4_EV: Install EK79007 LCD control panel[0m
+[0;32mI (1327) jd9165: version: 1.0.2[0m
+[0;32mI (1641) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1642) LVGL: Setting PPA context for SW rotation[0m
+[0;32mI (1715) GT911: TouchPad_ID:0x39,0x31,0x31[0m
+[0;32mI (1715) GT911: TouchPad_Config_Version:99[0m
+[0;32mI (1715) BIKE_CONFIG: Config initialized. Cassette[0]: 11, Tire: 700x28C, Brake: 0.00V-0.00V[0m
+[0;32mI (1910) AUDIO_MANAGER: Starting Manual ES8311 Init (Production Profile)...[0m
+[0;32mI (1916) AUDIO_MANAGER: ES8311 Init Success[0m
+[0;32mI (2916) AUDIO_MANAGER: Amplifier Enabled[0m
+[0;32mI (2916) AUDIO_MANAGER: Loaded Volume from NVS: 137[0m
+[0;32mI (2916) AUDIO_MANAGER: Volume set to 137[0m
+[0;32mI (2919) MCP23017: MCP23017 Initialized[0m
+[0;32mI (2920) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (2925) UI: Using font: Montserrat 32[0m
+[0;32mI (2932) INA3221: INA3221 Initialized[0m
+[0;32mI (2932) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (2936) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (2941) WIFI_CLIENT: Initializing WiFi Client...[0m
+[0;32mI (2947) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (2951) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (2955) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (4479) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (4479) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (4483) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+[0;32mI (4522) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (4522) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (4622) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (4622) transport: set_transport_state: 1[0m
+[0;32mI (4622) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (4691) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (4691) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (4691) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (4695) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (4698) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (4704) transport: EVENT: 12[0m
+[0;32mI (4706) transport: Identified slave [esp32c6][0m
+[0;32mI (4710) transport: EVENT: 11[0m
+[0;32mI (4713) transport: capabilities: 0xd[0m
+[0;32mI (4716) transport: Features supported are:[0m
+[0;32mI (4720) transport: 	 * WLAN[0m
+[0;32mI (4723) transport: 	   - HCI over SDIO[0m
+[0;32mI (4726) transport: 	   - BLE only[0m
+[0;32mI (4730) transport: EVENT: 13[0m
+[0;33mW (4732) transport: Version mismatch: Host [2.7.0] > Co-proc [0.0.0] ==> Upgrade co-proc to avoid RPC timeouts[0m
+[0;32mI (4742) transport: ESP board type is : 13 [0m
+
+[0;32mI (4746) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (4752) H_API: Transport active[0m
+[0;32mI (4755) transport: Slave chip Id[12][0m
+[0;32mI (4758) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (4764) transport: transport_delayed_init[0m
+[0;32mI (4768) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (4773) esp_cli: Registering command: crash[0m
+[0;32mI (4777) esp_cli: Registering command: reboot[0m
+[0;32mI (4781) esp_cli: Registering command: mem-dump[0m
+[0;32mI (4785) esp_cli: Registering command: task-dump[0m
+[0;32mI (4790) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (4794) esp_cli: Registering command: heap-trace[0m
+[0;32mI (4798) esp_cli: Registering command: sock-dump[0m
+[0;32mI (4803) esp_cli: Registering command: host-power-save[0m
+[0;32mI (4808) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (4811) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (4815) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (4819) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (4822) H_SDIO_DRV: Write thread started[0m
+[0;32mI (5291) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (5498) WIFI_CLIENT: wifi_init_sta finished.[0m
+[0;32mI (5498) BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (5499) transport: Attempt connection with slave: retry[0][0m
+[0;32mI (5502) transport: Transport is already up[0m
+[0;32mI (5505) RPC_WRAP: ESP Event: wifi station started[0m
+[0;32mI (5511) BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (5515) BLE_CLIENT: BLE Client initialization complete.[0m
+CADENCE: Handler added to GPIO 48
+[0;32mI (5523) main_task: Returned from app_main()[0m
+[0;32mI (5523) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (5534) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (5537) BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (5541) BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (5541) BLE_CLIENT: Reconnect task started[0m
+[0;32mI (5629) WIFI_CLIENT: WIFI_EVENT_STA_START: Initializing connection process.[0m
+[0;32mI (5630) WIFI_MANAGER: Found 1 saved SSIDs in order[0m
+[0;32mI (5630) WIFI_CLIENT: Attempting to connect to MOVISTAR_4B85 (1/1)[0m
+[0;32mI (5636) WIFI_MANAGER: Credentials loaded for SSID: MOVISTAR_4B85[0m
+[0;32mI (5797) H_API: esp_wifi_remote_connect[0m
+[0;33mW (5814) rpc_rsp: Hosted RPC_Resp [0x21a], uid [7], resp code [12295][0m
+[0;32mI (8509) RPC_WRAP: ESP Event: Station mode: Connected[0m
+[0;32mI (8509) esp_wifi_remote: esp_wifi_internal_reg_rxcb: sta: 0x480c6924[0m
+[0;32mI (10549) BLE_CLIENT: Successfully loaded saved device address from NVS (Key: saved_addr_hr).[0m
+[0;32mI (10549) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (10552) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (10559) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (10564) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (10568) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (10571) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (10584) NimBLE: [0m
+
+[0;32mI (11063) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (11063) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (11214) BLE_CLIENT: Found Heart Rate Service. Handle: 0[0m
+[0;32mI (11214) BLE_CLIENT: Saved device address to NVS (Key: saved_addr_hr).[0m
+[0;32mI (11215) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (11221) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (11314) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (11314) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (11315) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (11514) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (11515) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (11515) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (12064) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (12064) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12064) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (12315) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (12315) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12315) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (12317) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (12322) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12327) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (12359) esp_netif_handlers: sta ip: 192.168.1.164, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (12359) WIFI_CLIENT: Got IP address: 192.168.1.164[0m
+[0;32mI (12360) WIFI_CLIENT: wifi_connect_task: WiFi Connected[0m
+[0;32mI (12364) WIFI_MANAGER: Updated SSID order: MOVISTAR_4B85[0m
+[0;32mI (12370) WIFI_CLIENT: Manually set DNS server to 8.8.8.8[0m
+[0;32mI (12588) BLE_CLIENT: Successfully loaded saved device address from NVS (Key: saved_addr_pwr).[0m
+[0;32mI (12588) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (12591) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[0;32mI (12599) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (12603) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (12607) NimBLE: eb:cb:e0:36:d5:e6[0m
+[0;32mI (12610) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (12621) WIFI_CONNECTIVITY: Internet connectivity confirmed.[0m
+[0;32mI (12623) NimBLE: [0m
+
+[0;32mI (13252) BLE_CLIENT: Connection established; conn_handle=1[0m
+[0;32mI (13252) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (13753) BLE_CLIENT: Found Cycling Power Service. Handle: 1[0m
+[0;32mI (13753) BLE_CLIENT: Saved device address to NVS (Key: saved_addr_pwr).[0m
+[0;32mI (13754) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (13760) NimBLE: start_handle=20 end_handle=30[0m
+
+[0;32mI (13802) BLE_CLIENT: Found Cycling Power Measurement characteristic.[0m
+[0;32mI (13803) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (13804) NimBLE: chr_val_handle=22 end_handle=65535[0m
+
+[0;32mI (13903) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (13903) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (13903) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (14203) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (14203) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (14203) NimBLE: att_handle=28 len=2[0m
+
+[0;32mI (15813) NimBLE: GAP procedure initiated: [0m
+[0;32mI (15813) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (15819) NimBLE: [0m
+
+[0;32mI (1160) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1170) cpu_start: Pro cpu start user code[0m
+[0;32mI (1170) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1170) app_init: Application information:[0m
+[0;32mI (1170) app_init: Project name:     lvgl_demo_v9[0m
+[0;32mI (1175) app_init: App version:      96c3ba1d-dirty[0m
+[0;32mI (1179) app_init: Compile time:     Dec 15 2025 15:53:58[0m
+[0;32mI (1184) app_init: ELF file SHA256:  18bc64ee2...[0m
+[0;32mI (1189) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1193) efuse_init: Min chip rev:     v1.0[0m
+[0;32mI (1197) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1201) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1205) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1211) heap_init: At 4FF1F640 len 0001B980 (110 KiB): RAM[0m
+[0;32mI (1216) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1221) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1227) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1232) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1237) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1244) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1255) esp_psram: Adding pool of 6K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1266) spi_flash: detected chip: boya[0m
+[0;32mI (1270) spi_flash: flash io: qio[0m
+[0;32mI (1273) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1287) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1287) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1291) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1295) main_task: Started on CPU0[0m
+[0;32mI (1299) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1306) main_task: Calling app_main()[0m
+[0;32mI (1313) LVGL: Starting LVGL task[0m
+[0;32mI (1313) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1318) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1322) ESP32_P4_EV: Install EK79007 LCD control panel[0m
+[0;32mI (1327) jd9165: version: 1.0.2[0m
+[0;32mI (1641) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1642) LVGL: Setting PPA context for SW rotation[0m
+[0;32mI (1715) GT911: TouchPad_ID:0x39,0x31,0x31[0m
+[0;32mI (1715) GT911: TouchPad_Config_Version:99[0m
+[0;32mI (1715) BIKE_CONFIG: Config initialized. Cassette[0]: 11, Tire: 700x28C, Brake: 0.00V-0.00V[0m
+[0;32mI (1910) AUDIO_MANAGER: Starting Manual ES8311 Init (Production Profile)...[0m
+[0;32mI (1916) AUDIO_MANAGER: ES8311 Init Success[0m
+[0;32mI (2916) AUDIO_MANAGER: Amplifier Enabled[0m
+[0;32mI (2916) AUDIO_MANAGER: Loaded Volume from NVS: 137[0m
+[0;32mI (2916) AUDIO_MANAGER: Volume set to 137[0m
+[0;32mI (2919) MCP23017: MCP23017 Initialized[0m
+[0;32mI (2920) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (2925) UI: Using font: Montserrat 32[0m
+[0;32mI (2932) INA3221: INA3221 Initialized[0m
+[0;32mI (2932) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (2936) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (2941) WIFI_CLIENT: Initializing WiFi Client...[0m
+[0;32mI (2947) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (2951) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (2955) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (4479) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (4479) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (4483) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+[0;32mI (4522) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (4522) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (4622) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (4622) transport: set_transport_state: 1[0m
+[0;32mI (4622) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (4691) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (4691) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (4691) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (4695) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (4698) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (4704) transport: EVENT: 12[0m
+[0;32mI (4706) transport: Identified slave [esp32c6][0m
+[0;32mI (4710) transport: EVENT: 11[0m
+[0;32mI (4713) transport: capabilities: 0xd[0m
+[0;32mI (4716) transport: Features supported are:[0m
+[0;32mI (4720) transport: 	 * WLAN[0m
+[0;32mI (4723) transport: 	   - HCI over SDIO[0m
+[0;32mI (4726) transport: 	   - BLE only[0m
+[0;32mI (4730) transport: EVENT: 13[0m
+[0;33mW (4732) transport: Version mismatch: Host [2.7.0] > Co-proc [0.0.0] ==> Upgrade co-proc to avoid RPC timeouts[0m
+[0;32mI (4742) transport: ESP board type is : 13 [0m
+
+[0;32mI (4746) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (4752) H_API: Transport active[0m
+[0;32mI (4755) transport: Slave chip Id[12][0m
+[0;32mI (4758) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (4764) transport: transport_delayed_init[0m
+[0;32mI (4768) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (4773) esp_cli: Registering command: crash[0m
+[0;32mI (4777) esp_cli: Registering command: reboot[0m
+[0;32mI (4781) esp_cli: Registering command: mem-dump[0m
+[0;32mI (4785) esp_cli: Registering command: task-dump[0m
+[0;32mI (4790) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (4794) esp_cli: Registering command: heap-trace[0m
+[0;32mI (4798) esp_cli: Registering command: sock-dump[0m
+[0;32mI (4803) esp_cli: Registering command: host-power-save[0m
+[0;32mI (4808) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (4811) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (4815) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (4819) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (4822) H_SDIO_DRV: Write thread started[0m
+[0;32mI (5291) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (5498) WIFI_CLIENT: wifi_init_sta finished.[0m
+[0;32mI (5498) BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (5499) transport: Attempt connection with slave: retry[0][0m
+[0;32mI (5502) transport: Transport is already up[0m
+[0;32mI (5505) RPC_WRAP: ESP Event: wifi station started[0m
+[0;32mI (5511) BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (5515) BLE_CLIENT: BLE Client initialization complete.[0m
+CADENCE: Handler added to GPIO 48
+[0;32mI (5523) main_task: Returned from app_main()[0m
+[0;32mI (5523) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (5534) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (5537) BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (5541) BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (5541) BLE_CLIENT: Reconnect task started[0m
+[0;32mI (5734) WIFI_CLIENT: WIFI_EVENT_STA_START: Initializing connection process.[0m
+[0;32mI (5735) WIFI_MANAGER: Found 1 saved SSIDs in order[0m
+[0;32mI (5735) WIFI_CLIENT: Attempting to connect to MOVISTAR_4B85 (1/1)[0m
+[0;32mI (5741) WIFI_MANAGER: Credentials loaded for SSID: MOVISTAR_4B85[0m
+[0;32mI (5771) H_API: esp_wifi_remote_connect[0m
+[0;33mW (5787) rpc_rsp: Hosted RPC_Resp [0x21a], uid [7], resp code [12295][0m
+[0;32mI (8537) RPC_WRAP: ESP Event: Station mode: Connected[0m
+[0;32mI (8537) esp_wifi_remote: esp_wifi_internal_reg_rxcb: sta: 0x480c6924[0m
+[0;32mI (10549) BLE_CLIENT: Successfully loaded saved device address from NVS (Key: saved_addr_hr).[0m
+[0;32mI (10549) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (10552) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (10559) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (10564) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (10568) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (10571) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (10584) NimBLE: [0m
+
+[0;32mI (11089) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (11090) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (11190) BLE_CLIENT: Found Heart Rate Service. Handle: 0[0m
+[0;32mI (11190) BLE_CLIENT: Saved device address to NVS (Key: saved_addr_hr).[0m
+[0;32mI (11191) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (11197) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (11240) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (11241) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (11242) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (11441) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (11441) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (11441) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (11890) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (11891) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (11891) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (12140) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (12141) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12141) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (12143) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (12148) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12153) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (12560) esp_netif_handlers: sta ip: 192.168.1.164, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (12560) WIFI_CLIENT: Got IP address: 192.168.1.164[0m
+[0;32mI (12561) WIFI_CLIENT: wifi_connect_task: WiFi Connected[0m
+[0;32mI (12564) WIFI_MANAGER: Updated SSID order: MOVISTAR_4B85[0m
+[0;32mI (12571) WIFI_CLIENT: Manually set DNS server to 8.8.8.8[0m
+[0;32mI (12588) BLE_CLIENT: Successfully loaded saved device address from NVS (Key: saved_addr_pwr).[0m
+[0;32mI (12588) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (12591) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[0;32mI (12599) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (12603) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (12607) NimBLE: eb:cb:e0:36:d5:e6[0m
+[0;32mI (12610) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (12623) NimBLE: [0m
+
+[0;32mI (13414) BLE_CLIENT: Connection established; conn_handle=1[0m
+[0;32mI (13414) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (13815) BLE_CLIENT: Found Cycling Power Service. Handle: 1[0m
+[0;32mI (13815) BLE_CLIENT: Saved device address to NVS (Key: saved_addr_pwr).[0m
+[0;32mI (13816) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (13822) NimBLE: start_handle=20 end_handle=30[0m
+
+[0;32mI (13865) BLE_CLIENT: Found Cycling Power Measurement characteristic.[0m
+[0;32mI (13865) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (13866) NimBLE: chr_val_handle=22 end_handle=65535[0m
+
+[0;32mI (13965) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (13965) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (13966) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (14364) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (14364) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (14364) NimBLE: att_handle=28 len=2[0m
+
+[0;32mI (15790) NimBLE: GAP procedure initiated: [0m
+[0;32mI (15790) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (15796) NimBLE: [0m
+
+[0;32mI (17388) WIFI_CONNECTIVITY: Internet connectivity confirmed.[0m
+[0;32mI (72691) BLE_CLIENT: Disconnected; reason=520, handle=0[0m
+[0;32mI (77628) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (77628) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (77630) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (77634) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (77638) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (77642) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (77655) NimBLE: [0m
+
+[0;32mI (84658) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (84658) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (84660) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (84666) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (91670) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (91670) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (91672) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (91678) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (98682) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (98682) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (98684) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (98690) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (105694) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (105694) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (105696) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (105702) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (107659) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (112707) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (112707) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (112709) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (112714) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (112718) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (112721) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (112734) NimBLE: [0m
+
+[0;32mI (119738) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (119738) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (119740) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (119746) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (126751) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (126751) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (126753) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (126759) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (133764) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (133764) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (133766) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (133772) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (140777) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (140777) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (140779) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (140785) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (142740) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (147790) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (147790) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (147792) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (147797) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (147801) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (147804) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (147817) NimBLE: [0m
+
+[0;32mI (154821) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (154821) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (154823) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (154829) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (161834) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (161834) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (161836) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (161842) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (168847) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (168847) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (168849) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (168855) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (175860) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (175860) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (175862) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (175868) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (177823) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (182873) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (182873) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (182875) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (182880) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (182884) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (182887) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (182900) NimBLE: [0m
+
+[0;32mI (189904) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (189904) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (189906) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (189912) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (196917) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (196917) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (196919) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (196925) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (203930) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (203930) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (203932) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (203938) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (210943) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (210943) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (210945) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (210951) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (212906) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (217956) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (217956) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (217958) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (217963) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (217967) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (217970) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (217983) NimBLE: [0m
+
+[0;32mI (224988) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (224988) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (224990) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (224996) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (232001) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (232001) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (232003) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (232009) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (239014) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (239014) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (239016) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (239022) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (246027) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (246027) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (246029) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (246035) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (247989) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (253040) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (253040) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (253042) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (253047) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (253051) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (253054) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (253067) NimBLE: [0m
+
+[0;32mI (260071) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (260071) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (260073) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (260079) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (267084) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (267084) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (267086) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (267092) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (274097) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (274097) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (274099) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (274105) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (281110) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (281110) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (281112) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (281118) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (283073) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (288123) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (288123) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (288125) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (288130) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (288134) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (288137) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (288150) NimBLE: [0m
+
+[0;32mI (295154) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (295154) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (295156) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (295162) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (302167) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (302167) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (302169) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (302175) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (309180) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (309180) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (309182) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (309188) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (316193) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (316193) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (316195) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (316201) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (318156) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (323206) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (323206) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (323208) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (323213) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (323217) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (323220) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (323233) NimBLE: [0m
+
+[0;32mI (325268) BLE_CLIENT: Disconnected; reason=531, handle=1[0m
+[0;32mI (330237) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (330237) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (330239) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (330245) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (332250) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (332250) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (332252) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (332259) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (337263) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (337263) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (337265) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (337271) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (339276) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (339276) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (339278) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (339285) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (344289) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (344289) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (344291) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (344297) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (346302) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (346302) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (346304) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (346311) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (351315) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (351315) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (351317) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (351323) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (353239) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (353328) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (353328) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[0;32mI (353330) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (353335) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (353339) NimBLE: eb:cb:e0:36:d5:e6[0m
+[0;32mI (353342) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (353355) NimBLE: [0m
+
+[0;32mI (358359) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (358359) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (358361) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (358367) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (360372) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (360372) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (360374) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (360381) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (365385) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (365385) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (365387) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (365393) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (367398) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (367398) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (367400) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (367407) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (372411) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (372411) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (372413) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (372419) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (374424) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (374424) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (374426) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (374433) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (379437) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (379437) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (379439) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (379445) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (381450) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (381450) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (381452) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (381459) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (383361) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (386463) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (386463) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (386465) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (386470) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (386474) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (386477) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (386490) NimBLE: [0m
+
+[0;32mI (388495) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (388495) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (388497) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (388504) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (393508) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (393508) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (393510) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (393516) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (395521) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (395521) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (395523) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (395530) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (400534) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (400534) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (400536) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (400542) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (402547) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (402547) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (402549) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (402556) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (407560) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (407560) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (407562) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (407568) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (409573) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (409573) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (409575) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (409582) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (414586) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (414586) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (414588) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (414594) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (416496) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (416599) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (416599) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[0;32mI (416601) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (416606) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (416610) NimBLE: eb:cb:e0:36:d5:e6[0m
+[0;32mI (416613) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (416626) NimBLE: [0m
+
+[0;32mI (421630) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (421630) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (421632) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (421638) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (423643) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (423643) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (423645) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (423652) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (428656) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (428656) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (428658) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (428664) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (430669) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (430669) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (430671) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (430678) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (435682) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (435682) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (435684) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (435690) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (437695) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (437695) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (437697) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (437704) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (442708) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (442708) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (442710) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (442716) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (444721) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (444721) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (444723) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (444730) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (446632) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (449734) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (449734) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (449736) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (449741) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (449745) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (449748) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (449761) NimBLE: [0m
+
+[0;32mI (451765) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (451765) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (451767) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (451774) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (456778) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (456778) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (456780) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (456786) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (458791) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (458791) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (458793) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (458800) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (463804) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (463804) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (463806) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (463812) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (465817) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (465817) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (465819) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (465826) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (470830) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (470830) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (470832) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (470838) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (472843) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (472843) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (472845) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (472852) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (477856) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (477856) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (477858) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (477864) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (479767) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (479869) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (479869) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[0;32mI (479871) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (479876) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (479880) NimBLE: eb:cb:e0:36:d5:e6[0m
+[0;32mI (479883) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (479896) NimBLE: [0m
+
+[0;32mI (484900) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (484900) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (484902) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (484908) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (486913) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (486913) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (486915) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (486922) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (491926) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (491926) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (491928) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (491934) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (493939) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (493939) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (493941) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (493948) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (498952) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (498952) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (498954) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (498960) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (500965) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (500965) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (500967) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (500974) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (505978) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (505978) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (505980) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (505986) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (507991) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (507991) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (507993) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (508000) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (509902) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (513004) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (513004) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (513006) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (513011) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (513015) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (513018) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (513031) NimBLE: [0m
+
+[0;32mI (515035) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (515035) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (515037) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (515044) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (520048) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (520048) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (520050) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (520056) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (522061) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (522061) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (522063) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (522070) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (527074) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (527074) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (527076) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (527082) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (529087) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (529087) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (529089) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (529096) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (534100) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (534100) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (534102) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (534108) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (536113) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (536113) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (536115) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (536122) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (541126) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (541126) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (541128) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (541134) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (543037) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (543139) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (543139) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[0;32mI (543141) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (543146) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (543150) NimBLE: eb:cb:e0:36:d5:e6[0m
+[0;32mI (543153) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (543166) NimBLE: [0m
+
+[0;32mI (548171) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (548171) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (548173) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (548179) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (550184) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (550184) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (550186) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (550193) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (555197) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (555197) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (555199) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (555205) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (557210) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (557210) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (557212) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (557219) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (562223) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (562223) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (562225) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (562231) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (564236) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (564236) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (564238) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (564245) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (569249) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (569249) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (569251) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (569257) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (571262) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (571262) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (571264) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (571271) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (573172) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (576275) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (576275) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (576277) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (576282) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (576286) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (576289) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (576302) NimBLE: [0m
+
+[0;32mI (578307) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (578307) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (578309) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (578316) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (583320) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (583320) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (583322) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (583328) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (585333) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (585333) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (585335) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (585342) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (590346) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (590346) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (590348) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (590354) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (592359) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (592359) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (592361) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (592368) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (597372) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (597372) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (597374) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (597380) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (599385) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (599385) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[1;31mE (599387) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (599394) BLE_CLIENT: Error starting scan; rc=15[0m
+[0;32mI (604398) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (604398) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[1;31mE (604400) BLE_CLIENT: Failed to initiate connect; rc=2. Restarting scan.[0m
+[1;31mE (604406) BLE_CLIENT: Error starting scan; rc=15[0m
+[1;31mE (606308) BLE_CLIENT: Connection attempt failed; status=13.[0m
+[0;32mI (606411) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (606411) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[0;32mI (606413) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (606418) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (606422) NimBLE: eb:cb:e0:36:d5:e6[0m
+[0;32mI (606425) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (606438) NimBLE: [0m
+

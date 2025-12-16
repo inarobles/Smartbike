@@ -10,17 +10,119 @@
 #include <stdio.h>
 #include "esp_log.h"
 
+#include "ble_client.h"
+
 static lv_style_t style_btn;
 
 #include "button_manager.h" // For calibration API
+#include "power_calib_manager.h"
 
 static lv_obj_t * s_calib_msgbox = NULL;
+static lv_obj_t * s_calib_label = NULL; // To hold the text label handle
+static lv_obj_t * s_check_pwr_msgbox = NULL;
+static lv_obj_t * s_check_pwr_label = NULL;
 static lv_timer_t * s_calib_timer = NULL;
+static lv_timer_t * s_pwr_calib_timer = NULL; // Separate timer for power calibration
+static lv_timer_t * s_check_pwr_timer = NULL;
 
 static void msgbox_close_event_cb(lv_event_t * e)
 {
     lv_obj_t * mbox = lv_event_get_user_data(e);
     lv_msgbox_close(mbox);
+    
+    // Clear handles
+    if (mbox == s_calib_msgbox) {
+        s_calib_msgbox = NULL;
+        s_calib_label = NULL;
+    }
+    if (mbox == s_check_pwr_msgbox) {
+        if (s_check_pwr_timer) {
+            lv_timer_del(s_check_pwr_timer);
+            s_check_pwr_timer = NULL;
+        }
+        s_check_pwr_msgbox = NULL;
+        s_check_pwr_label = NULL;
+    }
+}
+
+static void check_pwr_timer_cb(lv_timer_t * timer) {
+    if (s_check_pwr_label && lv_obj_is_valid(s_check_pwr_label)) {
+        int16_t ble_pwr = ble_client_get_power();
+        int16_t est_pwr = power_calib_get_estimate();
+        int16_t diff = est_pwr - ble_pwr;
+        float err_pct = 0.0f;
+        if (ble_pwr > 0) {
+            err_pct = ((float)diff / (float)ble_pwr) * 100.0f;
+        }
+        
+        char msg[256];
+        snprintf(msg, sizeof(msg),
+            "Potencia Real (BLE): %d W\n"
+            "Calculada: %d W\n"
+            "Diferencia: %d W\n"
+            "ERROR: %.1f %%",
+            ble_pwr, est_pwr, diff, err_pct);
+            
+        lv_label_set_text(s_check_pwr_label, msg);
+    }
+}
+
+static void pwr_calib_timer_cb(lv_timer_t * timer) {
+    power_calib_status_t status;
+    if (power_calib_get_status(&status)) {
+        // Update MsgBox
+        if (s_calib_msgbox && s_calib_label) {
+             const char * stage_str = status.is_stable ? "Muestreando..." : "Estabilizando...";
+             if (status.current_rpm < 40) stage_str = "PEDALEA MAS RAPIDO!";
+             
+             char msg[256];
+             snprintf(msg, sizeof(msg), 
+                      "Paso %d/%d (%.0f%%)\n"
+                      "Voltaje: %.2f V\n"
+                      "RPM: %d  |  Potencia: %d W\n\n"
+                      "Estado: %s", 
+                      status.step_index, status.total_steps, status.progress_percent * 100,
+                      status.target_voltage,
+                      status.current_rpm, status.current_watts,
+                      stage_str);
+             
+             lv_label_set_text(s_calib_label, msg);
+        }
+    } else if (power_calib_is_finished()) {
+        // Finished
+        if (s_calib_msgbox) {
+             lv_msgbox_close(s_calib_msgbox);
+             s_calib_msgbox = NULL;
+             s_calib_label = NULL;
+        }
+        
+        lv_obj_t * mbox = lv_msgbox_create(NULL);
+        lv_msgbox_add_title(mbox, "Calibracion Potencia");
+        lv_msgbox_add_text(mbox, "Proceso completado correctamente.\nTabla guardada.");
+        lv_obj_t * btn = lv_msgbox_add_footer_button(mbox, "OK");
+        lv_obj_add_event_cb(btn, msgbox_close_event_cb, LV_EVENT_CLICKED, mbox);
+        lv_obj_center(mbox);
+
+        lv_timer_del(timer);
+        s_pwr_calib_timer = NULL;
+    } else if (power_calib_has_failed()) {
+        // Failed
+        if (s_calib_msgbox) {
+             lv_msgbox_close(s_calib_msgbox);
+             s_calib_msgbox = NULL;
+             s_calib_label = NULL;
+        }
+        
+        lv_obj_t * mbox = lv_msgbox_create(NULL);
+        lv_msgbox_add_title(mbox, "Error Calibracion");
+        lv_msgbox_add_text(mbox, "Fallo el proceso.\nPosible causa: Freno no calibrado.\n\nPor favor, ejecute 'Calibrar Freno' primero.");
+        lv_obj_t * btn = lv_msgbox_add_footer_button(mbox, "OK");
+        lv_obj_add_event_cb(btn, msgbox_close_event_cb, LV_EVENT_CLICKED, mbox);
+        lv_obj_center(mbox);
+
+        lv_timer_del(timer);
+        s_pwr_calib_timer = NULL;
+    }
 }
 
 static void calib_timer_cb(lv_timer_t * timer) {
@@ -33,6 +135,7 @@ static void calib_timer_cb(lv_timer_t * timer) {
         if (s_calib_msgbox) {
              lv_msgbox_close(s_calib_msgbox);
              s_calib_msgbox = NULL;
+             s_calib_label = NULL;
         }
 
         // Create Result MsgBox
@@ -86,7 +189,7 @@ static void btn_event_cb(lv_event_t * e)
             
             // Show MsgBox (Calibrating...)
             s_calib_msgbox = lv_msgbox_create(NULL);
-            lv_msgbox_add_title(s_calib_msgbox, "Calibrando...");
+            lv_msgbox_add_title(s_calib_msgbox, "Calibrando Freno");
             lv_msgbox_add_text(s_calib_msgbox, "Buscando topes mecanicos...\nMovimiento automatico.");
             // No buttons -> user waits
             lv_obj_center(s_calib_msgbox);
@@ -95,6 +198,32 @@ static void btn_event_cb(lv_event_t * e)
             if (s_calib_timer) lv_timer_del(s_calib_timer);
             s_calib_timer = lv_timer_create(calib_timer_cb, 500, NULL);
             
+        } else if (strcmp(txt, "Calibrar potencia") == 0) {
+             // Start Power Calibration
+             power_calib_init(); // Ensure task is created
+             power_calib_start();
+             
+             s_calib_msgbox = lv_msgbox_create(NULL);
+             lv_msgbox_add_title(s_calib_msgbox, "Calibrando Potencia");
+             s_calib_label = lv_msgbox_add_text(s_calib_msgbox, "Iniciando...\nMantengase pedaleando."); // Capture label
+             lv_obj_center(s_calib_msgbox);
+             
+             if (s_pwr_calib_timer) lv_timer_del(s_pwr_calib_timer);
+             s_pwr_calib_timer = lv_timer_create(pwr_calib_timer_cb, 500, NULL);
+
+        } else if (strcmp(txt, "Comprobar potencia") == 0) {
+             s_check_pwr_msgbox = lv_msgbox_create(NULL);
+             lv_msgbox_add_title(s_check_pwr_msgbox, "Verificacion Potencia");
+             s_check_pwr_label = lv_msgbox_add_text(s_check_pwr_msgbox, "Esperando datos...");
+             
+             lv_obj_t * btn = lv_msgbox_add_footer_button(s_check_pwr_msgbox, "Cerrar");
+             lv_obj_add_event_cb(btn, msgbox_close_event_cb, LV_EVENT_CLICKED, s_check_pwr_msgbox);
+             
+             lv_obj_center(s_check_pwr_msgbox);
+             
+             if (s_check_pwr_timer) lv_timer_del(s_check_pwr_timer);
+             s_check_pwr_timer = lv_timer_create(check_pwr_timer_cb, 500, NULL);
+             
         } else if (strcmp(txt, "Volver") == 0) {
             ui_init();
         }
@@ -166,6 +295,7 @@ void ui_settings_screen_init(void)
     create_button(cont, "Potencia BLE");
     create_button(cont, "WIFI");
     create_button(cont, "Calibrar potencia");
+    create_button(cont, "Comprobar potencia");
     create_button(cont, "Calibrar freno");
     create_button(cont, "Configurar bicicleta");
     create_button(cont, "Configurar APP");

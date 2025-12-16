@@ -1,0 +1,621 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 100 --decode-panic backtrace C:\Esp\SmartbikeP4\build\lvgl_demo_v9.elf C:\Esp\SmartbikeP4\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x20f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (26) boot: compile time Dec 12 2025 21:17:17[0m
+[0;32mI (26) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v1.0[0m
+[0;32mI (29) boot: efuse block revision: v0.3[0m
+[0;32mI (32) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (37) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (40) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (55) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (81) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (89) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=48110020 size=9e6c4h (648900) map[0m
+[0;32mI (199) esp_image: segment 1: paddr=000ae6ec vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (200) esp_image: segment 2: paddr=000ae75c vaddr=4ff00000 size=018bch (  6332) load[0m
+[0;32mI (205) esp_image: segment 3: paddr=000b0020 vaddr=48000020 size=10db60h (1104736) map[0m
+[0;32mI (380) esp_image: segment 4: paddr=001bdb88 vaddr=4ff018bc size=14ee0h ( 85728) load[0m
+[0;32mI (397) esp_image: segment 5: paddr=001d2a70 vaddr=4ff16800 size=03d34h ( 15668) load[0m
+[0;32mI (402) esp_image: segment 6: paddr=001d67ac vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (408) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (408) boot: Disabling RNG early entropy source...[0m
+[0;32mI (425) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (425) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (425) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (426) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (430) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (435) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (439) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (444) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (448) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (452) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (457) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (462) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (466) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (639) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (671) mmu_psram: .rodata xip on psram[0m
+[0;32mI (723) mmu_psram: .text xip on psram[0m
+[0;32mI (724) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (724) cpu_start: Multicore app[0m
+[0;32mI (1161) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1170) cpu_start: Pro cpu start user code[0m
+[0;32mI (1170) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1171) app_init: Application information:[0m
+[0;32mI (1171) app_init: Project name:     lvgl_demo_v9[0m
+[0;32mI (1175) app_init: App version:      96c3ba1d-dirty[0m
+[0;32mI (1180) app_init: Compile time:     Dec 15 2025 15:53:58[0m
+[0;32mI (1185) app_init: ELF file SHA256:  18bc64ee2...[0m
+[0;32mI (1189) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1193) efuse_init: Min chip rev:     v1.0[0m
+[0;32mI (1197) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1201) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1205) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1211) heap_init: At 4FF1F640 len 0001B980 (110 KiB): RAM[0m
+[0;32mI (1217) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1222) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1227) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1233) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1238) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1245) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1256) esp_psram: Adding pool of 6K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1267) spi_flash: detected chip: boya[0m
+[0;32mI (1270) spi_flash: flash io: qio[0m
+[0;32mI (1273) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1288) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1288) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1292) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1296) main_task: Started on CPU0[0m
+[0;32mI (1300) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1307) main_task: Calling app_main()[0m
+[0;32mI (1314) LVGL: Starting LVGL task[0m
+[0;32mI (1314) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1319) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1323) ESP32_P4_EV: Install EK79007 LCD control panel[0m
+[0;32mI (1328) jd9165: version: 1.0.2[0m
+[0;32mI (1642) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1643) LVGL: Setting PPA context for SW rotation[0m
+[0;32mI (1716) GT911: TouchPad_ID:0x39,0x31,0x31[0m
+[0;32mI (1716) GT911: TouchPad_Config_Version:99[0m
+[0;32mI (1716) BIKE_CONFIG: Config initialized. Cassette[0]: 11, Tire: 700x28C, Brake: 0.00V-0.00V[0m
+[0;32mI (1911) AUDIO_MANAGER: Starting Manual ES8311 Init (Production Profile)...[0m
+[0;32mI (1917) AUDIO_MANAGER: ES8311 Init Success[0m
+[0;32mI (2917) AUDIO_MANAGER: Amplifier Enabled[0m
+[0;32mI (2917) AUDIO_MANAGER: Loaded Volume from NVS: 137[0m
+[0;32mI (2917) AUDIO_MANAGER: Volume set to 137[0m
+[0;32mI (2920) MCP23017: MCP23017 Initialized[0m
+[0;32mI (2921) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (2926) UI: Using font: Montserrat 32[0m
+[0;32mI (2933) INA3221: INA3221 Initialized[0m
+[0;32mI (2933) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (2937) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (2942) WIFI_CLIENT: Initializing WiFi Client...[0m
+[0;32mI (2948) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (2952) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (2956) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (4480) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (4480) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (4484) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+[0;32mI (4523) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (4523) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (4623) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (4623) transport: set_transport_state: 1[0m
+[0;32mI (4623) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (4692) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (4692) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (4692) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (4698) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (4699) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (4705) transport: EVENT: 12[0m
+[0;32mI (4707) transport: Identified slave [esp32c6][0m
+[0;32mI (4711) transport: EVENT: 11[0m
+[0;32mI (4714) transport: capabilities: 0xd[0m
+[0;32mI (4717) transport: Features supported are:[0m
+[0;32mI (4721) transport: 	 * WLAN[0m
+[0;32mI (4724) transport: 	   - HCI over SDIO[0m
+[0;32mI (4727) transport: 	   - BLE only[0m
+[0;32mI (4731) transport: EVENT: 13[0m
+[0;33mW (4733) transport: Version mismatch: Host [2.7.0] > Co-proc [0.0.0] ==> Upgrade co-proc to avoid RPC timeouts[0m
+[0;32mI (4743) transport: ESP board type is : 13 [0m
+
+[0;32mI (4747) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (4753) H_API: Transport active[0m
+[0;32mI (4756) transport: Slave chip Id[12][0m
+[0;32mI (4759) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (4765) transport: transport_delayed_init[0m
+[0;32mI (4769) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (4774) esp_cli: Registering command: crash[0m
+[0;32mI (4778) esp_cli: Registering command: reboot[0m
+[0;32mI (4782) esp_cli: Registering command: mem-dump[0m
+[0;32mI (4786) esp_cli: Registering command: task-dump[0m
+[0;32mI (4791) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (4795) esp_cli: Registering command: heap-trace[0m
+[0;32mI (4799) esp_cli: Registering command: sock-dump[0m
+[0;32mI (4804) esp_cli: Registering command: host-power-save[0m
+[0;32mI (4809) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (4812) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (4816) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (4820) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (4823) H_SDIO_DRV: Write thread started[0m
+[0;32mI (5292) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (5499) WIFI_CLIENT: wifi_init_sta finished.[0m
+[0;32mI (5499) BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (5500) transport: Attempt connection with slave: retry[0][0m
+[0;32mI (5503) transport: Transport is already up[0m
+[0;32mI (5506) RPC_WRAP: ESP Event: wifi station started[0m
+[0;32mI (5512) BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (5516) BLE_CLIENT: BLE Client initialization complete.[0m
+CADENCE: Handler added to GPIO 48
+[0;32mI (5524) main_task: Returned from app_main()[0m
+[0;32mI (5524) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (5535) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (5538) BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (5542) BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (5542) BLE_CLIENT: Reconnect task started[0m
+[0;32mI (5735) WIFI_CLIENT: WIFI_EVENT_STA_START: Initializing connection process.[0m
+[0;32mI (5735) WIFI_MANAGER: Found 1 saved SSIDs in order[0m
+[0;32mI (5735) WIFI_CLIENT: Attempting to connect to MOVISTAR_4B85 (1/1)[0m
+[0;32mI (5741) WIFI_MANAGER: Credentials loaded for SSID: MOVISTAR_4B85[0m
+[0;32mI (5800) H_API: esp_wifi_remote_connect[0m
+[0;33mW (5817) rpc_rsp: Hosted RPC_Resp [0x21a], uid [7], resp code [12295][0m
+[0;32mI (8517) RPC_WRAP: ESP Event: Station mode: Connected[0m
+[0;32mI (8517) esp_wifi_remote: esp_wifi_internal_reg_rxcb: sta: 0x480c6924[0m
+[0;32mI (10550) BLE_CLIENT: Successfully loaded saved device address from NVS (Key: saved_addr_hr).[0m
+[0;32mI (10550) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (10553) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (10560) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (10565) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (10569) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (10572) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (10585) NimBLE: [0m
+
+[0;32mI (11035) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (11035) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (11136) BLE_CLIENT: Found Heart Rate Service. Handle: 0[0m
+[0;32mI (11136) BLE_CLIENT: Saved device address to NVS (Key: saved_addr_hr).[0m
+[0;32mI (11136) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (11143) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (11236) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (11236) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (11237) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (11436) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (11437) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (11437) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (11986) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (11986) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (11986) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (12286) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (12286) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12286) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (12289) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (12293) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12298) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (12389) esp_netif_handlers: sta ip: 192.168.1.164, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (12389) WIFI_CLIENT: Got IP address: 192.168.1.164[0m
+[0;32mI (12390) WIFI_CLIENT: wifi_connect_task: WiFi Connected[0m
+[0;32mI (12394) WIFI_MANAGER: Updated SSID order: MOVISTAR_4B85[0m
+[0;32mI (12400) WIFI_CLIENT: Manually set DNS server to 8.8.8.8[0m
+[0;32mI (12652) WIFI_CONNECTIVITY: Internet connectivity confirmed.[0m
+[0;32mI (15835) NimBLE: GAP procedure initiated: [0m
+[0;32mI (15835) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (15841) NimBLE: [0m
+
+[0;32mI (16833) UI: Loading settings screen[0m
+[0;32mI (19462) UI_SETTINGS: Button clicked: Potencia BLE[0m
+[0;32mI (21012) BLE_CLIENT: Starting new scan for service UUID: 0x1818[0m
+[0;32mI (21012) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (21013) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (21020) NimBLE: duration=10000ms[0m
+[0;32mI (21023) NimBLE: [0m
+
+[0;32mI (21027) BLE_CLIENT: Starting BLE scan...[0m
+[0;32mI (21110) BLE_CLIENT: SCAN_DEBUG: Dev: 0d:5f:36:7b:d6:a5 |Name: Unknown | RSSI: -69[0m
+[0;32mI (31028) BLE_CLIENT: Scan complete; reason=0[0m
+[0;32mI (60827) UI_SETTINGS: Button clicked: Cardio BLE[0m
+[0;32mI (61786) BLE_CLIENT: Disconnecting from current device (Handle 0) to start scan...[0m
+[0;32mI (61786) NimBLE: GAP procedure initiated: terminate connection; conn_handle=0 hci_reason=19[0m
+
+[0;32mI (62237) BLE_CLIENT: Disconnected; reason=534, handle=0[0m
+[0;32mI (62291) BLE_CLIENT: Starting new scan for service UUID: 0x180d[0m
+[0;32mI (62291) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (62291) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (62299) NimBLE: duration=10000ms[0m
+[0;32mI (62302) NimBLE: [0m
+
+[0;32mI (62305) BLE_CLIENT: Starting BLE scan...[0m
+[0;33mW (62328) BLE_CLIENT: Scan already in progress.[0m
+[0;32mI (62358) BLE_CLIENT: SCAN_DEBUG: Dev: 0d:5f:36:7b:d6:a5 |Name: Unknown | RSSI: -53[0m
+[0;32mI (62553) BLE_CLIENT: SCAN_DEBUG: Dev: ed:67:b1:95:9b:28 |Name: 6653-1 | RSSI: -57[0m
+[0;32mI (62553) BLE_CLIENT:   > UUID16: 0x180d[0m
+[0;32mI (62553) BLE_CLIENT: Found device: 6653-1[0m
+[0;32mI (62557) BLE_CLIENT: SCAN_DEBUG: Dev: ed:67:b1:95:9b:28 |Name: Unknown | RSSI: -57[0m
+[0;32mI (62677) BLE_CLIENT: SCAN_DEBUG: Dev: eb:cb:e0:36:d5:e6 |Name: Unknown | RSSI: -85[0m
+[0;32mI (62677) BLE_CLIENT:   > UUID16: 0x1818[0m
+[0;32mI (62677) BLE_CLIENT:   > UUID16: 0x180f[0m
+[0;32mI (62680) BLE_CLIENT: SCAN_DEBUG: Dev: eb:cb:e0:36:d5:e6 |Name: ASSIOMA39798U | RSSI: -85[0m
+[0;32mI (68514) UI_CARDIO: Connecting to device...[0m
+[0;32mI (68515) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (68515) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (68519) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (68523) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (68526) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (68539) NimBLE: [0m
+
+[0;32mI (68838) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (68839) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (68939) BLE_CLIENT: Found Heart Rate Service. Handle: 0[0m
+[0;32mI (68940) BLE_CLIENT: Saved device address to NVS (Key: saved_addr_hr).[0m
+[0;32mI (68940) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (68946) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (68990) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (68990) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (68991) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (69090) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (69090) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (69090) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (69340) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (69340) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (69340) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (69490) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (69490) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (69490) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (69492) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (69497) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (69502) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (73589) NimBLE: GAP procedure initiated: [0m
+[0;32mI (73589) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (73594) NimBLE: [0m
+
+[0;32mI (74387) UI_SETTINGS: Button clicked: Potencia BLE[0m
+[0;32mI (75386) BLE_CLIENT: Starting new scan for service UUID: 0x1818[0m
+[0;32mI (75386) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (75386) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (75394) NimBLE: duration=10000ms[0m
+[0;32mI (75397) NimBLE: [0m
+
+[0;32mI (75401) BLE_CLIENT: Starting BLE scan...[0m
+[0;32mI (75439) BLE_CLIENT: SCAN_DEBUG: Dev: 0d:5f:36:7b:d6:a5 |Name: Unknown | RSSI: -55[0m
+[0;32mI (75773) BLE_CLIENT: SCAN_DEBUG: Dev: eb:cb:e0:36:d5:e6 |Name: Unknown | RSSI: -74[0m
+[0;32mI (75773) BLE_CLIENT:   > UUID16: 0x1818[0m
+[0;32mI (75773) BLE_CLIENT:   > UUID16: 0x180f[0m
+[0;32mI (75777) BLE_CLIENT: Found device: DEV-d5e6[0m
+Guru Meditation Error: Core  1 panic'ed (Load access fault). Exception was unhandled.
+
+Core  1 register dump:
+MEPC    : 0x48033946  RA      : 0x48033a0e  SP      : 0x4ff3d640  GP      : 0x4ff17000  
+TP      : 0x4ff3d8c0  T0      : 0x00000000  T1      : 0x00000040  T2      : 0x00ffffff  
+S0/FP   : 0x00ff0000  S1      : 0x000000ff  A0      : 0x00000003  A1      : 0x4ff2d470  
+A2      : 0x0000001a  A3      : 0x4ff3d678  A4      : 0x00000000  A5      : 0x00000002  
+A6      : 0x00000000  A7      : 0x000000cd  S2      : 0xffffffff  S3      : 0x000000ff  
+S4      : 0x00010000  S5      : 0x00000001  S6      : 0x000122e1  S7      : 0x4ff3ee5c  
+S8      : 0x00000000  S9      : 0x00000000  S10     : 0x00000000  S11     : 0x000001f0  
+T3      : 0x4ff3f2b4  T4      : 0x00000000  T5      : 0xffffffff  T6      : 0x00000000  
+MSTATUS : 0x00011880  MTVEC   : 0x4ff00003  MCAUSE  : 0x00000005  MTVAL   : 0x000000d1  
+MHARTID : 0x00000001  
+
+add symbol table from file "C:\Esp\SmartbikeP4\build\bootloader\bootloader.elf"
+warning: could not convert 'main' from the host encoding (CP1252) to UTF-32.
+This normally should not happen, please file a bug report.
+0x48033946 in get_prop_core (obj=obj@entry=0x4ff2d3f8 <regi2c_read_mask_impl+78>, selector=<optimized out>, prop=prop@entry=26 '\032', v=v@entry=0x4ff3d678) at C:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_style.c:810
+810	        if((obj->styles[i].style->has_group & group) == 0) continue;
+#0  0x48033946 in get_prop_core (obj=obj@entry=0x4ff2d3f8 <regi2c_read_mask_impl+78>, selector=<optimized out>, prop=prop@entry=26 '\032', v=v@entry=0x4ff3d678) at C:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_style.c:810
+#1  0x48033a0e in get_selector_style_prop (obj=0x4ff2d3f8 <regi2c_read_mask_impl+78>, obj@entry=0x1a, selector=<optimized out>, prop=prop@entry=26 '\032', value_act=value_act@entry=0x4ff3d678) at C:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_style.c:1161
+#2  0x48034714 in lv_obj_get_style_prop (obj=0x1a, part=LV_PART_MAIN, prop=26 '\032') at C:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_style.c:359
+#3  lv_obj_get_style_prop (obj=obj@entry=0x4ff2d3f8 <regi2c_read_mask_impl+78>, part=part@entry=LV_PART_MAIN, prop=prop@entry=26 '\032') at C:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_style.c:351
+#4  0x480301ec in lv_obj_get_style_margin_left (obj=0x4ff2d3f8 <regi2c_read_mask_impl+78>, part=LV_PART_MAIN) at C:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_style_gen.h:210
+#5  calc_dynamic_width (content_width=<optimized out>, obj=0x4ff2d3f8 <regi2c_read_mask_impl+78>, width=496) at C:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_pos.c:105
+#6  calc_dynamic_width (obj=0x4ff2d3f8 <regi2c_read_mask_impl+78>, width=<optimized out>, content_width=<optimized out>) at C:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_pos.c:87
+#7  0x480312c8 in lv_obj_refr_size (obj=0x4ff2d3f8 <regi2c_read_mask_impl+78>) at C:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_style_gen.h:25
+#8  0x00000000 in ?? ()
+Backtrace stopped: frame did not save the PC
+
+
+
+ELF file SHA256: 18bc64ee2
+
+Rebooting...
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0xc (SW_CPU_RESET),boot:0x20f (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x48033a62
+Core1 Saved PC:0x4ff0aa8c
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (33) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (33) boot: compile time Dec 12 2025 21:17:17[0m
+[0;32mI (34) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v1.0[0m
+[0;32mI (36) boot: efuse block revision: v0.3[0m
+[0;32mI (40) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (48) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (52) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (56) boot: Enabling RNG early entropy source...[0m
+[0;32mI (60) boot: Partition Table:[0m
+[0;32mI (63) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (82) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (89) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (96) boot: End of partition table[0m
+[0;32mI (99) esp_image: segment 0: paddr=00010020 vaddr=48110020 size=9e6c4h (648900) map[0m
+[0;32mI (179) esp_image: segment 1: paddr=000ae6ec vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (181) esp_image: segment 2: paddr=000ae75c vaddr=4ff00000 size=018bch (  6332) load[0m
+[0;32mI (185) esp_image: segment 3: paddr=000b0020 vaddr=48000020 size=10db60h (1104736) map[0m
+[0;32mI (315) esp_image: segment 4: paddr=001bdb88 vaddr=4ff018bc size=14ee0h ( 85728) load[0m
+[0;32mI (328) esp_image: segment 5: paddr=001d2a70 vaddr=4ff16800 size=03d34h ( 15668) load[0m
+[0;32mI (331) esp_image: segment 6: paddr=001d67ac vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (338) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (338) boot: Disabling RNG early entropy source...[0m
+[0;32mI (356) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (356) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (356) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (357) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (362) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (366) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (370) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (375) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (379) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (383) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (388) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (393) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (397) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (570) MSPI DQS: tuning success, best delayline id is 16[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (601) mmu_psram: .rodata xip on psram[0m
+[0;32mI (654) mmu_psram: .text xip on psram[0m
+[0;32mI (655) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (655) cpu_start: Multicore app[0m
+[0;32mI (1090) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1099) cpu_start: Pro cpu start user code[0m
+[0;32mI (1100) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1100) app_init: Application information:[0m
+[0;32mI (1100) app_init: Project name:     lvgl_demo_v9[0m
+[0;32mI (1104) app_init: App version:      96c3ba1d-dirty[0m
+[0;32mI (1109) app_init: Compile time:     Dec 15 2025 15:53:58[0m
+[0;32mI (1114) app_init: ELF file SHA256:  18bc64ee2...[0m
+[0;32mI (1118) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1122) efuse_init: Min chip rev:     v1.0[0m
+[0;32mI (1126) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1130) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1134) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1141) heap_init: At 4FF1F640 len 0001B980 (110 KiB): RAM[0m
+[0;32mI (1146) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1151) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1157) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1162) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1167) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1174) esp_psram: Adding pool of 9K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1185) esp_psram: Adding pool of 6K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1196) spi_flash: detected chip: boya[0m
+[0;32mI (1199) spi_flash: flash io: qio[0m
+[0;32mI (1203) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1217) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1217) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1221) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1225) main_task: Started on CPU0[0m
+[0;32mI (1229) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1236) main_task: Calling app_main()[0m
+[0;32mI (1243) LVGL: Starting LVGL task[0m
+[0;32mI (1243) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1248) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1252) ESP32_P4_EV: Install EK79007 LCD control panel[0m
+[0;32mI (1257) jd9165: version: 1.0.2[0m
+[0;32mI (1572) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1573) LVGL: Setting PPA context for SW rotation[0m
+[0;32mI (1646) GT911: TouchPad_ID:0x39,0x31,0x31[0m
+[0;32mI (1646) GT911: TouchPad_Config_Version:99[0m
+[0;32mI (1646) BIKE_CONFIG: Config initialized. Cassette[0]: 11, Tire: 700x28C, Brake: 0.00V-0.00V[0m
+[0;32mI (1841) AUDIO_MANAGER: Starting Manual ES8311 Init (Production Profile)...[0m
+[0;32mI (1847) AUDIO_MANAGER: ES8311 Init Success[0m
+[0;32mI (2847) AUDIO_MANAGER: Amplifier Enabled[0m
+[0;32mI (2847) AUDIO_MANAGER: Loaded Volume from NVS: 137[0m
+[0;32mI (2847) AUDIO_MANAGER: Volume set to 137[0m
+[0;32mI (2850) MCP23017: MCP23017 Initialized[0m
+[0;32mI (2851) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (2856) UI: Using font: Montserrat 32[0m
+[0;32mI (2863) INA3221: INA3221 Initialized[0m
+[0;32mI (2863) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (2867) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (2872) WIFI_CLIENT: Initializing WiFi Client...[0m
+[0;32mI (2878) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (2882) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (2886) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (4410) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (4410) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (4414) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+[0;32mI (4453) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (4453) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (4553) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (4553) transport: set_transport_state: 1[0m
+[0;32mI (4553) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (4621) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (4621) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (4621) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (4626) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (4628) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (4634) transport: EVENT: 12[0m
+[0;32mI (4636) transport: Identified slave [esp32c6][0m
+[0;32mI (4640) transport: EVENT: 11[0m
+[0;32mI (4643) transport: capabilities: 0xd[0m
+[0;32mI (4646) transport: Features supported are:[0m
+[0;32mI (4650) transport: 	 * WLAN[0m
+[0;32mI (4653) transport: 	   - HCI over SDIO[0m
+[0;32mI (4656) transport: 	   - BLE only[0m
+[0;32mI (4660) transport: EVENT: 13[0m
+[0;33mW (4662) transport: Version mismatch: Host [2.7.0] > Co-proc [0.0.0] ==> Upgrade co-proc to avoid RPC timeouts[0m
+[0;32mI (4672) transport: ESP board type is : 13 [0m
+
+[0;32mI (4676) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (4682) H_API: Transport active[0m
+[0;32mI (4685) transport: Slave chip Id[12][0m
+[0;32mI (4688) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (4694) transport: transport_delayed_init[0m
+[0;32mI (4698) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (4703) esp_cli: Registering command: crash[0m
+[0;32mI (4707) esp_cli: Registering command: reboot[0m
+[0;32mI (4711) esp_cli: Registering command: mem-dump[0m
+[0;32mI (4715) esp_cli: Registering command: task-dump[0m
+[0;32mI (4720) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (4724) esp_cli: Registering command: heap-trace[0m
+[0;32mI (4728) esp_cli: Registering command: sock-dump[0m
+[0;32mI (4733) esp_cli: Registering command: host-power-save[0m
+[0;32mI (4738) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (4741) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (4745) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (4749) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (4752) H_SDIO_DRV: Write thread started[0m
+[0;32mI (5221) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (5428) WIFI_CLIENT: wifi_init_sta finished.[0m
+[0;32mI (5428) BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (5429) transport: Attempt connection with slave: retry[0][0m
+[0;32mI (5432) transport: Transport is already up[0m
+[0;32mI (5435) RPC_WRAP: ESP Event: wifi station started[0m
+[0;32mI (5441) BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (5445) BLE_CLIENT: BLE Client initialization complete.[0m
+CADENCE: Handler added to GPIO 48
+[0;32mI (5453) main_task: Returned from app_main()[0m
+[0;32mI (5453) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (5464) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (5467) BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (5471) BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (5471) BLE_CLIENT: Reconnect task started[0m
+[0;32mI (5664) WIFI_CLIENT: WIFI_EVENT_STA_START: Initializing connection process.[0m
+[0;32mI (5664) WIFI_MANAGER: Found 1 saved SSIDs in order[0m
+[0;32mI (5664) WIFI_CLIENT: Attempting to connect to MOVISTAR_4B85 (1/1)[0m
+[0;32mI (5670) WIFI_MANAGER: Credentials loaded for SSID: MOVISTAR_4B85[0m
+[0;32mI (5700) H_API: esp_wifi_remote_connect[0m
+[0;33mW (5716) rpc_rsp: Hosted RPC_Resp [0x21a], uid [7], resp code [12295][0m
+[0;32mI (8438) RPC_WRAP: ESP Event: Station mode: Connected[0m
+[0;32mI (8438) esp_wifi_remote: esp_wifi_internal_reg_rxcb: sta: 0x480c6924[0m
+[0;32mI (10479) BLE_CLIENT: Successfully loaded saved device address from NVS (Key: saved_addr_hr).[0m
+[0;32mI (10479) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (10482) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (10489) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (10494) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (10498) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (10501) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (10514) NimBLE: [0m
+
+[0;32mI (10917) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (10918) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (11018) BLE_CLIENT: Found Heart Rate Service. Handle: 0[0m
+[0;32mI (11019) BLE_CLIENT: Saved device address to NVS (Key: saved_addr_hr).[0m
+[0;32mI (11019) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (11025) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (11069) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (11069) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (11070) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (11169) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (11169) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (11169) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (11569) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (11569) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (11569) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (11769) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (11769) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (11769) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (11771) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (11776) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (11781) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (12392) esp_netif_handlers: sta ip: 192.168.1.164, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (12392) WIFI_CLIENT: Got IP address: 192.168.1.164[0m
+[0;32mI (12393) WIFI_CLIENT: wifi_connect_task: WiFi Connected[0m
+[0;32mI (12397) WIFI_MANAGER: Updated SSID order: MOVISTAR_4B85[0m
+[0;32mI (12403) WIFI_CLIENT: Manually set DNS server to 8.8.8.8[0m
+[0;32mI (15617) NimBLE: GAP procedure initiated: [0m
+[0;32mI (15618) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (15623) NimBLE: [0m
+
+[0;33mW (17538) HTTP_CLIENT: Connection timed out before data was ready![0m
+[1;31mE (17538) WIFI_CONNECTIVITY: Internet check failed: ESP_ERR_HTTP_EAGAIN[0m
+[0;32mI (18913) UI: Loading settings screen[0m
+[0;32mI (20769) UI_SETTINGS: Button clicked: Potencia BLE[0m
+[0;32mI (21807) BLE_CLIENT: Starting new scan for service UUID: 0x1818[0m
+[0;32mI (21807) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (21807) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (21815) NimBLE: duration=10000ms[0m
+[0;32mI (21818) NimBLE: [0m
+
+[0;32mI (21822) BLE_CLIENT: Starting BLE scan...[0m
+[0;32mI (21855) BLE_CLIENT: SCAN_DEBUG: Dev: 0d:5f:36:7b:d6:a5 |Name: Unknown | RSSI: -55[0m
+[0;32mI (21951) BLE_CLIENT: SCAN_DEBUG: Dev: eb:cb:e0:36:d5:e6 |Name: Unknown | RSSI: -74[0m
+[0;32mI (21951) BLE_CLIENT:   > UUID16: 0x1818[0m
+[0;32mI (21951) BLE_CLIENT:   > UUID16: 0x180f[0m
+[0;32mI (21955) BLE_CLIENT: Found device: DEV-d5e6[0m
+[0;32mI (21959) BLE_CLIENT: SCAN_DEBUG: Dev: eb:cb:e0:36:d5:e6 |Name: ASSIOMA39798U | RSSI: -74[0m
+[0;32mI (23117) BLE_CLIENT: SCAN_DEBUG: Dev: 4c:55:cc:1f:3c:5a |Name: WB055638 | RSSI: -96[0m
+[0;32mI (23459) UI_POWER: Connecting to device...[0m
+[0;32mI (23461) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[0;32mI (23461) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (23464) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (23469) NimBLE: eb:cb:e0:36:d5:e6[0m
+[0;32mI (23472) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (23485) NimBLE: [0m
+
+[0;32mI (25300) BLE_CLIENT: Connection established; conn_handle=1[0m
+[0;32mI (25300) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (25701) BLE_CLIENT: Found Cycling Power Service. Handle: 1[0m
+[0;32mI (25702) BLE_CLIENT: Saved device address to NVS (Key: saved_addr_pwr).[0m
+[0;32mI (25702) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (25709) NimBLE: start_handle=20 end_handle=30[0m
+
+[0;32mI (25751) BLE_CLIENT: Found Cycling Power Measurement characteristic.[0m
+[0;32mI (25751) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (25753) NimBLE: chr_val_handle=22 end_handle=65535[0m
+
+[0;32mI (25801) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (25801) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (25801) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (25951) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (25951) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (25952) NimBLE: att_handle=28 len=2[0m
+
+[0;32mI (26049) UI_POWER: Connecting to device...[0m
+[0;33mW (26049) BLE_CLIENT: Already connected to Power device.[0m

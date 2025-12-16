@@ -3,6 +3,7 @@
 #include "esp_log.h"
 #include "ble_client.h"
 #include "bike_config.h"
+#include "power_calib_manager.h"
 #include "cadence_sensor.h"
 #include "ina3221.h"
 
@@ -39,7 +40,15 @@ static lv_obj_t * s_kph_med_label = NULL;
 static lv_obj_t * s_kph_max_label = NULL;
 static float s_speed_max = 0.0f;
 static double s_speed_sum = 0.0f;
+
 static uint32_t s_speed_count = 0;
+
+// Power Stats
+static lv_obj_t * s_wat_med_label = NULL;
+static lv_obj_t * s_wat_max_label = NULL;
+static uint64_t s_power_sum = 0;
+static uint32_t s_power_count = 0;
+static int16_t s_power_max = 0;
 
 
 static void update_training_timer_cb(lv_timer_t * timer)
@@ -94,7 +103,7 @@ static void update_training_timer_cb(lv_timer_t * timer)
     uint16_t rpm_max = cadence_sensor_get_max_rpm();
 
     float speed = bike_config_calculate_speed((float)cadence);
-    int16_t power = ble_client_get_power();
+    int16_t power = power_calib_get_estimate(); // Use Estimated Power
 
     // Update Speed Stats
     if (speed > 0.1f) {
@@ -109,6 +118,24 @@ static void update_training_timer_cb(lv_timer_t * timer)
         if (s_kph_med_label && lv_obj_is_valid(s_kph_med_label)) {
             lv_label_set_text_fmt(s_kph_med_label, "%.1f", (float)(s_speed_sum / s_speed_count));
         }
+    }
+
+    // Update Power Stats (Always, as it is calculated)
+    // Max Power
+    if (power > s_power_max) {
+        s_power_max = power;
+        if (s_wat_max_label && lv_obj_is_valid(s_wat_max_label)) {
+            lv_label_set_text_fmt(s_wat_max_label, "%d", s_power_max);
+        }
+    }
+    
+    // Average Power
+    if (s_power_count == 0 || power > 0) { // Only average if moving? Or standard timer?
+         s_power_sum += power; // Include 0s? Usually yes for "Ride Average"
+         s_power_count++;
+         if (s_wat_med_label && lv_obj_is_valid(s_wat_med_label)) {
+                lv_label_set_text_fmt(s_wat_med_label, "%lu", (uint32_t)(s_power_sum / s_power_count));
+         }
     }
 
     if (s_kph_act_label && lv_obj_is_valid(s_kph_act_label)) {
@@ -179,6 +206,11 @@ void ui_training_screen_init(void)
     s_speed_max = 0.0f;
     s_speed_sum = 0.0f;
     s_speed_count = 0;
+
+    // Reset Power stats
+    s_power_max = 0;
+    s_power_sum = 0;
+    s_power_count = 0;
 
 
     // Initialize Styles
@@ -336,11 +368,11 @@ void ui_training_screen_init(void)
     lv_obj_add_style(cell, &style_header, 0);
     lv_obj_set_grid_cell(cell, LV_GRID_ALIGN_START, 0, 1, LV_GRID_ALIGN_CENTER, 3, 1);
     
-    cell = lv_label_create(grid);
-    lv_label_set_text(cell, "187");
-    lv_obj_add_style(cell, &style_cell, 0);
-    lv_obj_set_style_transform_scale(cell, 282, 0);
-    lv_obj_set_grid_cell(cell, LV_GRID_ALIGN_CENTER, 1, 1, LV_GRID_ALIGN_CENTER, 3, 1);
+    s_wat_med_label = lv_label_create(grid);
+    lv_label_set_text(s_wat_med_label, "0"); // MED
+    lv_obj_add_style(s_wat_med_label, &style_cell, 0);
+    lv_obj_set_style_transform_scale(s_wat_med_label, 282, 0);
+    lv_obj_set_grid_cell(s_wat_med_label, LV_GRID_ALIGN_CENTER, 1, 1, LV_GRID_ALIGN_CENTER, 3, 1);
     
     s_wat_act_label = lv_label_create(grid);
     lv_label_set_text(s_wat_act_label, "0"); // ACT (Dynamic)
@@ -348,11 +380,11 @@ void ui_training_screen_init(void)
     lv_obj_set_style_transform_scale(s_wat_act_label, 282, 0);
     lv_obj_set_grid_cell(s_wat_act_label, LV_GRID_ALIGN_CENTER, 2, 1, LV_GRID_ALIGN_CENTER, 3, 1);
     
-    cell = lv_label_create(grid);
-    lv_label_set_text(cell, "348");
-    lv_obj_add_style(cell, &style_cell, 0);
-    lv_obj_set_style_transform_scale(cell, 282, 0);
-    lv_obj_set_grid_cell(cell, LV_GRID_ALIGN_CENTER, 3, 1, LV_GRID_ALIGN_CENTER, 3, 1);
+    s_wat_max_label = lv_label_create(grid);
+    lv_label_set_text(s_wat_max_label, "0"); // MAX
+    lv_obj_add_style(s_wat_max_label, &style_cell, 0);
+    lv_obj_set_style_transform_scale(s_wat_max_label, 282, 0);
+    lv_obj_set_grid_cell(s_wat_max_label, LV_GRID_ALIGN_CENTER, 3, 1, LV_GRID_ALIGN_CENTER, 3, 1);
 
     // Row 5: PUL, 97, 102, 168
     // ADD_ROW(4, "PUL", "97", "102", "168");

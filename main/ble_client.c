@@ -286,6 +286,28 @@ static int ble_client_gap_event(struct ble_gap_event *event, void *arg) {
         if (rc != 0) return 0;
 
         bool service_found = false;
+        
+        // --- DEBUG LOGGING START ---
+        char debug_name[32] = {0};
+        if (fields.name != NULL && fields.name_len > 0) {
+            int d_len = fields.name_len > 31 ? 31 : fields.name_len;
+            memcpy(debug_name, fields.name, d_len);
+        } else {
+            strcpy(debug_name, "Unknown");
+        }
+        
+        ESP_LOGI(TAG, "SCAN_DEBUG: Dev: %02x:%02x:%02x:%02x:%02x:%02x |Name: %s | RSSI: %d",
+                    event->disc.addr.val[5], event->disc.addr.val[4], event->disc.addr.val[3],
+                    event->disc.addr.val[2], event->disc.addr.val[1], event->disc.addr.val[0],
+                    debug_name, event->disc.rssi);
+
+        for (int i = 0; i < fields.num_uuids16; i++) {
+            ESP_LOGI(TAG, "  > UUID16: 0x%04x", fields.uuids16[i].value);
+        }
+        for (int i = 0; i < fields.num_uuids32; i++) {
+            ESP_LOGI(TAG, "  > UUID32: 0x%08lx", fields.uuids32[i].value);
+        }
+        // --- DEBUG LOGGING END ---
         ble_uuid16_t target_uuid;
         target_uuid.u.type = BLE_UUID_TYPE_16;
         target_uuid.value = g_scan_service_uuid;

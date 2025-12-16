@@ -39,6 +39,7 @@ typedef enum {
     CALIB_START,
     CALIB_FIND_MIN, // Moving Backward (Release) to 0%
     CALIB_FIND_MAX, // Moving Forward (Brake) to 100%
+    CALIB_GOTO_VOLTAGE, // Closed-loop control to target
     CALIB_COMPLETE,
     CALIB_FAILED
 } calib_state_t;
@@ -49,6 +50,10 @@ static int64_t s_calib_stable_start_time = 0;
 static float s_calib_last_voltage = -1.0f;
 static float s_calib_result_min = 0.0f;
 static float s_calib_result_max = 0.0f;
+static float s_calib_target_voltage = 0.0f; // Kept for legacy compatibility if needed, but not used in new logic
+static float s_calib_final_target_voltage = 0.0f;
+static float s_calib_internal_target_voltage = 0.0f;
+static bool  s_calib_hysteresis_active = false;
 
 static void stop_motor() {
     gpio_set_level(MOTOR_PIN_1, 0);
@@ -77,6 +82,48 @@ void button_manager_start_calibration(void) {
     s_calib_state = CALIB_START;
 }
 
+void button_manager_set_target_voltage(float target_v) {
+    s_calib_state = CALIB_GOTO_VOLTAGE;
+    s_calib_final_target_voltage = target_v; // Always set final target
+    
+    // Hysteresis capability: Always approach from below
+    // If we are currently ABOVE the target, we must go BELOW it first.
+    float current_v = 0;
+    if (ina3221_read_bus_voltage(1, &current_v) == ESP_OK) {
+        if (current_v > target_v) {
+            // We are above. Go lower first.
+            s_calib_internal_target_voltage = target_v - 0.15f; // Go 150mV below
+            if (s_calib_internal_target_voltage < 0) s_calib_internal_target_voltage = 0; // Ensure not negative
+            s_calib_hysteresis_active = true;
+            ESP_LOGI(TAG, "Hysteresis: Moving to %.2fV first, then %.2fV", s_calib_internal_target_voltage, s_calib_final_target_voltage);
+        } else {
+            // We are below or at target. Go direct.
+            s_calib_internal_target_voltage = target_v;
+            s_calib_hysteresis_active = false;
+        }
+    } else {
+         // If sensor read fails, proceed without hysteresis for now
+         s_calib_internal_target_voltage = target_v;
+         s_calib_hysteresis_active = false;
+         ESP_LOGW(TAG, "Failed to read voltage for hysteresis decision, going direct.");
+    }
+    
+    s_calib_start_time = esp_timer_get_time() / 1000;
+}
+
+bool button_manager_is_at_target(void) {
+    // Only "At Target" if we are stable at the FINAL target and NOT in hysteresis intermediate step
+    if (s_calib_state != CALIB_GOTO_VOLTAGE || s_calib_hysteresis_active) return false;
+    
+    float voltage = 0.0f;
+    if (ina3221_read_bus_voltage(1, &voltage) == ESP_OK) {
+        if (fabs(voltage - s_calib_final_target_voltage) < 0.03f) { // 30mV tolerance
+             return true;
+        }
+    }
+    return false;
+}
+
 bool button_manager_is_calibrating(void) {
     return (s_calib_state != CALIB_IDLE && s_calib_state != CALIB_COMPLETE && s_calib_state != CALIB_FAILED);
 }
@@ -95,8 +142,6 @@ static void processing_calibration(void) {
     // Read Channel 1
     if (ina3221_read_bus_voltage(1, &voltage) != ESP_OK) {
         ESP_LOGE(TAG, "Calib: Failed to read voltage");
-        // Keep going or fail? Let's ignore single read fails, but if continuous...
-        // For now, assuming it works or we hold state.
         return; 
     }
 
@@ -165,6 +210,47 @@ static void processing_calibration(void) {
                 // Voltage changed significantly, reset stable timer
                 s_calib_stable_start_time = now;
                 s_calib_last_voltage = voltage;
+            }
+            break;
+
+        case CALIB_GOTO_VOLTAGE:
+            // Closed Loop Control with Hysteresis Support
+            
+            // Check if we are in hysteresis phase (approaching intermediate target)
+            float effective_target = s_calib_hysteresis_active ? s_calib_internal_target_voltage : s_calib_final_target_voltage;
+            float tolerance = s_calib_hysteresis_active ? 0.05f : 0.02f; // Wider tolerance for intermediate step
+
+            // Simple P-controller
+            if (voltage < (effective_target - tolerance)) {
+                drive_motor_forward();
+            } else if (voltage > (effective_target + tolerance)) {
+                drive_motor_backward();
+            } else {
+                stop_motor(); 
+                
+                // If we reached target
+                if (s_calib_hysteresis_active) {
+                    // We reached the intermediate "below" target.
+                    // Now engage final target (which is higher)
+                    ESP_LOGI(TAG, "Hysteresis: Reached intermediate %.2fV. Now going to final %.2fV", voltage, s_calib_final_target_voltage);
+                    s_calib_hysteresis_active = false;
+                    // Reset start time to avoid timeout
+                    s_calib_start_time = esp_timer_get_time() / 1000;
+                    // Loop continues next cycle
+                } else {
+                    // We are at final target. Ready.
+                }
+            }
+            
+            // Timeout safety
+            if ((now - s_calib_start_time) > 10000) { 
+                 ESP_LOGW(TAG, "Calib: Timeout reaching target %.2f (Curr: %.2f)", effective_target, voltage);
+                 stop_motor();
+                 // If hysteresis timeout, maybe just abort hysteresis and try direct? 
+                 if (s_calib_hysteresis_active) {
+                     s_calib_hysteresis_active = false;
+                     s_calib_start_time = now;
+                 }
             }
             break;
             

@@ -1,0 +1,895 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 100 --decode-panic backtrace C:\Esp\SmartbikeP4\build\lvgl_demo_v9.elf C:\Esp\SmartbikeP4\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x20f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+load:0x4ff2cbd0,len:0x345c
+entry 0x4ff29eda
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (26) boot: compile time Dec 12 2025 21:17:17[0m
+[0;32mI (26) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v1.0[0m
+[0;32mI (29) boot: efuse block revision: v0.3[0m
+[0;32mI (32) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (37) boot.esp32p4: SPI Speed      : 80MHz[0m
+[0;32mI (40) boot.esp32p4: SPI Mode       : QIO[0m
+[0;32mI (44) boot.esp32p4: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (55) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00800000[0m
+[0;32mI (81) boot:  3 storage          Unknown data     01 82 00810000 00700000[0m
+[0;32mI (89) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=48110020 size=9ea7ch (649852) map[0m
+[0;32mI (199) esp_image: segment 1: paddr=000aeaa4 vaddr=30100000 size=00068h (   104) load[0m
+[0;32mI (201) esp_image: segment 2: paddr=000aeb14 vaddr=4ff00000 size=01504h (  5380) load[0m
+[0;32mI (205) esp_image: segment 3: paddr=000b0020 vaddr=48000020 size=10e5e0h (1107424) map[0m
+[0;32mI (381) esp_image: segment 4: paddr=001be608 vaddr=4ff01504 size=15298h ( 86680) load[0m
+[0;32mI (398) esp_image: segment 5: paddr=001d38a8 vaddr=4ff16800 size=03d34h ( 15668) load[0m
+[0;32mI (402) esp_image: segment 6: paddr=001d75e4 vaddr=50108080 size=00020h (    32) load[0m
+[0;32mI (409) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (409) boot: Disabling RNG early entropy source...[0m
+[0;32mI (425) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (426) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (426) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (426) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (431) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (436) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (440) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (445) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (449) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (453) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (458) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (463) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (467) MSPI DQS: tuning success, best phase id is 0[0m
+[0;32mI (640) MSPI DQS: tuning success, best delayline id is 17[0m
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+[0;32mI (671) mmu_psram: .rodata xip on psram[0m
+[0;32mI (723) mmu_psram: .text xip on psram[0m
+[0;32mI (724) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (724) cpu_start: Multicore app[0m
+[0;32mI (1161) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1171) cpu_start: Pro cpu start user code[0m
+[0;32mI (1171) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1171) app_init: Application information:[0m
+[0;32mI (1171) app_init: Project name:     lvgl_demo_v9[0m
+[0;32mI (1175) app_init: App version:      96c3ba1d-dirty[0m
+[0;32mI (1180) app_init: Compile time:     Dec 15 2025 15:53:58[0m
+[0;32mI (1185) app_init: ELF file SHA256:  d25d31a08...[0m
+[0;32mI (1190) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1194) efuse_init: Min chip rev:     v1.0[0m
+[0;32mI (1197) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1201) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1205) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1212) heap_init: At 4FF1F6D0 len 0001B8F0 (110 KiB): RAM[0m
+[0;32mI (1217) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1222) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1228) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1233) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1238) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1245) esp_psram: Adding pool of 6K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1256) esp_psram: Adding pool of 5K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1267) spi_flash: detected chip: boya[0m
+[0;32mI (1271) spi_flash: flash io: qio[0m
+[0;32mI (1274) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1288) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1288) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1292) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1296) main_task: Started on CPU0[0m
+[0;32mI (1300) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1307) main_task: Calling app_main()[0m
+[0;32mI (1314) LVGL: Starting LVGL task[0m
+[0;32mI (1314) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1319) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1323) ESP32_P4_EV: Install EK79007 LCD control panel[0m
+[0;32mI (1328) jd9165: version: 1.0.2[0m
+[0;32mI (1642) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1643) LVGL: Setting PPA context for SW rotation[0m
+[0;32mI (1716) GT911: TouchPad_ID:0x39,0x31,0x31[0m
+[0;32mI (1716) GT911: TouchPad_Config_Version:99[0m
+[0;32mI (1716) BIKE_CONFIG: Config initialized. Cassette[0]: 11, Tire: 700x28C, Brake: 1.22V-3.22V[0m
+[0;32mI (1911) AUDIO_MANAGER: Starting Manual ES8311 Init (Production Profile)...[0m
+[0;32mI (1917) AUDIO_MANAGER: ES8311 Init Success[0m
+[0;32mI (2917) AUDIO_MANAGER: Amplifier Enabled[0m
+[0;32mI (2917) AUDIO_MANAGER: Loaded Volume from NVS: 137[0m
+[0;32mI (2917) AUDIO_MANAGER: Volume set to 137[0m
+[0;32mI (2920) MCP23017: MCP23017 Initialized[0m
+[0;32mI (2921) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (2926) UI: Using font: Montserrat 32[0m
+[0;32mI (2933) INA3221: INA3221 Initialized[0m
+[0;32mI (2933) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (2937) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (2942) WIFI_CLIENT: Initializing WiFi Client...[0m
+[0;32mI (2948) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (2952) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (2956) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (4480) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (4480) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (4484) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+[0;32mI (4523) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (4523) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (4623) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (4623) transport: set_transport_state: 1[0m
+[0;32mI (4623) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (4692) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (4692) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (4692) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (4697) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (4699) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (4705) transport: EVENT: 12[0m
+[0;32mI (4707) transport: Identified slave [esp32c6][0m
+[0;32mI (4711) transport: EVENT: 11[0m
+[0;32mI (4714) transport: capabilities: 0xd[0m
+[0;32mI (4717) transport: Features supported are:[0m
+[0;32mI (4721) transport: 	 * WLAN[0m
+[0;32mI (4724) transport: 	   - HCI over SDIO[0m
+[0;32mI (4727) transport: 	   - BLE only[0m
+[0;32mI (4731) transport: EVENT: 13[0m
+[0;33mW (4733) transport: Version mismatch: Host [2.7.0] > Co-proc [0.0.0] ==> Upgrade co-proc to avoid RPC timeouts[0m
+[0;32mI (4743) transport: ESP board type is : 13 [0m
+
+[0;32mI (4747) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (4753) H_API: Transport active[0m
+[0;32mI (4756) transport: Slave chip Id[12][0m
+[0;32mI (4759) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (4765) transport: transport_delayed_init[0m
+[0;32mI (4769) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (4774) esp_cli: Registering command: crash[0m
+[0;32mI (4778) esp_cli: Registering command: reboot[0m
+[0;32mI (4782) esp_cli: Registering command: mem-dump[0m
+[0;32mI (4786) esp_cli: Registering command: task-dump[0m
+[0;32mI (4791) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (4795) esp_cli: Registering command: heap-trace[0m
+[0;32mI (4799) esp_cli: Registering command: sock-dump[0m
+[0;32mI (4804) esp_cli: Registering command: host-power-save[0m
+[0;32mI (4809) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (4812) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (4816) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (4820) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (4823) H_SDIO_DRV: Write thread started[0m
+[0;32mI (5292) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (5499) WIFI_CLIENT: wifi_init_sta finished.[0m
+[0;32mI (5499) BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (5500) transport: Attempt connection with slave: retry[0][0m
+[0;32mI (5503) transport: Transport is already up[0m
+[0;32mI (5506) RPC_WRAP: ESP Event: wifi station started[0m
+[0;32mI (5512) BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (5516) BLE_CLIENT: BLE Client initialization complete.[0m
+CADENCE: Handler added to GPIO 48
+[0;32mI (5524) main_task: Returned from app_main()[0m
+[0;32mI (5524) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (5535) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (5538) BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (5542) BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (5542) BLE_CLIENT: Reconnect task started[0m
+[0;32mI (5630) WIFI_CLIENT: WIFI_EVENT_STA_START: Initializing connection process.[0m
+[0;32mI (5631) WIFI_MANAGER: Found 1 saved SSIDs in order[0m
+[0;32mI (5631) WIFI_CLIENT: Attempting to connect to MOVISTAR_4B85 (1/1)[0m
+[0;32mI (5637) WIFI_MANAGER: Credentials loaded for SSID: MOVISTAR_4B85[0m
+[0;32mI (5667) H_API: esp_wifi_remote_connect[0m
+[0;33mW (5683) rpc_rsp: Hosted RPC_Resp [0x21a], uid [7], resp code [12295][0m
+[0;32mI (8508) RPC_WRAP: ESP Event: Station mode: Connected[0m
+[0;32mI (8508) esp_wifi_remote: esp_wifi_internal_reg_rxcb: sta: 0x480c73d8[0m
+[0;32mI (10550) BLE_CLIENT: Successfully loaded saved device address from NVS (Key: saved_addr_hr).[0m
+[0;32mI (10550) BLE_CLIENT: Attempting reconnect to saved HR device...[0m
+[0;32mI (10553) BLE_CLIENT: Attempting to connect to device with address: ed:67:b1:95:9b:28[0m
+[0;32mI (10560) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (10565) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (10569) NimBLE: ed:67:b1:95:9b:28[0m
+[0;32mI (10572) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (10585) NimBLE: [0m
+
+[0;32mI (11279) BLE_CLIENT: Connection established; conn_handle=0[0m
+[0;32mI (11279) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (11430) BLE_CLIENT: Found Heart Rate Service. Handle: 0[0m
+[0;32mI (11430) BLE_CLIENT: Saved device address to NVS (Key: saved_addr_hr).[0m
+[0;32mI (11430) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (11437) NimBLE: start_handle=11 end_handle=16[0m
+
+[0;32mI (11530) BLE_CLIENT: Found Heart Rate Measurement characteristic.[0m
+[0;32mI (11531) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (11532) NimBLE: chr_val_handle=13 end_handle=65535[0m
+
+[0;32mI (11730) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (11731) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (11731) NimBLE: att_handle=14 len=2[0m
+
+[0;32mI (11811) esp_netif_handlers: sta ip: 192.168.1.164, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (11811) WIFI_CLIENT: Got IP address: 192.168.1.164[0m
+[0;32mI (11812) WIFI_CLIENT: wifi_connect_task: WiFi Connected[0m
+[0;32mI (11815) WIFI_MANAGER: Updated SSID order: MOVISTAR_4B85[0m
+[0;32mI (11822) WIFI_CLIENT: Manually set DNS server to 8.8.8.8[0m
+[0;32mI (12130) WIFI_CONNECTIVITY: Internet connectivity confirmed.[0m
+[0;32mI (12180) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (12180) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12180) NimBLE: att_handle=20 len=2[0m
+
+[0;32mI (12481) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (12481) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12481) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (12483) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (12488) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (12493) NimBLE: att_handle=27 len=2[0m
+
+[0;32mI (12589) BLE_CLIENT: Successfully loaded saved device address from NVS (Key: saved_addr_pwr).[0m
+[0;32mI (12589) BLE_CLIENT: Attempting reconnect to saved Power device...[0m
+[0;32mI (12592) BLE_CLIENT: Attempting to connect to device with address: eb:cb:e0:36:d5:e6[0m
+[0;32mI (12600) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (12604) NimBLE: peer_addr_type=1 peer_addr=[0m
+[0;32mI (12608) NimBLE: eb:cb:e0:36:d5:e6[0m
+[0;32mI (12612) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (12624) NimBLE: [0m
+
+[0;32mI (13202) BLE_CLIENT: Connection established; conn_handle=1[0m
+[0;32mI (13202) NimBLE: GATT procedure initiated: discover all services[0m
+
+[0;32mI (13553) BLE_CLIENT: Found Cycling Power Service. Handle: 1[0m
+[0;32mI (13554) BLE_CLIENT: Saved device address to NVS (Key: saved_addr_pwr).[0m
+[0;32mI (13554) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (13561) NimBLE: start_handle=20 end_handle=30[0m
+
+[0;32mI (13603) BLE_CLIENT: Found Cycling Power Measurement characteristic.[0m
+[0;32mI (13604) NimBLE: GATT procedure initiated: discover all descriptors; [0m
+[0;32mI (13605) NimBLE: chr_val_handle=22 end_handle=65535[0m
+
+[0;32mI (13653) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (13654) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (13654) NimBLE: att_handle=23 len=2[0m
+
+[0;32mI (13803) BLE_CLIENT: Found CCCD. Enabling notifications.[0m
+[0;32mI (13803) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (13804) NimBLE: att_handle=28 len=2[0m
+
+[0;32mI (16030) NimBLE: GAP procedure initiated: [0m
+[0;32mI (16030) NimBLE: connection parameter update; conn_handle=0 itvl_min=200 itvl_max=400 latency=0 supervision_timeout=400 min_ce_len=0 max_ce_len=0[0m
+[0;32mI (16035) NimBLE: [0m
+
+[0;32mI (77383) UI: Loading settings screen[0m
+[0;32mI (78316) UI_SETTINGS: Button clicked: Calibrar potencia[0m
+[0;32mI (78317) PWR_CALIB: Starting Power Calibration...[0m
+[0;32mI (78417) PWR_CALIB: Step 1/5: Moving to 1.22 V[0m
+[1;31mE (78443) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78443) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78444) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (78451) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (78517) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78517) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78518) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (78556) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78556) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78557) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (78564) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (78625) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78625) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78626) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (78669) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78669) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78670) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (78677) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (78733) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78733) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78734) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (78782) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78782) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78783) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (78790) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (78820) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78820) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78822) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (78841) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78841) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78842) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (78895) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78895) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78896) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (78903) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (78949) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (78949) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (78950) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79008) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79008) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79009) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79016) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (79057) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79057) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79058) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79121) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79121) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79122) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79129) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (79165) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79165) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79166) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79234) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79234) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79235) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79242) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (79273) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79273) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79274) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79324) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79324) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79326) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79347) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79347) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79348) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79355) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (79381) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79381) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79382) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79460) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79460) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79461) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79468) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (79489) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79489) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79490) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79573) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79573) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79574) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79581) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (79597) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79597) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79598) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79686) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79686) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79687) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79694) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (79705) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79705) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79711) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79799) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79799) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79800) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79807) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (79818) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79818) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79824) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79824) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79837) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79844) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79912) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79912) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79913) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (79920) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (79931) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (79931) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (79937) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80025) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80025) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80026) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80033) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (80044) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80044) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80050) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80138) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80138) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80139) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80146) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (80157) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80157) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80163) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80251) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80251) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80252) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80259) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (80270) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80270) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80276) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80322) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80322) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80324) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80364) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80364) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80365) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80372) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (80383) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80383) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80389) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80477) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80477) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80478) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80485) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (80496) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80496) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80502) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80590) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80590) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80591) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80598) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (80609) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80609) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80615) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80703) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80703) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80704) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80711) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (80722) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80722) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80728) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80816) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80816) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80817) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80822) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80824) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (80830) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80841) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80842) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80854) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80861) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80934) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80934) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80935) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (80942) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (80968) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (80968) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (80969) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81047) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81047) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81048) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81055) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (81076) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81076) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81077) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81160) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81160) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81161) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81168) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (81184) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81184) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81185) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81273) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81273) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81274) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81281) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (81292) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81292) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81298) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81321) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81321) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81323) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81386) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81386) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81387) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81394) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (81405) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81405) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81411) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81499) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81499) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81500) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81507) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (81518) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81518) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81524) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81612) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81612) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81613) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81620) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (81631) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81631) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81637) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81725) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81725) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81726) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81733) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (81744) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81744) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81750) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81821) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81821) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81823) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81838) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81838) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81843) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81850) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (81857) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81859) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81867) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81954) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81954) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81955) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (81962) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (81974) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (81974) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (81979) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82067) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82067) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82068) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82075) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (82086) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82086) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82092) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82180) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82180) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82181) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82188) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (82199) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82199) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82205) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82293) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82293) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82294) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82301) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (82312) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82312) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82318) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82321) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82331) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82338) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82406) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82406) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82407) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82414) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (82425) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82425) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82431) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82519) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82519) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82520) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82527) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (82538) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82538) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82544) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82632) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82632) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82633) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82640) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (82651) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82651) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82657) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82745) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82745) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82746) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82753) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (82764) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82764) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82770) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82821) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82821) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82823) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82858) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82858) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82859) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82866) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (82877) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82877) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82883) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82971) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82971) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82972) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (82979) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (82990) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (82990) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (82996) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83084) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83084) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83085) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83092) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (83103) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83103) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83109) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83197) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83197) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83198) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83205) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (83216) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83216) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83222) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83310) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83310) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83311) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83318) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (83321) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83328) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83335) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83336) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83348) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83355) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83423) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83423) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83424) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83431) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (83462) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83462) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83463) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83536) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83536) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83537) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83544) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (83570) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83570) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83571) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83649) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83649) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83650) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83657) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (83678) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83678) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83679) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83762) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83762) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83763) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83770) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (83786) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83786) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83787) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83825) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83825) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83827) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83875) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83875) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83876) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83883) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (83894) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83894) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83900) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83988) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (83988) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (83989) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (83996) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (84007) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84007) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84013) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84101) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84101) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84102) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84109) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (84120) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84120) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84126) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84214) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84214) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84215) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84222) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (84233) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84233) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84239) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84327) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84327) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84328) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84330) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84335) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (84341) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84352) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84353) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84365) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84372) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84445) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84445) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84446) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84453) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (84479) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84479) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84480) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84558) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84558) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84559) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84566) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (84587) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84587) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84588) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84671) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84671) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84672) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84679) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (84695) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84695) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84696) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84784) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84784) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84785) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84792) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (84803) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84803) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84809) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84832) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84832) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84834) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84897) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84897) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84898) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (84905) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (84916) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (84916) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (84922) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85010) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85010) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85011) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85018) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (85029) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85029) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85035) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85123) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85123) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85124) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85131) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (85142) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85142) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85148) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85236) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85236) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85237) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85244) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (85255) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85255) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85261) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85332) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85332) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85334) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85349) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85349) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85354) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85361) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (85368) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85370) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85378) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85465) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85465) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85466) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85473) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (85485) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85485) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85490) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85578) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85578) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85579) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85586) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (85597) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85597) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85603) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85691) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85691) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85692) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85699) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (85710) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85710) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85716) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85804) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85804) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85805) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85812) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (85823) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85823) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85829) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85832) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85842) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85849) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85917) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85917) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85918) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[1;31mE (85925) BTN_MGR: Calib: Failed to read voltage[0m
+[1;31mE (85936) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (85936) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (85942) i2c.master: i2c_master_transmit_receive(1248): I2C transaction failed[0m
+[0;32mI (1161) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1170) cpu_start: Pro cpu start user code[0m
+[0;32mI (1170) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (1170) app_init: Application information:[0m
+[0;32mI (1171) app_init: Project name:     lvgl_demo_v9[0m
+[0;32mI (1175) app_init: App version:      96c3ba1d-dirty[0m
+[0;32mI (1180) app_init: Compile time:     Dec 15 2025 15:53:58[0m
+[0;32mI (1185) app_init: ELF file SHA256:  d25d31a08...[0m
+[0;32mI (1189) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (1193) efuse_init: Min chip rev:     v1.0[0m
+[0;32mI (1197) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (1201) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (1205) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1211) heap_init: At 4FF1F6D0 len 0001B8F0 (110 KiB): RAM[0m
+[0;32mI (1217) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (1222) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (1227) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM[0m
+[0;32mI (1233) heap_init: At 30100068 len 00001F98 (7 KiB): TCM[0m
+[0;32mI (1238) esp_psram: Adding pool of 31040K of PSRAM memory to heap allocator[0m
+[0;32mI (1244) esp_psram: Adding pool of 6K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator[0m
+[0;32mI (1255) esp_psram: Adding pool of 5K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1267) spi_flash: detected chip: boya[0m
+[0;32mI (1270) spi_flash: flash io: qio[0m
+[0;32mI (1273) host_init: ESP Hosted : Host chip_ip[18][0m
+[0;32mI (1288) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;32mI (1288) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (1291) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32mI (1295) main_task: Started on CPU0[0m
+[0;32mI (1299) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1306) main_task: Calling app_main()[0m
+[0;32mI (1313) LVGL: Starting LVGL task[0m
+[0;32mI (1314) ESP32_P4_EV: MIPI DSI PHY Powered on[0m
+[0;32mI (1318) ESP32_P4_EV: Install MIPI DSI LCD control panel[0m
+[0;32mI (1322) ESP32_P4_EV: Install EK79007 LCD control panel[0m
+[0;32mI (1327) jd9165: version: 1.0.2[0m
+[0;32mI (1641) ESP32_P4_EV: Display initialized[0m
+[0;32mI (1642) LVGL: Setting PPA context for SW rotation[0m
+[0;32mI (1714) GT911: TouchPad_ID:0x39,0x31,0x31[0m
+[0;32mI (1714) GT911: TouchPad_Config_Version:99[0m
+[0;32mI (1714) BIKE_CONFIG: Config initialized. Cassette[0]: 11, Tire: 700x28C, Brake: 1.21V-3.22V[0m
+[0;32mI (1909) AUDIO_MANAGER: Starting Manual ES8311 Init (Production Profile)...[0m
+[0;32mI (1915) AUDIO_MANAGER: ES8311 Init Success[0m
+[0;32mI (2915) AUDIO_MANAGER: Amplifier Enabled[0m
+[0;32mI (2915) AUDIO_MANAGER: Loaded Volume from NVS: 137[0m
+[0;32mI (2915) AUDIO_MANAGER: Volume set to 137[0m
+[0;32mI (2918) MCP23017: MCP23017 Initialized[0m
+[0;32mI (2919) ESP32_P4_EV: Setting LCD backlight: 100%[0m
+[0;32mI (2924) UI: Using font: Montserrat 32[0m
+[0;32mI (2931) INA3221: INA3221 Initialized[0m
+[0;32mI (2931) WIFI_MANAGER: Initializing WiFi Manager[0m
+[0;32mI (2935) WIFI_MANAGER: WiFi Manager initialized successfully[0m
+[0;32mI (2940) WIFI_CLIENT: Initializing WiFi Client...[0m
+[0;32mI (2946) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (2950) H_SDIO_DRV: Reset slave using GPIO[54][0m
+[0;32mI (2954) os_wrapper_esp: GPIO [54] configured[0m
+[0;32mI (4478) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (4478) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54][0m
+[0;32mI (4482) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+[0;32mI (4521) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (4521) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (4621) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (4621) transport: set_transport_state: 1[0m
+[0;32mI (4621) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (4691) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (4691) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (4691) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (4694) H_SDIO_DRV: Received ESP_PRIV_IF type message[0m
+[0;32mI (4698) transport: Received INIT event from ESP32 peripheral[0m
+[0;32mI (4704) transport: EVENT: 12[0m
+[0;32mI (4706) transport: Identified slave [esp32c6][0m
+[0;32mI (4710) transport: EVENT: 11[0m
+[0;32mI (4713) transport: capabilities: 0xd[0m
+[0;32mI (4716) transport: Features supported are:[0m
+[0;32mI (4720) transport: 	 * WLAN[0m
+[0;32mI (4723) transport: 	   - HCI over SDIO[0m
+[0;32mI (4726) transport: 	   - BLE only[0m
+[0;32mI (4730) transport: EVENT: 13[0m
+[0;33mW (4732) transport: Version mismatch: Host [2.7.0] > Co-proc [0.0.0] ==> Upgrade co-proc to avoid RPC timeouts[0m
+[0;32mI (4742) transport: ESP board type is : 13 [0m
+
+[0;32mI (4746) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE[0m
+[0;32mI (4752) H_API: Transport active[0m
+[0;32mI (4755) transport: Slave chip Id[12][0m
+[0;32mI (4758) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80][0m
+[0;32mI (4764) transport: transport_delayed_init[0m
+[0;32mI (4768) esp_cli: Remove any existing deep_sleep cmd in cli[0m
+[0;32mI (4773) esp_cli: Registering command: crash[0m
+[0;32mI (4777) esp_cli: Registering command: reboot[0m
+[0;32mI (4781) esp_cli: Registering command: mem-dump[0m
+[0;32mI (4785) esp_cli: Registering command: task-dump[0m
+[0;32mI (4790) esp_cli: Registering command: cpu-dump[0m
+[0;32mI (4794) esp_cli: Registering command: heap-trace[0m
+[0;32mI (4798) esp_cli: Registering command: sock-dump[0m
+[0;32mI (4803) esp_cli: Registering command: host-power-save[0m
+[0;32mI (4808) vhci_drv: Host BT Support: Enabled[0m
+[0;32mI (4811) vhci_drv: 	BT Transport Type: VHCI[0m
+[0;32mI (4815) H_SDIO_DRV: Received INIT event[0m
+[0;32mI (4819) H_SDIO_DRV: Event type: 0x22[0m
+[0;32mI (4822) H_SDIO_DRV: Write thread started[0m
+[0;32mI (5291) RPC_WRAP: --- ESP Event: Slave ESP Init ---[0m
+[0;32mI (5498) WIFI_CLIENT: wifi_init_sta finished.[0m
+[0;32mI (5498) BLE_CLIENT: Initializing BLE Client for ESP-Hosted...[0m
+[0;32mI (5499) transport: Attempt connection with slave: retry[0][0m
+[0;32mI (5502) transport: Transport is already up[0m
+[0;32mI (5505) RPC_WRAP: ESP Event: wifi station started[0m
+[0;32mI (5511) BLE_CLIENT: BLE Host Task Started[0m
+[0;32mI (5515) BLE_CLIENT: BLE Client initialization complete.[0m
+CADENCE: Handler added to GPIO 48
+[0;32mI (5523) main_task: Returned from app_main()[0m
+[0;32mI (5523) NimBLE: GAP procedure initiated: stop advertising.[0m
+
+[0;32mI (5534) NimBLE: Failed to restore IRKs from store; status=8[0m
+
+[0;32mI (5537) BLE_CLIENT: BLE Host synced.[0m
+[0;32mI (5541) BLE_CLIENT: BLE reconnect task started[0m
+[0;32mI (5541) BLE_CLIENT: Reconnect task started[0m
+[0;32mI (5735) WIFI_CLIENT: WIFI_EVENT_STA_START: Initializing connection process.[0m
+[0;32mI (5735) WIFI_MANAGER: Found 1 saved SSIDs in order[0m
+[0;32mI (5735) WIFI_CLIENT: Attempting to connect to MOVISTAR_4B85 (1/1)[0m
+[0;32mI (5741) WIFI_MANAGER: Credentials loaded for SSID: MOVISTAR_4B85[0m
+[0;32mI (5770) H_API: esp_wifi_remote_connect[0m
+[0;33mW (5787) rpc_rsp: Hosted RPC_Resp [0x21a], uid [7], resp code [12295][0m

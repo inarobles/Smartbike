@@ -1,0 +1,25 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 100 --decode-panic backtrace C:\Esp\SmartbikeP4\build\lvgl_demo_v9.elf C:\Esp\SmartbikeP4\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+[0;33m--- Warning: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM4 instead...[0m
+[0;33m--- esp-idf-monitor 1.8.0 on \\.\COM4 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x4ff29ed0: [0;33mesp_bootloader_get_description[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_bootloader_format/esp_bootloader_desc.c[0m[0m:[1;31m39[0m
+[0m--- 0x4ff2cbd0: [0;33mesp_flash_encryption_enabled[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/flash_encrypt.c[0m[0m:[1;31m89[0m
+[0m--- 0x4ff29eda: [0;33mcall_start_cpu0[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0m--- 0x480c6924: [0;33mwifi_sta_receive[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_wifi/src/wifi_netif.c[0m[0m:[1;31m39[0m
+[0;33m--- Stack dump detected[0m
+[0m--- 0x48033946: [0;33mget_prop_core[0m[0m at [0;32mC:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_style.c[0m[0m:[1;31m810[0m
+[0m--- 0x48033a0e: [0;33mget_selector_style_prop[0m[0m at [0;32mC:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_style.c[0m[0m:[1;31m1162[0m
+[0m--- 0x4ff2d470: [0;33mregi2c_write_impl[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/patches/esp_rom_regi2c_esp32p4.c[0m[0m:[1;31m167[0m
+[0m--- 0x4ff00003: [0;33m_vector_table[0m[0m at [0;32m??[0m[0m:[1;31m?[0m
+[0;33m
+--- Backtrace:
+
+[0m
+[0m--- 0x48033a62: [0;33mget_selector_style_prop[0m[0m at [0;32mC:/Esp/SmartbikeP4/managed_components/lvgl__lvgl/src/core/lv_obj_style.c[0m[0m:[1;31m1219[0m
+[0m--- 0x4ff0aa8c: [0;33mesp_restart_noos[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_system/port/soc/esp32p4/system_internal.c[0m[0m:[1;31m218[0m
+[0m--- 0x4ff29ed0: [0;33mesp_bootloader_get_description[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_bootloader_format/esp_bootloader_desc.c[0m[0m:[1;31m39[0m
+[0m--- 0x4ff2cbd0: [0;33mesp_flash_encryption_enabled[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/flash_encrypt.c[0m[0m:[1;31m89[0m
+[0m--- 0x4ff29eda: [0;33mcall_start_cpu0[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0m--- 0x480c6924: [0;33mwifi_sta_receive[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_wifi/src/wifi_netif.c[0m[0m:[1;31m39[0m
+[0m

@@ -1,0 +1,20 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM9 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 100 --decode-panic backtrace C:\Esp\SmartbikeP4\build\lvgl_demo_v9.elf C:\Esp\SmartbikeP4\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM9'
+[0;33m--- Warning: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM9 instead...[0m
+[0;33m--- esp-idf-monitor 1.8.0 on \\.\COM9 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x4ff09194: [0;33mpsram_ctrlr_ll_common_transaction_base[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/hal/esp32p4/include/hal/psram_ctrlr_ll.h[0m[0m:[1;31m728[0m
+[0m--- (inlined by) [0;33mpsram_ctrlr_ll_common_transaction[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/hal/esp32p4/include/hal/psram_ctrlr_ll.h[0m[0m:[1;31m747[0m
+[0m--- (inlined by) [0;33ms_psram_common_transaction[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_psram/device/esp_psram_impl_ap_hex.c[0m[0m:[1;31m137[0m
+[0m--- (inlined by) [0;33ms_get_psram_mode_reg[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_psram/device/esp_psram_impl_ap_hex.c[0m[0m:[1;31m250[0m
+[0m--- (inlined by) [0;33mesp_psram_impl_enable[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_psram/device/esp_psram_impl_ap_hex.c[0m[0m:[1;31m458[0m
+[0m--- 0x4ff09194: [0;33mpsram_ctrlr_ll_common_transaction_base[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/hal/esp32p4/include/hal/psram_ctrlr_ll.h[0m[0m:[1;31m728[0m
+[0m--- (inlined by) [0;33mpsram_ctrlr_ll_common_transaction[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/hal/esp32p4/include/hal/psram_ctrlr_ll.h[0m[0m:[1;31m747[0m
+[0m--- (inlined by) [0;33ms_psram_common_transaction[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_psram/device/esp_psram_impl_ap_hex.c[0m[0m:[1;31m137[0m
+[0m--- (inlined by) [0;33ms_get_psram_mode_reg[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_psram/device/esp_psram_impl_ap_hex.c[0m[0m:[1;31m250[0m
+[0m--- (inlined by) [0;33mesp_psram_impl_enable[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_psram/device/esp_psram_impl_ap_hex.c[0m[0m:[1;31m458[0m
+[0m--- 0x4ff29ed0: [0;33mesp_bootloader_get_description[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_bootloader_format/esp_bootloader_desc.c[0m[0m:[1;31m39[0m
+[0m--- 0x4ff2cbd0: [0;33mesp_flash_encryption_enabled[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/flash_encrypt.c[0m[0m:[1;31m89[0m
+[0m--- 0x4ff29eda: [0;33mcall_start_cpu0[0m[0m at [0;32mC:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0;33m--- Warning: Checksum mismatch between flashed and built applications. Checksum of built application is facb06cf068a8e624954393e26144dc35a24dbc90c58043d15b68e1e2f4beb16[0m
+[0m
