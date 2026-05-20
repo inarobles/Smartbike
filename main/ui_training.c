@@ -6,6 +6,8 @@
 #include "power_calib_manager.h"
 #include "cadence_sensor.h"
 #include "ina3221.h"
+#include "app_state.h"
+#include "slope_simulator.h"
 
 static lv_style_t style_cell;
 static lv_style_t style_header;
@@ -30,6 +32,7 @@ static lv_obj_t * s_rpm_max_label = NULL;
 static lv_obj_t * s_wat_act_label = NULL;
 static lv_obj_t * s_gear_rear_label = NULL;
 static lv_obj_t * s_gear_front_label = NULL;
+static lv_obj_t * s_slope_label = NULL;
 
 static uint32_t s_hr_sum = 0;
 static uint32_t s_hr_count = 0;
@@ -49,6 +52,12 @@ static lv_obj_t * s_wat_max_label = NULL;
 static uint64_t s_power_sum = 0;
 static uint32_t s_power_count = 0;
 static int16_t s_power_max = 0;
+
+// Distance Variables
+static lv_obj_t * s_dist_total_label = NULL;
+static lv_obj_t * s_dist_lap_label = NULL;
+static double s_total_meters = 0.0;
+static double s_lap_meters = 0.0;
 
 
 static void update_training_timer_cb(lv_timer_t * timer)
@@ -103,7 +112,12 @@ static void update_training_timer_cb(lv_timer_t * timer)
     uint16_t rpm_max = cadence_sensor_get_max_rpm();
 
     float speed = bike_config_calculate_speed((float)cadence);
-    int16_t power = power_calib_get_estimate(); // Use Estimated Power
+    int16_t power = power_calib_get_estimate();
+
+    // Calculate Distance Increment (speed is in km/h, increment is for 1 second)
+    double dist_inc_m = (double)speed * (1000.0 / 3600.0);
+    s_total_meters += dist_inc_m;
+    s_lap_meters += dist_inc_m;
 
     // Update Speed Stats
     if (speed > 0.1f) {
@@ -138,6 +152,14 @@ static void update_training_timer_cb(lv_timer_t * timer)
          }
     }
 
+    // Update Distance Labels
+    if (s_dist_total_label && lv_obj_is_valid(s_dist_total_label)) {
+        lv_label_set_text_fmt(s_dist_total_label, "%.1f", s_total_meters / 1000.0);
+    }
+    if (s_dist_lap_label && lv_obj_is_valid(s_dist_lap_label)) {
+        lv_label_set_text_fmt(s_dist_lap_label, "%.1f", s_lap_meters / 1000.0);
+    }
+
     if (s_kph_act_label && lv_obj_is_valid(s_kph_act_label)) {
         lv_label_set_text_fmt(s_kph_act_label, "%.1f", speed);
     }
@@ -164,6 +186,17 @@ static void update_training_timer_cb(lv_timer_t * timer)
          uint8_t front_count = bike_config_get_chainring_count();
          lv_label_set_text_fmt(s_gear_front_label, "%d/%d", cfg->current_chainring_index + 1, front_count);
     }
+     
+     // Update Slope Label
+     if (s_slope_label && lv_obj_is_valid(s_slope_label)) {
+         if (bike_config_is_calibrated()) {
+             lv_label_set_text_fmt(s_slope_label, "Pendiente: %.1f%%", slope_simulator_get_current_slope());
+             lv_obj_set_style_text_color(s_slope_label, lv_color_hex(0x000000), 0); // Black
+         } else {
+             lv_label_set_text(s_slope_label, "RECALIBRAR FRENO");
+             lv_obj_set_style_text_color(s_slope_label, lv_color_hex(0xFF0000), 0); // Red
+         }
+     }
 }
 
 static void create_value_unit_cell(lv_obj_t * parent, const char * val, const char * unit, int col, int row)
@@ -191,6 +224,9 @@ static void create_value_unit_cell(lv_obj_t * parent, const char * val, const ch
 
 void ui_training_screen_init(void)
 {
+    app_state_set_training_mode(true);
+    slope_simulator_update_resistance(); // Force initial resistance application
+    
     // Reset counters
     s_total_seconds = 0;
     s_lap_seconds = 0;
@@ -211,6 +247,10 @@ void ui_training_screen_init(void)
     s_power_max = 0;
     s_power_sum = 0;
     s_power_count = 0;
+
+    // Reset Distance stats
+    s_total_meters = 0.0;
+    s_lap_meters = 0.0;
 
 
     // Initialize Styles
@@ -457,9 +497,50 @@ void ui_training_screen_init(void)
     lv_obj_add_style(label, &style_header, 0);
     lv_obj_set_grid_cell(label, LV_GRID_ALIGN_CENTER, 1, 1, LV_GRID_ALIGN_CENTER, 0, 1);
 
-    // Row 2: 32,5 km | 7,3 km
-    create_value_unit_cell(grid_bottom, "32,5", "km", 0, 1);
-    create_value_unit_cell(grid_bottom, "7,3", "km", 1, 1);
+    // Row 2: TOTAL | LAP 1
+    // Instead of fixed value, create labels that we can update
+    // create_value_unit_cell(grid_bottom, "32,5", "km", 0, 1);
+    // create_value_unit_cell(grid_bottom, "7,3", "km", 1, 1);
+    
+    // Manual Cell creation for TOTAL KM
+    lv_obj_t * cont_total = lv_obj_create(grid_bottom);
+    lv_obj_set_layout(cont_total, LV_LAYOUT_FLEX);
+    lv_obj_set_flex_flow(cont_total, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(cont_total, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_END, LV_FLEX_ALIGN_END);
+    lv_obj_set_size(cont_total, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+    lv_obj_set_style_bg_opa(cont_total, LV_OPA_TRANSP, 0);
+    lv_obj_set_style_border_width(cont_total, 0, 0);
+    lv_obj_set_style_pad_all(cont_total, 0, 0);
+    lv_obj_set_style_pad_gap(cont_total, 5, 0);
+    lv_obj_set_grid_cell(cont_total, LV_GRID_ALIGN_CENTER, 0, 1, LV_GRID_ALIGN_CENTER, 1, 1);
+
+    s_dist_total_label = lv_label_create(cont_total);
+    lv_label_set_text(s_dist_total_label, "0.0");
+    lv_obj_add_style(s_dist_total_label, &style_cell, 0);
+
+    lv_obj_t * unit_total = lv_label_create(cont_total);
+    lv_label_set_text(unit_total, "km");
+    lv_obj_add_style(unit_total, &style_header, 0);
+
+    // Manual Cell creation for LAP KM
+    lv_obj_t * cont_lap = lv_obj_create(grid_bottom);
+    lv_obj_set_layout(cont_lap, LV_LAYOUT_FLEX);
+    lv_obj_set_flex_flow(cont_lap, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(cont_lap, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_END, LV_FLEX_ALIGN_END);
+    lv_obj_set_size(cont_lap, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+    lv_obj_set_style_bg_opa(cont_lap, LV_OPA_TRANSP, 0);
+    lv_obj_set_style_border_width(cont_lap, 0, 0);
+    lv_obj_set_style_pad_all(cont_lap, 0, 0);
+    lv_obj_set_style_pad_gap(cont_lap, 5, 0);
+    lv_obj_set_grid_cell(cont_lap, LV_GRID_ALIGN_CENTER, 1, 1, LV_GRID_ALIGN_CENTER, 1, 1);
+
+    s_dist_lap_label = lv_label_create(cont_lap);
+    lv_label_set_text(s_dist_lap_label, "0.0");
+    lv_obj_add_style(s_dist_lap_label, &style_cell, 0);
+
+    lv_obj_t * unit_lap = lv_label_create(cont_lap);
+    lv_label_set_text(unit_lap, "km");
+    lv_obj_add_style(unit_lap, &style_header, 0);
 
     // Row 3: 1:03:34 | 0:19:21
     // Row 3: 1:03:34 | 0:19:21
@@ -538,6 +619,13 @@ void ui_training_screen_init(void)
     lv_obj_set_style_radius(part_center, 0, 0);
     lv_obj_set_scrollbar_mode(part_center, LV_SCROLLBAR_MODE_OFF); // Disable scrollbar artifacts
     lv_obj_set_grid_cell(part_center, LV_GRID_ALIGN_STRETCH, 1, 1, LV_GRID_ALIGN_STRETCH, 0, 1);
+    
+    // Add Slope Label in the center box
+    s_slope_label = lv_label_create(part_center);
+    lv_label_set_text(s_slope_label, "Pendiente: 0.0%");
+    lv_obj_set_style_text_color(s_slope_label, lv_color_hex(0x000000), 0); // Black text on white box
+    lv_obj_set_style_text_font(s_slope_label, &lv_font_montserrat_38, 0);
+    lv_obj_align(s_slope_label, LV_ALIGN_TOP_MID, 0, 20); // Top of the box
 
     // Right Part (Grey)
     lv_obj_t * part_right = lv_obj_create(grid_third);

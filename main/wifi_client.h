@@ -115,6 +115,13 @@ extern bool g_internet_connected;
 esp_err_t wifi_client_connect(const char *ssid, const char *password);
 
 /**
+ * @brief Disconnect from current WiFi network
+ * 
+ * @return ESP_OK on success, or an error code on failure.
+ */
+esp_err_t wifi_client_disconnect(void);
+
+/**
  * @brief Sends data via HTTP POST to a specific PHP script with multiple headers to simulate a browser.
  *
  * @param filename The name of the file to be used in the URL.

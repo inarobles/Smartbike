@@ -6,6 +6,7 @@
 
 #include "ui_training.h"
 #include "ui_settings.h"
+#include "app_state.h"
 #include "ble_client.h"
 #include "wifi_client.h"
 
@@ -228,6 +229,7 @@ static void create_status_label(lv_obj_t * parent, const char * text)
 
 void ui_init(void)
 {
+    app_state_set_training_mode(false);
     // Initialize Styles
     lv_style_init(&style_btn);
     lv_style_set_bg_color(&style_btn, lv_color_hex(0x2D2D2D)); // Dark Grey

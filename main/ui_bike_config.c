@@ -14,6 +14,7 @@ static lv_obj_t *s_dropdown_tire;
 // static lv_obj_t *s_roller_rim_front; // Or dropdown
 // static lv_obj_t *s_roller_rim_rear;
 static lv_obj_t *s_ta_weight;
+static lv_obj_t *s_ta_cyclist_weight;
 static lv_obj_t *s_kb;
 
 // Styles
@@ -84,6 +85,9 @@ static void save_btn_event_cb(lv_event_t * e)
     // 4. Weight
     const char* w_txt = lv_textarea_get_text(s_ta_weight);
     cfg->bike_weight_kg = atof(w_txt);
+    
+    const char* cw_txt = lv_textarea_get_text(s_ta_cyclist_weight);
+    cfg->cyclist_weight_kg = atof(cw_txt);
     
     // 5. Rims (optional storage)
     // cfg->rim_profile_front = lv_dropdown_get_selected(s_roller_rim_front); 
@@ -230,7 +234,7 @@ void ui_bike_configuration_screen_init(void)
     lv_dropdown_set_selected(s_dropdown_tire, cfg->tire_selection_index);
     lv_obj_set_width(s_dropdown_tire, 150);
 
-    // Weight Section
+    // Bike Weight Section
     lv_obj_t * cont_weight = lv_obj_create(sec_misc);
     lv_obj_set_size(cont_weight, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
     lv_obj_set_style_bg_opa(cont_weight, LV_OPA_TRANSP, 0);
@@ -262,6 +266,39 @@ void ui_bike_configuration_screen_init(void)
     lv_label_set_text(l_kg, "kg");
     lv_obj_set_style_text_color(l_kg, lv_color_hex(0xFFFFFF), 0);
     lv_obj_center(l_kg);
+
+    // Cyclist Weight Section
+    lv_obj_t * cont_cyclist = lv_obj_create(sec_misc);
+    lv_obj_set_size(cont_cyclist, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+    lv_obj_set_style_bg_opa(cont_cyclist, LV_OPA_TRANSP, 0);
+    lv_obj_set_style_border_width(cont_cyclist, 0, 0);
+    lv_obj_set_flex_flow(cont_cyclist, LV_FLEX_FLOW_COLUMN);
+    lv_obj_set_style_pad_all(cont_cyclist, 0, 0);
+
+    lv_obj_t * l_cweight = lv_label_create(cont_cyclist);
+    lv_label_set_text(l_cweight, "Peso ciclista");
+    lv_obj_set_style_text_color(l_cweight, lv_color_hex(0xFFFFFF), 0);
+
+    lv_obj_t * sub_cweight = lv_obj_create(cont_cyclist);
+    lv_obj_set_size(sub_cweight, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+    lv_obj_set_style_bg_opa(sub_cweight, LV_OPA_TRANSP, 0);
+    lv_obj_set_style_border_width(sub_cweight, 0, 0);
+    lv_obj_set_flex_flow(sub_cweight, LV_FLEX_FLOW_ROW);
+    lv_obj_set_style_pad_all(sub_cweight, 0, 0);
+    lv_obj_set_style_pad_gap(sub_cweight, 10, 0);
+
+    s_ta_cyclist_weight = lv_textarea_create(sub_cweight);
+    lv_obj_set_width(s_ta_cyclist_weight, 80);
+    lv_textarea_set_one_line(s_ta_cyclist_weight, true);
+    char cw_buf[10];
+    sprintf(cw_buf, "%.1f", cfg->cyclist_weight_kg);
+    lv_textarea_set_text(s_ta_cyclist_weight, cw_buf);
+    lv_obj_add_event_cb(s_ta_cyclist_weight, ta_event_cb, LV_EVENT_ALL, NULL);
+    
+    lv_obj_t * l_ckg = lv_label_create(sub_cweight);
+    lv_label_set_text(l_ckg, "kg");
+    lv_obj_set_style_text_color(l_ckg, lv_color_hex(0xFFFFFF), 0);
+    lv_obj_center(l_ckg);
 
     // --- Buttons ---
     lv_obj_t * btn_cont = lv_obj_create(cont);

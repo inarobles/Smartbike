@@ -85,6 +85,7 @@ esp_err_t bsp_i2c_init(void)
         .sda_io_num = BSP_I2C_SDA,
         .scl_io_num = BSP_I2C_SCL,
         .i2c_port = BSP_I2C_NUM,
+        .glitch_ignore_cnt = 7,
         .flags.enable_internal_pullup = true,
     };
     BSP_ERROR_CHECK_RETURN_ERR(i2c_new_master_bus(&i2c_bus_conf, &i2c_handle));
@@ -514,34 +515,69 @@ esp_err_t bsp_touch_new(const bsp_touch_config_t *config, esp_lcd_touch_handle_t
     /* Initilize I2C */
     BSP_ERROR_CHECK_RETURN_ERR(bsp_i2c_init());
 
+    /* GT911 Reset Sequence - Attempt to set 0x5D (Standard) */
+    ESP_LOGI(TAG, "Performing GT911 reset sequence (Target 0x5D)...");
+    
+    gpio_set_direction(BSP_LCD_TOUCH_RST, GPIO_MODE_OUTPUT);
+    gpio_set_direction(BSP_LCD_TOUCH_INT, GPIO_MODE_OUTPUT);
+
+    // Try to latch 0x5D (INT High)
+    gpio_set_level(BSP_LCD_TOUCH_INT, 1);
+    gpio_set_level(BSP_LCD_TOUCH_RST, 0);
+    vTaskDelay(pdMS_TO_TICKS(20));
+    gpio_set_level(BSP_LCD_TOUCH_RST, 1);
+    vTaskDelay(pdMS_TO_TICKS(50)); // Extended latch time
+    
+    // Release INT
+    gpio_set_direction(BSP_LCD_TOUCH_INT, GPIO_MODE_INPUT);
+    gpio_set_pull_mode(BSP_LCD_TOUCH_INT, GPIO_PULLUP_ONLY);
+    
+    vTaskDelay(pdMS_TO_TICKS(200)); 
+
+    /* Auto-Detect Address */
+    uint8_t detected_addr = 0;
+    if (i2c_master_probe(i2c_handle, 0x5D, 50) == ESP_OK) {
+        detected_addr = 0x5D;
+        ESP_LOGI(TAG, "GT911 Detected at 0x5D");
+    } else if (i2c_master_probe(i2c_handle, 0x14, 50) == ESP_OK) {
+        detected_addr = 0x14;
+        ESP_LOGW(TAG, "GT911 Detected at 0x14 (Fallback)");
+    } else {
+        ESP_LOGE(TAG, "GT911 Not Detected at 0x5D or 0x14!");
+        // Fallback to 0x5D just to try
+        detected_addr = 0x5D;
+    }
+
     /* Initialize touch */
     esp_lcd_touch_io_gt911_config_t gt911_config = {
-        .dev_addr = ESP_LCD_TOUCH_IO_I2C_GT911_ADDRESS,
+        .dev_addr = detected_addr,
     };
     const esp_lcd_touch_config_t tp_cfg = {
-        .x_max = BSP_LCD_H_RES,
-        .y_max = BSP_LCD_V_RES,
-        .rst_gpio_num = BSP_LCD_TOUCH_RST, // Shared with LCD reset
-        .int_gpio_num = BSP_LCD_TOUCH_INT,
+        .x_max = BSP_LCD_H_RES, // Native 1024
+        .y_max = BSP_LCD_V_RES, // Native 600
+        .rst_gpio_num = GPIO_NUM_NC, // Disable internal driver reset
+        .int_gpio_num = GPIO_NUM_NC, // Force pure polling by disabling INT pin in config
         .levels = {
             .reset = 0,
             .interrupt = 0,
         },
         .flags = {
-            .swap_xy = 0,
-#if CONFIG_BSP_LCD_TYPE_1024_600
-            .mirror_x = 0,
-            .mirror_y = 0,
-#else
-            .mirror_x = 0,
-            .mirror_y = 0,
-#endif
+            .swap_xy = 0, // Done manually in touch_scale
+            .mirror_x = 0, // Done manually in touch_scale
+            .mirror_y = 0, // Done manually in touch_scale
         },
         .driver_data = &gt911_config,
     };
     esp_lcd_panel_io_handle_t tp_io_handle = NULL;
     esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+    tp_io_config.dev_addr = detected_addr; 
     tp_io_config.scl_speed_hz = 100000;
+    
+    ESP_LOGI(TAG, "Touch Config: Swap=%d, MirX=%d, MirY=%d, XMax=%d, YMax=%d", 
+             tp_cfg.flags.swap_xy, tp_cfg.flags.mirror_x, tp_cfg.flags.mirror_y, tp_cfg.x_max, tp_cfg.y_max);
+    
+    ESP_LOGI(TAG, "Initializing GT911 at address 0x%02X...", tp_io_config.dev_addr);
+    
     ESP_RETURN_ON_ERROR(esp_lcd_new_panel_io_i2c(i2c_handle, &tp_io_config, &tp_io_handle), TAG, "");
     return esp_lcd_touch_new_i2c_gt911(tp_io_handle, &tp_cfg, ret_touch);
 }
@@ -612,7 +648,11 @@ static lv_display_t *bsp_display_lcd_init(const bsp_display_cfg_t *cfg)
 static lv_indev_t *bsp_display_indev_init(lv_display_t *disp)
 {
     esp_lcd_touch_handle_t tp;
-    BSP_ERROR_CHECK_RETURN_NULL(bsp_touch_new(NULL, &tp));
+    esp_err_t err = bsp_touch_new(NULL, &tp);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Touch initialization failed (%s). Continuing without touch.", esp_err_to_name(err));
+        return NULL;
+    }
     assert(tp);
 
     /* Add touch input (for selected screen) */
@@ -649,12 +689,15 @@ lv_display_t *bsp_display_start_with_config(const bsp_display_cfg_t *cfg)
 
     assert(cfg != NULL);
     BSP_ERROR_CHECK_RETURN_NULL(lvgl_port_init(&cfg->lvgl_port_cfg));
+    
+    // Ensure ISR service is installed for touch interrupts
+    gpio_install_isr_service(0);
 
     BSP_ERROR_CHECK_RETURN_NULL(bsp_display_brightness_init());
 
     BSP_NULL_CHECK(disp = bsp_display_lcd_init(cfg), NULL);
 
-    BSP_NULL_CHECK(disp_indev = bsp_display_indev_init(disp), NULL);
+    disp_indev = bsp_display_indev_init(disp);
 
     return disp;
 }

@@ -9,8 +9,11 @@
 #include "driver/gpio.h"
 
 #include "ina3221.h"
+#include "slope_simulator.h"
 #include "esp_timer.h"
 #include <math.h>
+#include "app_state.h"
+#include "ui_main.h"
 
 static const char *TAG = "BTN_MGR";
 
@@ -56,16 +59,20 @@ static float s_calib_internal_target_voltage = 0.0f;
 static bool  s_calib_hysteresis_active = false;
 
 static void stop_motor() {
-    gpio_set_level(MOTOR_PIN_1, 0);
-    gpio_set_level(MOTOR_PIN_2, 0);
+    // Stop-High Logic (1-1) to keep GPIO 3 (Touch Reset) Active
+    gpio_set_level(MOTOR_PIN_1, 1);
+    gpio_set_level(MOTOR_PIN_2, 1);
 }
 
 static void drive_motor_forward() {
+    // Forward: 1-0 (Pin 1=High, Pin 2=Low)
     gpio_set_level(MOTOR_PIN_1, 1);
     gpio_set_level(MOTOR_PIN_2, 0);
 }
 
 static void drive_motor_backward() {
+    // Backward: 0-1 (Pin 1=Low, Pin 2=High)
+    // WARNING: This will momentarily reset Touch!
     gpio_set_level(MOTOR_PIN_1, 0);
     gpio_set_level(MOTOR_PIN_2, 1);
 }
@@ -80,6 +87,11 @@ static void motor_pulse(bool forward) {
 // --- Calibration API ---
 void button_manager_start_calibration(void) {
     s_calib_state = CALIB_START;
+}
+
+void button_manager_stop(void) {
+    s_calib_state = CALIB_IDLE;
+    stop_motor();
 }
 
 void button_manager_set_target_voltage(float target_v) {
@@ -138,11 +150,28 @@ bool button_manager_get_calibration_result(float *min_v, float *max_v) {
 }
 
 static void processing_calibration(void) {
+    static int s_voltage_read_fail_count = 0;
     float voltage = 0.0f;
+
     // Read Channel 1
     if (ina3221_read_bus_voltage(1, &voltage) != ESP_OK) {
         ESP_LOGE(TAG, "Calib: Failed to read voltage");
-        return; 
+        s_voltage_read_fail_count++;
+        
+        // If too many consecutive failures, abort
+        if (s_voltage_read_fail_count > 20) { // ~2 seconds at 100ms interval
+             ESP_LOGE(TAG, "Calib: Too many sensor failures. Aborting.");
+             stop_motor();
+             s_calib_state = CALIB_FAILED;
+             s_voltage_read_fail_count = 0;
+             return;
+        }
+        // Proceed to timeout checks even if read failed (using last known voltage or just time)
+        // For safety, if we can't read voltage, we shouldn't drive motor blindly in closed loop,
+        // but we MUST check for timeouts.
+        voltage = s_calib_last_voltage; // Use last known
+    } else {
+        s_voltage_read_fail_count = 0;
     }
 
     int64_t now = esp_timer_get_time() / 1000; // ms
@@ -238,7 +267,13 @@ static void processing_calibration(void) {
                     s_calib_start_time = esp_timer_get_time() / 1000;
                     // Loop continues next cycle
                 } else {
-                    // We are at final target. Ready.
+                    // We are at final target. Stay in GOTO_VOLTAGE state
+                    // so button_manager_is_at_target() returns true and
+                    // button_manager_is_calibrating() also returns true.
+                    // The motor is already stopped. Power calib manager
+                    // will call set_target_voltage() again for the next step.
+                    // ESP_LOGI only once to avoid log spam:
+                    // (this branch runs every 100ms while holding position)
                 }
             }
             
@@ -250,6 +285,8 @@ static void processing_calibration(void) {
                  if (s_calib_hysteresis_active) {
                      s_calib_hysteresis_active = false;
                      s_calib_start_time = now;
+                 } else {
+                     s_calib_state = CALIB_IDLE; // Abort and allow buttons
                  }
             }
             break;
@@ -274,10 +311,30 @@ static void button_task(void *arg) {
              continue; // Skip button reading
         }
 
+        static int64_t rst_press_start_time = 0;
         uint8_t curr_port_b = 0;
         esp_err_t err = mcp23017_read_ports(NULL, &curr_port_b);
         
         if (err == ESP_OK) {
+            // --- Long Press Logic for Exit ---
+            if (curr_port_b & BTN_GEAR_RST) {
+                if (rst_press_start_time == 0) {
+                    rst_press_start_time = esp_timer_get_time();
+                } else if ((esp_timer_get_time() - rst_press_start_time) > 2000000) { // 2 seconds
+                    if (app_state_is_training_active()) {
+                        ESP_LOGI(TAG, "EXITING TRAINING via Long Press");
+                        app_state_set_training_mode(false);
+                        audio_manager_play_beep();
+                        bsp_display_lock(portMAX_DELAY);
+                        ui_init();
+                        bsp_display_unlock();
+                    }
+                    rst_press_start_time = esp_timer_get_time(); // Reset to avoid multiple triggers
+                }
+            } else {
+                rst_press_start_time = 0;
+            }
+
             uint8_t changed = curr_port_b ^ last_port_b;
             uint8_t pressed = changed & curr_port_b;
 
@@ -294,9 +351,13 @@ static void button_task(void *arg) {
                     if (bike_config_shift_chainring_up()) action_taken = true;
                 }
                 if (pressed & BTN_PLATE_RST) {
-                    // 3rd Button Plate Side -> Increase Resistance (Motor Forward)
-                    motor_pulse(true);
-                    action_taken = true;
+                    // Right button (Plate side) -> Increase Slope (+1%)
+                    if (app_state_is_training_active()) {
+                        slope_simulator_adjust_slope(1.0f);
+                        action_taken = true;
+                    } else {
+                        ESP_LOGW(TAG, "Slope adjust BLOCKED: Not in Training Mode");
+                    }
                 }
 
                 // --- Gear Logic ---
@@ -309,14 +370,22 @@ static void button_task(void *arg) {
                     action_taken = true;
                 }
                 if (pressed & BTN_GEAR_RST) { 
-                    // 3rd Button Gear Side -> Decrease Resistance (Motor Backward)
-                    motor_pulse(false);
-                    action_taken = true;
+                    // Left button (Gear side) -> Decrease Slope (-1%)
+                    if (app_state_is_training_active()) {
+                        slope_simulator_adjust_slope(-1.0f);
+                        action_taken = true;
+                    } else {
+                        ESP_LOGW(TAG, "Slope adjust BLOCKED: Not in Training Mode");
+                    }
                 }
                 
                 if (action_taken) {
                     audio_manager_play_beep(); 
                     bike_config_save(); 
+                    // If gears changed but slope didn't, we still need to recalculate resistance
+                    if (!(pressed & (BTN_PLATE_RST | BTN_GEAR_RST))) {
+                        slope_simulator_update_resistance();
+                    }
                 }
             }
             last_port_b = curr_port_b;
@@ -336,8 +405,10 @@ void button_manager_init(void) {
         .intr_type = GPIO_INTR_DISABLE
     };
     gpio_config(&io_conf);
-    stop_motor(); 
-
+    // Set initial levels to HIGH (Stop/Idle) to keep Touch Active
+    gpio_set_level(MOTOR_PIN_1, 1);
+    gpio_set_level(MOTOR_PIN_2, 1);
+    
     i2c_master_bus_handle_t i2c_bus = bsp_i2c_get_handle();
     mcp23017_init(i2c_bus);
     

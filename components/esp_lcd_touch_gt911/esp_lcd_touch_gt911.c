@@ -17,6 +17,7 @@
  #include "esp_lcd_panel_io.h"
  #include "esp_lcd_touch.h"
  #include "esp_lcd_touch_gt911.h"
+#include "app_state.h"
  
  static const char *TAG = "GT911";
  
@@ -218,87 +219,91 @@
  
      assert(tp != NULL);
  
+     if (app_state_is_training_active()) {
+         return ESP_OK;
+     }
+ 
      err = touch_gt911_i2c_read(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, buf, 1);
     ESP_RETURN_ON_ERROR(err, TAG, "I2C read error!");
 
-    // Software Debounce: Ignore touches within 150ms of release
-    static int64_t last_release_time = 0;
-    bool is_touched = ((buf[0] & 0x80) == 0x80) && ((buf[0] & 0x0f) > 0);
-    
-    if (is_touched) {
-        if ((esp_timer_get_time() - last_release_time) < 150000) { // 150ms debounce
-             touch_gt911_i2c_write(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, 0);
-             return ESP_OK;
+    if (buf[0] & 0x80) {
+        touch_cnt = buf[0] & 0x0f;
+        ESP_LOGI(TAG, "Status: 0x%02X (Points: %d)", buf[0], touch_cnt);
+    }
+
+    /* Any touch data? */
+    if ((buf[0] & 0x80) == 0x00) {
+        touch_gt911_i2c_write(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, clear);
+#if (CONFIG_ESP_LCD_TOUCH_MAX_BUTTONS > 0)
+    } else if ((buf[0] & 0x10) == 0x10) {
+        /* Read all keys */
+        uint8_t key_max = ((ESP_GT911_TOUCH_MAX_BUTTONS < CONFIG_ESP_LCD_TOUCH_MAX_BUTTONS) ? \
+                           (ESP_GT911_TOUCH_MAX_BUTTONS) : (CONFIG_ESP_LCD_TOUCH_MAX_BUTTONS));
+        err = touch_gt911_i2c_read(tp, ESP_LCD_TOUCH_GT911_READ_KEY_REG, &buf[0], key_max);
+        ESP_RETURN_ON_ERROR(err, TAG, "I2C read error!");
+
+        /* Clear all */
+        touch_gt911_i2c_write(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, clear);
+        ESP_RETURN_ON_ERROR(err, TAG, "I2C write error!");
+
+        portENTER_CRITICAL(&tp->data.lock);
+
+        /* Buttons count */
+        tp->data.buttons = key_max;
+        for (i = 0; i < key_max; i++) {
+            tp->data.button[i].status = buf[0] ? 1 : 0;
         }
-    } else {
-        last_release_time = esp_timer_get_time();
+
+        portEXIT_CRITICAL(&tp->data.lock);
+#endif
+    } else if ((buf[0] & 0x80) == 0x80) {
+#if (CONFIG_ESP_LCD_TOUCH_MAX_BUTTONS > 0)
+        portENTER_CRITICAL(&tp->data.lock);
+        for (i = 0; i < CONFIG_ESP_LCD_TOUCH_MAX_BUTTONS; i++) {
+            tp->data.button[i].status = 0;
+        }
+        portEXIT_CRITICAL(&tp->data.lock);
+#endif
+        /* Count of touched points */
+        touch_cnt = buf[0] & 0x0f;
+        if (touch_cnt > 5 || touch_cnt == 0) {
+            touch_gt911_i2c_write(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, clear);
+            return ESP_OK;
+        }
+
+        /* Read all points */
+        err = touch_gt911_i2c_read(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG + 1, &buf[1], touch_cnt * 8);
+        ESP_RETURN_ON_ERROR(err, TAG, "I2C read error!");
+
+        /* Clear all */
+        err = touch_gt911_i2c_write(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, clear);
+        ESP_RETURN_ON_ERROR(err, TAG, "I2C read error!");
+
+        portENTER_CRITICAL(&tp->data.lock);
+
+        /* Number of touched points */
+        touch_cnt = (touch_cnt > CONFIG_ESP_LCD_TOUCH_MAX_POINTS ? CONFIG_ESP_LCD_TOUCH_MAX_POINTS : touch_cnt);
+        tp->data.points = touch_cnt;
+
+        /* Fill all coordinates */
+        for (i = 0; i < touch_cnt; i++) {
+            tp->data.coords[i].x = ((uint16_t)buf[(i * 8) + 3] << 8) + buf[(i * 8) + 2];
+            tp->data.coords[i].y = (((uint16_t)buf[(i * 8) + 5] << 8) + buf[(i * 8) + 4]);
+            tp->data.coords[i].strength = (((uint16_t)buf[(i * 8) + 7] << 8) + buf[(i * 8) + 6]);
+            
+            /* Apply scaling (800x480 -> 1024x600) */
+            touch_scale(&tp->data.coords[i].x, &tp->data.coords[i].y);
+        }
+ 
+        portEXIT_CRITICAL(&tp->data.lock);
+
+        /* Log raw coordinates safely */
+        for (i = 0; i < touch_cnt; i++) {
+             ESP_LOGI(TAG, "TOUCH DEBUG: x=%d, y=%d", tp->data.coords[i].x, tp->data.coords[i].y);
+        }
     }
  
-     /* Any touch data? */
-     if ((buf[0] & 0x80) == 0x00) {
-         touch_gt911_i2c_write(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, clear);
- #if (CONFIG_ESP_LCD_TOUCH_MAX_BUTTONS > 0)
-     } else if ((buf[0] & 0x10) == 0x10) {
-         /* Read all keys */
-         uint8_t key_max = ((ESP_GT911_TOUCH_MAX_BUTTONS < CONFIG_ESP_LCD_TOUCH_MAX_BUTTONS) ? \
-                            (ESP_GT911_TOUCH_MAX_BUTTONS) : (CONFIG_ESP_LCD_TOUCH_MAX_BUTTONS));
-         err = touch_gt911_i2c_read(tp, ESP_LCD_TOUCH_GT911_READ_KEY_REG, &buf[0], key_max);
-         ESP_RETURN_ON_ERROR(err, TAG, "I2C read error!");
- 
-         /* Clear all */
-         touch_gt911_i2c_write(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, clear);
-         ESP_RETURN_ON_ERROR(err, TAG, "I2C write error!");
- 
-         portENTER_CRITICAL(&tp->data.lock);
- 
-         /* Buttons count */
-         tp->data.buttons = key_max;
-         for (i = 0; i < key_max; i++) {
-             tp->data.button[i].status = buf[0] ? 1 : 0;
-         }
- 
-         portEXIT_CRITICAL(&tp->data.lock);
- #endif
-     } else if ((buf[0] & 0x80) == 0x80) {
- #if (CONFIG_ESP_LCD_TOUCH_MAX_BUTTONS > 0)
-         portENTER_CRITICAL(&tp->data.lock);
-         for (i = 0; i < CONFIG_ESP_LCD_TOUCH_MAX_BUTTONS; i++) {
-             tp->data.button[i].status = 0;
-         }
-         portEXIT_CRITICAL(&tp->data.lock);
- #endif
-         /* Count of touched points */
-         touch_cnt = buf[0] & 0x0f;
-         if (touch_cnt > 5 || touch_cnt == 0) {
-             touch_gt911_i2c_write(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, clear);
-             return ESP_OK;
-         }
- 
-         /* Read all points */
-         err = touch_gt911_i2c_read(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG + 1, &buf[1], touch_cnt * 8);
-         ESP_RETURN_ON_ERROR(err, TAG, "I2C read error!");
- 
-         /* Clear all */
-         err = touch_gt911_i2c_write(tp, ESP_LCD_TOUCH_GT911_READ_XY_REG, clear);
-         ESP_RETURN_ON_ERROR(err, TAG, "I2C read error!");
- 
-         portENTER_CRITICAL(&tp->data.lock);
- 
-         /* Number of touched points */
-         touch_cnt = (touch_cnt > CONFIG_ESP_LCD_TOUCH_MAX_POINTS ? CONFIG_ESP_LCD_TOUCH_MAX_POINTS : touch_cnt);
-         tp->data.points = touch_cnt;
- 
-         /* Fill all coordinates */
-         for (i = 0; i < touch_cnt; i++) {
-             tp->data.coords[i].x = ((uint16_t)buf[(i * 8) + 3] << 8) + buf[(i * 8) + 2];
-             tp->data.coords[i].y = (((uint16_t)buf[(i * 8) + 5] << 8) + buf[(i * 8) + 4]);
-             tp->data.coords[i].strength = (((uint16_t)buf[(i * 8) + 7] << 8) + buf[(i * 8) + 6]);
-         }
- 
-         portEXIT_CRITICAL(&tp->data.lock);
-     }
- 
-     return ESP_OK;
+    return ESP_OK;
  }
  
  static bool esp_lcd_touch_gt911_get_xy(esp_lcd_touch_handle_t tp, uint16_t *x, uint16_t *y, uint16_t *strength, uint8_t *point_num, uint8_t max_point_num)
@@ -317,7 +322,6 @@
      for (size_t i = 0; i < *point_num; i++) {
          x[i] = tp->data.coords[i].x;
          y[i] = tp->data.coords[i].y;
-         touch_scale(&x[i],&y[i]);
          if (strength) {
              strength[i] = tp->data.coords[i].strength;
          }
@@ -431,11 +435,40 @@
  
  static void touch_scale(uint16_t *x_coordinate,uint16_t *y_coordinate)
  {
-     uint32_t temp_x;
-     uint32_t temp_y;
-     temp_x = (*x_coordinate) * 1024 *10 / 800 / 10;
-     temp_y = (*y_coordinate) * 600 * 10 / 480 / 10;
-     *x_coordinate = (uint16_t)temp_x;
-     *y_coordinate = (uint16_t)temp_y;
+     /* HARDCODED CALIBRATION V5 (Fixed Vertical Inversion)
+      * User reported V4 was "Top is Bottom", so X-mapping (Visual Y) was inverted.
+      *
+      * Target Physical: 1024x600 (Landscape)
+      *
+      * Goal:
+      * Top-Left Touch (Raw 25, 462) -> Visual (0,0)
+      * -> Needs Input (0, 0) [Visual Top-Left]
+      * -> Map Raw X=25 to 0    (Direct)
+      * -> Map Raw Y=462 to 0   (Inverted)
+      *
+      * Bot-Right Touch (Raw 797, 41) -> Visual (600, 1024)
+      * -> Needs Input (1024, 600) [Visual Bot-Right]
+      * -> Map Raw X=797 to 1024 (Direct)
+      * -> Map Raw Y=41 to 600   (Inverted)
+      */
+
+      uint32_t raw_x = *x_coordinate;
+      uint32_t raw_y = *y_coordinate;
+      
+      /* Clamp Inputs */
+      if (raw_x > 800) raw_x = 800;
+      if (raw_y > 480) raw_y = 480;
+
+      /* Formula X: Map Raw X(0..800) to Out X(0..1024) [DIRECT] */
+      /* V4 was Inverted, which caused Top->Bottom. V5 is Direct. */
+      uint32_t screen_x = raw_x * 1024 / 800;
+
+      /* Formula Y: Map Raw Y(0..480) to Out Y(0..600) [DIRECT] */
+      /* User reported V5 was mirrored horizontally. By switching from inverted (480-raw) to direct (raw), 
+       * we flip the horizontal axis in 90-degree rotation. */
+      uint32_t screen_y = raw_y * 600 / 480;
+      
+      *x_coordinate = (uint16_t)screen_x;
+      *y_coordinate = (uint16_t)screen_y;
  }
  

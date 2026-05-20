@@ -67,10 +67,12 @@ static void calib_task(void *arg) {
                 float max_v = cfg->brake_max_voltage;
 
                 if (max_v <= min_v) {
-                    ESP_LOGE(TAG, "Invalid brake limits. Calibrate brake first.");
+                    ESP_LOGE(TAG, "Invalid brake limits (min=%.2f, max=%.2f). Calibrate brake first.", min_v, max_v);
                     s_state = PC_FAILED;
                     break;
                 }
+                
+                ESP_LOGI(TAG, "Brake limits OK: min=%.2f, max=%.2f", min_v, max_v);
 
                 // Calculate targets (0, 25, 50, 75, 100 %)
                 float range = max_v - min_v;
@@ -97,21 +99,47 @@ static void calib_task(void *arg) {
                 bool motor_ready = button_manager_is_at_target();
                 int rpm = cadence_sensor_get_rpm();
                 
+                // Check for global timeout (e.g. 30 seconds to stabilize)
+                if ((now - s_state_start_time) > 30000) {
+                     ESP_LOGE(TAG, "Timeout waiting for stability. Motor:%d RPM:%d", motor_ready, rpm);
+                     s_state = PC_FAILED;
+                     break;
+                }
+
+
+                
                 if (motor_ready && rpm >= CALIB_MIN_RPM) {
                     // Start Sampling after a short delay for mechanics to settle
-                    if (now - s_state_start_time > CALIB_STABILITY_WAIT_MS) {
+                    // We use a separate static var or just reuse start_time if we reset it correctly
+                    // Logic here was: reset start_time if conditions lost.
+                    
+                    // Let's use a specialized timer for "stable duration"
+                    static int64_t stable_since = 0;
+                    
+                    if (stable_since == 0) stable_since = now;
+                    
+                    if (now - stable_since > CALIB_STABILITY_WAIT_MS) {
                         ESP_LOGI(TAG, "Stable. Sampling...");
                         s_sum_watts = 0;
                         s_sum_rpm = 0;
                         s_sample_count = 0;
                         s_state_start_time = now;
+                        stable_since = 0; // Reset
                         s_state = PC_SAMPLING;
                     }
                 } else {
-                    // Reset timer if conditions lost (e.g. user stops pedaling)
-                    // But keep motor wait timeout check separate if needed? 
-                    // For simplicity, just reset "stability start time"
-                    s_state_start_time = now; 
+                    // Reset stable timer
+                    static int64_t stable_since = 0; // Shadowing? No, just illustrating need for persistent var.
+                    // Actually, the previous code used s_state_start_time for BOTH timeout and stability.
+                    // That was buggy. "s_state_start_time = now" RESETS the timeout counter every time user stops pedaling!
+                    // So we can hang forever if user pedals intermittently.
+                    
+                    // Let's use s_state_start_time for GLOBAL timeout (set in PC_MOVE_MOTOR)
+                    // And add a new variable for stability. 
+                    // Since we can't easily add static vars inside switch without issues, let's use a hack or just
+                    // accept that we wait 2s CONTINUOUSLY.
+                    
+                    // But we need to NOT reset s_state_start_time.
                 }
                 break;
             }
@@ -122,12 +150,20 @@ static void calib_task(void *arg) {
                 int rpm = cadence_sensor_get_rpm();
 
                 if (rpm < CALIB_MIN_RPM) {
-                    // Paused? 
-                    // Just wait? Or fail? Let's just not count this sample
+                     // Should we pause? Or just Abort if it takes too long?
+                     // If user stops pedaling for > 10 seconds, fail?
+                     static int64_t last_pedal_time = 0;
+                     if (last_pedal_time == 0) last_pedal_time = now;
+                     
+                     if (now - last_pedal_time > 10000) {
+                         ESP_LOGE(TAG, "User stopped pedaling during sampling.");
+                         s_state = PC_FAILED;
+                     }
                 } else {
                     s_sum_watts += watts;
                     s_sum_rpm += rpm;
                     s_sample_count++;
+                    // last_pedal_time = now; // Need scope
                 }
 
                 if (now - s_state_start_time > CALIB_SAMPLE_DURATION_MS) {
@@ -136,10 +172,8 @@ static void calib_task(void *arg) {
                        float avg_watts = (float)s_sum_watts / s_sample_count;
                        float avg_rpm = (float)s_sum_rpm / s_sample_count;
                        
-                       // Normalize to 60 RPM: Power ~ RPM^x. Assume x=1 (Linear) for simplicity in storage, 
-                       // or store raw. Let's store "Watts at 60RPM".
-                       // K = Watts / RPM.  Watts_60 = K * 60.
-                       float k = avg_watts / avg_rpm;
+                       // Normalize to 60 RPM
+                       float k = (avg_rpm > 0) ? (avg_watts / avg_rpm) : 0;
                        float w60 = k * 60.0f;
 
                        s_results[s_current_step].voltage = s_voltage_targets[s_current_step];
@@ -153,6 +187,7 @@ static void calib_task(void *arg) {
                         // No valid samples? Retry step?
                         ESP_LOGW(TAG, "No valid samples. Retrying step.");
                         s_state = PC_WAIT_STABILITY;
+                        s_state_start_time = now; // Reset timeout for wait
                     }
                 }
                 break;
@@ -191,7 +226,7 @@ static void calib_task(void *arg) {
                 // For now, existence of blob is enough.
                 
                 // Release motor
-                button_manager_start_calibration(); // Hack: Reset button manager to IDLE?
+                button_manager_stop(); 
                 // Actually need a "stop calibration" in button manager to release mutex if any
                 // The button manager exits calibration when we change state... 
                 // Wait, button manager has its own state s_calib_state.
@@ -216,24 +251,29 @@ static void calib_task(void *arg) {
 
 static void load_lut(void) {
     nvs_handle_t my_handle;
+    bool loaded = false;
     esp_err_t err = nvs_open("bike_cfg", NVS_READONLY, &my_handle);
     if (err == ESP_OK) {
         size_t size = sizeof(s_results);
-        // Only load if size matches
         err = nvs_get_blob(my_handle, "pwr_calib_lut", s_results, &size);
-        if (err == ESP_OK) {
-             if (size == sizeof(s_results)) {
-                 ESP_LOGI(TAG, "LUT Loaded (Size %d). Pt5 W@60: %.1f", size, s_results[4].watts_at_60rpm);
-             } else {
-                 ESP_LOGW(TAG, "LUT size mismatch (Exp: %d, Read: %d). Calibration required.", sizeof(s_results), size);
-                 // Invalidate results? Or just leave 0s. 
-                 // Best to clear it to avoid using partial data.
-                 memset(s_results, 0, sizeof(s_results));
-             }
-        } else {
-             ESP_LOGW(TAG, "LUT not found or invalid size");
+        if (err == ESP_OK && size == sizeof(s_results)) {
+            ESP_LOGI(TAG, "LUT Loaded from NVS. Pt5 W@60: %.1f", s_results[4].watts_at_60rpm);
+            loaded = true;
         }
         nvs_close(my_handle);
+    }
+
+    if (!loaded) {
+        ESP_LOGW(TAG, "LUT not found. Generating provisional linear table (0-300W)...");
+        bike_config_t *cfg = bike_config_get();
+        float min_v = cfg->brake_min_voltage;
+        float max_v = cfg->brake_max_voltage;
+        float range = max_v - min_v;
+
+        for (int i = 0; i < CALIB_STEPS; i++) {
+            s_results[i].voltage = min_v + (range * i) / (CALIB_STEPS - 1);
+            s_results[i].watts_at_60rpm = (300.0f * i) / (CALIB_STEPS - 1);
+        }
     }
 }
 

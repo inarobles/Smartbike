@@ -1,6 +1,6 @@
 /*
  * BLE Client for Heart Rate Monitor and Power Meter using NimBLE on ESP-Hosted Architecture
- * Adapted for SmartbikeP4
+ * Adapted for Smartbike
  */
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -637,7 +637,7 @@ void ble_client_init(void) {
     ble_hs_cfg.sm_io_cap = BLE_HS_IO_NO_INPUT_OUTPUT;
     ble_hs_cfg.sm_sc = 0;
 
-    const char *device_name = "smartbike-p4";
+    const char *device_name = "smartbike";
     ble_svc_gap_device_name_set(device_name);
 
     nimble_port_freertos_init(ble_host_task);

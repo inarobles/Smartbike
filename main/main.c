@@ -22,6 +22,8 @@
 #include "button_manager.h"
 #include "cadence_sensor.h"
 #include "ina3221.h"
+#include "power_calib_manager.h"
+#include "slope_simulator.h"
 
 void app_main(void)
 {
@@ -33,8 +35,21 @@ void app_main(void)
     }
     ESP_ERROR_CHECK(ret);
 
-    ESP_ERROR_CHECK(ret);
+    // Wait for power stabilization
+    vTaskDelay(pdMS_TO_TICKS(1000));
 
+    // Initialize I2C Bus early
+    bsp_i2c_init();
+    
+    // Diagnostic I2C Scan
+    ESP_LOGI("I2C_SCAN", "Scanning I2C bus...");
+    i2c_master_bus_handle_t bus = bsp_i2c_get_handle();
+    for (int i = 0; i < 128; i++) {
+        if (i2c_master_probe(bus, i, 10) == ESP_OK) {
+            ESP_LOGI("I2C_SCAN", "Found device at 0x%02X", i);
+        }
+    }
+    ESP_LOGI("I2C_SCAN", "Scan Complete");
     bsp_display_cfg_t cfg = {
         .lvgl_port_cfg = ESP_LVGL_PORT_INIT_CONFIG(),
         .buffer_size = BSP_LCD_DRAW_BUFF_SIZE,
@@ -68,10 +83,11 @@ void app_main(void)
     ui_init(); 
     bsp_display_unlock();
 
-    // Initialize INA3221 (Shares BSP I2C)
-    // Needs BSP I2C handle which is available after display start (if display manages I2C)
-    // or we get it via bsp_i2c_get_handle().
+    // Initialize INA3221 (Power Sensor)
     ina3221_init(bsp_i2c_get_handle());
+
+    // Initialize Slope Simulator
+    slope_simulator_init();
 
     // Initialize WiFi after UI is ready
     wifi_manager_init();
@@ -82,4 +98,9 @@ void app_main(void)
 
     // Initialize Cadence Sensor
     cadence_sensor_init();
+    
+    // Initialize Power Calibration (Load LUT)
+    power_calib_init();
+
+    // app_main() must return to allow FreeRTOS to manage tasks properly
 }

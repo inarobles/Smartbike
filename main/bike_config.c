@@ -5,7 +5,7 @@
 #include <string.h>
 
 static const char *TAG = "BIKE_CONFIG";
-static const char *NVS_NAMESPACE = "bike_cfg";
+static const char *NVS_NAMESPACE = "bike_cfg"; // Reverted to original as requested
 
 static bike_config_t s_config;
 
@@ -48,19 +48,26 @@ void bike_config_init(void) {
     s_config.wheel_circumference_mm = TIRE_CIRCUMFERENCE_MM[TIRE_700_25C];
     
     s_config.bike_weight_kg = 7.5f;
+    s_config.cyclist_weight_kg = 75.0f;
 
     // Default Brake Voltages (Safe defaults before calibration)
     s_config.brake_min_voltage = 0.0f; 
     s_config.brake_max_voltage = 3.3f;
     
-    // Load from NVS
+    // Real NVS Loading
     nvs_handle_t my_handle;
     esp_err_t err = nvs_open(NVS_NAMESPACE, NVS_READWRITE, &my_handle);
     if (err == ESP_OK) {
-        size_t required_size = sizeof(bike_config_t);
-        err = nvs_get_blob(my_handle, "config", &s_config, &required_size);
-        if (err != ESP_OK && err != ESP_ERR_NVS_NOT_FOUND) {
-            ESP_LOGE(TAG, "Error reading config from NVS");
+        size_t actual_size = 0;
+        err = nvs_get_blob(my_handle, "config", NULL, &actual_size);
+        if (err == ESP_OK && actual_size == sizeof(bike_config_t)) {
+            err = nvs_get_blob(my_handle, "config", &s_config, &actual_size);
+            if (err != ESP_OK) {
+                ESP_LOGE(TAG, "Error reading config from NVS");
+            }
+        } else {
+            ESP_LOGW(TAG, "NVS config size mismatch or not found (%zu vs %zu). Using defaults.", actual_size, sizeof(bike_config_t));
+            // Defaults already set by memset and assignments above
         }
         nvs_close(my_handle);
     } else {
@@ -192,4 +199,17 @@ bool bike_config_set_chainring_index(uint8_t index) {
 const char* bike_config_get_tire_name(uint8_t index) {
     if (index >= TIRE_TYPE_MAX) return "Unknown";
     return TIRE_NAMES[index];
+}
+
+float bike_config_get_gear_ratio(void) {
+    uint8_t teeth_front = s_config.chainring_teeth[s_config.current_chainring_index];
+    uint8_t teeth_rear = s_config.cassette_teeth[s_config.current_cassette_index];
+    
+    if (teeth_front == 0 || teeth_rear == 0) return 0.0f;
+    return (float)teeth_front / (float)teeth_rear;
+}
+
+bool bike_config_is_calibrated(void) {
+    // Valid calibration must have at least 0.5V of range
+    return (s_config.brake_max_voltage - s_config.brake_min_voltage) > 0.5f;
 }

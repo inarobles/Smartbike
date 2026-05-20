@@ -9,6 +9,7 @@
 #include "lvgl.h"
 #include <stdio.h>
 #include "esp_log.h"
+#include "esp_timer.h"
 
 #include "ble_client.h"
 
@@ -25,24 +26,34 @@ static lv_timer_t * s_calib_timer = NULL;
 static lv_timer_t * s_pwr_calib_timer = NULL; // Separate timer for power calibration
 static lv_timer_t * s_check_pwr_timer = NULL;
 
+static int64_t s_enter_time = 0;
+static int64_t s_msgbox_close_time = 0; // Track when message box was closed
+
 static void msgbox_close_event_cb(lv_event_t * e)
 {
     lv_obj_t * mbox = lv_event_get_user_data(e);
-    lv_msgbox_close(mbox);
     
-    // Clear handles
-    if (mbox == s_calib_msgbox) {
-        s_calib_msgbox = NULL;
-        s_calib_label = NULL;
-    }
+    // Clean up timers associated with this msgbox
     if (mbox == s_check_pwr_msgbox) {
         if (s_check_pwr_timer) {
             lv_timer_del(s_check_pwr_timer);
             s_check_pwr_timer = NULL;
         }
-        s_check_pwr_msgbox = NULL;
-        s_check_pwr_label = NULL;
     }
+    
+    // Clear handles
+    s_calib_msgbox = NULL;
+    s_calib_label = NULL;
+    s_check_pwr_msgbox = NULL;
+    s_check_pwr_label = NULL;
+    
+    // Instead of just closing the msgbox (which exposes underlying buttons 
+    // and causes ghost clicks), rebuild the ENTIRE settings screen.
+    // This destroys all old widgets and creates fresh ones with a new debounce timer.
+    // NOTE: We must explicitly close the msgbox first because it lives on a top layer,
+    // and lv_obj_clean(scr) inside ui_settings_screen_init() won't destroy it.
+    lv_msgbox_close(mbox);
+    ui_settings_screen_init();
 }
 
 static void check_pwr_timer_cb(lv_timer_t * timer) {
@@ -99,7 +110,19 @@ static void pwr_calib_timer_cb(lv_timer_t * timer) {
         lv_obj_t * mbox = lv_msgbox_create(NULL);
         lv_msgbox_add_title(mbox, "Calibracion Potencia");
         lv_msgbox_add_text(mbox, "Proceso completado correctamente.\nTabla guardada.");
+        lv_msgbox_add_text(mbox, "Proceso completado correctamente.\nTabla guardada.");
         lv_obj_t * btn = lv_msgbox_add_footer_button(mbox, "OK");
+        
+        // Style the OK button to be larger
+        lv_obj_set_width(btn, 200);
+        lv_obj_set_height(btn, 60);
+        // Only works if button is not using default style completely or we override
+        // Actually, msgbox buttons are in a button matrix usually, but in LVGL 8/9 they might be separate objects if added via footer?
+        // Wait, lv_msgbox_add_footer_button returns the button object.
+        // Let's also check font
+        lv_obj_t * label = lv_obj_get_child(btn, 0);
+        if(label) lv_obj_set_style_text_font(label, &lv_font_montserrat_28, 0);
+
         lv_obj_add_event_cb(btn, msgbox_close_event_cb, LV_EVENT_CLICKED, mbox);
         lv_obj_center(mbox);
 
@@ -116,7 +139,14 @@ static void pwr_calib_timer_cb(lv_timer_t * timer) {
         lv_obj_t * mbox = lv_msgbox_create(NULL);
         lv_msgbox_add_title(mbox, "Error Calibracion");
         lv_msgbox_add_text(mbox, "Fallo el proceso.\nPosible causa: Freno no calibrado.\n\nPor favor, ejecute 'Calibrar Freno' primero.");
+        lv_msgbox_add_text(mbox, "Fallo el proceso.\nPosible causa: Freno no calibrado.\n\nPor favor, ejecute 'Calibrar Freno' primero.");
         lv_obj_t * btn = lv_msgbox_add_footer_button(mbox, "OK");
+        
+        lv_obj_set_width(btn, 200);
+        lv_obj_set_height(btn, 60);
+        lv_obj_t * label = lv_obj_get_child(btn, 0);
+        if(label) lv_obj_set_style_text_font(label, &lv_font_montserrat_28, 0);
+
         lv_obj_add_event_cb(btn, msgbox_close_event_cb, LV_EVENT_CLICKED, mbox);
         lv_obj_center(mbox);
 
@@ -154,6 +184,12 @@ static void calib_timer_cb(lv_timer_t * timer) {
         // Add Close Button (X in header) and/or Footer Button
         // lv_msgbox_add_close_button(mbox); 
         lv_obj_t * btn = lv_msgbox_add_footer_button(mbox, "OK");
+        
+        lv_obj_set_width(btn, 200);
+        lv_obj_set_height(btn, 60);
+        lv_obj_t * label = lv_obj_get_child(btn, 0);
+        if(label) lv_obj_set_style_text_font(label, &lv_font_montserrat_28, 0);
+
         lv_obj_add_event_cb(btn, msgbox_close_event_cb, LV_EVENT_CLICKED, mbox);
 
         lv_obj_center(mbox);
@@ -172,6 +208,19 @@ static void btn_event_cb(lv_event_t * e)
         audio_manager_play_event(AUDIO_EVENT_BUTTON);
         const char * txt = lv_label_get_text(lv_obj_get_child(btn, 0));
         ESP_LOGI("UI_SETTINGS", "Button clicked: %s", txt);
+
+        // This prevents double-taps from previous screen (like Cancel) triggering buttons here.
+        int64_t now = esp_timer_get_time() / 1000;
+        if ((now - s_enter_time) < 500) {
+             ESP_LOGW("UI_SETTINGS", "Click ignored (scene entry debounce)");
+             return;
+        }
+
+        // Also check if a message box was just closed
+        if ((now - s_msgbox_close_time) < 500) {
+             ESP_LOGW("UI_SETTINGS", "Click ignored (msgbox close debounce). Diff: %lld", now - s_msgbox_close_time);
+             return;
+        }
         
         if (strcmp(txt, "Cardio BLE") == 0) {
             ui_cardio_screen_init();
@@ -217,6 +266,12 @@ static void btn_event_cb(lv_event_t * e)
              s_check_pwr_label = lv_msgbox_add_text(s_check_pwr_msgbox, "Esperando datos...");
              
              lv_obj_t * btn = lv_msgbox_add_footer_button(s_check_pwr_msgbox, "Cerrar");
+
+             lv_obj_set_width(btn, 200);
+             lv_obj_set_height(btn, 60);
+             lv_obj_t * label = lv_obj_get_child(btn, 0);
+             if(label) lv_obj_set_style_text_font(label, &lv_font_montserrat_28, 0);
+
              lv_obj_add_event_cb(btn, msgbox_close_event_cb, LV_EVENT_CLICKED, s_check_pwr_msgbox);
              
              lv_obj_center(s_check_pwr_msgbox);
@@ -273,6 +328,8 @@ void ui_settings_screen_init(void)
         lv_style_set_text_color(&style_btn, lv_color_hex(0xFFFFFF));
         style_inited = true;
     }
+
+    s_enter_time = esp_timer_get_time() / 1000;
 
     lv_obj_t * scr = lv_screen_active();
     lv_obj_clean(scr); // Clear the screen

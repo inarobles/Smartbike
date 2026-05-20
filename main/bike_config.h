@@ -30,6 +30,7 @@ typedef struct {
     uint8_t rim_profile_rear;  // Just storage for now
     
     float bike_weight_kg;
+    float cyclist_weight_kg;
     
     float brake_min_voltage;
     float brake_max_voltage;
@@ -107,5 +108,16 @@ bool bike_config_set_chainring_index(uint8_t index);
  * @brief Helper to get tire name string
  */
 const char* bike_config_get_tire_name(uint8_t index);
+
+/**
+ * @brief Get current gear ratio (Front / Rear)
+ */
+float bike_config_get_gear_ratio(void);
+
+/**
+ * @brief Check if the brake is properly calibrated
+ * @return true if calibrated (valid voltage range)
+ */
+bool bike_config_is_calibrated(void);
 
 #endif // BIKE_CONFIG_H

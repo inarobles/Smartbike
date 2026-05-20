@@ -276,6 +276,15 @@ esp_err_t wifi_client_connect(const char *ssid, const char *password)
     return ESP_OK;
 }
 
+esp_err_t wifi_client_disconnect(void)
+{
+    ESP_LOGI(TAG, "Manually disconnecting from WiFi...");
+    s_is_manual_connecting = true; // Use this flag to prevent automatic reconnection to other networks briefly if needed?
+    // Actually, s_is_manual_connecting prevents try_next_saved_network from continuing if it fails.
+    // If we want to stay disconnected, we need to be careful.
+    return esp_wifi_disconnect();
+}
+
 esp_err_t wifi_client_init(void)
 {
     ESP_LOGI(TAG, "Initializing WiFi Client...");

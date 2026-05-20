@@ -42,7 +42,7 @@
 /**************************************************************************************************
  *  ESP-BOX pinout
  **************************************************************************************************/
-/* I2C */
+/* I2C (Proven working: SDA=7, SCL=8) */
 #define BSP_I2C_SCL           (GPIO_NUM_8)
 #define BSP_I2C_SDA           (GPIO_NUM_7)
 
@@ -58,8 +58,8 @@
 #if CONFIG_BSP_LCD_TYPE_1024_600
 #define BSP_LCD_BACKLIGHT     (GPIO_NUM_23)
 #define BSP_LCD_RST           (GPIO_NUM_27)
-#define BSP_LCD_TOUCH_RST     (GPIO_NUM_22)
-#define BSP_LCD_TOUCH_INT     (GPIO_NUM_21)
+#define BSP_LCD_TOUCH_RST     (GPIO_NUM_3)
+#define BSP_LCD_TOUCH_INT     (GPIO_NUM_4)
 #else
 #define BSP_LCD_BACKLIGHT     (GPIO_NUM_23)
 #define BSP_LCD_RST           (GPIO_NUM_NC)

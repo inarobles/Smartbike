@@ -9,6 +9,7 @@
 #include <string.h>
 #include "lvgl.h"
 #include "bsp/esp-bsp.h"
+#include "esp_wifi.h"
 
 static const char *TAG = "UI_WIFI";
 
@@ -40,6 +41,7 @@ static void wifi_password_keyboard_connect_cb(lv_event_t *e);
 static void wifi_network_connect_cb(lv_event_t *e);
 static void back_to_settings_from_wifi_cb(lv_event_t *e);
 static void free_user_data_cb(lv_event_t *e);
+static void wifi_disconnect_cb(lv_event_t *e);
 
 // --- Stub for audio ---
 static void audio_play_beep(void) {
@@ -60,6 +62,13 @@ static void free_user_data_cb(lv_event_t *e) {
     }
 }
 
+static void wifi_disconnect_cb(lv_event_t *e) {
+    audio_play_beep();
+    ESP_LOGI(TAG, "User requested WiFi disconnect");
+    wifi_client_disconnect();
+    ui_open_wifi_list(); // Refresh to show disconnected state
+}
+
 static void saved_network_delete_cb(lv_event_t *e) {
     audio_play_beep();
     const char* ssid = (const char*)lv_event_get_user_data(e);
@@ -76,13 +85,6 @@ static void saved_network_edit_cb(lv_event_t *e) {
     strncpy(ssid_to_edit, ssid, sizeof(ssid_to_edit) - 1);
     ssid_to_edit[sizeof(ssid_to_edit) - 1] = '\0';
 
-    // Re-create password screen if needed or just load it
-    // For simplicity, we assume scr_wifi_password is created when needed or globally
-    // But in build_wifi_list we create screens.
-    // Let's create the password screen here if it doesn't exist or just re-create it.
-    // Actually, Consola created it in create_wifi_screens called at init.
-    // We don't have a global init for wifi screens, so we create it on demand.
-    
     scr_wifi_password = lv_obj_create(NULL);
     lv_obj_set_size(scr_wifi_password, LV_PCT(100), LV_PCT(100));
     lv_obj_set_style_bg_color(scr_wifi_password, lv_color_black(), 0);
@@ -92,7 +94,6 @@ static void saved_network_edit_cb(lv_event_t *e) {
     lv_obj_align(wifi_password_textarea, LV_ALIGN_TOP_MID, 0, 20);
     lv_textarea_set_password_mode(wifi_password_textarea, true);
     lv_textarea_set_one_line(wifi_password_textarea, true);
-    // lv_obj_set_style_text_font(wifi_password_textarea, &lv_font_montserrat_20, 0); // Use default font if 20 not avail
 
     lv_obj_t *kb = lv_keyboard_create(scr_wifi_password);
     lv_obj_set_size(kb, LV_PCT(100), LV_PCT(50));
@@ -135,7 +136,6 @@ static void wifi_password_keyboard_connect_cb(lv_event_t *e) {
         ESP_LOGI(TAG, "Attempting to connect to %s", ssid_to_connect);
         wifi_manager_save_credentials(ssid_to_connect, password);
         
-        // Show loading screen
         scr_loading = lv_obj_create(NULL);
         lv_obj_set_size(scr_loading, LV_PCT(100), LV_PCT(100));
         lv_obj_set_style_bg_color(scr_loading, lv_color_black(), 0);
@@ -163,7 +163,6 @@ static void wifi_network_connect_cb(lv_event_t *e) {
     if (info->auth_mode == WIFI_AUTH_OPEN) {
         ESP_LOGI(TAG, "Connecting to open network: %s", info->ssid);
         
-        // Show loading screen
         scr_loading = lv_obj_create(NULL);
         lv_obj_set_size(scr_loading, LV_PCT(100), LV_PCT(100));
         lv_obj_set_style_bg_color(scr_loading, lv_color_black(), 0);
@@ -185,7 +184,6 @@ static void wifi_network_connect_cb(lv_event_t *e) {
     if (wifi_manager_load_credentials(info->ssid, password) == ESP_OK) {
         ESP_LOGI(TAG, "Connecting to saved network: %s", info->ssid);
         
-        // Show loading screen
         scr_loading = lv_obj_create(NULL);
         lv_obj_set_size(scr_loading, LV_PCT(100), LV_PCT(100));
         lv_obj_set_style_bg_color(scr_loading, lv_color_black(), 0);
@@ -205,7 +203,6 @@ static void wifi_network_connect_cb(lv_event_t *e) {
         strncpy(ssid_to_connect, info->ssid, sizeof(ssid_to_connect) - 1);
         ssid_to_connect[sizeof(ssid_to_connect) - 1] = '\0';
 
-        // Create password screen
         scr_wifi_password = lv_obj_create(NULL);
         lv_obj_set_size(scr_wifi_password, LV_PCT(100), LV_PCT(100));
         lv_obj_set_style_bg_color(scr_wifi_password, lv_color_black(), 0);
@@ -240,8 +237,7 @@ static void wifi_network_connect_cb(lv_event_t *e) {
 static void create_section_title(lv_obj_t *parent, const char *title) {
     lv_obj_t *label = lv_label_create(parent);
     lv_label_set_text(label, title);
-    // lv_obj_set_style_text_font(label, &lv_font_montserrat_20, 0);
-    lv_obj_set_style_text_color(label, lv_color_black(), 0);
+    lv_obj_set_style_text_color(label, lv_color_white(), 0);
     lv_obj_set_style_pad_top(label, 20, 0);
     lv_obj_set_style_pad_bottom(label, 10, 0);
 }
@@ -253,7 +249,6 @@ static void build_wifi_list(void) {
 
     lv_obj_t *title = lv_label_create(scr_wifi_list);
     lv_obj_set_style_text_color(title, lv_color_white(), 0);
-    // lv_obj_set_style_text_font(title, &lv_font_montserrat_24, 0);
     lv_label_set_text(title, "Redes WiFi");
     lv_obj_align(title, LV_ALIGN_TOP_MID, 0, 10);
 
@@ -270,8 +265,11 @@ static void build_wifi_list(void) {
     bool is_connected = is_wifi_connected();
     wifi_ap_record_t ap_info;
     if (is_connected) {
-        esp_wifi_sta_get_ap_info(&ap_info);
-        strlcpy(current_ssid, (char *)ap_info.ssid, sizeof(current_ssid));
+        if (esp_wifi_sta_get_ap_info(&ap_info) == ESP_OK) {
+            strlcpy(current_ssid, (char *)ap_info.ssid, sizeof(current_ssid));
+        } else {
+            is_connected = false;
+        }
     }
 
     wifi_network_info_t saved_networks[WIFI_MANAGER_MAX_NETWORKS];
@@ -299,16 +297,16 @@ static void build_wifi_list(void) {
 
     // --- UI Building ---
 
-    // 1. Connected Network
+    // 1. Connected Network Banner
     if (is_connected) {
         lv_obj_t *item = lv_obj_create(main_container);
-        lv_obj_set_size(item, LV_PCT(100), 80);
+        lv_obj_set_size(item, LV_PCT(100), 60);
         lv_obj_set_style_bg_color(item, lv_palette_main(LV_PALETTE_GREEN), 0);
         lv_obj_set_layout(item, LV_LAYOUT_FLEX);
-        lv_obj_set_flex_align(item, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+        lv_obj_set_flex_align(item, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
 
         lv_obj_t *label = lv_label_create(item);
-        lv_label_set_text_fmt(label, "Conectado a: %s (%d)", current_ssid, ap_info.rssi);
+        lv_label_set_text_fmt(label, "CONECTADO A: %s", current_ssid);
         lv_obj_set_style_text_color(label, lv_color_white(), 0);
     }
 
@@ -316,64 +314,70 @@ static void build_wifi_list(void) {
     create_section_title(main_container, "Redes Disponibles:");
     bool has_available = false;
     for (int i = 0; i < num_filtered_networks; i++) {
-        if (strcmp(current_ssid, filtered_networks[i].ssid) != 0) {
-            has_available = true;
+        has_available = true;
+        bool is_this_connected = (is_connected && strcmp(current_ssid, filtered_networks[i].ssid) == 0);
 
-            lv_obj_t *item = lv_obj_create(main_container);
-            lv_obj_set_size(item, LV_PCT(100), 80);
-            lv_obj_set_layout(item, LV_LAYOUT_FLEX);
-            lv_obj_set_flex_flow(item, LV_FLEX_FLOW_ROW);
-            lv_obj_set_flex_align(item, LV_FLEX_ALIGN_SPACE_BETWEEN, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+        lv_obj_t *item = lv_obj_create(main_container);
+        lv_obj_set_size(item, LV_PCT(100), 80);
+        lv_obj_set_layout(item, LV_LAYOUT_FLEX);
+        lv_obj_set_flex_flow(item, LV_FLEX_FLOW_ROW);
+        lv_obj_set_flex_align(item, LV_FLEX_ALIGN_SPACE_BETWEEN, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
 
-            lv_obj_t *ssid_label = lv_label_create(item);
-            lv_label_set_text_fmt(ssid_label, "%s (%d)", filtered_networks[i].ssid, filtered_networks[i].rssi);
-            lv_obj_set_flex_grow(ssid_label, 1);
+        if (is_this_connected) {
+            lv_obj_set_style_border_color(item, lv_palette_main(LV_PALETTE_GREEN), 0);
+            lv_obj_set_style_border_width(item, 2, 0);
+        }
 
+        lv_obj_t *ssid_label = lv_label_create(item);
+        lv_label_set_text_fmt(ssid_label, "%s (%d)", filtered_networks[i].ssid, filtered_networks[i].rssi);
+        lv_obj_set_flex_grow(ssid_label, 1);
+
+        if (is_this_connected) {
+            lv_obj_t *btn_disconnect = lv_button_create(item);
+            lv_obj_set_style_bg_color(btn_disconnect, lv_palette_main(LV_PALETTE_ORANGE), 0);
+            lv_obj_add_event_cb(btn_disconnect, wifi_disconnect_cb, LV_EVENT_CLICKED, NULL);
+            lv_obj_t *label_disconnect = lv_label_create(btn_disconnect);
+            lv_label_set_text(label_disconnect, "Desconectar");
+        } else {
             lv_obj_t *btn_connect = lv_button_create(item);
-            
-            // Allocate memory for the network info to persist after this function returns
             wifi_network_info_t *btn_info = malloc(sizeof(wifi_network_info_t));
             if (btn_info) {
                 *btn_info = filtered_networks[i];
                 lv_obj_add_event_cb(btn_connect, wifi_network_connect_cb, LV_EVENT_CLICKED, btn_info);
-                // Free memory when button is deleted
                 lv_obj_add_event_cb(btn_connect, free_user_data_cb, LV_EVENT_DELETE, NULL);
             }
-            
             lv_obj_t *label_connect = lv_label_create(btn_connect);
             lv_label_set_text(label_connect, "Conectar");
+        }
 
-            bool is_saved = false;
-            for (int j = 0; j < num_saved_networks; j++) {
-                if (strcmp(filtered_networks[i].ssid, saved_networks[j].ssid) == 0) {
-                    is_saved = true;
-                    break;
-                }
+        // Search if saved
+        bool is_saved = false;
+        for (int j = 0; j < num_saved_networks; j++) {
+            if (strcmp(filtered_networks[i].ssid, saved_networks[j].ssid) == 0) {
+                is_saved = true;
+                break;
             }
+        }
 
-            if (is_saved) {
-                lv_obj_t *btn_edit = lv_button_create(item);
-                // For edit/delete, we just need the SSID string. 
-                // Since we need it to persist, we strdup it.
-                char *ssid_copy_edit = strdup(filtered_networks[i].ssid);
-                if (ssid_copy_edit) {
-                    lv_obj_add_event_cb(btn_edit, saved_network_edit_cb, LV_EVENT_CLICKED, ssid_copy_edit);
-                    lv_obj_add_event_cb(btn_edit, free_user_data_cb, LV_EVENT_DELETE, NULL);
-                }
-
-                lv_obj_t *label_edit = lv_label_create(btn_edit);
-                lv_label_set_text(label_edit, "Editar");
-
-                lv_obj_t *btn_del = lv_button_create(item);
-                lv_obj_set_style_bg_color(btn_del, lv_palette_main(LV_PALETTE_RED), 0);
-                char *ssid_copy_del = strdup(filtered_networks[i].ssid);
-                if (ssid_copy_del) {
-                    lv_obj_add_event_cb(btn_del, saved_network_delete_cb, LV_EVENT_CLICKED, ssid_copy_del);
-                    lv_obj_add_event_cb(btn_del, free_user_data_cb, LV_EVENT_DELETE, NULL);
-                }
-                lv_obj_t *label_del = lv_label_create(btn_del);
-                lv_label_set_text(label_del, "Borrar");
+        if (is_saved) {
+            lv_obj_t *btn_edit = lv_button_create(item);
+            char *ssid_copy_edit = strdup(filtered_networks[i].ssid);
+            if (ssid_copy_edit) {
+                lv_obj_add_event_cb(btn_edit, saved_network_edit_cb, LV_EVENT_CLICKED, ssid_copy_edit);
+                lv_obj_add_event_cb(btn_edit, free_user_data_cb, LV_EVENT_DELETE, NULL);
             }
+            lv_obj_t *label_edit = lv_label_create(btn_edit);
+            lv_label_set_text(label_edit, "Editar");
+
+            lv_obj_t *btn_del = lv_button_create(item);
+            lv_obj_set_style_bg_color(btn_del, lv_palette_main(LV_PALETTE_RED), 0);
+            char *ssid_copy_del = strdup(filtered_networks[i].ssid);
+            if (ssid_copy_del) {
+                lv_obj_add_event_cb(btn_del, saved_network_delete_cb, LV_EVENT_CLICKED, ssid_copy_del);
+                lv_obj_add_event_cb(btn_del, free_user_data_cb, LV_EVENT_DELETE, NULL);
+            }
+            lv_obj_t *label_del = lv_label_create(btn_del);
+            lv_label_set_text(label_del, "Borrar");
         }
     }
     if (!has_available) {
@@ -383,7 +387,7 @@ static void build_wifi_list(void) {
     }
 
     // 3. Saved Networks
-    create_section_title(main_container, "Redes Guardadas:");
+    create_section_title(main_container, "Otras Redes Guardadas:");
     bool has_saved = false;
     for (int i = 0; i < num_saved_networks; i++) {
         bool is_scanned = false;
@@ -393,6 +397,7 @@ static void build_wifi_list(void) {
                 break;
             }
         }
+        
         if (strcmp(current_ssid, saved_networks[i].ssid) != 0 && !is_scanned) {
             has_saved = true;
             lv_obj_t *item = lv_obj_create(main_container);
@@ -411,7 +416,6 @@ static void build_wifi_list(void) {
                 lv_obj_add_event_cb(btn_edit, saved_network_edit_cb, LV_EVENT_CLICKED, ssid_copy_edit);
                 lv_obj_add_event_cb(btn_edit, free_user_data_cb, LV_EVENT_DELETE, NULL);
             }
-
             lv_obj_t *label_edit = lv_label_create(btn_edit);
             lv_label_set_text(label_edit, "Editar");
 
@@ -452,48 +456,34 @@ static void loading_screen_event_cb(lv_event_t *e) {
 
 static void wifi_scan_task(void *pvParameters) {
     lv_obj_t *scr_loading = (lv_obj_t *)pvParameters;
-
     wifi_manager_scan_networks(g_scanned_networks, WIFI_MANAGER_MAX_NETWORKS, &g_num_scanned_networks);
-
     bsp_display_lock(portMAX_DELAY);
     if (scr_loading) {
         lv_obj_send_event(scr_loading, LV_EVENT_WIFI_SCAN_DONE, NULL);
     }
     bsp_display_unlock();
-
     vTaskDelete(NULL);
 }
 
 void ui_open_wifi_list(void) {
     bsp_display_lock(portMAX_DELAY);
-
-    // Register event if not already
     if (LV_EVENT_WIFI_SCAN_DONE == 0) {
         LV_EVENT_WIFI_SCAN_DONE = lv_event_register_id();
     }
-
-    // Create a loading screen
     scr_loading = lv_obj_create(NULL);
     lv_obj_set_size(scr_loading, LV_PCT(100), LV_PCT(100));
     lv_obj_set_style_bg_color(scr_loading, lv_color_black(), 0);
     lv_obj_add_event_cb(scr_loading, loading_screen_event_cb, LV_EVENT_ALL, NULL);
-
     lv_obj_t *spinner = lv_spinner_create(scr_loading);
     lv_spinner_set_anim_params(spinner, 1000, 60);
     lv_obj_set_size(spinner, 100, 100);
     lv_obj_center(spinner);
-
     lv_obj_t *label = lv_label_create(scr_loading);
     lv_label_set_text(label, "Escaneando redes wifi, espere un momento.");
     lv_obj_set_style_text_color(label, lv_color_white(), 0);
-    // lv_obj_set_style_text_font(label, &lv_font_montserrat_20, 0);
     lv_obj_align_to(label, spinner, LV_ALIGN_OUT_BOTTOM_MID, 0, 20);
-
     lv_scr_load(scr_loading);
-
-    // Create a task to perform the scan
     xTaskCreate(wifi_scan_task, "wifi_scan_task", 4096, scr_loading, 5, NULL);
-
     bsp_display_unlock();
 }
 
@@ -503,16 +493,9 @@ void ui_wifi_notify_connection_success(void) {
         lv_obj_del(scr_loading);
         scr_loading = NULL;
         bsp_display_unlock();
-        
-        // Refresh the list to show connected status
         ui_open_wifi_list();
     }
 }
 
-void ui_loading_complete(void) {
-    // Legacy/Unused
-}
-
-void ui_upload_complete(bool success) {
-    // Not used yet
-}
+void ui_loading_complete(void) {}
+void ui_upload_complete(bool success) {}

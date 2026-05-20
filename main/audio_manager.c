@@ -53,8 +53,9 @@ static i2c_master_dev_handle_t es8311_handle = NULL;
 static uint8_t s_volume = 128; // Default ~50%
 
 static esp_err_t reg_write(uint8_t reg, uint8_t val) {
+    if (!es8311_handle) return ESP_FAIL;
     uint8_t data[2] = {reg, val};
-    return i2c_master_transmit(es8311_handle, data, 2, 100);
+    return i2c_master_transmit(es8311_handle, data, 2, 50); // 50ms timeout
 }
 
 static esp_err_t init_i2s(void) {
@@ -90,14 +91,22 @@ static esp_err_t manual_es8311_init(void) {
     ESP_LOGI(TAG, "Starting Manual ES8311 Init (Production Profile)...");
     
     i2c_master_bus_handle_t bus_handle = bsp_i2c_get_handle();
-    if (!bus_handle) return ESP_FAIL;
+    if (!bus_handle) {
+        ESP_LOGW(TAG, "I2C bus not initialized, skipping ES8311");
+        return ESP_FAIL;
+    }
 
     i2c_device_config_t dev_cfg = {
         .dev_addr_length = I2C_ADDR_BIT_LEN_7,
         .device_address = ES8311_ADDR,
         .scl_speed_hz = 100000,
     };
-    ESP_RETURN_ON_ERROR(i2c_master_bus_add_device(bus_handle, &dev_cfg, &es8311_handle), TAG, "Add I2C device failed");
+    
+    esp_err_t ret = i2c_master_bus_add_device(bus_handle, &dev_cfg, &es8311_handle);
+    if (ret != ESP_OK) {
+        ESP_LOGW(TAG, "Failed to add ES8311 to I2C bus: %s", esp_err_to_name(ret));
+        return ESP_FAIL;
+    }
 
     // 0. RESET / CSM SETUP
     reg_write(ES8311_RESET_REG00, 0x80); 
@@ -141,11 +150,13 @@ static esp_err_t manual_es8311_init(void) {
 }
 
 esp_err_t audio_manager_init(void) {
+    // 1. Initialize I2S first
     if (init_i2s() != ESP_OK) {
         ESP_LOGE(TAG, "I2S Init Failed");
         return ESP_FAIL;
     }
 
+    // 2. Send silence to prevent initial pops (I2S needs to start with data)
     size_t silence_size = 16384; 
     void* silence = calloc(1, silence_size);
     if(silence) {
@@ -155,19 +166,23 @@ esp_err_t audio_manager_init(void) {
     }
     vTaskDelay(pdMS_TO_TICKS(100));
 
-    manual_es8311_init();
+    // 3. Initialize ES8311 codec (BEFORE enabling amplifier!)
+    if (manual_es8311_init() != ESP_OK) {
+        ESP_LOGE(TAG, "ES8311 codec init failed");
+        return ESP_FAIL;
+    }
+    
+    // Small delay to let codec stabilize
+    vTaskDelay(pdMS_TO_TICKS(50));
 
+    // 4. Configure amplifier GPIO
     gpio_config_t io_conf = {};
     io_conf.intr_type = GPIO_INTR_DISABLE;
     io_conf.mode = GPIO_MODE_OUTPUT;
     io_conf.pin_bit_mask = (1ULL << AMP_EN_GPIO);
     gpio_config(&io_conf);
     
-    gpio_set_level(AMP_EN_GPIO, 1);
-    vTaskDelay(pdMS_TO_TICKS(1000)); 
-    ESP_LOGI(TAG, "Amplifier Enabled");
-
-    // Load Volume from NVS
+    // 5. Load desired volume from NVS BEFORE enabling amplifier
     nvs_handle_t my_handle;
     esp_err_t err = nvs_open("storage", NVS_READWRITE, &my_handle);
     if (err == ESP_OK) {
@@ -184,8 +199,15 @@ esp_err_t audio_manager_init(void) {
         ESP_LOGE(TAG, "Error opening NVS handle");
     }
     
-    // Apply loaded volume
+    // 6. Apply volume to codec while amp is still OFF (prevents pop)
     audio_manager_set_volume(s_volume);
+    
+    // 7. Small delay before enabling amplifier
+    vTaskDelay(pdMS_TO_TICKS(100));
+    
+    // 8. Finally, enable amplifier with codec already configured
+    gpio_set_level(AMP_EN_GPIO, 1);
+    ESP_LOGI(TAG, "Amplifier Enabled");
 
     return ESP_OK;
 }
@@ -251,9 +273,22 @@ void audio_manager_play_beep(void) {
 void audio_manager_set_volume(uint8_t volume) {
     // Volume 0-255 (0x00 - 0xFF)
     s_volume = volume;
-    reg_write(ES8311_DAC_REG32, volume);
-    reg_write(ES8311_ADC_REG17, volume);
-    ESP_LOGI(TAG, "Volume set to %d", volume);
+    
+    // Only write to codec if handle is initialized
+    if (es8311_handle) {
+        esp_err_t ret;
+        ret = reg_write(ES8311_DAC_REG32, volume);
+        if (ret != ESP_OK) {
+            ESP_LOGW(TAG, "Failed to set DAC volume: %s", esp_err_to_name(ret));
+        }
+        ret = reg_write(ES8311_ADC_REG17, volume);
+        if (ret != ESP_OK) {
+            ESP_LOGW(TAG, "Failed to set ADC volume: %s", esp_err_to_name(ret));
+        }
+        ESP_LOGI(TAG, "Volume set to %d", volume);
+    } else {
+        ESP_LOGW(TAG, "ES8311 handle not initialized, volume not applied");
+    }
 }
 
 uint8_t audio_manager_get_volume(void) {
